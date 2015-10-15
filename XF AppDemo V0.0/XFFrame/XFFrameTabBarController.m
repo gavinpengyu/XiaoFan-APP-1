@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XFFrameTabBarController.h"
 #import "XFFrameNavigationController.h"
+#import "XFWorkTableViewController.h"
 
 @implementation XFFrameTabBarController
 
@@ -27,7 +28,7 @@
     
     [self setupChildNavigationControllerWithClass : [XFFrameNavigationController class]
                                   tabBarImageName : @"TabBar_Work"
-                          rootViewControllerClass : [UITableViewController class]
+                          rootViewControllerClass : [XFWorkTableViewController class]
                           rootViewControllerTitle : @"工作"];
     
     [self setupChildNavigationControllerWithClass : [XFFrameNavigationController class]

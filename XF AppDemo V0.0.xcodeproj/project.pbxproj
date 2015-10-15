@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE316B091BCF9459003CE542 /* XFWorkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE316B081BCF9459003CE542 /* XFWorkTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CE8875751BCCD16500334C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875741BCCD16500334C97 /* main.m */; };
 		CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875771BCCD16500334C97 /* AppDelegate.m */; };
 		CE88757B1BCCD16500334C97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88757A1BCCD16500334C97 /* ViewController.m */; };
@@ -20,7 +21,12 @@
 		CE8875B31BCCF5F300334C97 /* XFFrameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875B21BCCF5F300334C97 /* XFFrameNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		CEE0FF251BCE3250004EBFC6 /* XFFrameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF241BCE3250004EBFC6 /* XFFrameTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		CEE0FF281BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF271BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m */; settings = {ASSET_TAGS = (); }; };
-		CEE0FF411BCE4205004EBFC6 /* XFWorkTableViewTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE0FF401BCE4205004EBFC6 /* XFWorkTableViewTopCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CEE0FF431BCF7B4F004EBFC6 /* XFWorkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF421BCF7B4F004EBFC6 /* XFWorkTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CEE0FF451BCF7BD9004EBFC6 /* XFWorkTableViewTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE0FF441BCF7BD9004EBFC6 /* XFWorkTableViewTopCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CEE0FF481BCF7C3E004EBFC6 /* XFWorkTableViewTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF471BCF7C3E004EBFC6 /* XFWorkTableViewTopCell.m */; settings = {ASSET_TAGS = (); }; };
+		CEE0FF4B1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF4A1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		CEE0FF4E1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF4D1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m */; settings = {ASSET_TAGS = (); }; };
+		CEE0FF561BCF85BB004EBFC6 /* UIView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF551BCF85BB004EBFC6 /* UIView+XFExtension.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE316B081BCF9459003CE542 /* XFWorkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFWorkTableViewCell.xib; path = XFWork/XFWorkTableViewCell.xib; sourceTree = "<group>"; };
 		CE8875701BCCD16500334C97 /* XF AppDemo V0.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XF AppDemo V0.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8875741BCCD16500334C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE8875761BCCD16500334C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,7 +73,17 @@
 		CEE0FF241BCE3250004EBFC6 /* XFFrameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFFrameTableViewController.m; path = XFFrame/XFFrameTableViewController.m; sourceTree = "<group>"; };
 		CEE0FF271BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFFrameTableViewControllerCell.m; path = XFFrame/XFFrameTableViewControllerCell.m; sourceTree = "<group>"; };
 		CEE0FF291BCE34CC004EBFC6 /* XFFrameTableViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFFrameTableViewControllerCell.h; path = XFFrame/XFFrameTableViewControllerCell.h; sourceTree = "<group>"; };
-		CEE0FF401BCE4205004EBFC6 /* XFWorkTableViewTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFWorkTableViewTopCell.xib; sourceTree = "<group>"; };
+		CEE0FF421BCF7B4F004EBFC6 /* XFWorkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewController.m; path = XFWork/XFWorkTableViewController.m; sourceTree = "<group>"; };
+		CEE0FF441BCF7BD9004EBFC6 /* XFWorkTableViewTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFWorkTableViewTopCell.xib; path = XFWork/XFWorkTableViewTopCell.xib; sourceTree = "<group>"; };
+		CEE0FF461BCF7BFF004EBFC6 /* XFWorkTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewController.h; path = XFWork/XFWorkTableViewController.h; sourceTree = "<group>"; };
+		CEE0FF471BCF7C3E004EBFC6 /* XFWorkTableViewTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewTopCell.m; path = XFWork/XFWorkTableViewTopCell.m; sourceTree = "<group>"; };
+		CEE0FF491BCF7C57004EBFC6 /* XFWorkTableViewTopCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewTopCell.h; path = XFWork/XFWorkTableViewTopCell.h; sourceTree = "<group>"; };
+		CEE0FF4A1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewCell.m; path = XFWork/XFWorkTableViewCell.m; sourceTree = "<group>"; };
+		CEE0FF4C1BCF7C8F004EBFC6 /* XFWorkTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewCell.h; path = XFWork/XFWorkTableViewCell.h; sourceTree = "<group>"; };
+		CEE0FF4D1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewCellModel.m; path = XFWork/XFWorkTableViewCellModel.m; sourceTree = "<group>"; };
+		CEE0FF501BCF8073004EBFC6 /* XFWorkTableViewCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewCellModel.h; path = XFWork/XFWorkTableViewCellModel.h; sourceTree = "<group>"; };
+		CEE0FF551BCF85BB004EBFC6 /* UIView+XFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+XFExtension.m"; path = "XFFrame/XFLib/UIView+XFExtension.m"; sourceTree = "<group>"; };
+		CEE0FF571BCF85CF004EBFC6 /* UIView+XFExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+XFExtension.h"; path = "XFFrame/XFLib/UIView+XFExtension.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +190,7 @@
 		CE8875AC1BCCD6DE00334C97 /* XFFrame */ = {
 			isa = PBXGroup;
 			children = (
+				CEE0FF511BCF843F004EBFC6 /* XFLib */,
 				CEE0FF221BCE31E3004EBFC6 /* XFFrameTabBarController */,
 				CEE0FF261BCE326E004EBFC6 /* XFFrameTableViewController */,
 				CEE0FF211BCE31D8004EBFC6 /* XFFrameNavigationController */,
@@ -281,6 +299,8 @@
 		CEE0FF361BCE40FA004EBFC6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEE0FF421BCF7B4F004EBFC6 /* XFWorkTableViewController.m */,
+				CEE0FF461BCF7BFF004EBFC6 /* XFWorkTableViewController.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -288,7 +308,12 @@
 		CEE0FF371BCE4104004EBFC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF401BCE4205004EBFC6 /* XFWorkTableViewTopCell.xib */,
+				CEE0FF441BCF7BD9004EBFC6 /* XFWorkTableViewTopCell.xib */,
+				CEE0FF471BCF7C3E004EBFC6 /* XFWorkTableViewTopCell.m */,
+				CEE0FF491BCF7C57004EBFC6 /* XFWorkTableViewTopCell.h */,
+				CEE0FF4A1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m */,
+				CEE0FF4C1BCF7C8F004EBFC6 /* XFWorkTableViewCell.h */,
+				CE316B081BCF9459003CE542 /* XFWorkTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -296,6 +321,8 @@
 		CEE0FF381BCE410A004EBFC6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CEE0FF4D1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m */,
+				CEE0FF501BCF8073004EBFC6 /* XFWorkTableViewCellModel.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -340,6 +367,39 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		CEE0FF511BCF843F004EBFC6 /* XFLib */ = {
+			isa = PBXGroup;
+			children = (
+				CEE0FF541BCF846C004EBFC6 /* XFCategory */,
+				CEE0FF531BCF8457004EBFC6 /* XFWebImage */,
+				CEE0FF521BCF844A004EBFC6 /* XFCycleScrollView */,
+			);
+			name = XFLib;
+			sourceTree = "<group>";
+		};
+		CEE0FF521BCF844A004EBFC6 /* XFCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = XFCycleScrollView;
+			sourceTree = "<group>";
+		};
+		CEE0FF531BCF8457004EBFC6 /* XFWebImage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = XFWebImage;
+			sourceTree = "<group>";
+		};
+		CEE0FF541BCF846C004EBFC6 /* XFCategory */ = {
+			isa = PBXGroup;
+			children = (
+				CEE0FF551BCF85BB004EBFC6 /* UIView+XFExtension.m */,
+				CEE0FF571BCF85CF004EBFC6 /* UIView+XFExtension.h */,
+			);
+			name = XFCategory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,9 +509,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8875861BCCD16500334C97 /* LaunchScreen.storyboard in Resources */,
+				CE316B091BCF9459003CE542 /* XFWorkTableViewCell.xib in Resources */,
 				CE8875831BCCD16500334C97 /* Assets.xcassets in Resources */,
+				CEE0FF451BCF7BD9004EBFC6 /* XFWorkTableViewTopCell.xib in Resources */,
 				CE88757E1BCCD16500334C97 /* Main.storyboard in Resources */,
-				CEE0FF411BCE4205004EBFC6 /* XFWorkTableViewTopCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,10 +540,15 @@
 				CE88757B1BCCD16500334C97 /* ViewController.m in Sources */,
 				CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */,
 				CE8875B11BCCEF9500334C97 /* XFFrameTabBarController.m in Sources */,
+				CEE0FF431BCF7B4F004EBFC6 /* XFWorkTableViewController.m in Sources */,
+				CEE0FF481BCF7C3E004EBFC6 /* XFWorkTableViewTopCell.m in Sources */,
 				CE8875B31BCCF5F300334C97 /* XFFrameNavigationController.m in Sources */,
+				CEE0FF561BCF85BB004EBFC6 /* UIView+XFExtension.m in Sources */,
+				CEE0FF4B1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m in Sources */,
 				CEE0FF251BCE3250004EBFC6 /* XFFrameTableViewController.m in Sources */,
 				CE8875751BCCD16500334C97 /* main.m in Sources */,
 				CEE0FF281BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m in Sources */,
+				CEE0FF4E1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m in Sources */,
 				CE8875811BCCD16500334C97 /* XF_AppDemo_V0_0.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
