@@ -29,7 +29,6 @@
     [super setModel:model];
     
     XFWorkTableViewCellModel *cellModel = (XFWorkTableViewCellModel *)model;
-
     self.followedLabel.text = cellModel.followedString;
     self.ownerLabel.text = cellModel.ownerString;
     self.details0Label.text = cellModel.details0String;

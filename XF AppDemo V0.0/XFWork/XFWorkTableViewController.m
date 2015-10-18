@@ -10,10 +10,12 @@
 #import "XFWorkTableViewController.h"
 #import "XFWorkTableViewCell.h"
 #import "XFWorkTableViewCellModel.h"
-#import "XFWorkTableViewTopCell.h"
+#import "XFWorkTableViewHeader.h"
 #import "UIView+XFExtension.h"
 
 @interface XFWorkTableViewController ()
+
+@property (nonatomic, strong) NSArray *headerDataArray;
 
 @end
 
@@ -22,20 +24,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.refreshMode = XFFrameTableViewControllerRefeshModeHeaderRefresh;
-    
-    self.tableView.rowHeight = 70;
-    
-    XFWorkTableViewTopCell *header = [[XFWorkTableViewTopCell alloc] init];
-    header.sd_height = 44;
-    header.placeholderText = @"搜索服务窗";
-    
-    self.tableView.tableHeaderView = header;
+    //self.refreshMode = XFFrameTableViewControllerRefeshModeHeaderRefresh;
+    self.tableView.rowHeight = 90;  //限定行高,po,20151017
     
     self.cellClass = [XFWorkTableViewCell class];
     
+    [self setupHeader];
+    
     [self setupModel];
+    
+    //self.sectionsNumber = self.dataArray.count;//这句话会导致程序异常，错误可重现,po，20151017 19:06,signal SIGABRT
 }
+
+- (void)setupHeader
+{
+    XFWorkTableViewHeaderItemModel *model0 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"全部" imageName:@"Work_Table_Header_All" destinationControllerClass:[XFFrameTableViewController class]];
+    
+    XFWorkTableViewHeaderItemModel *model1 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"房源" imageName:@"Work_Table_Header_Assets" destinationControllerClass:[XFFrameTableViewController class]];
+    
+    XFWorkTableViewHeaderItemModel *model2 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"客源" imageName:@"Work_Table_Header_Account" destinationControllerClass:[XFFrameTableViewController class]];
+    
+    XFWorkTableViewHeaderItemModel *model3 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"无" imageName:@"Work_Table_Header_None" destinationControllerClass:[XFFrameTableViewController class]];
+    
+    self.headerDataArray = @[model0, model1, model2, model3];
+    
+    
+    XFWorkTableViewHeader *header = [[XFWorkTableViewHeader alloc] init];
+    header.sd_height = 90;
+    header.headerItemModelsArray = self.headerDataArray;
+    __weak typeof(self) weakSelf = self;
+    header.buttonClickedOperationBlock = ^(NSInteger index){
+        XFWorkTableViewHeaderItemModel *model = weakSelf.headerDataArray[index];
+        UIViewController *vc = [[model.destinationControllerClass alloc] init];
+        vc.title = model.title;
+        [weakSelf.navigationController pushViewController:vc animated:YES];
+    };
+    self.tableView.tableHeaderView = header;
+}
+
 
 - (void)setupModel
 {

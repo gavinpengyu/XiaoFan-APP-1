@@ -1,6 +1,6 @@
 //
 //  XFWorkTableViewCell.h
-//  XF AppDemo V0.0
+//  XF AppDemo V0.0XFFrameTableViewControllerCell
 //
 //  Created by po on 15/10/15.
 //  Copyright © 2015年 po. All rights reserved.
