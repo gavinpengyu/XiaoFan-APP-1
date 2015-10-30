@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) NSArray *headerDataArray;
 
+
 @end
 
 @implementation XFWorkTableViewController
@@ -24,8 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _cellModelDataType = XFGetTypeDefault;
     //self.refreshMode = XFFrameTableViewControllerRefeshModeHeaderRefresh;
-    self.tableView.rowHeight = 90;  //限定行高,po,20151017
+    self.tableView.rowHeight = 90;  //限定行高,po,20151017；UITableViewAutomaticDimension 修改为自适应，20151027
     
     self.cellClass = [XFWorkTableViewCell class];
     
@@ -38,13 +40,13 @@
 
 - (void)setupHeader
 {
-    XFWorkTableViewHeaderItemModel *model0 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"全部" imageName:@"Work_Table_Header_All" destinationControllerClass:[XFFrameTableViewController class]];
+    XFWorkTableViewHeaderItemModel *model0 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"全部" imageName:@"Work_Table_Header_All"];
     
-    XFWorkTableViewHeaderItemModel *model1 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"房源" imageName:@"Work_Table_Header_Assets" destinationControllerClass:[XFFrameTableViewController class]];
+    XFWorkTableViewHeaderItemModel *model1 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"房源" imageName:@"Work_Table_Header_Assets"];
     
-    XFWorkTableViewHeaderItemModel *model2 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"客源" imageName:@"Work_Table_Header_Account" destinationControllerClass:[XFFrameTableViewController class]];
+    XFWorkTableViewHeaderItemModel *model2 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"客源" imageName:@"Work_Table_Header_Account"];
     
-    XFWorkTableViewHeaderItemModel *model3 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"无" imageName:@"Work_Table_Header_None" destinationControllerClass:[XFFrameTableViewController class]];
+    XFWorkTableViewHeaderItemModel *model3 = [XFWorkTableViewHeaderItemModel modelWithTitle:@"无" imageName:@"Work_Table_Header_None"];
     
     self.headerDataArray = @[model0, model1, model2, model3];
     
@@ -53,32 +55,74 @@
     header.sd_height = 90;
     header.headerItemModelsArray = self.headerDataArray;
     __weak typeof(self) weakSelf = self;
-    header.buttonClickedOperationBlock = ^(NSInteger index){
-        XFWorkTableViewHeaderItemModel *model = weakSelf.headerDataArray[index];
-        UIViewController *vc = [[model.destinationControllerClass alloc] init];
-        vc.title = model.title;
-        [weakSelf.navigationController pushViewController:vc animated:YES];
+    header.buttonClickedOperationBlock = ^(NSInteger index)
+    {
+        _cellModelDataType = (XFCellModelDataGetType)index;
+        [weakSelf reloadModelData];
     };
     self.tableView.tableHeaderView = header;
 }
 
-
 - (void)setupModel
 {
     NSMutableArray *temp = [NSMutableArray array];
-    for (int i = 0; i < 12; i++) {
-        XFWorkTableViewCellModel *model = [XFWorkTableViewCellModel
-                                                  modelWithFollowed : [NSString stringWithFormat:@"%d人已关注", i]
-                                                        ownerString : [NSString stringWithFormat:@"番茄%d号", i]
-                                                     details0String : @"红街公寓"
-                                                     details1String : [NSString stringWithFormat:@"10-%d-1001",i]
-                                                        priceString : [NSString stringWithFormat:@"20%d万",i] ];
-        [temp addObject : model];
-    }
-    
+    temp = [self getModelDataWithFlag : _cellModelDataType];
     self.dataArray = [temp copy];
 }
 
+//Adapter of datacom, po, 20151027
+- (NSMutableArray *) getModelDataWithFlag : (XFCellModelDataGetType) dataGetType
+{
+    //*********BEGIN         pseudo data, Asset, po, 20151027 ************
+    NSMutableArray *tempAsset = [NSMutableArray array];
+    for (int i = 0; i < 12; i++)
+    {
+        XFWorkTableViewCellModel *model = [XFWorkTableViewCellModel
+                                           modelWithFollowed : [NSString stringWithFormat:@"%d人已关注", i]
+                                           ownerString : [NSString stringWithFormat:@"番茄%d号", i]
+                                           details0String : @"红街公寓"
+                                           details1String : [NSString stringWithFormat:@"10-%d-1001",i]
+                                           priceString : [NSString stringWithFormat:@"20%d万",i] ];
+        [tempAsset addObject : model];
+    }
+    NSMutableArray *tempAccount = [NSMutableArray array];
+    for (int i = 0; i < 12; i++)
+    {
+        XFWorkTableViewCellModel *model = [XFWorkTableViewCellModel
+                                           modelWithFollowed : [NSString stringWithFormat:@"%d人已关注", i]
+                                           ownerString : [NSString stringWithFormat:@"番茄%d号", i]
+                                           details0String : @"林先生 丁桥"
+                                           details1String : [NSString stringWithFormat:@"2-3房，90-100平"]
+                                           priceString : [NSString stringWithFormat:@"20%d万",i] ];
+        [tempAccount addObject : model];
+    }
+    //*********END         pseudo data, Asset, po, 20151027 **************
+
+    switch (dataGetType) {
+        case XFGetTypeDefault:
+        {
+            [tempAsset addObjectsFromArray: tempAccount];
+            return tempAsset;
+        }
+        case XFGetTypeAsset : return tempAsset;
+            
+        case XFGetTypeAccount : return tempAccount;
+            
+        default:
+        {
+            NSLog(@"Error in dataGetType.");
+            return nil;
+        }
+    }
+}
+
+- (void) reloadModelData
+{
+    NSMutableArray *temp = [NSMutableArray array];
+    temp = [self getModelDataWithFlag : _cellModelDataType];
+    self.dataArray = [temp copy];
+    [self.tableView reloadData];
+}
 
 #pragma mark - delegate
 
@@ -117,7 +161,6 @@
     if([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]){
         [cell setPreservesSuperviewLayoutMargins:NO];
     }
-    
 }
 
 #pragma mark - pull down refresh

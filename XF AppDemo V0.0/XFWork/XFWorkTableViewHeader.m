@@ -10,6 +10,7 @@
 #import "XFWorkTableViewHeader.h"
 #import "XFWorkTableViewHeaderItemButton.h"
 #import "UIView+XFExtension.h"
+//#import "XFWorkTableViewController.h"
 
 
 
@@ -51,7 +52,8 @@
 
 - (void)buttonClickd:(XFWorkTableViewHeaderItemButton *)button
 {
-    if (self.buttonClickedOperationBlock) {
+    if (self.buttonClickedOperationBlock)
+    {
         self.buttonClickedOperationBlock(button.tag);
     }
 }
@@ -61,12 +63,12 @@
 
 @implementation XFWorkTableViewHeaderItemModel
 
-+ (instancetype)modelWithTitle:(NSString *)title imageName:(NSString *)imageName destinationControllerClass:(Class)destinationControllerClass
++ (instancetype)modelWithTitle:(NSString *)title imageName:(NSString *)imageName
 {
     XFWorkTableViewHeaderItemModel *model = [[XFWorkTableViewHeaderItemModel alloc] init];
     model.title = title;
     model.imageName = imageName;
-    model.destinationControllerClass = destinationControllerClass;
+    //model.destinationControllerClass = destinationControllerClass;
     return model;
 }
 

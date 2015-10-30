@@ -25,5 +25,51 @@
     model.priceString = priceString;
     return model;
 }
+/*
+//Adapter of datacom, po, 20151027
+- (NSMutableArray *) getModelDataWithFlag : (XFCellModelDataGetType) dataGetType
+{
+    //*********BEGIN         pseudo data, Asset, po, 20151027 ************
+    NSMutableArray *tempAsset = [NSMutableArray array];
+    for (int i = 0; i < 12; i++)
+    {
+        XFWorkTableViewCellModel *model = [XFWorkTableViewCellModel
+                                           modelWithFollowed : [NSString stringWithFormat:@"%d人已关注", i]
+                                           ownerString : [NSString stringWithFormat:@"番茄%d号", i]
+                                           details0String : @"红街公寓"
+                                           details1String : [NSString stringWithFormat:@"10-%d-1001",i]
+                                           priceString : [NSString stringWithFormat:@"20%d万",i] ];
+        [tempAsset addObject : model];
+    }
+    NSMutableArray *tempAccount = [NSMutableArray array];
+    for (int i = 0; i < 12; i++)
+    {
+        XFWorkTableViewCellModel *model = [XFWorkTableViewCellModel
+                                           modelWithFollowed : [NSString stringWithFormat:@"%d人已关注", i]
+                                           ownerString : [NSString stringWithFormat:@"番茄%d号", i]
+                                           details0String : @"林先生 丁桥"
+                                           details1String : [NSString stringWithFormat:@"2-3房，90-100平"]
+                                           priceString : [NSString stringWithFormat:@"20%d万",i] ];
+        [tempAccount addObject : model];
+    }
+    //*********END         pseudo data, Asset, po, 20151027 **************
+    
+    switch (dataGetType) {
+        case XFGetTypeDefault:
+        {
+            [tempAsset addObjectsFromArray: tempAccount];
+            return tempAsset;
+        }
+        case XFGetTypeAsset : return tempAsset;
+            
+        case XFGetTypeAccount : return tempAccount;
+            
+        default:
+        {
+            NSLog(@"Error in dataGetType.");
+            return nil;
+        }
+    }
+}*/
 
 @end

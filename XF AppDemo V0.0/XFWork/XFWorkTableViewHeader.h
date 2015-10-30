@@ -27,7 +27,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) Class destinationControllerClass;
 
-+ (instancetype)modelWithTitle:(NSString *)title imageName:(NSString *)imageName destinationControllerClass:(Class)destinationControllerClass;
++ (instancetype)modelWithTitle:(NSString *)title imageName:(NSString *)imageName;
 
 @end
 
