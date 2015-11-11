@@ -1,13 +1,14 @@
 //
 //  AppDelegate.m
-//  XF AppDemo V0.0
+//  XFN AppDemo V0.0
 //
 //  Created by po on 15/10/13.
 //  Copyright © 2015年 po. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "XFFrameTabBarController.h"
+#import "XFNFrameTabBarController.h"
+#import "XFNFrameCommonItemDetailModel.h"
 
 @interface AppDelegate ()
 
@@ -21,13 +22,17 @@
     //begin: created, po, 20151013
     
     self.window                    = [[UIWindow alloc] initWithFrame : [UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[XFFrameTabBarController alloc] init];
+    self.window.rootViewController = [[XFNFrameTabBarController alloc] init];
     self.window.backgroundColor    = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    //填入伪数据,po，20151106
+    XFNFrameCommonItemDetailModel *tempDataModel = [[XFNFrameCommonItemDetailModel alloc] init];
+    [tempDataModel initPseudoData];
+    
     //Custermize UINavigationBar here, po, 20151013
     //end
-    
+
     return YES;
 }
 
@@ -62,7 +67,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "XiaoFan.XF_AppDemo_V0_0" in the application's documents directory.
+    // The directory the application uses to store the Core Data store file. This code uses a directory named "XiaoFan.XFN_AppDemo_V0_0" in the application's documents directory.
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
@@ -71,7 +76,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"XF_AppDemo_V0_0" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"XFN_AppDemo_V0_0" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -85,7 +90,7 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"XF_AppDemo_V0_0.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"XFN_AppDemo_V0_0.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {

@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE316B091BCF9459003CE542 /* XFWorkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE316B081BCF9459003CE542 /* XFWorkTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CE8050DA1BD22264006125E9 /* XFWorkTableViewHeaderItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8050D91BD22264006125E9 /* XFWorkTableViewHeaderItemButton.m */; settings = {ASSET_TAGS = (); }; };
-		CE8050DD1BD22378006125E9 /* XFWorkTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8050DC1BD22378006125E9 /* XFWorkTableViewHeader.m */; settings = {ASSET_TAGS = (); }; };
+		CE1952C01BF078F60097FC0C /* XFNFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952BF1BF078F60097FC0C /* XFNFrameViewController.m */; };
+		CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952C51BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m */; };
+		CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */; };
+		CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */; };
+		CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7D1BEB232B00F8A229 /* XFNFrameTableViewController.m */; };
+		CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */; };
+		CE599B841BEB233D00F8A229 /* XFNFrameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B831BEB233D00F8A229 /* XFNFrameNavigationController.m */; };
+		CE599B861BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */; };
 		CE8875751BCCD16500334C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875741BCCD16500334C97 /* main.m */; };
 		CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875771BCCD16500334C97 /* AppDelegate.m */; };
 		CE88757B1BCCD16500334C97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88757A1BCCD16500334C97 /* ViewController.m */; };
@@ -19,14 +24,20 @@
 		CE8875861BCCD16500334C97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8875841BCCD16500334C97 /* LaunchScreen.storyboard */; };
 		CE8875911BCCD16500334C97 /* XF_AppDemo_V0_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875901BCCD16500334C97 /* XF_AppDemo_V0_0Tests.m */; };
 		CE88759C1BCCD16500334C97 /* XF_AppDemo_V0_0UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88759B1BCCD16500334C97 /* XF_AppDemo_V0_0UITests.m */; };
-		CE8875B11BCCEF9500334C97 /* XFFrameTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875B01BCCEF9500334C97 /* XFFrameTabBarController.m */; settings = {ASSET_TAGS = (); }; };
-		CE8875B31BCCF5F300334C97 /* XFFrameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875B21BCCF5F300334C97 /* XFFrameNavigationController.m */; settings = {ASSET_TAGS = (); }; };
-		CEE0FF251BCE3250004EBFC6 /* XFFrameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF241BCE3250004EBFC6 /* XFFrameTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		CEE0FF281BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF271BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m */; settings = {ASSET_TAGS = (); }; };
-		CEE0FF431BCF7B4F004EBFC6 /* XFWorkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF421BCF7B4F004EBFC6 /* XFWorkTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		CEE0FF4B1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF4A1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		CEE0FF4E1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF4D1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m */; settings = {ASSET_TAGS = (); }; };
-		CEE0FF561BCF85BB004EBFC6 /* UIView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF551BCF85BB004EBFC6 /* UIView+XFExtension.m */; settings = {ASSET_TAGS = (); }; };
+		CE93C6761BEA23BC005E0973 /* XFNWorkDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6751BEA23BC005E0973 /* XFNWorkDetailTableViewController.m */; };
+		CE93C67C1BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */; };
+		CE93C67D1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6791BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m */; };
+		CE93C67E1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE93C67B1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib */; };
+		CE93C6811BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6801BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m */; };
+		CE93C6851BEA243B005E0973 /* XFNWorkTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6841BEA243B005E0973 /* XFNWorkTableViewCellModel.m */; };
+		CE93C68D1BEA244B005E0973 /* XFNWorkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6871BEA244B005E0973 /* XFNWorkTableViewCell.m */; };
+		CE93C68E1BEA244B005E0973 /* XFNWorkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE93C6881BEA244B005E0973 /* XFNWorkTableViewCell.xib */; };
+		CE93C68F1BEA244B005E0973 /* XFNWorkTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C68A1BEA244B005E0973 /* XFNWorkTableViewHeader.m */; };
+		CE93C6901BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C68C1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m */; };
+		CE93C6931BEA2461005E0973 /* XFNWorkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6921BEA2461005E0973 /* XFNWorkTableViewController.m */; };
+		CE93C6991BEA24DA005E0973 /* XFNFrameCommonItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6981BEA24DA005E0973 /* XFNFrameCommonItemModel.m */; };
+		CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C69B1BEA24E5005E0973 /* XFNFrameUserProfileModel.m */; };
+		CEE0FF561BCF85BB004EBFC6 /* UIView+XFNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,11 +58,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CE316B081BCF9459003CE542 /* XFWorkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFWorkTableViewCell.xib; path = XFWork/XFWorkTableViewCell.xib; sourceTree = "<group>"; };
-		CE8050D91BD22264006125E9 /* XFWorkTableViewHeaderItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewHeaderItemButton.m; path = XFWork/XFWorkTableViewHeaderItemButton.m; sourceTree = "<group>"; };
-		CE8050DB1BD2227E006125E9 /* XFWorkTableViewHeaderItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewHeaderItemButton.h; path = XFWork/XFWorkTableViewHeaderItemButton.h; sourceTree = "<group>"; };
-		CE8050DC1BD22378006125E9 /* XFWorkTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewHeader.m; path = XFWork/XFWorkTableViewHeader.m; sourceTree = "<group>"; };
-		CE8050DE1BD2238C006125E9 /* XFWorkTableViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewHeader.h; path = XFWork/XFWorkTableViewHeader.h; sourceTree = "<group>"; };
+		CE083C351BE723FA00B225F6 /* XFNFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrame.h; path = XFFrame/XFNFrame.h; sourceTree = "<group>"; };
+		CE1952BF1BF078F60097FC0C /* XFNFrameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameViewController.m; path = XFFrame/FrameController/XFNFrameViewController.m; sourceTree = "<group>"; };
+		CE1952C11BF0790B0097FC0C /* XFNFrameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameViewController.h; path = XFFrame/FrameController/XFNFrameViewController.h; sourceTree = "<group>"; };
+		CE1952C51BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNStatusAttributePriceTableViewController.m; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewController.m; sourceTree = "<group>"; };
+		CE1952C71BF07ACC0097FC0C /* XFNStatusAttributePriceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNStatusAttributePriceTableViewController.h; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewController.h; sourceTree = "<group>"; };
+		CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNStatusAttributePriceTableViewCell.m; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewCell.m; sourceTree = "<group>"; };
+		CE1952CA1BF0AD8B0097FC0C /* XFNStatusAttributePriceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNStatusAttributePriceTableViewCell.h; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewCell.h; sourceTree = "<group>"; };
+		CE47452E1BE7495C000F4596 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		CE599B791BEB232000F8A229 /* XFNFrameTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameTabBarController.h; path = XFFrame/FrameController/XFNFrameTabBarController.h; sourceTree = "<group>"; };
+		CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameTabBarController.m; path = XFFrame/FrameController/XFNFrameTabBarController.m; sourceTree = "<group>"; };
+		CE599B7C1BEB232B00F8A229 /* XFNFrameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameTableViewController.h; path = XFFrame/FrameController/XFNFrameTableViewController.h; sourceTree = "<group>"; };
+		CE599B7D1BEB232B00F8A229 /* XFNFrameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameTableViewController.m; path = XFFrame/FrameController/XFNFrameTableViewController.m; sourceTree = "<group>"; };
+		CE599B7F1BEB233100F8A229 /* XFNFrameTableViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameTableViewControllerCell.h; path = XFFrame/FrameController/XFNFrameTableViewControllerCell.h; sourceTree = "<group>"; };
+		CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameTableViewControllerCell.m; path = XFFrame/FrameController/XFNFrameTableViewControllerCell.m; sourceTree = "<group>"; };
+		CE599B821BEB233D00F8A229 /* XFNFrameNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameNavigationController.h; path = XFFrame/FrameController/XFNFrameNavigationController.h; sourceTree = "<group>"; };
+		CE599B831BEB233D00F8A229 /* XFNFrameNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameNavigationController.m; path = XFFrame/FrameController/XFNFrameNavigationController.m; sourceTree = "<group>"; };
+		CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameCommonItemDetailModel.m; path = XFFrame/FrameModel/XFFrameCommonItemDetailModel/XFNFrameCommonItemDetailModel.m; sourceTree = "<group>"; };
+		CE599B8B1BEB246F00F8A229 /* XFNFrameCommonItemDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameCommonItemDetailModel.h; path = XFFrame/FrameModel/XFFrameCommonItemDetailModel/XFNFrameCommonItemDetailModel.h; sourceTree = "<group>"; };
 		CE8875701BCCD16500334C97 /* XF AppDemo V0.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XF AppDemo V0.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8875741BCCD16500334C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE8875761BCCD16500334C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,22 +93,32 @@
 		CE8875971BCCD16500334C97 /* XF AppDemo V0.0UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XF AppDemo V0.0UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE88759B1BCCD16500334C97 /* XF_AppDemo_V0_0UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XF_AppDemo_V0_0UITests.m; sourceTree = "<group>"; };
 		CE88759D1BCCD16500334C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE8875AD1BCCEEC300334C97 /* XFFrameTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFFrameTabBarController.h; path = XFFrame/XFFrameTabBarController.h; sourceTree = "<group>"; };
-		CE8875B01BCCEF9500334C97 /* XFFrameTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFFrameTabBarController.m; path = XFFrame/XFFrameTabBarController.m; sourceTree = "<group>"; };
-		CE8875B21BCCF5F300334C97 /* XFFrameNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFFrameNavigationController.m; path = XFFrame/XFFrameNavigationController.m; sourceTree = "<group>"; };
-		CE8875B51BCCF61500334C97 /* XFFrameNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFFrameNavigationController.h; path = XFFrame/XFFrameNavigationController.h; sourceTree = "<group>"; };
-		CEE0FF231BCE3243004EBFC6 /* XFFrameTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFFrameTableViewController.h; path = XFFrame/XFFrameTableViewController.h; sourceTree = "<group>"; };
-		CEE0FF241BCE3250004EBFC6 /* XFFrameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFFrameTableViewController.m; path = XFFrame/XFFrameTableViewController.m; sourceTree = "<group>"; };
-		CEE0FF271BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFFrameTableViewControllerCell.m; path = XFFrame/XFFrameTableViewControllerCell.m; sourceTree = "<group>"; };
-		CEE0FF291BCE34CC004EBFC6 /* XFFrameTableViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFFrameTableViewControllerCell.h; path = XFFrame/XFFrameTableViewControllerCell.h; sourceTree = "<group>"; };
-		CEE0FF421BCF7B4F004EBFC6 /* XFWorkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewController.m; path = XFWork/XFWorkTableViewController.m; sourceTree = "<group>"; };
-		CEE0FF461BCF7BFF004EBFC6 /* XFWorkTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewController.h; path = XFWork/XFWorkTableViewController.h; sourceTree = "<group>"; };
-		CEE0FF4A1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewCell.m; path = XFWork/XFWorkTableViewCell.m; sourceTree = "<group>"; };
-		CEE0FF4C1BCF7C8F004EBFC6 /* XFWorkTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewCell.h; path = XFWork/XFWorkTableViewCell.h; sourceTree = "<group>"; };
-		CEE0FF4D1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFWorkTableViewCellModel.m; path = XFWork/XFWorkTableViewCellModel.m; sourceTree = "<group>"; };
-		CEE0FF501BCF8073004EBFC6 /* XFWorkTableViewCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFWorkTableViewCellModel.h; path = XFWork/XFWorkTableViewCellModel.h; sourceTree = "<group>"; };
-		CEE0FF551BCF85BB004EBFC6 /* UIView+XFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+XFExtension.m"; path = "XFFrame/XFLib/UIView+XFExtension.m"; sourceTree = "<group>"; };
-		CEE0FF571BCF85CF004EBFC6 /* UIView+XFExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+XFExtension.h"; path = "XFFrame/XFLib/UIView+XFExtension.h"; sourceTree = "<group>"; };
+		CE93C6741BEA23BC005E0973 /* XFNWorkDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewController.h; path = XFWork/CommonItemDetail/Controller/XFNWorkDetailTableViewController.h; sourceTree = "<group>"; };
+		CE93C6751BEA23BC005E0973 /* XFNWorkDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewController.m; path = XFWork/CommonItemDetail/Controller/XFNWorkDetailTableViewController.m; sourceTree = "<group>"; };
+		CE93C6771BEA23CE005E0973 /* XFNWorkDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCell.h; sourceTree = "<group>"; };
+		CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCell.m; sourceTree = "<group>"; };
+		CE93C6791BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewCellContentView.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCellContentView.m; sourceTree = "<group>"; };
+		CE93C67A1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewCellContentView.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCellContentView.h; sourceTree = "<group>"; };
+		CE93C67B1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFNWorkDetailTableViewCellContentView.xib; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCellContentView.xib; sourceTree = "<group>"; };
+		CE93C67F1BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewCellModel.h; path = XFWork/CommonItemDetail/Model/XFNWorkDetailTableViewCellModel.h; sourceTree = "<group>"; };
+		CE93C6801BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewCellModel.m; path = XFWork/CommonItemDetail/Model/XFNWorkDetailTableViewCellModel.m; sourceTree = "<group>"; };
+		CE93C6831BEA243B005E0973 /* XFNWorkTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewCellModel.h; path = XFWork/CommonItem/Model/XFNWorkTableViewCellModel.h; sourceTree = "<group>"; };
+		CE93C6841BEA243B005E0973 /* XFNWorkTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewCellModel.m; path = XFWork/CommonItem/Model/XFNWorkTableViewCellModel.m; sourceTree = "<group>"; };
+		CE93C6861BEA244B005E0973 /* XFNWorkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewCell.h; path = XFWork/CommonItem/View/XFNWorkTableViewCell.h; sourceTree = "<group>"; };
+		CE93C6871BEA244B005E0973 /* XFNWorkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewCell.m; path = XFWork/CommonItem/View/XFNWorkTableViewCell.m; sourceTree = "<group>"; };
+		CE93C6881BEA244B005E0973 /* XFNWorkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFNWorkTableViewCell.xib; path = XFWork/CommonItem/View/XFNWorkTableViewCell.xib; sourceTree = "<group>"; };
+		CE93C6891BEA244B005E0973 /* XFNWorkTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewHeader.h; path = XFWork/CommonItem/View/XFNWorkTableViewHeader.h; sourceTree = "<group>"; };
+		CE93C68A1BEA244B005E0973 /* XFNWorkTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewHeader.m; path = XFWork/CommonItem/View/XFNWorkTableViewHeader.m; sourceTree = "<group>"; };
+		CE93C68B1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewHeaderItemButton.h; path = XFWork/CommonItem/View/XFNWorkTableViewHeaderItemButton.h; sourceTree = "<group>"; };
+		CE93C68C1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewHeaderItemButton.m; path = XFWork/CommonItem/View/XFNWorkTableViewHeaderItemButton.m; sourceTree = "<group>"; };
+		CE93C6911BEA2461005E0973 /* XFNWorkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewController.h; path = XFWork/CommonItem/Controller/XFNWorkTableViewController.h; sourceTree = "<group>"; };
+		CE93C6921BEA2461005E0973 /* XFNWorkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewController.m; path = XFWork/CommonItem/Controller/XFNWorkTableViewController.m; sourceTree = "<group>"; };
+		CE93C6971BEA24DA005E0973 /* XFNFrameCommonItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameCommonItemModel.h; path = XFFrame/FrameModel/FrameCommonItem/XFNFrameCommonItemModel.h; sourceTree = "<group>"; };
+		CE93C6981BEA24DA005E0973 /* XFNFrameCommonItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameCommonItemModel.m; path = XFFrame/FrameModel/FrameCommonItem/XFNFrameCommonItemModel.m; sourceTree = "<group>"; };
+		CE93C69A1BEA24E5005E0973 /* XFNFrameUserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameUserProfileModel.h; path = XFFrame/FrameModel/FrameUserProfile/XFNFrameUserProfileModel.h; sourceTree = "<group>"; };
+		CE93C69B1BEA24E5005E0973 /* XFNFrameUserProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameUserProfileModel.m; path = XFFrame/FrameModel/FrameUserProfile/XFNFrameUserProfileModel.m; sourceTree = "<group>"; };
+		CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+XFNExtension.m"; path = "XFFrame/XFLib/UIView+XFNExtension.m"; sourceTree = "<group>"; };
+		CEE0FF571BCF85CF004EBFC6 /* UIView+XFNExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+XFNExtension.h"; path = "XFFrame/XFLib/UIView+XFNExtension.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,15 +146,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE8050D81BD22214006125E9 /* XFWorkTableViewHeader */ = {
+		CE1952BE1BF078430097FC0C /* XFNFrameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CE8050D91BD22264006125E9 /* XFWorkTableViewHeaderItemButton.m */,
-				CE8050DB1BD2227E006125E9 /* XFWorkTableViewHeaderItemButton.h */,
-				CE8050DC1BD22378006125E9 /* XFWorkTableViewHeader.m */,
-				CE8050DE1BD2238C006125E9 /* XFWorkTableViewHeader.h */,
+				CE1952BF1BF078F60097FC0C /* XFNFrameViewController.m */,
+				CE1952C11BF0790B0097FC0C /* XFNFrameViewController.h */,
 			);
-			name = XFWorkTableViewHeader;
+			name = XFNFrameViewController;
+			sourceTree = "<group>";
+		};
+		CE1952C21BF079ED0097FC0C /* CommonActions */ = {
+			isa = PBXGroup;
+			children = (
+				CE1952C41BF07A2B0097FC0C /* ActionStatusAttributePrice */,
+				CE1952C31BF07A0C0097FC0C /* ActionAddressInfo */,
+			);
+			name = CommonActions;
+			sourceTree = "<group>";
+		};
+		CE1952C31BF07A0C0097FC0C /* ActionAddressInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ActionAddressInfo;
+			sourceTree = "<group>";
+		};
+		CE1952C41BF07A2B0097FC0C /* ActionStatusAttributePrice */ = {
+			isa = PBXGroup;
+			children = (
+				CE1952C51BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m */,
+				CE1952C71BF07ACC0097FC0C /* XFNStatusAttributePriceTableViewController.h */,
+				CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */,
+				CE1952CA1BF0AD8B0097FC0C /* XFNStatusAttributePriceTableViewCell.h */,
+			);
+			name = ActionStatusAttributePrice;
+			sourceTree = "<group>";
+		};
+		CE4745491BE79ED3000F4596 /* CommonItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CE47454C1BE79EE7000F4596 /* Controllers */,
+				CE47454B1BE79EE1000F4596 /* Views */,
+				CE47454A1BE79EDB000F4596 /* Models */,
+			);
+			name = CommonItemDetail;
+			sourceTree = "<group>";
+		};
+		CE47454A1BE79EDB000F4596 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE93C67F1BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.h */,
+				CE93C6801BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CE47454B1BE79EE1000F4596 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE93C6771BEA23CE005E0973 /* XFNWorkDetailTableViewCell.h */,
+				CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */,
+				CE93C6791BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m */,
+				CE93C67A1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.h */,
+				CE93C67B1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CE47454C1BE79EE7000F4596 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE93C6741BEA23BC005E0973 /* XFNWorkDetailTableViewController.h */,
+				CE93C6751BEA23BC005E0973 /* XFNWorkDetailTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CE599B781BEB229200F8A229 /* XFNFrameCommonItemDetailModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */,
+				CE599B8B1BEB246F00F8A229 /* XFNFrameCommonItemDetailModel.h */,
+			);
+			name = XFNFrameCommonItemDetailModel;
 			sourceTree = "<group>";
 		};
 		CE8875671BCCD16500334C97 = {
@@ -150,7 +258,7 @@
 				CEE0FF2E1BCE4020004EBFC6 /* Work */,
 				CEE0FF2D1BCE4016004EBFC6 /* Public */,
 				CEE0FF2C1BCE4010004EBFC6 /* Me */,
-				CE8875AC1BCCD6DE00334C97 /* XFFrame */,
+				CE8875AC1BCCD6DE00334C97 /* XFNFrame */,
 				CE8875AB1BCCD6B700334C97 /* AppDelegate */,
 				CE8875731BCCD16500334C97 /* Supporting Files */,
 			);
@@ -160,6 +268,7 @@
 		CE8875731BCCD16500334C97 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE47452E1BE7495C000F4596 /* PrefixHeader.pch */,
 				CE88757C1BCCD16500334C97 /* Main.storyboard */,
 				CE8875821BCCD16500334C97 /* Assets.xcassets */,
 				CE8875841BCCD16500334C97 /* LaunchScreen.storyboard */,
@@ -199,52 +308,64 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
-		CE8875AC1BCCD6DE00334C97 /* XFFrame */ = {
+		CE8875AC1BCCD6DE00334C97 /* XFNFrame */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF511BCF843F004EBFC6 /* XFLib */,
-				CEE0FF221BCE31E3004EBFC6 /* XFFrameTabBarController */,
-				CEE0FF261BCE326E004EBFC6 /* XFFrameTableViewController */,
-				CEE0FF211BCE31D8004EBFC6 /* XFFrameNavigationController */,
+				CE1952BE1BF078430097FC0C /* XFNFrameViewController */,
+				CEEA58931BE4F2BF00AE6D16 /* XFNFrameDataModel */,
+				CEE0FF511BCF843F004EBFC6 /* XFNLib */,
+				CEE0FF221BCE31E3004EBFC6 /* XFNFrameTabBarController */,
+				CEE0FF261BCE326E004EBFC6 /* XFNFrameTableViewController */,
+				CEE0FF211BCE31D8004EBFC6 /* XFNFrameNavigationController */,
 			);
-			name = XFFrame;
+			name = XFNFrame;
 			sourceTree = "<group>";
 		};
-		CEE0FF211BCE31D8004EBFC6 /* XFFrameNavigationController */ = {
+		CE93C6821BEA2400005E0973 /* CommonItem */ = {
 			isa = PBXGroup;
 			children = (
-				CE8875B51BCCF61500334C97 /* XFFrameNavigationController.h */,
-				CE8875B21BCCF5F300334C97 /* XFFrameNavigationController.m */,
+				CEE0FF381BCE410A004EBFC6 /* Models */,
+				CEE0FF371BCE4104004EBFC6 /* Views */,
+				CEE0FF361BCE40FA004EBFC6 /* Controllers */,
 			);
-			name = XFFrameNavigationController;
+			name = CommonItem;
 			sourceTree = "<group>";
 		};
-		CEE0FF221BCE31E3004EBFC6 /* XFFrameTabBarController */ = {
+		CEE0FF211BCE31D8004EBFC6 /* XFNFrameNavigationController */ = {
 			isa = PBXGroup;
 			children = (
-				CE8875AD1BCCEEC300334C97 /* XFFrameTabBarController.h */,
-				CE8875B01BCCEF9500334C97 /* XFFrameTabBarController.m */,
+				CE599B821BEB233D00F8A229 /* XFNFrameNavigationController.h */,
+				CE599B831BEB233D00F8A229 /* XFNFrameNavigationController.m */,
 			);
-			name = XFFrameTabBarController;
+			name = XFNFrameNavigationController;
 			sourceTree = "<group>";
 		};
-		CEE0FF261BCE326E004EBFC6 /* XFFrameTableViewController */ = {
+		CEE0FF221BCE31E3004EBFC6 /* XFNFrameTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF231BCE3243004EBFC6 /* XFFrameTableViewController.h */,
-				CEE0FF241BCE3250004EBFC6 /* XFFrameTableViewController.m */,
-				CEE0FF2A1BCE34D3004EBFC6 /* XFFrameTableViewControllerCell */,
+				CE599B791BEB232000F8A229 /* XFNFrameTabBarController.h */,
+				CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */,
 			);
-			name = XFFrameTableViewController;
+			name = XFNFrameTabBarController;
 			sourceTree = "<group>";
 		};
-		CEE0FF2A1BCE34D3004EBFC6 /* XFFrameTableViewControllerCell */ = {
+		CEE0FF261BCE326E004EBFC6 /* XFNFrameTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF271BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m */,
-				CEE0FF291BCE34CC004EBFC6 /* XFFrameTableViewControllerCell.h */,
+				CE599B7C1BEB232B00F8A229 /* XFNFrameTableViewController.h */,
+				CE599B7D1BEB232B00F8A229 /* XFNFrameTableViewController.m */,
+				CEE0FF2A1BCE34D3004EBFC6 /* XFNFrameTableViewControllerCell */,
 			);
-			name = XFFrameTableViewControllerCell;
+			name = XFNFrameTableViewController;
+			sourceTree = "<group>";
+		};
+		CEE0FF2A1BCE34D3004EBFC6 /* XFNFrameTableViewControllerCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE599B7F1BEB233100F8A229 /* XFNFrameTableViewControllerCell.h */,
+				CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */,
+			);
+			name = XFNFrameTableViewControllerCell;
 			sourceTree = "<group>";
 		};
 		CEE0FF2C1BCE4010004EBFC6 /* Me */ = {
@@ -270,9 +391,9 @@
 		CEE0FF2E1BCE4020004EBFC6 /* Work */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF381BCE410A004EBFC6 /* Models */,
-				CEE0FF371BCE4104004EBFC6 /* Views */,
-				CEE0FF361BCE40FA004EBFC6 /* Controllers */,
+				CE1952C21BF079ED0097FC0C /* CommonActions */,
+				CE93C6821BEA2400005E0973 /* CommonItem */,
+				CE4745491BE79ED3000F4596 /* CommonItemDetail */,
 			);
 			name = Work;
 			sourceTree = "<group>";
@@ -311,8 +432,8 @@
 		CEE0FF361BCE40FA004EBFC6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF421BCF7B4F004EBFC6 /* XFWorkTableViewController.m */,
-				CEE0FF461BCF7BFF004EBFC6 /* XFWorkTableViewController.h */,
+				CE93C6911BEA2461005E0973 /* XFNWorkTableViewController.h */,
+				CE93C6921BEA2461005E0973 /* XFNWorkTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -320,10 +441,13 @@
 		CEE0FF371BCE4104004EBFC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE8050D81BD22214006125E9 /* XFWorkTableViewHeader */,
-				CEE0FF4A1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m */,
-				CEE0FF4C1BCF7C8F004EBFC6 /* XFWorkTableViewCell.h */,
-				CE316B081BCF9459003CE542 /* XFWorkTableViewCell.xib */,
+				CE93C6861BEA244B005E0973 /* XFNWorkTableViewCell.h */,
+				CE93C6871BEA244B005E0973 /* XFNWorkTableViewCell.m */,
+				CE93C6881BEA244B005E0973 /* XFNWorkTableViewCell.xib */,
+				CE93C6891BEA244B005E0973 /* XFNWorkTableViewHeader.h */,
+				CE93C68A1BEA244B005E0973 /* XFNWorkTableViewHeader.m */,
+				CE93C68B1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.h */,
+				CE93C68C1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -331,8 +455,8 @@
 		CEE0FF381BCE410A004EBFC6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF4D1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m */,
-				CEE0FF501BCF8073004EBFC6 /* XFWorkTableViewCellModel.h */,
+				CE93C6831BEA243B005E0973 /* XFNWorkTableViewCellModel.h */,
+				CE93C6841BEA243B005E0973 /* XFNWorkTableViewCellModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -379,37 +503,66 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		CEE0FF511BCF843F004EBFC6 /* XFLib */ = {
+		CEE0FF511BCF843F004EBFC6 /* XFNLib */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF541BCF846C004EBFC6 /* XFCategory */,
-				CEE0FF531BCF8457004EBFC6 /* XFWebImage */,
-				CEE0FF521BCF844A004EBFC6 /* XFCycleScrollView */,
+				CE083C351BE723FA00B225F6 /* XFNFrame.h */,
+				CEE0FF541BCF846C004EBFC6 /* XFNCategory */,
+				CEE0FF531BCF8457004EBFC6 /* XFNWebImage */,
+				CEE0FF521BCF844A004EBFC6 /* XFNCycleScrollView */,
 			);
-			name = XFLib;
+			name = XFNLib;
 			sourceTree = "<group>";
 		};
-		CEE0FF521BCF844A004EBFC6 /* XFCycleScrollView */ = {
+		CEE0FF521BCF844A004EBFC6 /* XFNCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = XFCycleScrollView;
+			name = XFNCycleScrollView;
 			sourceTree = "<group>";
 		};
-		CEE0FF531BCF8457004EBFC6 /* XFWebImage */ = {
+		CEE0FF531BCF8457004EBFC6 /* XFNWebImage */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = XFWebImage;
+			name = XFNWebImage;
 			sourceTree = "<group>";
 		};
-		CEE0FF541BCF846C004EBFC6 /* XFCategory */ = {
+		CEE0FF541BCF846C004EBFC6 /* XFNCategory */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF551BCF85BB004EBFC6 /* UIView+XFExtension.m */,
-				CEE0FF571BCF85CF004EBFC6 /* UIView+XFExtension.h */,
+				CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */,
+				CEE0FF571BCF85CF004EBFC6 /* UIView+XFNExtension.h */,
 			);
-			name = XFCategory;
+			name = XFNCategory;
+			sourceTree = "<group>";
+		};
+		CEEA58931BE4F2BF00AE6D16 /* XFNFrameDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE599B781BEB229200F8A229 /* XFNFrameCommonItemDetailModel */,
+				CEEA58981BE4FC0200AE6D16 /* XFNFrameCommonItemModel */,
+				CEEA58971BE4FA9400AE6D16 /* XFNFrameUserProfileModel */,
+			);
+			name = XFNFrameDataModel;
+			sourceTree = "<group>";
+		};
+		CEEA58971BE4FA9400AE6D16 /* XFNFrameUserProfileModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE93C69B1BEA24E5005E0973 /* XFNFrameUserProfileModel.m */,
+				CE93C69A1BEA24E5005E0973 /* XFNFrameUserProfileModel.h */,
+			);
+			name = XFNFrameUserProfileModel;
+			sourceTree = "<group>";
+		};
+		CEEA58981BE4FC0200AE6D16 /* XFNFrameCommonItemModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE93C6981BEA24DA005E0973 /* XFNFrameCommonItemModel.m */,
+				CE93C6971BEA24DA005E0973 /* XFNFrameCommonItemModel.h */,
+			);
+			name = XFNFrameCommonItemModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,9 +671,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE93C67E1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib in Resources */,
 				CE8875861BCCD16500334C97 /* LaunchScreen.storyboard in Resources */,
-				CE316B091BCF9459003CE542 /* XFWorkTableViewCell.xib in Resources */,
 				CE8875831BCCD16500334C97 /* Assets.xcassets in Resources */,
+				CE93C68E1BEA244B005E0973 /* XFNWorkTableViewCell.xib in Resources */,
 				CE88757E1BCCD16500334C97 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,19 +700,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */,
 				CE88757B1BCCD16500334C97 /* ViewController.m in Sources */,
-				CE8050DA1BD22264006125E9 /* XFWorkTableViewHeaderItemButton.m in Sources */,
 				CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */,
-				CE8050DD1BD22378006125E9 /* XFWorkTableViewHeader.m in Sources */,
-				CE8875B11BCCEF9500334C97 /* XFFrameTabBarController.m in Sources */,
-				CEE0FF431BCF7B4F004EBFC6 /* XFWorkTableViewController.m in Sources */,
-				CE8875B31BCCF5F300334C97 /* XFFrameNavigationController.m in Sources */,
-				CEE0FF561BCF85BB004EBFC6 /* UIView+XFExtension.m in Sources */,
-				CEE0FF4B1BCF7C7F004EBFC6 /* XFWorkTableViewCell.m in Sources */,
-				CEE0FF251BCE3250004EBFC6 /* XFFrameTableViewController.m in Sources */,
+				CE93C6851BEA243B005E0973 /* XFNWorkTableViewCellModel.m in Sources */,
+				CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */,
+				CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */,
+				CE93C67C1BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m in Sources */,
+				CE93C6811BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m in Sources */,
+				CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */,
+				CE93C68F1BEA244B005E0973 /* XFNWorkTableViewHeader.m in Sources */,
+				CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */,
+				CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */,
+				CE93C68D1BEA244B005E0973 /* XFNWorkTableViewCell.m in Sources */,
+				CE93C6761BEA23BC005E0973 /* XFNWorkDetailTableViewController.m in Sources */,
+				CE93C6931BEA2461005E0973 /* XFNWorkTableViewController.m in Sources */,
+				CE93C67D1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m in Sources */,
+				CE93C6901BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m in Sources */,
+				CE93C6991BEA24DA005E0973 /* XFNFrameCommonItemModel.m in Sources */,
+				CE599B861BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m in Sources */,
+				CEE0FF561BCF85BB004EBFC6 /* UIView+XFNExtension.m in Sources */,
+				CE599B841BEB233D00F8A229 /* XFNFrameNavigationController.m in Sources */,
+				CE1952C01BF078F60097FC0C /* XFNFrameViewController.m in Sources */,
 				CE8875751BCCD16500334C97 /* main.m in Sources */,
-				CEE0FF281BCE34C0004EBFC6 /* XFFrameTableViewControllerCell.m in Sources */,
-				CEE0FF4E1BCF804D004EBFC6 /* XFWorkTableViewCellModel.m in Sources */,
 				CE8875811BCCD16500334C97 /* XF_AppDemo_V0_0.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
