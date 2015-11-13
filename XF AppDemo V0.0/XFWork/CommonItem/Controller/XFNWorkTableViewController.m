@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import <AVOSCloud/AVOSCloud.h>
+
 #import "XFNFrame.h"
 #import "XFNWorkTableViewController.h"
 #import "XFNWorkTableViewCell.h"
@@ -38,6 +40,7 @@
     [self setupModel];
 
     //self.sectionsNumber = self.dataArray.count;//这句话会导致程序异常，错误可重现,po，20151017 19:06,signal SIGABRT
+
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -133,12 +136,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-/*    XFNWorkTableViewCellModel *model = self.dataArray[indexPath.row];
-    UIViewController *vc = [[XFNFrameTableViewController alloc] init];
-    vc.title = model.nameString;
-    [self.navigationController pushViewController:vc animated:YES];
-*/
-    
     XFNWorkTableViewCellModel *model = self.dataArray[indexPath.row];
     XFNWorkDetailTableViewController *vc = [[XFNWorkDetailTableViewController alloc] init];
     vc.title = model.nameString;

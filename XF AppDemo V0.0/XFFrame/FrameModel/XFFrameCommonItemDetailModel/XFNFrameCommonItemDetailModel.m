@@ -143,8 +143,8 @@ static NSMutableArray * sXFNCommonItemDetailPseudoData;
         //设定时间为当前系统时间
         NSDateFormatter *nsdf2=[[NSDateFormatter alloc] init];
         [nsdf2 setDateStyle:NSDateFormatterShortStyle];
-        [nsdf2 setDateFormat:@"YYYY-MM-DD HH:mm"];
-        NSString *time=[nsdf2 stringFromDate:[NSDate date]];
+        [nsdf2 setDateFormat:@"YYYY/MM/DD HH:mm"];
+        NSString *time = [nsdf2 stringFromDate : [NSDate date]];//po 20151111：此处有bug，11月11日时显示2015/11/315
         
         XFNFrameCommonItemModel *modelCommonItem = [XFNFrameCommonItemModel initmodelWithname : (NSString*)name
                                                                                        detail : (NSString*)detail

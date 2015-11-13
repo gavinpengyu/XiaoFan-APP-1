@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4768068872A5B91B53DF6B53 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 024245694BB347D649A48D57 /* libPods.a */; };
 		CE1952C01BF078F60097FC0C /* XFNFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952BF1BF078F60097FC0C /* XFNFrameViewController.m */; };
 		CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952C51BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m */; };
 		CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */; };
+		CE2171C01BF43E5100A71CCA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CE2171BF1BF43E5100A71CCA /* Podfile */; };
 		CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */; };
 		CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7D1BEB232B00F8A229 /* XFNFrameTableViewController.m */; };
 		CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */; };
@@ -37,6 +39,8 @@
 		CE93C6931BEA2461005E0973 /* XFNWorkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6921BEA2461005E0973 /* XFNWorkTableViewController.m */; };
 		CE93C6991BEA24DA005E0973 /* XFNFrameCommonItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6981BEA24DA005E0973 /* XFNFrameCommonItemModel.m */; };
 		CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C69B1BEA24E5005E0973 /* XFNFrameUserProfileModel.m */; };
+		CE95ED791BF58AEC001C3033 /* XFNDataTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE95ED781BF58AEC001C3033 /* XFNDataTestModel.m */; };
+		CE95ED7C1BF5D57E001C3033 /* XFNFrameAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE95ED7B1BF5D57E001C3033 /* XFNFrameAssetModel.m */; };
 		CEE0FF561BCF85BB004EBFC6 /* UIView+XFNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		024245694BB347D649A48D57 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4DC2459D79237ACFCE9C3BD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C7D5AC0413928AE4F7D0AFC6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CE083C351BE723FA00B225F6 /* XFNFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrame.h; path = XFFrame/XFNFrame.h; sourceTree = "<group>"; };
 		CE1952BF1BF078F60097FC0C /* XFNFrameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameViewController.m; path = XFFrame/FrameController/XFNFrameViewController.m; sourceTree = "<group>"; };
 		CE1952C11BF0790B0097FC0C /* XFNFrameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameViewController.h; path = XFFrame/FrameController/XFNFrameViewController.h; sourceTree = "<group>"; };
@@ -65,6 +72,7 @@
 		CE1952C71BF07ACC0097FC0C /* XFNStatusAttributePriceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNStatusAttributePriceTableViewController.h; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewController.h; sourceTree = "<group>"; };
 		CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNStatusAttributePriceTableViewCell.m; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewCell.m; sourceTree = "<group>"; };
 		CE1952CA1BF0AD8B0097FC0C /* XFNStatusAttributePriceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNStatusAttributePriceTableViewCell.h; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewCell.h; sourceTree = "<group>"; };
+		CE2171BF1BF43E5100A71CCA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CE47452E1BE7495C000F4596 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CE599B791BEB232000F8A229 /* XFNFrameTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameTabBarController.h; path = XFFrame/FrameController/XFNFrameTabBarController.h; sourceTree = "<group>"; };
 		CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameTabBarController.m; path = XFFrame/FrameController/XFNFrameTabBarController.m; sourceTree = "<group>"; };
@@ -117,6 +125,10 @@
 		CE93C6981BEA24DA005E0973 /* XFNFrameCommonItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameCommonItemModel.m; path = XFFrame/FrameModel/FrameCommonItem/XFNFrameCommonItemModel.m; sourceTree = "<group>"; };
 		CE93C69A1BEA24E5005E0973 /* XFNFrameUserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameUserProfileModel.h; path = XFFrame/FrameModel/FrameUserProfile/XFNFrameUserProfileModel.h; sourceTree = "<group>"; };
 		CE93C69B1BEA24E5005E0973 /* XFNFrameUserProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameUserProfileModel.m; path = XFFrame/FrameModel/FrameUserProfile/XFNFrameUserProfileModel.m; sourceTree = "<group>"; };
+		CE95ED781BF58AEC001C3033 /* XFNDataTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFNDataTestModel.m; sourceTree = "<group>"; };
+		CE95ED7A1BF58AF8001C3033 /* XFNDataTestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XFNDataTestModel.h; sourceTree = "<group>"; };
+		CE95ED7B1BF5D57E001C3033 /* XFNFrameAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameAssetModel.m; path = XFFrame/FrameModel/XFNFrameAssetModel.m; sourceTree = "<group>"; };
+		CE95ED7D1BF5D58B001C3033 /* XFNFrameAssetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameAssetModel.h; path = XFFrame/FrameModel/XFNFrameAssetModel.h; sourceTree = "<group>"; };
 		CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+XFNExtension.m"; path = "XFFrame/XFLib/UIView+XFNExtension.m"; sourceTree = "<group>"; };
 		CEE0FF571BCF85CF004EBFC6 /* UIView+XFNExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+XFNExtension.h"; path = "XFFrame/XFLib/UIView+XFNExtension.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4768068872A5B91B53DF6B53 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +159,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60425FD6B5C7D6DFC7D4D050 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				024245694BB347D649A48D57 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		998CC86908187A11377F771E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7D5AC0413928AE4F7D0AFC6 /* Pods.debug.xcconfig */,
+				C4DC2459D79237ACFCE9C3BD /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE1952BE1BF078430097FC0C /* XFNFrameViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +257,10 @@
 			children = (
 				CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */,
 				CE599B8B1BEB246F00F8A229 /* XFNFrameCommonItemDetailModel.h */,
+				CE95ED781BF58AEC001C3033 /* XFNDataTestModel.m */,
+				CE95ED7A1BF58AF8001C3033 /* XFNDataTestModel.h */,
+				CE95ED7B1BF5D57E001C3033 /* XFNFrameAssetModel.m */,
+				CE95ED7D1BF5D58B001C3033 /* XFNFrameAssetModel.h */,
 			);
 			name = XFNFrameCommonItemDetailModel;
 			sourceTree = "<group>";
@@ -234,10 +268,13 @@
 		CE8875671BCCD16500334C97 = {
 			isa = PBXGroup;
 			children = (
+				CE2171BF1BF43E5100A71CCA /* Podfile */,
 				CE8875721BCCD16500334C97 /* XF AppDemo V0.0 */,
 				CE88758F1BCCD16500334C97 /* XF AppDemo V0.0Tests */,
 				CE88759A1BCCD16500334C97 /* XF AppDemo V0.0UITests */,
 				CE8875711BCCD16500334C97 /* Products */,
+				998CC86908187A11377F771E /* Pods */,
+				60425FD6B5C7D6DFC7D4D050 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -572,9 +609,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE8875A01BCCD16500334C97 /* Build configuration list for PBXNativeTarget "XF AppDemo V0.0" */;
 			buildPhases = (
+				FF3A46D0A9DAB85E85D64DFD /* Check Pods Manifest.lock */,
 				CE88756C1BCCD16500334C97 /* Sources */,
 				CE88756D1BCCD16500334C97 /* Frameworks */,
 				CE88756E1BCCD16500334C97 /* Resources */,
+				D70CAD2FDD9F50D3AEF672AE /* Embed Pods Frameworks */,
+				7CE1A710E34A3B21B1FDEA7C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -671,6 +711,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2171C01BF43E5100A71CCA /* Podfile in Resources */,
 				CE93C67E1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib in Resources */,
 				CE8875861BCCD16500334C97 /* LaunchScreen.storyboard in Resources */,
 				CE8875831BCCD16500334C97 /* Assets.xcassets in Resources */,
@@ -695,6 +736,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7CE1A710E34A3B21B1FDEA7C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D70CAD2FDD9F50D3AEF672AE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF3A46D0A9DAB85E85D64DFD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE88756C1BCCD16500334C97 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -703,9 +792,11 @@
 				CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */,
 				CE88757B1BCCD16500334C97 /* ViewController.m in Sources */,
 				CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */,
+				CE95ED7C1BF5D57E001C3033 /* XFNFrameAssetModel.m in Sources */,
 				CE93C6851BEA243B005E0973 /* XFNWorkTableViewCellModel.m in Sources */,
 				CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */,
 				CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */,
+				CE95ED791BF58AEC001C3033 /* XFNDataTestModel.m in Sources */,
 				CE93C67C1BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m in Sources */,
 				CE93C6811BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m in Sources */,
 				CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */,
@@ -862,6 +953,7 @@
 		};
 		CE8875A11BCCD16500334C97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7D5AC0413928AE4F7D0AFC6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "XF AppDemo V0.0/Info.plist";
@@ -873,6 +965,7 @@
 		};
 		CE8875A21BCCD16500334C97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4DC2459D79237ACFCE9C3BD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "XF AppDemo V0.0/Info.plist";

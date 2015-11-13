@@ -5,10 +5,13 @@
 //  Created by po on 15/10/13.
 //  Copyright © 2015年 po. All rights reserved.
 //
-
+#import <AVOSCloud/AVOSCloud.h>
+#import "XFNFrame.h"
 #import "AppDelegate.h"
 #import "XFNFrameTabBarController.h"
 #import "XFNFrameCommonItemDetailModel.h"
+
+#import "XFNDataTestModel.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +32,15 @@
     //填入伪数据,po，20151106
     XFNFrameCommonItemDetailModel *tempDataModel = [[XFNFrameCommonItemDetailModel alloc] init];
     [tempDataModel initPseudoData];
+    
+    [AVOSCloud setApplicationId:@"FY4EiJkB4EjYjMXk61zDwDVr"
+                      clientKey:@"zV0PMLDUy09rw6AU5FCr8Qzj"];
+    
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [XFNDataTestModel testData];
+    
+    //在此处实例化子类
     
     //Custermize UINavigationBar here, po, 20151013
     //end

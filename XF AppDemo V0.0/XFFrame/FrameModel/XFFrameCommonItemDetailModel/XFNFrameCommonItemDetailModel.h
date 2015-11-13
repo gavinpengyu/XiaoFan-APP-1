@@ -144,7 +144,7 @@ typedef NS_ENUM(NSInteger, XFNFrameDataErrorCodeEnum) {
                       storeyOfAll : (NSString *)                  storeyOfAllString
              houseOrientationEnum : (XFNFrameHouseOrientationEnum) houseOrientationEnum;
 
-- (NSString*) getOrientationEnumString: (XFNFrameHouseOrientationEnum) orientationEnum;
+- (NSString*) getOrientationEnumString : (XFNFrameHouseOrientationEnum) orientationEnum;
 
 @end
 
