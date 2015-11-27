@@ -361,9 +361,9 @@
 		CE93C6821BEA2400005E0973 /* CommonItem */ = {
 			isa = PBXGroup;
 			children = (
-				CEE0FF381BCE410A004EBFC6 /* Models */,
-				CEE0FF371BCE4104004EBFC6 /* Views */,
 				CEE0FF361BCE40FA004EBFC6 /* Controllers */,
+				CEE0FF371BCE4104004EBFC6 /* Views */,
+				CEE0FF381BCE410A004EBFC6 /* Models */,
 			);
 			name = CommonItem;
 			sourceTree = "<group>";

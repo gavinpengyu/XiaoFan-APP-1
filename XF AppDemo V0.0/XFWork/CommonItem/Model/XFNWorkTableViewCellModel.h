@@ -10,9 +10,21 @@
 #define XFNWorkTableViewCellModel_h
 
 #import <Foundation/Foundation.h>
-#import "XFNFrameCommonItemModel.h"
+#import "XFNFrameAssetModel.h"
 
-@interface XFNWorkTableViewCellModel : XFNFrameCommonItemModel
+@interface XFNWorkTableViewCellModel : XFNFrameAssetModel
+
+@property (nonatomic, copy) NSString* nameString;
+@property (nonatomic, copy) NSString* detailString;
+@property (nonatomic, copy) NSString* priceString;
+@property (nonatomic, copy) NSString* statusString;
+@property (nonatomic, copy) NSString* ownernameString;
+@property (nonatomic, copy) NSString* sendtimeString;
+@property (nonatomic, copy) UIImage*  ownerImage;
+
+@property (nonatomic, copy) XFNFrameAssetModel *assetAllInfoModel;
+
++ (instancetype)initWithObject: (XFNFrameAssetModel*) assetModel;
 
 @end
 

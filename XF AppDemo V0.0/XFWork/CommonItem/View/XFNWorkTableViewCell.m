@@ -17,9 +17,13 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    XFNWorkTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"XFNWorkTableViewCell" owner:nil options:nil] lastObject];
-
-    return cell;
+    self  = [super initWithStyle: style reuseIdentifier: reuseIdentifier];
+    if (self)
+    {
+        XFNWorkTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"XFNWorkTableViewCell" owner:nil options:nil] lastObject];
+        return cell;
+    }
+    return self;
 }
 
 - (void)setModel:(NSObject *)model

@@ -11,65 +11,102 @@
 #import "XFNFrame.h"
 #import "XFNFrameAssetModel.h"
 
+//-------------------------------------------------------------------------------------
 @implementation XFNFrameAssetModel
-
-#pragma mark Address Information
+#pragma mark 地址
 //-------------------------------------------------------------------------------------
-@dynamic  communityName;
-@dynamic  buildingNo;
-@dynamic  roomNo;
-@dynamic  assetType;
+@dynamic communityName;     //小区名
+@dynamic buildingNumber;    //楼栋号
+@dynamic addedNumber;       //单元号
+@dynamic roomNumber;        //房号
 
-#pragma mark Basic Information
+#pragma mark 图片
 //-------------------------------------------------------------------------------------
-@dynamic  area;              //
-@dynamic  sharedArea;
-@dynamic  storey;
-@dynamic  storyOfAll;
-@dynamic  orientation;
+//保留
 
-#pragma mark Unit Type Information
+#pragma mark 交易信息
 //-------------------------------------------------------------------------------------
-@dynamic  quantityOfRoom;              //
-@dynamic  quantityOfHall;              //
-@dynamic  quantityOfKitchen;              //
-@dynamic  quantityOfToilet;              //
-@dynamic  quantityOfBalcony;              //
+//交易价格
+@dynamic assetTotalPrice;
+//交易状态
+@dynamic assetStatus;   //XFNLabelsForAsset -> labelsForAssetStatus
+//交易条件
+@dynamic typeOfPaying;  //XFNLabelsForAsset -> labelsForTypeOfPay
+//交易税费
+@dynamic taxInfo;       //XFNLabelsForAsset -> labelsForTaxInfo
+//看房方式
+@dynamic reserveMode;
+@dynamic reserveRemark;
+//交房
+@dynamic deliveryMode;
+@dynamic deliveryRemark;
 
-#pragma mark Status Attribute Price Information
+#pragma mark 基本信息
 //-------------------------------------------------------------------------------------
-@dynamic  status;              //
-@dynamic  attribute;
-@dynamic  price;
-@dynamic  statusAttributePriceHistory;
+@dynamic assetTotalArea;
+@dynamic assetSharedArea;
+@dynamic assetStorey;
+@dynamic storeyOfAll;
 
-#pragma mark Tax Information
+@dynamic quantityOfRoom;
+@dynamic quantityOfToilet;
+//户型图，保留
+@dynamic basicInfoLabelsOfAsset;  //XFNLabelsForAsset -> labelsForAssetLayoutInfo
+@dynamic summaryInfoLabelsOfAsset;//房源摘要，用户可以在该房源的 中挑选需要显示在摘要中的标签，并显示在首页摘要中
+
+#pragma mark 辅助开关
 //-------------------------------------------------------------------------------------
-@dynamic  businessTax;              //营业税
-@dynamic  valueAddedTax;//增值税
-@dynamic  stampTax;//印花税
-@dynamic  incomeTax;//所得税
+@dynamic bIsOnTop; //这套房源是否已置顶
 
-#pragma mark Ancillary Facility Information
+#pragma mark 装修及配套
 //-------------------------------------------------------------------------------------
-@dynamic  decorationGrade;              //
-@dynamic  priceOfDecoration;
+@dynamic decorationInfo;  //XFNLabelsForAsset -> labelsForDecorationInfo
+@dynamic ancillaryInfo;   //XFNLabelsForAsset -> labelsForAncillaryInfo
 
-@dynamic  furnitureList;              //
-@dynamic  furnitureRemark;
-
-@dynamic  EquipmentList;              //
-@dynamic  EquipmentRemark;
-
-#pragma mark Pictures Information
+#pragma mark 联系人
 //-------------------------------------------------------------------------------------
+@dynamic contactInfo; //每新增一个联系人，往该数组中添加一个NSString，NSString格式为“称呼||身份||电话||人物描述”
 
-#pragma mark Owener Label Information
+#pragma mark 特别备注
 //-------------------------------------------------------------------------------------
+//每新增一个Log，往该数组中添加一个NSString
+//Log的开头有三种：
+//  |SYS_LOG|:         所有的修改操作，均保存，除非是其他两种log；
+//  |KEY_REMARK|:      1、用户在评论框输入信息，并选择“这是关键记录”；2、某些系统操作；
+//  |USR_COMMENT|:     用户在评论框输入信息，未选择“这是关键记录”
+@dynamic assetLog;
 
+#pragma mark 信息归属
+//-------------------------------------------------------------------------------------
+@dynamic attributeTo;   //当前归属人
+@dynamic createdByWhom; //创建人
+
+#pragma mark 交通信息
+//-------------------------------------------------------------------------------------
+//保留
+
+#pragma mark 周边信息
+//-------------------------------------------------------------------------------------
+//保留
 
 + (NSString *)parseClassName {
     return @"XFNFrameAssetModel";
+}
+
+@end
+
+//-------------------------------------------------------------------------------------
+@implementation XFNLabelsForAsset
+
+@dynamic labelsForAssetStatus;
+@dynamic labelsForTypeOfPay;
+@dynamic labelsForTaxInfo;
+@dynamic labelsForAssetLayoutInfo;
+@dynamic labelsForDecorationInfo;
+@dynamic labelsForAncillaryInfo;
+
++ (NSString *)parseClassName {
+    return @"XFNLabelsForAsset";
 }
 
 @end

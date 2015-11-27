@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "XFNFrameTabBarController.h"
 #import "XFNFrameCommonItemDetailModel.h"
+#import "XFNFrameAssetModel.h"
 
 #import "XFNDataTestModel.h"
 
@@ -29,18 +30,18 @@
     self.window.backgroundColor    = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    //填入伪数据,po，20151106
-    XFNFrameCommonItemDetailModel *tempDataModel = [[XFNFrameCommonItemDetailModel alloc] init];
-    [tempDataModel initPseudoData];
     
     [AVOSCloud setApplicationId:@"FY4EiJkB4EjYjMXk61zDwDVr"
                       clientKey:@"zV0PMLDUy09rw6AU5FCr8Qzj"];
     
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    [XFNDataTestModel testData];
-    
     //在此处实例化子类
+    [XFNFrameAssetModel registerSubclass];
+    [XFNLabelsForAsset  registerSubclass];
+    
+    //AVObject测试入口
+    //[XFNDataTestModel testData];
     
     //Custermize UINavigationBar here, po, 20151013
     //end
