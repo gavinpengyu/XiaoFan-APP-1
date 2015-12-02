@@ -1,5 +1,5 @@
 //
-//  XFNWorkTableViewHeader.m
+//  XFNGridView.m
 //  XF AppDemo V0.0
 //
 //  Created by po on 15/12/1.
