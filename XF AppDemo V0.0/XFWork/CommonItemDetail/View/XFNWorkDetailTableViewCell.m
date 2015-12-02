@@ -11,7 +11,6 @@
 
 #import "XFNFrame.h"
 #import "XFNWorkDetailTableViewCell.h"
-#import "XFNWorkDetailTableViewCellContentView.h"
 #import "XFNWorkDetailTableViewCellModel.h"
 
 
@@ -36,7 +35,7 @@
 - (void) initSubView
 {
     _addressInfoLabel               = [[UILabel alloc] init];
-    _addressInfoLabel.textColor     = XFNGrayColor;
+    _addressInfoLabel.textColor     = [UIColor whiteColor];
     _addressInfoLabel.font          = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     [self addSubview : _addressInfoLabel];
 }
@@ -71,17 +70,17 @@
 - (void) initSubView
 {
     _statusLabel               = [[UILabel alloc] init];
-    _statusLabel.textColor     = XFNGrayColor;
+    _statusLabel.textColor     = [UIColor whiteColor];
     _statusLabel.font          = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     [self addSubview : _statusLabel];
     
     _attributeLabel            = [[UILabel alloc] init];
-    _attributeLabel.textColor  = XFNGrayColor;
+    _attributeLabel.textColor  = [UIColor whiteColor];
     _attributeLabel.font       = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     [self addSubview : _attributeLabel];
     
     _priceLabel                = [[UILabel alloc] init];
-    _priceLabel.textColor      = XFNGrayColor;
+    _priceLabel.textColor      = [UIColor redColor];
     _priceLabel.font           = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     [self addSubview : _priceLabel];
 }

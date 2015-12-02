@@ -14,7 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationBar setTitleTextAttributes : @{NSForegroundColorAttributeName : [UIColor blueColor]}];
+    [self.navigationBar setTitleTextAttributes : @{NSForegroundColorAttributeName : [UIColor grayColor]}];
 }
 
 /*- (void)pushViewController : (UIViewController *) viewController

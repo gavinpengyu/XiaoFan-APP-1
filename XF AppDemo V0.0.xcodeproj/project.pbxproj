@@ -28,20 +28,17 @@
 		CE88759C1BCCD16500334C97 /* XF_AppDemo_V0_0UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88759B1BCCD16500334C97 /* XF_AppDemo_V0_0UITests.m */; };
 		CE93C6761BEA23BC005E0973 /* XFNWorkDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6751BEA23BC005E0973 /* XFNWorkDetailTableViewController.m */; };
 		CE93C67C1BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */; };
-		CE93C67D1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6791BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m */; };
-		CE93C67E1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE93C67B1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib */; };
 		CE93C6811BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6801BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m */; };
 		CE93C6851BEA243B005E0973 /* XFNWorkTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6841BEA243B005E0973 /* XFNWorkTableViewCellModel.m */; };
 		CE93C68D1BEA244B005E0973 /* XFNWorkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6871BEA244B005E0973 /* XFNWorkTableViewCell.m */; };
-		CE93C68E1BEA244B005E0973 /* XFNWorkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE93C6881BEA244B005E0973 /* XFNWorkTableViewCell.xib */; };
-		CE93C68F1BEA244B005E0973 /* XFNWorkTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C68A1BEA244B005E0973 /* XFNWorkTableViewHeader.m */; };
-		CE93C6901BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C68C1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m */; };
 		CE93C6931BEA2461005E0973 /* XFNWorkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6921BEA2461005E0973 /* XFNWorkTableViewController.m */; };
 		CE93C6991BEA24DA005E0973 /* XFNFrameCommonItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C6981BEA24DA005E0973 /* XFNFrameCommonItemModel.m */; };
 		CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93C69B1BEA24E5005E0973 /* XFNFrameUserProfileModel.m */; };
 		CE95ED791BF58AEC001C3033 /* XFNDataTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE95ED781BF58AEC001C3033 /* XFNDataTestModel.m */; };
 		CE95ED7C1BF5D57E001C3033 /* XFNFrameAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE95ED7B1BF5D57E001C3033 /* XFNFrameAssetModel.m */; };
 		CEE0FF561BCF85BB004EBFC6 /* UIView+XFNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */; };
+		CEEFBF3F1C0D559000B3997C /* XFNWorkTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEFBF3E1C0D559000B3997C /* XFNWorkTableViewHeader.m */; };
+		CEEFBF421C0D722600B3997C /* XFNGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEFBF411C0D722600B3997C /* XFNGridView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,20 +102,12 @@
 		CE93C6751BEA23BC005E0973 /* XFNWorkDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewController.m; path = XFWork/CommonItemDetail/Controller/XFNWorkDetailTableViewController.m; sourceTree = "<group>"; };
 		CE93C6771BEA23CE005E0973 /* XFNWorkDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCell.h; sourceTree = "<group>"; };
 		CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCell.m; sourceTree = "<group>"; };
-		CE93C6791BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewCellContentView.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCellContentView.m; sourceTree = "<group>"; };
-		CE93C67A1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewCellContentView.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCellContentView.h; sourceTree = "<group>"; };
-		CE93C67B1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFNWorkDetailTableViewCellContentView.xib; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewCellContentView.xib; sourceTree = "<group>"; };
 		CE93C67F1BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewCellModel.h; path = XFWork/CommonItemDetail/Model/XFNWorkDetailTableViewCellModel.h; sourceTree = "<group>"; };
 		CE93C6801BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewCellModel.m; path = XFWork/CommonItemDetail/Model/XFNWorkDetailTableViewCellModel.m; sourceTree = "<group>"; };
 		CE93C6831BEA243B005E0973 /* XFNWorkTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewCellModel.h; path = XFWork/CommonItem/Model/XFNWorkTableViewCellModel.h; sourceTree = "<group>"; };
 		CE93C6841BEA243B005E0973 /* XFNWorkTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewCellModel.m; path = XFWork/CommonItem/Model/XFNWorkTableViewCellModel.m; sourceTree = "<group>"; };
 		CE93C6861BEA244B005E0973 /* XFNWorkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewCell.h; path = XFWork/CommonItem/View/XFNWorkTableViewCell.h; sourceTree = "<group>"; };
 		CE93C6871BEA244B005E0973 /* XFNWorkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewCell.m; path = XFWork/CommonItem/View/XFNWorkTableViewCell.m; sourceTree = "<group>"; };
-		CE93C6881BEA244B005E0973 /* XFNWorkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XFNWorkTableViewCell.xib; path = XFWork/CommonItem/View/XFNWorkTableViewCell.xib; sourceTree = "<group>"; };
-		CE93C6891BEA244B005E0973 /* XFNWorkTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewHeader.h; path = XFWork/CommonItem/View/XFNWorkTableViewHeader.h; sourceTree = "<group>"; };
-		CE93C68A1BEA244B005E0973 /* XFNWorkTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewHeader.m; path = XFWork/CommonItem/View/XFNWorkTableViewHeader.m; sourceTree = "<group>"; };
-		CE93C68B1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewHeaderItemButton.h; path = XFWork/CommonItem/View/XFNWorkTableViewHeaderItemButton.h; sourceTree = "<group>"; };
-		CE93C68C1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewHeaderItemButton.m; path = XFWork/CommonItem/View/XFNWorkTableViewHeaderItemButton.m; sourceTree = "<group>"; };
 		CE93C6911BEA2461005E0973 /* XFNWorkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewController.h; path = XFWork/CommonItem/Controller/XFNWorkTableViewController.h; sourceTree = "<group>"; };
 		CE93C6921BEA2461005E0973 /* XFNWorkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewController.m; path = XFWork/CommonItem/Controller/XFNWorkTableViewController.m; sourceTree = "<group>"; };
 		CE93C6971BEA24DA005E0973 /* XFNFrameCommonItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameCommonItemModel.h; path = XFFrame/FrameModel/FrameCommonItem/XFNFrameCommonItemModel.h; sourceTree = "<group>"; };
@@ -131,6 +120,10 @@
 		CE95ED7D1BF5D58B001C3033 /* XFNFrameAssetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameAssetModel.h; path = XFFrame/FrameModel/XFNFrameAssetModel.h; sourceTree = "<group>"; };
 		CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+XFNExtension.m"; path = "XFFrame/XFLib/UIView+XFNExtension.m"; sourceTree = "<group>"; };
 		CEE0FF571BCF85CF004EBFC6 /* UIView+XFNExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+XFNExtension.h"; path = "XFFrame/XFLib/UIView+XFNExtension.h"; sourceTree = "<group>"; };
+		CEEFBF3E1C0D559000B3997C /* XFNWorkTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkTableViewHeader.m; path = XFWork/CommonItem/View/XFNWorkTableViewHeader.m; sourceTree = "<group>"; };
+		CEEFBF401C0D559F00B3997C /* XFNWorkTableViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkTableViewHeader.h; path = XFWork/CommonItem/View/XFNWorkTableViewHeader.h; sourceTree = "<group>"; };
+		CEEFBF411C0D722600B3997C /* XFNGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNGridView.m; path = XFFrame/XFLib/XFNGridView.m; sourceTree = "<group>"; };
+		CEEFBF431C0D723400B3997C /* XFNGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNGridView.h; path = XFFrame/XFLib/XFNGridView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,9 +229,6 @@
 			children = (
 				CE93C6771BEA23CE005E0973 /* XFNWorkDetailTableViewCell.h */,
 				CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */,
-				CE93C6791BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m */,
-				CE93C67A1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.h */,
-				CE93C67B1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -480,11 +470,8 @@
 			children = (
 				CE93C6861BEA244B005E0973 /* XFNWorkTableViewCell.h */,
 				CE93C6871BEA244B005E0973 /* XFNWorkTableViewCell.m */,
-				CE93C6881BEA244B005E0973 /* XFNWorkTableViewCell.xib */,
-				CE93C6891BEA244B005E0973 /* XFNWorkTableViewHeader.h */,
-				CE93C68A1BEA244B005E0973 /* XFNWorkTableViewHeader.m */,
-				CE93C68B1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.h */,
-				CE93C68C1BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m */,
+				CEEFBF3E1C0D559000B3997C /* XFNWorkTableViewHeader.m */,
+				CEEFBF401C0D559F00B3997C /* XFNWorkTableViewHeader.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -570,6 +557,8 @@
 			children = (
 				CEE0FF551BCF85BB004EBFC6 /* UIView+XFNExtension.m */,
 				CEE0FF571BCF85CF004EBFC6 /* UIView+XFNExtension.h */,
+				CEEFBF411C0D722600B3997C /* XFNGridView.m */,
+				CEEFBF431C0D723400B3997C /* XFNGridView.h */,
 			);
 			name = XFNCategory;
 			sourceTree = "<group>";
@@ -712,10 +701,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE2171C01BF43E5100A71CCA /* Podfile in Resources */,
-				CE93C67E1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.xib in Resources */,
 				CE8875861BCCD16500334C97 /* LaunchScreen.storyboard in Resources */,
 				CE8875831BCCD16500334C97 /* Assets.xcassets in Resources */,
-				CE93C68E1BEA244B005E0973 /* XFNWorkTableViewCell.xib in Resources */,
 				CE88757E1BCCD16500334C97 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,16 +787,15 @@
 				CE93C67C1BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m in Sources */,
 				CE93C6811BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m in Sources */,
 				CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */,
-				CE93C68F1BEA244B005E0973 /* XFNWorkTableViewHeader.m in Sources */,
 				CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */,
 				CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */,
 				CE93C68D1BEA244B005E0973 /* XFNWorkTableViewCell.m in Sources */,
+				CEEFBF3F1C0D559000B3997C /* XFNWorkTableViewHeader.m in Sources */,
 				CE93C6761BEA23BC005E0973 /* XFNWorkDetailTableViewController.m in Sources */,
 				CE93C6931BEA2461005E0973 /* XFNWorkTableViewController.m in Sources */,
-				CE93C67D1BEA23CE005E0973 /* XFNWorkDetailTableViewCellContentView.m in Sources */,
-				CE93C6901BEA244B005E0973 /* XFNWorkTableViewHeaderItemButton.m in Sources */,
 				CE93C6991BEA24DA005E0973 /* XFNFrameCommonItemModel.m in Sources */,
 				CE599B861BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m in Sources */,
+				CEEFBF421C0D722600B3997C /* XFNGridView.m in Sources */,
 				CEE0FF561BCF85BB004EBFC6 /* UIView+XFNExtension.m in Sources */,
 				CE599B841BEB233D00F8A229 /* XFNFrameNavigationController.m in Sources */,
 				CE1952C01BF078F60097FC0C /* XFNFrameViewController.m in Sources */,

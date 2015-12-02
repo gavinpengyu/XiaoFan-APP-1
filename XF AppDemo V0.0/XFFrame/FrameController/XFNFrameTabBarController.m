@@ -29,7 +29,12 @@
     [self setupChildNavigationControllerWithClass : [XFNFrameNavigationController class]
                                   tabBarImageName : @"TabBar_Work"
                           rootViewControllerClass : [XFNWorkTableViewController class]
-                          rootViewControllerTitle : @"工作"];
+                          rootViewControllerTitle : @"房源"];
+    
+    [self setupChildNavigationControllerWithClass : [XFNFrameNavigationController class]
+                                  tabBarImageName : @"TabBar_Work"
+                          rootViewControllerClass : [UITableViewController class]
+                          rootViewControllerTitle : @"客源"];
     
     [self setupChildNavigationControllerWithClass : [XFNFrameNavigationController class]
                                   tabBarImageName : @"TabBar_Public"
