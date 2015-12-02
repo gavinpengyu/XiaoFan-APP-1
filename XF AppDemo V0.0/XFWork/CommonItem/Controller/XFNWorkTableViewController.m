@@ -21,19 +21,30 @@
 #import "XFNFrameCommonItemDetailModel.h"
 #import "XFNWorkDetailTableViewController.h"
 
+//-----------全局标签数组，在整个房源View使用--------------------------------------------------
+static NSMutableArray * sXFNlabelsForAssetStatusGlobalArray;
+static NSMutableArray * sXFNlabelsForTypeOfPayGlobalArray;
+static NSMutableArray * sXFNlabelsForTaxInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForAssetLayoutInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForDecorationInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
+//-----------------------------------------------------------------------------------------
+
 @implementation XFNWorkTableViewController
 //-----------------------------------------------------------------------------------------
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.tableView.rowHeight      = 120;  //限定行高,po,20151017；UITableViewAutomaticDimension 修改为自适应，20151027
+    self.tableView.rowHeight      = 150;  //限定行高,po,20151202；UITableViewAutomaticDimension 可修改为自适应，20151027
     
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    self.tableView.separatorInset = UIEdgeInsetsMake(0, 3, 0, 11);
 //    self.tableView.separatorColor = [UIColor grayColor];
     
     self.cellClass = [XFNWorkTableViewCell class];
+    
+    [self initLabelsGlobalArray];
     
     //self.sectionsNumber = self.dataArray.count;//这句话会导致程序异常，错误可重现,po，20151017 19:06,signal SIGABRT
 }
@@ -42,6 +53,159 @@
 {
     [self initData];
     [self.tableView reloadData]; //po 20151111：这种方式可以简单的刷新tableView里面的所有cell，但是从性能上讲是不合理的，应该使用NSNotificationCenter，传递修改的cell的Indexpath，然后只刷新那一个cell
+}
+
+- (void)initLabelsGlobalArray//: (NSMutableArray*) mutableArray
+{
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForAssetStatusGlobalArray)
+    {
+        sXFNlabelsForAssetStatusGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForAssetStatusGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForTypeOfPayGlobalArray)
+    {
+        sXFNlabelsForTypeOfPayGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForTypeOfPayGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForTaxInfoGlobalArray)
+    {
+        sXFNlabelsForTaxInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForTaxInfoGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForAssetLayoutInfoGlobalArray)
+    {
+        sXFNlabelsForAssetLayoutInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForAssetLayoutInfoGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForDecorationInfoGlobalArray)
+    {
+        sXFNlabelsForDecorationInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForDecorationInfoGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForAncillaryInfoGlobalArray)
+    {
+        sXFNlabelsForAncillaryInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForAncillaryInfoGlobalArray removeAllObjects];
+    }
+    
+    //新建查询
+    AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_LABEL_MODEL_];
+    
+    //设置查询排序
+    [query orderByAscending  : @"updatedAt"];
+    
+    //设置查询数量
+    query.limit = 1;
+    
+    //后台查询，并将结果存入tableView数组
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            XFNLabelsForAsset       *tempAssetLabel  = objects[0];
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForAssetStatus = [tempAssetLabel objectForKey : @"labelsForAssetStatus"];
+            //NSArray * tempArraylabelsForAssetStatus  = [tempStringlabelsForAssetStatus componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForAssetStatus)
+            {
+                [sXFNlabelsForAssetStatusGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForTypeOfPay = [tempAssetLabel objectForKey : @"labelsForTypeOfPay"];
+            //NSArray * tempArraylabelsForTypeOfPay  = [tempStringlabelsForTypeOfPay componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForTypeOfPay)
+            {
+                [sXFNlabelsForTypeOfPayGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForTaxInfo = [tempAssetLabel objectForKey : @"labelsForTaxInfo"];
+            //NSArray * tempArraylabelsForTaxInfo  = [tempStringlabelsForTaxInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForTaxInfo)
+            {
+                [sXFNlabelsForTaxInfoGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArrayabelsForAssetLayoutInfo = [tempAssetLabel objectForKey : @"labelsForAssetLayoutInfo"];
+            //NSArray * tempArrayabelsForAssetLayoutInfo  = [tempStringabelsForAssetLayoutInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArrayabelsForAssetLayoutInfo)
+            {
+                [sXFNlabelsForAssetLayoutInfoGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForDecorationInfo = [tempAssetLabel objectForKey : @"labelsForDecorationInfo"];
+            //NSArray * tempArraylabelsForDecorationInfo  = [tempStringlabelsForDecorationInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForDecorationInfo)
+            {
+                [sXFNlabelsForDecorationInfoGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForAncillaryInfo = [tempAssetLabel objectForKey : @"labelsForAncillaryInfo"];
+            //NSArray * tempArraylabelsForAncillaryInfo  = [tempStringlabelsForAncillaryInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForAncillaryInfo)
+            {
+                [sXFNlabelsForAncillaryInfoGlobalArray addObject: tempString];
+            }
+            DLog("初始化标签数组成功");
+        }
+        else
+        {
+            // 输出错误信息
+            DLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
++ (NSArray *)getlabelsForAssetStatusGlobalArray
+{
+    return sXFNlabelsForAssetStatusGlobalArray;
+}
+
++ (NSArray *)getlabelsForTypeOfPayGlobalArray
+{
+    return sXFNlabelsForTypeOfPayGlobalArray;
+}
+
++ (NSArray *)getlabelsForTaxInfoGlobalArray
+{
+    return sXFNlabelsForTaxInfoGlobalArray;
+}
+
++ (NSArray *)getlabelsForAssetLayoutInfoGlobalArray
+{
+    return sXFNlabelsForAssetLayoutInfoGlobalArray;
+}
+
++ (NSArray *)getlabelsForDecorationInfoGlobalArray
+{
+    return sXFNlabelsForDecorationInfoGlobalArray;
+}
+
++ (NSArray *)getlabelsForAncillaryInfoGlobalArray
+{
+    return sXFNlabelsForAncillaryInfoGlobalArray;
 }
 
 - (void)initData
@@ -126,6 +290,10 @@
     NSArray *tempNameArray = [model.nameString componentsSeparatedByString:@"|"];
     
     NSString* tempName = [NSString stringWithFormat: @"%@ | %@", tempNameArray[0], tempNameArray[1]];
+    
+    self.delegate = vc;
+    
+    [self.delegate toSendAssetModelwithObject: _detailedAssetArray[indexPath.row]];
     
     vc.title = tempName;
     

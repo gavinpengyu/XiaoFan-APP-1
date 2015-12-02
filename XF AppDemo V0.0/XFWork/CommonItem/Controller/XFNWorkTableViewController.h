@@ -12,11 +12,24 @@
 #import <UIKit/UIKit.h>
 #import "XFNFrameTableViewController.h"
 
+@protocol XFNSendAssetModelToDetailViewDelegate;
+
+//-----------------------------------------------------------------------------------------
 @interface XFNWorkTableViewController : XFNFrameTableViewController
 {
     NSMutableArray *_detailedAssetArray;
 }
 
+@property (nonatomic,strong) id <XFNSendAssetModelToDetailViewDelegate> delegate;
+
+//-----------------------------------------------------------------------------------------
++ (NSArray *)getlabelsForAssetStatusGlobalArray;
++ (NSArray *)getlabelsForTypeOfPayGlobalArray;
++ (NSArray *)getlabelsForTaxInfoGlobalArray;
++ (NSArray *)getlabelsForAssetLayoutInfoGlobalArray;
++ (NSArray *)getlabelsForDecorationInfoGlobalArray;
++ (NSArray *)getlabelsForAncillaryInfoGlobalArray;
+//-----------------------------------------------------------------------------------------
 @end
 
 #endif /* XFNWorkTableViewController_h */

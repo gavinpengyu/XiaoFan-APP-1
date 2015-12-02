@@ -17,6 +17,7 @@
 		CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */; };
 		CE599B841BEB233D00F8A229 /* XFNFrameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B831BEB233D00F8A229 /* XFNFrameNavigationController.m */; };
 		CE599B861BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */; };
+		CE78CAE31C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78CAE21C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m */; };
 		CE8875751BCCD16500334C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875741BCCD16500334C97 /* main.m */; };
 		CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875771BCCD16500334C97 /* AppDelegate.m */; };
 		CE88757B1BCCD16500334C97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88757A1BCCD16500334C97 /* ViewController.m */; };
@@ -81,6 +82,8 @@
 		CE599B831BEB233D00F8A229 /* XFNFrameNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameNavigationController.m; path = XFFrame/FrameController/XFNFrameNavigationController.m; sourceTree = "<group>"; };
 		CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameCommonItemDetailModel.m; path = XFFrame/FrameModel/XFFrameCommonItemDetailModel/XFNFrameCommonItemDetailModel.m; sourceTree = "<group>"; };
 		CE599B8B1BEB246F00F8A229 /* XFNFrameCommonItemDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameCommonItemDetailModel.h; path = XFFrame/FrameModel/XFFrameCommonItemDetailModel/XFNFrameCommonItemDetailModel.h; sourceTree = "<group>"; };
+		CE78CAE21C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailBasicInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailBasicInfoCell.m; sourceTree = "<group>"; };
+		CE78CAE41C0F424A002089E9 /* XFNWorkDetailBasicInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailBasicInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailBasicInfoCell.h; sourceTree = "<group>"; };
 		CE8875701BCCD16500334C97 /* XF AppDemo V0.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XF AppDemo V0.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8875741BCCD16500334C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE8875761BCCD16500334C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -218,8 +221,8 @@
 		CE47454A1BE79EDB000F4596 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE93C67F1BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.h */,
 				CE93C6801BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m */,
+				CE93C67F1BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -229,6 +232,8 @@
 			children = (
 				CE93C6771BEA23CE005E0973 /* XFNWorkDetailTableViewCell.h */,
 				CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */,
+				CE78CAE21C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m */,
+				CE78CAE41C0F424A002089E9 /* XFNWorkDetailBasicInfoCell.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -779,6 +784,7 @@
 				CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */,
 				CE88757B1BCCD16500334C97 /* ViewController.m in Sources */,
 				CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */,
+				CE78CAE31C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m in Sources */,
 				CE95ED7C1BF5D57E001C3033 /* XFNFrameAssetModel.m in Sources */,
 				CE93C6851BEA243B005E0973 /* XFNWorkTableViewCellModel.m in Sources */,
 				CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */,

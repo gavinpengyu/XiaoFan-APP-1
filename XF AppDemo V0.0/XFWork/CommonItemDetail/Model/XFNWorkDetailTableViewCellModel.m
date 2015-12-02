@@ -10,20 +10,29 @@
 
 #import "XFNWorkDetailTableViewCellModel.h"
 
+
+//-----------------------------------------------------------------------------------------
 @implementation XFNWorkDetailTableViewCellModel
 
 @end
 
-@implementation XFNWorkDetailTableViewCellModelGroup
+//-----------------------------------------------------------------------------------------
+@implementation XFNWorkDetailBasicInfoCellModel
 
-+ (XFNWorkDetailTableViewCellModelGroup *)initWithModelGroup:(NSMutableArray *)detailTableViewModelArray
+- (instancetype)initWithObject: (AVObject*) assetModel
 {
-    XFNWorkDetailTableViewCellModelGroup *group = [[XFNWorkDetailTableViewCellModelGroup alloc] init];
+    XFNWorkDetailBasicInfoCellModel* model = [[XFNWorkDetailBasicInfoCellModel alloc] init];
     
-    group.detailTableViewModelArray = detailTableViewModelArray;
-    
-    return group;
-    
-}
+    model.areaString       = [[NSString alloc] initWithFormat : @"%@平米", [assetModel objectForKey : @"assetTotalArea"]];
+    model.sharedAreaString = [[NSString alloc] initWithFormat : @"%@平米", [assetModel objectForKey : @"assetSharedArea"]];
+    model.unitLayoutString = [[NSString alloc] initWithFormat : @"%@房%@卫", [assetModel objectForKey : @"quantityOfRoom"],
+                                                                             [assetModel objectForKey : @"quantityOfToilet"]];
+    model.storeyString     = [[NSString alloc] initWithFormat : @"%@/%@",    [assetModel objectForKey : @"assetStorey"],
+                                                                             [assetModel objectForKey : @"storeyOfAll"]];
 
+    NSString *tempLabelString = [assetModel objectForKey : @"basicInfoLabelsOfAsset"];
+    model.labelsArray         = [tempLabelString componentsSeparatedByString:@","];
+    
+    return model;
+}
 @end

@@ -16,6 +16,22 @@
 #endif
 
 #define _Macro_XFN_ASSET_MODEL_ @"XFNFrameAssetModelNew"
+#define _Macro_XFN_ASSET_LABEL_MODEL_ @"XFNLabelsForAsset"
+
+
+#define _Macro_XFNWorTableViewCellHorizontalSeperatorHeight 1
+#define _Macro_XFNWorTableViewCellVerticalSeperatorWidth 1
+
+#define _Macro_XFNWorTableViewCellAssetLabelWidth 50
+#define _Macro_XFNWorTableViewCellAssetLabelHeight 20
+#define _Macro_XFNWorTableViewCellAssetLabelFont (XFNDetailTableViewCellFontSizeDefault - 2)
+
+#define _Macro_XFNWorTableViewCell_TypeOfPay_Label_Color   [UIColor redColor]
+#define _Macro_XFNWorTableViewCell_TaxInfo_Label_Color     [UIColor greenColor]
+#define _Macro_XFNWorTableViewCell_AssetLayout_Label_Color [UIColor blueColor]
+#define _Macro_XFNWorTableViewCell_Decoration_Label_Color  [UIColor brownColor]
+#define _Macro_XFNWorTableViewCell_Ancillary_Label_Color   [UIColor orangeColor]
+
 
 //颜色宏定义 po 20151128 这个宏没有用，不知道为什么
 //#define XFNColor(r,g,b)                   [UIColor colorWithHue:r/255.0 saturation:g/255.0 brightness:b/255.0 alpha:1]
