@@ -37,23 +37,6 @@
     _detailTableView.delegate = self;
     
     [self.view addSubview: _detailTableView];
-    
-//--------------------po, deleted 20151108-------------------
-    /*
-    [super viewDidLoad];
-    NSMutableArray *temp = [self dataModelTest];//[NSMutableArray array];
-    
-    self.cellClass = [XFNWorkDetailTableViewCell class];
-    
-    //XFNWorkDetailTableViewCellModel *model = [[XFNWorkDetailTableViewCellModel alloc] init];
-    //XFNWorkDetailTableViewCellModel *model = [self dataModelTest];
-    //[temp addObject : model];
-    
-    self.dataArray = [temp copy];
-    self.refreshMode = XFNFrameTableViewControllerRefeshModeHeaderRefresh;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView reloadData];*/
-//--------------------po, deleted 20151108-------------------
 }
 
 - (void) viewWillAppear:(BOOL)animated

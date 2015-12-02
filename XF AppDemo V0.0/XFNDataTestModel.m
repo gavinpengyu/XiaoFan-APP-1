@@ -25,79 +25,138 @@
 {
     DLog(@"开始数据测试");
     XFNDataTestModel *dataTestModel = [[XFNDataTestModel alloc] init];
-    [dataTestModel initDataToServer];
+    //[dataTestModel getDateFromServer];
+    //[dataTestModel initDataToServer];
+}
+
+- (void) getDateFromServer
+{
+    //新建查询
+    AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_MODEL_];
+    
+    //设置查询排序
+    [query orderByAscending  : @"updatedAt"];
+    [query addAscendingOrder : @"bIsOnTop"];
+    
+    //设置查询数量
+    query.limit = 10;
+    
+    //后台查询，并将结果存入tableView数组
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            // 检索成功
+            NSLog(@"Successfully received %lu posts.", (unsigned long)objects.count);
+            
+            NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
+            XFNFrameAssetModel       *tempAssetModel = [XFNFrameAssetModel objectWithClassName: _Macro_XFN_ASSET_MODEL_];
+            
+            for (int ii=0; ii<objects.count; ii++)
+            {
+                tempAssetModel = (XFNFrameAssetModel*) objects[ii];
+                NSString *temp=[[NSString alloc] init];
+                //po 20151128，给XFNFrameAssetModel赋值之后，因为objects是AVObject，未实现子类化，因此不能直接使用子类语法访问，要用objectForKey
+                //temp = tempAssetModel.communityName;
+                temp = [tempAssetModel objectForKey : @"communityName"];
+                DLog(@"%@", [tempAssetModel objectForKey : @"communityName"]);
+            }
+            
+        } else
+        {
+            // 输出错误信息
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 //写入伪数据，并上传至服务器
 - (void)initDataToServer
 {
     
-    XFNDataTestModel *testModel = [XFNDataTestModel objectWithClassName:@"XFNDataTestModel"];
-    [testModel addObject:@"金色黎明" forKey: @"communityName"];
-    [testModel addObject:@"10栋" forKey: @"buildingNo"];
-    [testModel addObject:@"608" forKey: @"roomNo"];
+    //XFNFrameAssetModel *testModel = [XFNFrameAssetModel objectWithClassName:@"XFNFrameAssetModelNew"];
     
-    //testModel.attribute = @"卡卡西";
-    
-    [testModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            // 保存成功了！
-            DLog(@"！！！！！！！！！！testAddressInfo！！！！！！！！");
+    for (int ii = 0; ii<20; ii++)
+    {
+        
+        XFNFrameAssetModel *testModel = [XFNFrameAssetModel objectWithClassName: _Macro_XFN_ASSET_MODEL_];
+        
+        if(0 == ii%3)
+        {
+            testModel.communityName = @"金色黎明";
+            testModel.attributeTo = @"飞鸟";
         }
-    }];
-    
-    AVQuery *query = [AVQuery queryWithClassName:@"Post"];
-    AVObject *post = [query getObjectWithId:@"5645ab7200b0c060f984d587"];
-    
-    NSString *communityName = [post objectForKey:@"communityName"];
-    NSString *buildingNo     = [post objectForKey:@"buildingNo"];
-    NSString *roomNo        = [post objectForKey:@"roomNo"];
-    
-    DLog(@"%@  %@  %@", communityName, buildingNo, roomNo);
-    
-    /*
-    
-    //XFNDataTestStatusAttributePriceModel *testStatusAttributePrice= [[XFNDataTestStatusAttributePriceModel alloc] init];
-    XFNDataTestStatusAttributePriceModel *testStatusAttributePrice = [XFNDataTestStatusAttributePriceModel objectWithClassName:@"testStatusAttributePrice"];
-    [testStatusAttributePrice addObject:@"一休" forKey: @"attribute"];
-    [testStatusAttributePrice addObject:@"180" forKey: @"price"];
-    [testStatusAttributePrice addObject:@"有效" forKey: @"status"];
-    //testStatusAttributePrice.status = @"出售";
-    
-    [testStatusAttributePrice saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            // 保存成功了！
-            DLog(@"！！！！！！！！！testStatusAttributePrice！！！！！！！！！");
+        else if(1 == ii%3)
+        {
+            testModel.communityName = @"万科草庄";
+            testModel.attributeTo = @"卡卡西";
         }
-    }];
-    
-    //XFNDataTestContactInfoModel *testContactInfo= [[XFNDataTestContactInfoModel alloc] init];
-    XFNDataTestContactInfoModel *testContactInfo = [XFNDataTestContactInfoModel objectWithClassName:@"testContactInfo"];
-    [testContactInfo addObject:@"0" forKey: @"type"];
-    [testContactInfo addObject:@"180" forKey: @"name"];
-    [testContactInfo addObject:@"有效" forKey: @"number"];
-    
-    [testContactInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            // 保存成功了！
-            DLog(@"！！！！！！！！！！testContactInfo！！！！！！！！");
+        else if(2 == ii%3)
+        {
+            testModel.communityName = @"草庄景墅";
+            testModel.attributeTo = @"童虎";
         }
-    }];
-    
-    NSArray *model = @[testAddressInfo, testStatusAttributePrice, testContactInfo];
-    
-    XFNDataTestModel *dataTestModel = [XFNDataTestModel objectWithClassName:@"TestData"];
-    
-    [dataTestModel setObject: model forKey: @"modelList"];
-    
-    [dataTestModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            // 保存成功了！
-            DLog(@"！！！！！！！！！！dataTestModel！！！！！！！！");
+        else
+        {
+            DLog(@"!!!!!!!!!!ERROR!!!!!!!!!!!");
         }
-    }];
-     
-     */
+        
+        testModel.buildingNumber = [[NSString alloc] initWithFormat : @"%d", ii ];
+        testModel.addedNumber    = @"1";
+        testModel.roomNumber     = [[NSString alloc] initWithFormat : @"80%d", ii ];
+        
+        testModel.assetTotalPrice= [[NSString alloc] initWithFormat : @"%d", (ii+200) ];
+        testModel.assetStatus    = @"出售中";
+        
+        testModel.typeOfPaying   = @"一次性";
+        testModel.taxInfo        = @"无营业税";
+        testModel.reserveMode    = @"预约";
+        testModel.reserveRemark  = @"联系业主";
+        
+        testModel.deliveryMode   = @"空置";
+        testModel.deliveryRemark = @"";
+        
+        testModel.assetTotalArea    = [[NSString alloc] initWithFormat : @"%d", (ii+100) ];
+        testModel.assetSharedArea   = @"20";
+        
+        testModel.assetStorey       = @"8";
+        testModel.storeyOfAll       = @"30";
+        
+        testModel.quantityOfRoom    = @"3";
+        testModel.quantityOfToilet  = @"2";
+        
+        testModel.basicInfoLabelsOfAsset    = @"东边套,有明卫,多阳台,送飘窗,楼距大";
+        testModel.decorationInfo            = @"豪装,地暖,墙纸";
+        testModel.ancillaryInfo             = @"全配,空调,洗衣机,冰箱,电视机,餐桌";
+        
+        testModel.summaryInfoLabelsOfAsset  = @"东边套,地暖,墙纸,全配";
+        
+        testModel.bIsOnTop = false;
+        [NSNumber numberWithBool:false];
+        testModel.bIsFollowed = false;//[NSNumber numberWithBool:false];
+        
+        testModel.createdByWhom = @"飞鸟";
+        
+        NSMutableArray *tempContactArray = [[NSMutableArray alloc] init];
+        NSString *tempContactString      = @"梁先生||业主||18905718888||开特斯拉";
+        
+        [tempContactArray addObject : tempContactString];
+        testModel.contactInfo = tempContactArray;
+        [tempContactArray removeAllObjects];
+        
+        NSString *tempLogString      = [[NSString alloc] initWithFormat : @"|SYS_LOG|:Created by %@", testModel.createdByWhom];
+        [tempContactArray addObject : tempLogString];
+        testModel.assetLog = tempContactArray;
+        [tempContactArray removeAllObjects];
+        
+        [testModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                // 保存成功了！
+                DLog(@"！！！！！！！！！！testAddressInfo！！！！！！！！");
+            }
+        }];
+        
+    }
+
 }
 
 

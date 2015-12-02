@@ -36,12 +36,14 @@
     
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    [AVOSCloud setAllLogsEnabled : true];
+    
     //在此处实例化子类
     [XFNFrameAssetModel registerSubclass];
     [XFNLabelsForAsset  registerSubclass];
     
     //AVObject测试入口
-    //[XFNDataTestModel testData];
+    [XFNDataTestModel testData];
     
     //Custermize UINavigationBar here, po, 20151013
     //end

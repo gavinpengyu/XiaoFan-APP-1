@@ -30,39 +30,39 @@
 {
     //-----------------------------------------------------------------------------------------
     _statusLabel               = [[UILabel alloc] init];
-    _statusLabel.textColor     = XFNGrayColor;
+    _statusLabel.textColor     = [UIColor whiteColor];
     _statusLabel.text          = @"当前状态：";
     _statusLabel.font          = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     [self addSubview : _statusLabel];
     
     _statusText                = [[UITextField alloc] init];
-    _statusText.textColor      = XFNGrayColor;
+    _statusText.textColor      = [UIColor whiteColor];
     _statusText.font           = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     
     [self addSubview : _statusText];
     
     //-----------------------------------------------------------------------------------------
     _attributeLabel               = [[UILabel alloc] init];
-    _attributeLabel.textColor     = XFNGrayColor;
+    _attributeLabel.textColor     = [UIColor whiteColor];
     _attributeLabel.text          = @"归属人：";
     _attributeLabel.font          = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     [self addSubview : _attributeLabel];
     
     _attributeText                = [[UITextField alloc] init];
-    _attributeText.textColor      = XFNGrayColor;
+    _attributeText.textColor      = [UIColor whiteColor];
     _attributeText.font           = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     
     [self addSubview : _attributeText];
     
     //-----------------------------------------------------------------------------------------
     _priceLabel               = [[UILabel alloc] init];
-    _priceLabel.textColor     = XFNGrayColor;
+    _priceLabel.textColor     = [UIColor whiteColor];
     _priceLabel.text          = @"价格：";
     _priceLabel.font          = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeDefault];
     [self addSubview : _priceLabel];
     
     _priceText                = [[UITextField alloc] init];
-    _priceText.textColor      = XFNRedColor; //为什么没有显示红色？po 20151110
+    _priceText.textColor      = [UIColor redColor]; //为什么没有显示红色？po 20151110
     _priceText.font           = [UIFont systemFontOfSize: XFNDetailTableViewCellFontSizeL];
     
     [self addSubview : _priceText];

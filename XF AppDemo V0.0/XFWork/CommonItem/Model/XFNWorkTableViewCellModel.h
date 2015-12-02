@@ -13,7 +13,9 @@
 #import "XFNFrameAssetModel.h"
 
 @interface XFNWorkTableViewCellModel : XFNFrameAssetModel
-
+{
+    XFNFrameAssetModel *_assetAllInfoModel;
+}
 @property (nonatomic, copy) NSString* nameString;
 @property (nonatomic, copy) NSString* detailString;
 @property (nonatomic, copy) NSString* priceString;
@@ -22,9 +24,10 @@
 @property (nonatomic, copy) NSString* sendtimeString;
 @property (nonatomic, copy) UIImage*  ownerImage;
 
-@property (nonatomic, copy) XFNFrameAssetModel *assetAllInfoModel;
+@property (nonatomic, assign) Boolean    bThisItemIsOnTop;
+@property (nonatomic, assign) Boolean    bThisItemIsFollowed;
 
-+ (instancetype)initWithObject: (XFNFrameAssetModel*) assetModel;
+- (instancetype)initWithObject: (AVObject*) assetModel;
 
 @end
 

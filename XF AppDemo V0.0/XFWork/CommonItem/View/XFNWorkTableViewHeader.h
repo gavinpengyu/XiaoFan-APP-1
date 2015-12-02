@@ -1,9 +1,9 @@
 //
 //  XFNWorkTableViewHeader.h
-//  XFN AppDemo V0.0
+//  XF AppDemo V0.0
 //
-//  Created by po on 10/17/15.
-//  Copyright © 2015 po. All rights reserved.
+//  Created by po on 15/12/1.
+//  Copyright © 2015年 po. All rights reserved.
 //
 
 #ifndef XFNWorkTableViewHeader_h
@@ -11,24 +11,21 @@
 
 #import <UIKit/UIKit.h>
 
+#define _Macro_XFNWorkTableViewHearder_Height 30
+
 @interface XFNWorkTableViewHeader : UIView
+//-----------------------------------------------------------------------------------------
+{
+    UILabel *_headLabelA;
+    UILabel *_headLabelB;
+    UILabel *_headLabelC;
+    UILabel *_headLabelD;
 
-@property (nonatomic, strong) NSArray *headerItemModelsArray;
+    UILabel *_configHeadLabel; //只显示，暂不实现功能 po 20151201
+}
 
-@property (nonatomic, copy) void (^buttonClickedOperationBlock)(NSInteger index);
-
-@end
-
-// --------------------------XFNWorkTableViewHeaderItemModel-----------
-
-@interface XFNWorkTableViewHeaderItemModel : NSObject
-
-@property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) Class destinationControllerClass;
-
-+ (instancetype)modelWithTitle:(NSString *)title imageName:(NSString *)imageName;
-
+- (instancetype)initWithFrame:(CGRect)frame;
+//-----------------------------------------------------------------------------------------
 @end
 
 #endif /* XFNWorkTableViewHeader_h */
