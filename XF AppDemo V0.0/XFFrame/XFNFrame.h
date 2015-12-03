@@ -18,6 +18,9 @@
 #define _Macro_XFN_ASSET_MODEL_ @"XFNFrameAssetModelNew"
 #define _Macro_XFN_ASSET_LABEL_MODEL_ @"XFNLabelsForAsset"
 
+#define _Macro_XFN_String_Seperator @"|*|"
+
+#define _Macro_ScreenWidth [UIScreen mainScreen].bounds.size.width
 
 #define _Macro_XFNWorTableViewCellHorizontalSeperatorHeight 1
 #define _Macro_XFNWorTableViewCellVerticalSeperatorWidth 1

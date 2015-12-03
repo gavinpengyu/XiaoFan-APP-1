@@ -17,7 +17,20 @@
 		CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */; };
 		CE599B841BEB233D00F8A229 /* XFNFrameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B831BEB233D00F8A229 /* XFNFrameNavigationController.m */; };
 		CE599B861BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */; };
-		CE78CAE31C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78CAE21C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m */; };
+		CE6100ED1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6100EC1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.m */; };
+		CE6100F21C1007BF00C53A2A /* XFNWorkDetailImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6100F01C1007BF00C53A2A /* XFNWorkDetailImageViewCell.m */; };
+		CE6100F41C1007F400C53A2A /* XFNImageSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6100F31C1007F400C53A2A /* XFNImageSlideViewController.m */; };
+		CE6100FD1C100AE200C53A2A /* TestImage0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE6100F61C100AE200C53A2A /* TestImage0.jpg */; };
+		CE6100FE1C100AE200C53A2A /* TestImage1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE6100F71C100AE200C53A2A /* TestImage1.jpg */; };
+		CE6100FF1C100AE200C53A2A /* TestImage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE6100F81C100AE200C53A2A /* TestImage2.jpg */; };
+		CE6101001C100AE200C53A2A /* TestImage3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE6100F91C100AE200C53A2A /* TestImage3.jpg */; };
+		CE6101011C100AE200C53A2A /* TestImage4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE6100FA1C100AE200C53A2A /* TestImage4.jpg */; };
+		CE6101021C100AE200C53A2A /* TestImage5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE6100FB1C100AE200C53A2A /* TestImage5.jpg */; };
+		CE6101031C100AE200C53A2A /* TestImage6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE6100FC1C100AE200C53A2A /* TestImage6.jpg */; };
+		CE6101061C1010DC00C53A2A /* XFNWorkDetailTradeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6101051C1010DC00C53A2A /* XFNWorkDetailTradeInfoCell.m */; };
+		CE61010A1C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6101091C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m */; };
+		CE61010F1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE61010E1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m */; };
+		CE6101131C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6101121C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m */; };
 		CE8875751BCCD16500334C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875741BCCD16500334C97 /* main.m */; };
 		CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875771BCCD16500334C97 /* AppDelegate.m */; };
 		CE88757B1BCCD16500334C97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88757A1BCCD16500334C97 /* ViewController.m */; };
@@ -82,8 +95,27 @@
 		CE599B831BEB233D00F8A229 /* XFNFrameNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameNavigationController.m; path = XFFrame/FrameController/XFNFrameNavigationController.m; sourceTree = "<group>"; };
 		CE599B851BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameCommonItemDetailModel.m; path = XFFrame/FrameModel/XFFrameCommonItemDetailModel/XFNFrameCommonItemDetailModel.m; sourceTree = "<group>"; };
 		CE599B8B1BEB246F00F8A229 /* XFNFrameCommonItemDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameCommonItemDetailModel.h; path = XFFrame/FrameModel/XFFrameCommonItemDetailModel/XFNFrameCommonItemDetailModel.h; sourceTree = "<group>"; };
-		CE78CAE21C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailBasicInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailBasicInfoCell.m; sourceTree = "<group>"; };
-		CE78CAE41C0F424A002089E9 /* XFNWorkDetailBasicInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailBasicInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailBasicInfoCell.h; sourceTree = "<group>"; };
+		CE6100EB1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailBasicInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailBasicInfoCell/XFNWorkDetailBasicInfoCell.h; sourceTree = "<group>"; };
+		CE6100EC1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailBasicInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailBasicInfoCell/XFNWorkDetailBasicInfoCell.m; sourceTree = "<group>"; };
+		CE6100EF1C1007BF00C53A2A /* XFNWorkDetailImageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailImageViewCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailImageViewCell/XFNWorkDetailImageViewCell.h; sourceTree = "<group>"; };
+		CE6100F01C1007BF00C53A2A /* XFNWorkDetailImageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailImageViewCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailImageViewCell/XFNWorkDetailImageViewCell.m; sourceTree = "<group>"; };
+		CE6100F31C1007F400C53A2A /* XFNImageSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNImageSlideViewController.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailImageViewCell/XFNImageSlideViewController.m; sourceTree = "<group>"; };
+		CE6100F51C10081800C53A2A /* XFNImageSlideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNImageSlideViewController.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailImageViewCell/XFNImageSlideViewController.h; sourceTree = "<group>"; };
+		CE6100F61C100AE200C53A2A /* TestImage0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = TestImage0.jpg; path = TestImage/TestImage0.jpg; sourceTree = "<group>"; };
+		CE6100F71C100AE200C53A2A /* TestImage1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = TestImage1.jpg; path = TestImage/TestImage1.jpg; sourceTree = "<group>"; };
+		CE6100F81C100AE200C53A2A /* TestImage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = TestImage2.jpg; path = TestImage/TestImage2.jpg; sourceTree = "<group>"; };
+		CE6100F91C100AE200C53A2A /* TestImage3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = TestImage3.jpg; path = TestImage/TestImage3.jpg; sourceTree = "<group>"; };
+		CE6100FA1C100AE200C53A2A /* TestImage4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = TestImage4.jpg; path = TestImage/TestImage4.jpg; sourceTree = "<group>"; };
+		CE6100FB1C100AE200C53A2A /* TestImage5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = TestImage5.jpg; path = TestImage/TestImage5.jpg; sourceTree = "<group>"; };
+		CE6100FC1C100AE200C53A2A /* TestImage6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = TestImage6.jpg; path = TestImage/TestImage6.jpg; sourceTree = "<group>"; };
+		CE6101051C1010DC00C53A2A /* XFNWorkDetailTradeInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTradeInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailTradeInfoCell/XFNWorkDetailTradeInfoCell.m; sourceTree = "<group>"; };
+		CE6101071C1010EA00C53A2A /* XFNWorkDetailTradeInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTradeInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailTradeInfoCell/XFNWorkDetailTradeInfoCell.h; sourceTree = "<group>"; };
+		CE6101091C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailAuxiliaryInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailAuxiliaryInfoCell/XFNWorkDetailAuxiliaryInfoCell.m; sourceTree = "<group>"; };
+		CE61010B1C10702D00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailAuxiliaryInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailAuxiliaryInfoCell/XFNWorkDetailAuxiliaryInfoCell.h; sourceTree = "<group>"; };
+		CE61010E1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailContactInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailContactInfoCell/XFNWorkDetailContactInfoCell.m; sourceTree = "<group>"; };
+		CE6101101C1076B800C53A2A /* XFNWorkDetailContactInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailContactInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailContactInfoCell/XFNWorkDetailContactInfoCell.h; sourceTree = "<group>"; };
+		CE6101121C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailCommentsInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailCommentsInfoCell/XFNWorkDetailCommentsInfoCell.m; sourceTree = "<group>"; };
+		CE6101141C1076E700C53A2A /* XFNWorkDetailCommentsInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailCommentsInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailCommentsInfoCell/XFNWorkDetailCommentsInfoCell.h; sourceTree = "<group>"; };
 		CE8875701BCCD16500334C97 /* XF AppDemo V0.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XF AppDemo V0.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8875741BCCD16500334C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE8875761BCCD16500334C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -230,10 +262,14 @@
 		CE47454B1BE79EE1000F4596 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE93C6771BEA23CE005E0973 /* XFNWorkDetailTableViewCell.h */,
 				CE93C6781BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m */,
-				CE78CAE21C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m */,
-				CE78CAE41C0F424A002089E9 /* XFNWorkDetailBasicInfoCell.h */,
+				CE93C6771BEA23CE005E0973 /* XFNWorkDetailTableViewCell.h */,
+				CE6100E81C10038F00C53A2A /* XFNWorkDetailImageViewCell */,
+				CE6100E71C10038200C53A2A /* XFNWorkDetailBasicInfoCell */,
+				CE6101081C1010EE00C53A2A /* XFNWorkDetailTradeInfoCell */,
+				CE61010D1C10703B00C53A2A /* XFNWorkDetailAuxiliaryInfoCell */,
+				CE6101111C1076BC00C53A2A /* XFNWorkDetailContactInfoCell */,
+				CE6101151C1076EC00C53A2A /* XFNWorkDetailCommentsInfoCell */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -258,6 +294,76 @@
 				CE95ED7D1BF5D58B001C3033 /* XFNFrameAssetModel.h */,
 			);
 			name = XFNFrameCommonItemDetailModel;
+			sourceTree = "<group>";
+		};
+		CE6100E71C10038200C53A2A /* XFNWorkDetailBasicInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6100EC1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.m */,
+				CE6100EB1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.h */,
+			);
+			name = XFNWorkDetailBasicInfoCell;
+			sourceTree = "<group>";
+		};
+		CE6100E81C10038F00C53A2A /* XFNWorkDetailImageViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6100F31C1007F400C53A2A /* XFNImageSlideViewController.m */,
+				CE6100F51C10081800C53A2A /* XFNImageSlideViewController.h */,
+				CE6100F01C1007BF00C53A2A /* XFNWorkDetailImageViewCell.m */,
+				CE6100EF1C1007BF00C53A2A /* XFNWorkDetailImageViewCell.h */,
+			);
+			name = XFNWorkDetailImageViewCell;
+			sourceTree = "<group>";
+		};
+		CE6101041C100AEB00C53A2A /* TestImage */ = {
+			isa = PBXGroup;
+			children = (
+				CE6100F61C100AE200C53A2A /* TestImage0.jpg */,
+				CE6100F71C100AE200C53A2A /* TestImage1.jpg */,
+				CE6100F81C100AE200C53A2A /* TestImage2.jpg */,
+				CE6100F91C100AE200C53A2A /* TestImage3.jpg */,
+				CE6100FA1C100AE200C53A2A /* TestImage4.jpg */,
+				CE6100FB1C100AE200C53A2A /* TestImage5.jpg */,
+				CE6100FC1C100AE200C53A2A /* TestImage6.jpg */,
+			);
+			name = TestImage;
+			sourceTree = "<group>";
+		};
+		CE6101081C1010EE00C53A2A /* XFNWorkDetailTradeInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6101051C1010DC00C53A2A /* XFNWorkDetailTradeInfoCell.m */,
+				CE6101071C1010EA00C53A2A /* XFNWorkDetailTradeInfoCell.h */,
+			);
+			name = XFNWorkDetailTradeInfoCell;
+			sourceTree = "<group>";
+		};
+		CE61010D1C10703B00C53A2A /* XFNWorkDetailAuxiliaryInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6101091C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m */,
+				CE61010B1C10702D00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.h */,
+			);
+			name = XFNWorkDetailAuxiliaryInfoCell;
+			sourceTree = "<group>";
+		};
+		CE6101111C1076BC00C53A2A /* XFNWorkDetailContactInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE61010E1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m */,
+				CE6101101C1076B800C53A2A /* XFNWorkDetailContactInfoCell.h */,
+			);
+			name = XFNWorkDetailContactInfoCell;
+			sourceTree = "<group>";
+		};
+		CE6101151C1076EC00C53A2A /* XFNWorkDetailCommentsInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6101121C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m */,
+				CE6101141C1076E700C53A2A /* XFNWorkDetailCommentsInfoCell.h */,
+			);
+			name = XFNWorkDetailCommentsInfoCell;
 			sourceTree = "<group>";
 		};
 		CE8875671BCCD16500334C97 = {
@@ -300,6 +406,7 @@
 		CE8875731BCCD16500334C97 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE6101041C100AEB00C53A2A /* TestImage */,
 				CE47452E1BE7495C000F4596 /* PrefixHeader.pch */,
 				CE88757C1BCCD16500334C97 /* Main.storyboard */,
 				CE8875821BCCD16500334C97 /* Assets.xcassets */,
@@ -705,10 +812,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6100FD1C100AE200C53A2A /* TestImage0.jpg in Resources */,
+				CE6101031C100AE200C53A2A /* TestImage6.jpg in Resources */,
 				CE2171C01BF43E5100A71CCA /* Podfile in Resources */,
+				CE6101011C100AE200C53A2A /* TestImage4.jpg in Resources */,
+				CE6100FF1C100AE200C53A2A /* TestImage2.jpg in Resources */,
+				CE6101001C100AE200C53A2A /* TestImage3.jpg in Resources */,
+				CE6101021C100AE200C53A2A /* TestImage5.jpg in Resources */,
 				CE8875861BCCD16500334C97 /* LaunchScreen.storyboard in Resources */,
 				CE8875831BCCD16500334C97 /* Assets.xcassets in Resources */,
 				CE88757E1BCCD16500334C97 /* Main.storyboard in Resources */,
+				CE6100FE1C100AE200C53A2A /* TestImage1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,18 +895,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE61010A1C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m in Sources */,
+				CE6101061C1010DC00C53A2A /* XFNWorkDetailTradeInfoCell.m in Sources */,
+				CE61010F1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m in Sources */,
 				CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */,
 				CE88757B1BCCD16500334C97 /* ViewController.m in Sources */,
 				CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */,
-				CE78CAE31C0F4228002089E9 /* XFNWorkDetailBasicInfoCell.m in Sources */,
+				CE6100ED1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.m in Sources */,
 				CE95ED7C1BF5D57E001C3033 /* XFNFrameAssetModel.m in Sources */,
 				CE93C6851BEA243B005E0973 /* XFNWorkTableViewCellModel.m in Sources */,
 				CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */,
+				CE6100F41C1007F400C53A2A /* XFNImageSlideViewController.m in Sources */,
 				CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */,
 				CE95ED791BF58AEC001C3033 /* XFNDataTestModel.m in Sources */,
 				CE93C67C1BEA23CE005E0973 /* XFNWorkDetailTableViewCell.m in Sources */,
+				CE6101131C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m in Sources */,
 				CE93C6811BEA23DE005E0973 /* XFNWorkDetailTableViewCellModel.m in Sources */,
 				CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */,
+				CE6100F21C1007BF00C53A2A /* XFNWorkDetailImageViewCell.m in Sources */,
 				CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */,
 				CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */,
 				CE93C68D1BEA244B005E0973 /* XFNWorkTableViewCell.m in Sources */,

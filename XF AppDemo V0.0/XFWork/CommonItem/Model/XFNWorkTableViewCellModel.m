@@ -49,7 +49,7 @@
     model.bThisItemIsFollowed = tempIsFollowed.boolValue;
     
     NSString *tempLabelString = [_assetAllInfoModel objectForKey : @"summaryInfoLabelsOfAsset"];
-    model.labelsArray         = [tempLabelString componentsSeparatedByString:@","]; //服务器中，labels以字符串形式存放，label之间用,分隔
+    model.labelsArray         = [tempLabelString componentsSeparatedByString: _Macro_XFN_String_Seperator]; //服务器中，labels以字符串形式存放，label之间用_Macro_XFN_String_Seperator分隔
     
     return model;
 }

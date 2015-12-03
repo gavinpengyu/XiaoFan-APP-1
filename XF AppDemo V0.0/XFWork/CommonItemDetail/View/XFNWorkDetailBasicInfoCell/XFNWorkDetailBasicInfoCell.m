@@ -35,62 +35,101 @@
 
 - (void) initSubView
 {
-    _areaLabel                     = [[UILabel alloc] init];
-    _areaLabel.textColor           = [UIColor blackColor];
-    _areaLabel.font                = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+    _areaLabel          = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor blackColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)]];
     [self addSubview : _areaLabel];
-    
-    _unitLayoutLabel               = [[UILabel alloc] init];
-    _unitLayoutLabel.textColor     = [UIColor blackColor];
-    _unitLayoutLabel.font          = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+
+    _unitLayoutLabel    = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor blackColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)]];
     [self addSubview : _unitLayoutLabel];
     
-    _sharedAreaLabel               = [[UILabel alloc] init];
-    _sharedAreaLabel.textColor     = [UIColor blackColor];
-    _sharedAreaLabel.font          = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+    _sharedAreaLabel    = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor blackColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)]];
     [self addSubview : _sharedAreaLabel];
     
-    _storeyLabel                   = [[UILabel alloc] init];
-    _storeyLabel.textColor         = [UIColor blackColor];
-    _storeyLabel.font              = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+    _storeyLabel        = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor blackColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)]];
     [self addSubview : _storeyLabel];
     
-    labelOfBasicInfo               = [[UILabel alloc] init];
-    labelOfBasicInfo.text          = @"基本信息";
-    labelOfBasicInfo.textColor     = [UIColor lightGrayColor];
-    labelOfBasicInfo.font          = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+
+    labelOfBasicInfo = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor lightGrayColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault - 2)]];
     [self addSubview : labelOfBasicInfo];
+    labelOfBasicInfo.text = @"基本信息";
     
-    labelOfArea                    = [[UILabel alloc] init];
-    labelOfArea.text               = @"面积：";
-    labelOfArea.textColor          = [UIColor lightGrayColor];
-    labelOfArea.font               = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+    labelOfArea      = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor lightGrayColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault - 2)]];
     [self addSubview : labelOfArea];
+    labelOfArea.text      = @"面积：";
     
-    labelOfSharedArea              = [[UILabel alloc] init];
-    labelOfSharedArea.text         = @"分摊：";
-    labelOfSharedArea.textColor    = [UIColor lightGrayColor];
-    labelOfSharedArea.font         = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+    labelOfSharedArea= [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor lightGrayColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault - 2)]];
     [self addSubview : labelOfSharedArea];
+    labelOfSharedArea.text= @"分摊：";
     
-    labelOfLayout                  = [[UILabel alloc] init];
-    labelOfLayout.text             = @"房型：";
-    labelOfLayout.textColor        = [UIColor lightGrayColor];
-    labelOfLayout.font             = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+    labelOfLayout    = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor lightGrayColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault - 2)]];
     [self addSubview : labelOfLayout];
+    labelOfLayout.text    = @"房型：";
     
-    labelOfStorey                  = [[UILabel alloc] init];
-    labelOfStorey.text             = @"楼层：";
-    labelOfStorey.textColor        = [UIColor lightGrayColor];
-    labelOfStorey.font             = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+    labelOfStorey    = [XFNWorkDetailTableViewCell initLabelWithTextColor: [UIColor lightGrayColor]
+                                                                     andFont: [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault - 2)]];
     [self addSubview : labelOfStorey];
+    labelOfStorey.text    = @"楼层：";
+    
+//    _areaLabel                     = [[UILabel alloc] init];
+//    _areaLabel.textColor           = [UIColor blackColor];
+//    _areaLabel.font                = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+//    [self addSubview : _areaLabel];
+//    
+//    _unitLayoutLabel               = [[UILabel alloc] init];
+//    _unitLayoutLabel.textColor     = [UIColor blackColor];
+//    _unitLayoutLabel.font          = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+//    [self addSubview : _unitLayoutLabel];
+//    
+//    _sharedAreaLabel               = [[UILabel alloc] init];
+//    _sharedAreaLabel.textColor     = [UIColor blackColor];
+//    _sharedAreaLabel.font          = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+//    [self addSubview : _sharedAreaLabel];
+//    
+//    _storeyLabel                   = [[UILabel alloc] init];
+//    _storeyLabel.textColor         = [UIColor blackColor];
+//    _storeyLabel.font              = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+//    [self addSubview : _storeyLabel];
+//    
+//    labelOfBasicInfo               = [[UILabel alloc] init];
+//    labelOfBasicInfo.text          = @"基本信息";
+//    labelOfBasicInfo.textColor     = [UIColor lightGrayColor];
+//    labelOfBasicInfo.font          = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+//    [self addSubview : labelOfBasicInfo];
+//    
+//    labelOfArea                    = [[UILabel alloc] init];
+//    labelOfArea.text               = @"面积：";
+//    labelOfArea.textColor          = [UIColor lightGrayColor];
+//    labelOfArea.font               = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+//    [self addSubview : labelOfArea];
+//    
+//    labelOfSharedArea              = [[UILabel alloc] init];
+//    labelOfSharedArea.text         = @"分摊：";
+//    labelOfSharedArea.textColor    = [UIColor lightGrayColor];
+//    labelOfSharedArea.font         = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+//    [self addSubview : labelOfSharedArea];
+//    
+//    labelOfLayout                  = [[UILabel alloc] init];
+//    labelOfLayout.text             = @"房型：";
+//    labelOfLayout.textColor        = [UIColor lightGrayColor];
+//    labelOfLayout.font             = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+//    [self addSubview : labelOfLayout];
+//    
+//    labelOfStorey                  = [[UILabel alloc] init];
+//    labelOfStorey.text             = @"楼层：";
+//    labelOfStorey.textColor        = [UIColor lightGrayColor];
+//    labelOfStorey.font             = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault-2)];
+//    [self addSubview : labelOfStorey];
 }
 
 - (void) initViewLayout
 {
-    CGRect mainScreenRect       = [[UIScreen mainScreen] bounds];
-    CGSize mainScreenSize       = mainScreenRect.size;
-    
     /* View
      
       基本信息
@@ -99,6 +138,7 @@
      
       分摊   22平米                        楼层    8/12
      
+     东边套 有明卫 双朝向 单阳台 楼距大
      */
     
     
@@ -115,7 +155,7 @@
     //分割线-----------------------------------------------------------------------------------
     UIView * gridHorizontalLine   = [[UIView alloc] initWithFrame: CGRectMake (XFNTableViewCellControlSpacing,
                                                                                labelOfBasicInfoY + labelOfBasicInfoSize.height + XFNTableViewCellControlSpacing,
-                                                                               mainScreenSize.width - XFNTableViewCellControlSpacing * 2,
+                                                                               _Macro_ScreenWidth - XFNTableViewCellControlSpacing * 2,
                                                                                _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     gridHorizontalLine.backgroundColor = [UIColor lightGrayColor];
     [self addSubview: gridHorizontalLine];
@@ -140,7 +180,7 @@
     _areaLabel.frame       = areaLabelRect;
     
     //房型-----------------------------------------------------------------------------------------
-    CGFloat labelOfLayoutX          = XFNTableViewCellControlSpacing * 20;
+    CGFloat labelOfLayoutX          = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing * 2)/2 - XFNTableViewCellControlSpacing * 2; //屏幕正中偏左侧两个space
     CGFloat labelOfLayoutY          = labelOfAreaY;
     CGSize  labelOfLayoutSize       = [labelOfLayout.text sizeWithAttributes : @{NSFontAttributeName : labelOfLayout.font}];
     CGRect  labelOfLayoutRect       = CGRectMake(labelOfLayoutX,
@@ -178,7 +218,7 @@
     _sharedAreaLabel.frame       = sharedAreaLabelRect;
     
     //楼层-----------------------------------------------------------------------------------------
-    CGFloat labelOfStoreyX          = XFNTableViewCellControlSpacing * 20;
+    CGFloat labelOfStoreyX          = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing * 2)/2 - XFNTableViewCellControlSpacing * 2; //屏幕正中偏左侧两个space
     CGFloat labelOfStoreyY          = labelOfSharedAreaY;
     CGSize  labelOfStoreySize       = [labelOfStorey.text sizeWithAttributes : @{NSFontAttributeName : labelOfStorey.font}];
     CGRect  labelOfStoreyRect       = CGRectMake(labelOfStoreyX,
@@ -197,10 +237,14 @@
     _storeyLabel.frame       = storeyLabelRect;
 
     //标签-----------------------------------------------------------------------------------------
+    CGPoint tempPoint = CGPointMake (0, (_storeyLabel.frame.origin.y + _storeyLabel.frame.size.height + XFNTableViewCellControlSpacing));
     
+    UIView * labelView= [XFNWorkDetailTableViewCell initLabelUIViewWithArray: _labelsArray andOriginPoint: tempPoint];
+    
+    [self addSubview : labelView];
     
     //在Init的最后必须给self.frame赋值，否则在delegate中无法自适应cell高度
-    self.frame  = areaLabelRect;
+    self.frame  = CGRectMake(0,0, _Macro_ScreenWidth, (tempPoint.y +labelView.frame.size.height));
 }
 
 - (void)setModel:(NSObject *)model

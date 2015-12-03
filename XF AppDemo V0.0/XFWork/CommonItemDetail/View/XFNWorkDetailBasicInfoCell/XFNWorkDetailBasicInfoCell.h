@@ -9,10 +9,10 @@
 #ifndef XFNWorkDetailBasicInfoCell_h
 #define XFNWorkDetailBasicInfoCell_h
 
-#import "XFNFrameTableViewControllerCell.h"
+#import "XFNWorkDetailTableViewCell.h"
 
 //-----------------------------------------------------------------------------------------
-@interface XFNWorkDetailBasicInfoCell : XFNFrameTableViewControllerCell
+@interface XFNWorkDetailBasicInfoCell : XFNWorkDetailTableViewCell
 {
     UILabel  *_areaLabel;
     UILabel  *_unitLayoutLabel;

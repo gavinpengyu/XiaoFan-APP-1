@@ -39,15 +39,34 @@
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailTradeInfoCellModel : XFNWorkDetailTableViewCellModel
 
+@property (nonatomic, copy) NSString* totalPriceString;       //总价
+@property (nonatomic, copy) NSString* unitPriceString;        //单价
+@property (nonatomic, copy) NSString* statusString;           //状态
+@property (nonatomic, copy) NSString* attributedString;       //归属
+@property (nonatomic, copy) NSString* reserveString;          //看房方式及备注
+@property (nonatomic, copy) NSString* deliveryString;         //交房方式及备注
+@property (nonatomic, copy) NSArray * labelsArray;            //交易标签，含税费及付款方式
+
+- (instancetype)initWithObject: (AVObject*) assetModel;
+
 @end
 
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailAuxiliaryInfoCellModel : XFNWorkDetailTableViewCellModel
 
+@property (nonatomic, copy) NSArray * labelsArray;            //装修及配套标签
+
+- (instancetype)initWithObject: (AVObject*) assetModel;
+
 @end
 
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailContactInfoCellModel : XFNWorkDetailTableViewCellModel
+
+@property (nonatomic, copy) NSArray * contactsArray;            //联系人
+@property (nonatomic, copy) NSArray * labelsArray;            //联系人标签
+
+- (instancetype)initWithObject: (AVObject*) assetModel;
 
 @end
 

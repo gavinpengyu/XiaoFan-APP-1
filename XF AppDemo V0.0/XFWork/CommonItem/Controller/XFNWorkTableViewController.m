@@ -224,11 +224,11 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_MODEL_];
     
     //设置查询排序
-    [query orderByAscending  : @"updatedAt"];
-    [query addAscendingOrder : @"bIsOnTop"];
+    [query orderByDescending  : @"updatedAt"];
+    [query addDescendingOrder : @"bIsOnTop"];
     
     //设置查询数量
-    query.limit = 10;
+    query.limit = 20;
     
     //后台查询，并将结果存入tableView数组
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

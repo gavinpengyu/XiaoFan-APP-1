@@ -12,8 +12,11 @@
 #import "XFNWorkDetailTableViewCell.h"
 #import "XFNWorkDetailTableViewCellModel.h"
 
+#import "XFNWorkDetailImageViewCell.h"
 #import "XFNWorkDetailBasicInfoCell.h"
-
+#import "XFNWorkDetailTradeInfoCell.h"
+#import "XFNWorkDetailAuxiliaryInfoCell.h"
+#import "XFNWorkDetailContactInfoCell.h"
 
 ////-------------------------------Action .h Begin-------------------------------
 //#import "XFNStatusAttributePriceTableViewController.h"
@@ -40,8 +43,7 @@
 #pragma mark DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
-    //return (XFNWorkDetailCommentsInfoCellIndexEnum + 1);
+    return (XFNWorkDetailContactInfoCellIndexEnum + 1);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -53,6 +55,7 @@
         
         XFNWorkDetailImageViewCell *cell = [[XFNWorkDetailImageViewCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
         
+        //po 20151203 在此处请求服务器数据？
         //[cell setModel : tempCellModel];
         
         return cell;
@@ -69,12 +72,40 @@
         return cell;
     }
     
+    else if (XFNWorkDetailTradeInfoCellIndexEnum == indexPath.row)
+    {
+        XFNWorkDetailTradeInfoCellModel *tempCellModel = [[XFNWorkDetailTradeInfoCellModel alloc] initWithObject : _detailModel];
+        
+        XFNWorkDetailTradeInfoCell *cell = [[XFNWorkDetailTradeInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
+        
+        [cell setModel : tempCellModel];
+        
+        return cell;
+    }
+    else if (XFNWorkDetailAuxiliaryInfoCellIndexEnum == indexPath.row)
+    {
+        XFNWorkDetailAuxiliaryInfoCellModel *tempCellModel = [[XFNWorkDetailAuxiliaryInfoCellModel alloc] initWithObject : _detailModel];
+        
+        XFNWorkDetailAuxiliaryInfoCell *cell = [[XFNWorkDetailAuxiliaryInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
+        
+        [cell setModel : tempCellModel];
+        
+        return cell;
+    }
+    else if (XFNWorkDetailContactInfoCellIndexEnum == indexPath.row)
+    {
+        XFNWorkDetailContactInfoCellModel *tempCellModel = [[XFNWorkDetailContactInfoCellModel alloc] initWithObject : _detailModel];
+        
+        XFNWorkDetailContactInfoCell *cell = [[XFNWorkDetailContactInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
+        
+        [cell setModel : tempCellModel];
+        
+        return cell;
+    }
     else
     {
         return nil;
     }
-
-    return nil;
 }
 
 #pragma mark TableView Delegate
@@ -82,6 +113,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self tableView: tableView cellForRowAtIndexPath:indexPath];
+    //DLog(@"height of Row %ld, is %f", indexPath.row, cell.frame.size.height);
     return cell.frame.size.height;
 }
 

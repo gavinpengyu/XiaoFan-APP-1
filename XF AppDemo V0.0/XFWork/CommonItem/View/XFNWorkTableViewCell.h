@@ -41,6 +41,8 @@
     UILabel  *_moreActionLabel;
 }
 
++ (UIColor *)getTheColorOfLabel: (NSString*) label;
+
 @end
 
 #endif /* XFNWorkTableViewCell_h */

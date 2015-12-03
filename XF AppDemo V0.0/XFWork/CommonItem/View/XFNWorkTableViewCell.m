@@ -155,14 +155,6 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 
 - (void) initViewLayout
 {
-    //获取当前屏幕宽度
-    CGRect mainScreenRect       = [[UIScreen mainScreen] bounds];
-    CGSize mainScreenSize       = mainScreenRect.size;
-    //CGFloat mainScreenwidth     = mainScreenSize.width;
-    //CGFloat mainScreenheight = mainScreenSize.height;
-    
-    //分割线
-    
     //头像－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_ownerheadImage
     CGFloat ownerheadImageX     = XFNTableViewCellControlSpacing;
     CGFloat ownerheadImageY     = XFNTableViewCellControlSpacing;
@@ -196,7 +188,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     //置顶状态－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_isOnTopLabel
     CGFloat isOnTopLabelY      = ownernameLabelY;
     CGSize  isOnTopLabelSize   = [_isOnTopLabel.text sizeWithAttributes : @{NSFontAttributeName : _isOnTopLabel.font}];
-    CGFloat isOnTopLabelX      = mainScreenSize.width - isOnTopLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕最右上角
+    CGFloat isOnTopLabelX      = _Macro_ScreenWidth - isOnTopLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕最右上角
     CGRect  isOnTopLabelRect   = CGRectMake(isOnTopLabelX,
                                             isOnTopLabelY,
                                             isOnTopLabelSize.width,
@@ -215,7 +207,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     
     //价格－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_priceLabel
     CGSize  priceLabelSize     = [_priceLabel.text sizeWithAttributes : @{NSFontAttributeName : _priceLabel.font}];
-    CGFloat priceLabelX        = mainScreenSize.width - priceLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在置顶状态下方
+    CGFloat priceLabelX        = _Macro_ScreenWidth - priceLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在置顶状态下方
     CGFloat priceLabelY        = nameLabelY + nameLabelSize.height - priceLabelSize.height; //与nameLabel底部对齐
     CGRect  priceLabelRect     = CGRectMake(priceLabelX,
                                             priceLabelY,
@@ -235,7 +227,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     
     //状态－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_statusLabel
     CGSize  statusLabelSize     = [_statusLabel.text sizeWithAttributes : @{NSFontAttributeName : _statusLabel.font}];
-    CGFloat statusLabelX        = mainScreenSize.width - statusLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在priceLabelX下方
+    CGFloat statusLabelX        = _Macro_ScreenWidth - statusLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在priceLabelX下方
     CGFloat statusLabelY        = detailLabelY + detailLabelSize.height - statusLabelSize.height; //与detailLabel底部对齐
     CGRect  statusLabelRect     = CGRectMake(statusLabelX,
                                              statusLabelY,
@@ -253,8 +245,8 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _assetLabelA.frame             = assetLabelARect;
     if (nil != _assetLabelA.text)
     {
-        _assetLabelA.textColor         = [self getTheColorOfLabel: _assetLabelA.text];
-        _assetLabelA.layer.borderColor = [self getTheColorOfLabel: _assetLabelA.text].CGColor;
+        _assetLabelA.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelA.text];
+        _assetLabelA.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelA.text].CGColor;
         _assetLabelA.layer.borderWidth = 1;
     }
     
@@ -267,8 +259,8 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _assetLabelB.frame             = assetLabelBRect;
     if (nil != _assetLabelB.text)
     {
-        _assetLabelB.textColor         = [self getTheColorOfLabel: _assetLabelB.text];
-        _assetLabelB.layer.borderColor = [self getTheColorOfLabel: _assetLabelB.text].CGColor;
+        _assetLabelB.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelB.text];
+        _assetLabelB.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelB.text].CGColor;
         _assetLabelB.layer.borderWidth = 1;
     }
     
@@ -281,8 +273,8 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _assetLabelC.frame             = assetLabelCRect;
     if (nil != _assetLabelC.text)
     {
-        _assetLabelC.textColor         = [self getTheColorOfLabel: _assetLabelC.text];
-        _assetLabelC.layer.borderColor = [self getTheColorOfLabel: _assetLabelC.text].CGColor;
+        _assetLabelC.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelC.text];
+        _assetLabelC.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelC.text].CGColor;
         _assetLabelC.layer.borderWidth = 1;
     }
     
@@ -295,8 +287,8 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _assetLabelD.frame             = assetLabelDRect;
     if (nil != _assetLabelD.text)
     {
-        _assetLabelD.textColor         = [self getTheColorOfLabel: _assetLabelD.text];
-        _assetLabelD.layer.borderColor = [self getTheColorOfLabel: _assetLabelD.text].CGColor;
+        _assetLabelD.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelD.text];
+        _assetLabelD.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelD.text].CGColor;
         _assetLabelD.layer.borderWidth = 1;
     }
     
@@ -309,8 +301,8 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _assetLabelE.frame             = assetLabelERect;
     if (nil != _assetLabelE.text)
     {
-        _assetLabelE.textColor         = [self getTheColorOfLabel: _assetLabelE.text];
-        _assetLabelE.layer.borderColor = [self getTheColorOfLabel: _assetLabelE.text].CGColor;
+        _assetLabelE.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelE.text];
+        _assetLabelE.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelE.text].CGColor;
         _assetLabelE.layer.borderWidth = 1;
     }
     
@@ -323,15 +315,15 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _assetLabelF.frame             = assetLabelFRect;
     if (nil != _assetLabelF.text)
     {
-        _assetLabelF.textColor         = [self getTheColorOfLabel: _assetLabelF.text];
-        _assetLabelF.layer.borderColor = [self getTheColorOfLabel: _assetLabelF.text].CGColor;
+        _assetLabelF.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelF.text];
+        _assetLabelF.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelF.text].CGColor;
         _assetLabelF.layer.borderWidth = 1;
     }
     
     //在“跟进”的上方添加一条分割横线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     UIView * gridHorizontalLine = [[UIView alloc] initWithFrame: CGRectMake (0,
                                                                              assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing/2,
-                                                                             mainScreenSize.width,
+                                                                             _Macro_ScreenWidth,
                                                                              _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     gridHorizontalLine.backgroundColor = [UIColor lightGrayColor];
     [self addSubview: gridHorizontalLine];
@@ -340,7 +332,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     CGFloat commentsLabelY      = assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing; //在Label下方
     CGFloat commentsLabelX      = detailLabelX; //与detailLabel X对齐；
     CGSize  commentsLabelSize   = [_commentsLabel.text sizeWithAttributes : @{NSFontAttributeName : _commentsLabel.font}];
-    commentsLabelSize.width     = (mainScreenSize.width - XFNTableViewCellControlSpacing*2) / 3; //底部分为3个按钮，跟进在最左侧
+    commentsLabelSize.width     = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing*2) / 3; //底部分为3个按钮，跟进在最左侧
     commentsLabelSize.height    = commentsLabelSize.height + XFNTableViewCellControlSpacing;
     CGRect  commentsLabelRect   = CGRectMake(commentsLabelX,
                                              commentsLabelY,
@@ -399,10 +391,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     NSUInteger tempCount = [array count];
     NSUInteger tempIndex = 0;
     
-    CGRect mainScreenRect       = [[UIScreen mainScreen] bounds];
-    CGSize mainScreenSize       = mainScreenRect.size;
-    
-    if ( (mainScreenSize.width - XFNTableViewCellControlSpacing) / (XFNTableViewCellControlSpacing + _Macro_XFNWorTableViewCellAssetLabelWidth) > 6)
+    if ( (_Macro_ScreenWidth - XFNTableViewCellControlSpacing) / (XFNTableViewCellControlSpacing + _Macro_XFNWorTableViewCellAssetLabelWidth) > 6)
     {
         tempIndex = 6; //label宽度为50，space宽度10，iphone6刚好可以放下6个标签
     }
@@ -491,7 +480,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     [self initViewLayout];
 }
 
-- (UIColor *)getTheColorOfLabel: (NSString*) label
++ (UIColor *)getTheColorOfLabel: (NSString*) label
 {
     //NSArray* tempArrayAssetStatus = [XFNWorkTableViewController getlabelsForAssetStatusGlobalArray];
     NSArray* tempArrayTypeOfPay   = [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray];
