@@ -12,17 +12,13 @@
 #import "XFNFrameTableViewControllerCell.h"
 
 //-----------------------------------------------------------------------------------------
-
-
-
-
-
-
-//-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailTableViewCell : XFNFrameTableViewControllerCell
 
 + (UILabel*)initLabelWithTextColor: (UIColor*) color andFont: (UIFont*) font;
+
 + (UIView*) initLabelUIViewWithArray: (NSArray*) array andOriginPoint: (CGPoint) origin;
+
++ (NSArray*)arrayFromString: (NSString*) string  withFont: (UIFont*) font splitedByLimitedScreenWidth: (CGFloat) width;
 
 @end
 

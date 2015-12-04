@@ -17,6 +17,7 @@
 #import "XFNWorkDetailTradeInfoCell.h"
 #import "XFNWorkDetailAuxiliaryInfoCell.h"
 #import "XFNWorkDetailContactInfoCell.h"
+#import "XFNWorkDetailCommentsInfoCell.h"
 
 ////-------------------------------Action .h Begin-------------------------------
 //#import "XFNStatusAttributePriceTableViewController.h"
@@ -41,9 +42,11 @@
 }
 
 #pragma mark DataSource
+//-----------------------------------------------------------------------------------------
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (XFNWorkDetailContactInfoCellIndexEnum + 1);
+    return (XFNWorkDetailCommentsInfoCellIndexEnum + 1);
 }
 
 //-----------------------------------------------------------------------------------------
@@ -102,6 +105,16 @@
         
         return cell;
     }
+    else if (XFNWorkDetailCommentsInfoCellIndexEnum == indexPath.row)
+    {
+        XFNWorkDetailCommentsInfoCellModel *tempCellModel = [[XFNWorkDetailCommentsInfoCellModel alloc] initWithObject : _detailModel];
+        
+        XFNWorkDetailCommentsInfoCell *cell = [[XFNWorkDetailCommentsInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
+        
+        [cell setModel : tempCellModel];
+        
+        return cell;
+    }
     else
     {
         return nil;
@@ -113,7 +126,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self tableView: tableView cellForRowAtIndexPath:indexPath];
-    //DLog(@"height of Row %ld, is %f", indexPath.row, cell.frame.size.height);
     return cell.frame.size.height;
 }
 

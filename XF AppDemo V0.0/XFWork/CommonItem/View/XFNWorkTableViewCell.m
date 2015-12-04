@@ -410,26 +410,32 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
         if (0 == ii)
         {
             _assetLabelA.text = array[ii];
+            //DLog(@"_assetLabelA=%@", _assetLabelA.text);
         }
         else if (1 == ii)
         {
             _assetLabelB.text = array[ii];
+            //DLog(@"_assetLabelB=%@", _assetLabelB.text);
         }
         else if (2 == ii)
         {
             _assetLabelC.text = array[ii];
+            //DLog(@"_assetLabelC=%@", _assetLabelC.text);
         }
         else if (3 == ii)
         {
             _assetLabelD.text = array[ii];
+            //DLog(@"_assetLabelD=%@", _assetLabelD.text);
         }
         else if (4 == ii)
         {
             _assetLabelE.text = array[ii];
+            //DLog(@"_assetLabelE=%@", _assetLabelE.text);
         }
         else if (5 == ii)
         {
             _assetLabelF.text = array[ii];
+            //DLog(@"_assetLabelF=%@", _assetLabelF.text);
         }
         else
         {

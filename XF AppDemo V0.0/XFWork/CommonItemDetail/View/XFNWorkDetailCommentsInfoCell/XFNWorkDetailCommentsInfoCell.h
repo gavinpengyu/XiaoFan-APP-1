@@ -10,9 +10,23 @@
 #define XFNWorkDetailCommentsInfoCell_h
 
 #import "XFNWorkDetailTableViewCell.h"
+#import "XFNDetailCommentsTableView.h"
+
+//Protocol CommentsInfoCell - > CommentsTableViewController  XFNComments
+//-----------------------------------------------------------------------------------------
+@protocol XFNSendCommentsDelegate;
 
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailCommentsInfoCell : XFNWorkDetailTableViewCell
+{
+    NSArray * _commentsArray;
+}
+
+@property (nonatomic, strong) id <XFNSendCommentsDelegate>          delegate;
+@property (nonatomic, strong) XFNDetailCommentsTableViewController *commentsTableVC;
+
+- (void)setModel:(NSObject *)model;
+
 
 @end
 

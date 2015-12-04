@@ -68,7 +68,7 @@
 
 #pragma mark 联系人
 //-------------------------------------------------------------------------------------
-@property (nonatomic , copy) NSArray *contactInfo; //每新增一个联系人，往该数组中添加一个NSString，NSString格式为“称呼||身份||电话||人物描述”
+@property (nonatomic , copy) NSArray *contactInfo; //每新增一个联系人，往该数组中添加一个NSString，NSString格式为“称呼_Macro_XFN_String_Seperator身份_Macro_XFN_String_Seperator电话_Macro_XFN_String_Seperator人物描述”
 
 #pragma mark 特别备注
 //-------------------------------------------------------------------------------------
@@ -106,4 +106,39 @@
 
 @end
 
+//-------------------------------------------------------------------------------------
+@interface XFNComments : NSObject
+
+@property (nonatomic , copy) NSString *name;
+@property (nonatomic , copy) NSString *sendtime;
+@property (nonatomic , copy) NSString *type; 
+@property (nonatomic , copy) NSString *contant;
+
+//+ (instancetype)initWithCommentString: (NSString*) string;
++ (XFNComments*)initWithCommentString: (NSString*) string;
+
++ (NSString*)sysLogWithXFNComments: (XFNComments*) comment;
+
++ (NSString*)sysLogWithType: (NSString*) type
+                 andContant: (NSString*) contant
+                   bySender: (NSString*) name
+                     atTime: (NSString*) sendtime;
+
+@end
+
+
+
 #endif /* XFNFrameAssetModel_h */
+
+
+
+
+
+
+
+
+
+
+
+
+

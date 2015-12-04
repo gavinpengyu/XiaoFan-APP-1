@@ -137,6 +137,54 @@
 }
 @end
 
+//-----------------------------------------------------------------------------------------
+@implementation XFNWorkDetailCommentsInfoCellModel
+
+- (instancetype)initWithObject: (AVObject*) assetModel
+{
+    XFNWorkDetailCommentsInfoCellModel* model = [[XFNWorkDetailCommentsInfoCellModel alloc] init];
+    
+    NSArray* tempComentArray  = [assetModel objectForKey : @"assetLog"];
+    NSMutableArray* tempArray = [NSMutableArray array];
+
+    for (int iIndex = 0; iIndex < tempComentArray.count; iIndex++)
+    {
+        NSString*    tempString   = tempComentArray[iIndex];
+        XFNComments* tempConments = [XFNComments initWithCommentString: tempString];
+        /*
+            server侧，日志按照创建时间顺序放置，添加一条日志时，将该日志add在数组最后一个元素
+            app侧显示，将时间最近的放在最前面，时间最远的放在最下面
+         */
+        [tempArray insertObject: tempConments atIndex:0];
+    }
+    
+    model.commentsArray = [tempArray copy];
+    
+    return model;
+}
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

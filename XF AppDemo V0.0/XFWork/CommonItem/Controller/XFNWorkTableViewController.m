@@ -261,6 +261,26 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     }];
 }
 
+
+#pragma mark DataSource
+//-----------------------------------------------------------------------------------------
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return self.dataArray.count;
+//}
+
+//-----------------------------------------------------------------------------------------
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : _detailedAssetArray[indexPath.row]];
+//    
+//    XFNWorkTableViewCell *cell = [[XFNWorkTableViewCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
+//    
+//    [cell setModel : tempCellModel];
+//    
+//    return cell;
+//}
+
 #pragma mark - delegate
 //-----------------------------------------------------------------------------------------
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

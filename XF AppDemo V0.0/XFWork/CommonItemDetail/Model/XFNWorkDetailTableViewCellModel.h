@@ -73,6 +73,10 @@
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailCommentsInfoCellModel : XFNWorkDetailTableViewCellModel
 
+@property (nonatomic, copy) NSArray * commentsArray;          //跟进记录
+
+- (instancetype)initWithObject: (AVObject*) assetModel;
+
 @end
 
 //@interface XFNWorkDetailTableViewCellModel : XFNFrameCommonItemDetailModel

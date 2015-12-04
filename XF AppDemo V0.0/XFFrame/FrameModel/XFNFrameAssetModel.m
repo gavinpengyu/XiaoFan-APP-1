@@ -109,5 +109,138 @@
 + (NSString *)parseClassName {
     return @"XFNLabelsForAsset";
 }
+@end
+
+//-------------------------------------------------------------------------------------
+@implementation XFNComments
+
++ (XFNComments*)initWithCommentString: (NSString*) string
+{
+    if (nil == string)
+    {
+        DLog(@"ERROR: 系统日志出错，输入日志字符串为空");
+        return nil;
+    }
+    
+    XFNComments* comments   = [[XFNComments alloc] init];
+    NSArray*     tempArray  = [[NSArray alloc] init];
+    
+    tempArray = [string componentsSeparatedByString: _Macro_XFN_String_Seperator];
+    
+    //日志必须为4个字段，否则报错
+    if (4 != tempArray.count)
+    {
+        DLog(@"ERROR: 系统日志出错，解析日志字符串字段为%ld", tempArray.count);
+        return nil;
+    }
+    
+    NSString* tempTypeString     = tempArray[0];
+    NSString* tempNameString     = tempArray[1];
+    NSString* tempSendtimeString = tempArray[2];
+    NSString* tempContantString  = tempArray[3];
+    
+    NSString *comentTypeAuto   = [[NSString alloc] initWithFormat : _Macro_XFN_Comment_Auto];
+    NSString *comentTypeManual = [[NSString alloc] initWithFormat : _Macro_XFN_Comment_Manual];
+    NSString *comentTypeKey    = [[NSString alloc] initWithFormat : _Macro_XFN_Comment_Key];
+    
+    //type字段不合法报错
+    if (!([tempTypeString isEqualToString: comentTypeAuto] || [tempTypeString isEqualToString: comentTypeManual] || [tempTypeString isEqualToString: comentTypeKey]))
+    {
+        DLog(@"ERROR: 解析系统日志出错，日志类型错误，输入的类型为%@", tempTypeString);
+        return nil;
+    }
+    
+    if ((nil == tempContantString) || (nil == tempNameString) || (nil == tempSendtimeString))
+    {
+        DLog(@"ERROR: 解析系统日志出错，输入字符串为空");
+        return nil;
+    }
+    
+    comments.type     = tempTypeString;
+    comments.name     = tempNameString;
+    comments.sendtime = tempSendtimeString;
+    comments.contant  = tempContantString;
+    
+    return comments;
+}
+
++ (NSString*)sysLogWithXFNComments: (XFNComments*) comment
+{
+    if (nil == comment)
+    {
+        DLog(@"ERROR: 系统日志出错，输入XFNComments为空");
+        return nil;
+    }
+    
+    NSString *logString = [XFNComments sysLogWithType: comment.type
+                                           andContant: comment.contant
+                                             bySender: comment.name
+                                               atTime: comment.sendtime];
+    return logString;
+}
+
++ (NSString*)sysLogWithType: (NSString*) type
+                 andContant: (NSString*) contant
+                   bySender: (NSString*) name
+                     atTime: (NSString*) sendtime;
+{
+    NSString *comentTypeAuto   = [[NSString alloc] initWithFormat : _Macro_XFN_Comment_Auto];
+    NSString *comentTypeManual = [[NSString alloc] initWithFormat : _Macro_XFN_Comment_Manual];
+    NSString *comentTypeKey    = [[NSString alloc] initWithFormat : _Macro_XFN_Comment_Key];
+    
+    NSString *tempSeperator    = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];
+    
+    if (!([type isEqualToString: comentTypeAuto] || [type isEqualToString: comentTypeManual] || [type isEqualToString: comentTypeKey]))
+    {
+        DLog(@"ERROR: 系统日志出错，日志类型错误，输入的类型为%@", type);
+        return nil;
+    }
+    
+    if ((nil == contant) || (nil == name) || (nil == sendtime))
+    {
+        DLog(@"ERROR: 系统日志出错，输入字符串为空");
+        return nil;
+    }
+    
+    NSString *logString = [[NSString alloc] initWithFormat: @"%@%@%@%@%@%@%@", type, tempSeperator, name, tempSeperator, sendtime, tempSeperator,contant];
+    
+    return logString;
+}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,6 +14,14 @@
 
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailContactInfoCell : XFNWorkDetailTableViewCell
+{
+    NSArray * _contactsArray;
+    NSArray * _labelsArray;
+}
+
+- (void)setModel:(NSObject *)model;
+
++ (UIView*) initContactUIViewWithArray: (NSArray*) array andOriginPoint: (CGPoint) origin andFont: (UIFont*) font andColor: (UIColor*) color;
 
 @end
 
