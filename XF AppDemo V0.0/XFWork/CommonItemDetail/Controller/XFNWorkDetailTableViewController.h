@@ -30,11 +30,20 @@ typedef NS_ENUM(NSInteger, XFNDetailViewCellIndexEnum) {
 
 @end
 
+//Protocol Cell - > CommonItemDetail 
 //-----------------------------------------------------------------------------------------
-@interface XFNWorkDetailTableViewController : XFNFrameTableViewController < UITableViewDataSource, UITableViewDelegate, XFNSendAssetModelToDetailViewDelegate >
+@protocol XFNPushEditViewDelegate
+
+- (void)toPushViewForEditBasicInfo;
+
+@end
+
+//-----------------------------------------------------------------------------------------
+@interface XFNWorkDetailTableViewController : XFNFrameTableViewController < UITableViewDataSource, UITableViewDelegate, XFNSendAssetModelToDetailViewDelegate, XFNPushEditViewDelegate >
 {
     NSMutableArray     *_cellHeightArray;
     XFNFrameAssetModel *_detailModel;
+    //CGFloat             _kFooterHeight;
 }
 @end
 

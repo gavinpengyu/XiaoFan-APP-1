@@ -33,6 +33,9 @@
 #define _Macro_XFNWorTableViewCellAssetLabelHeight 20
 #define _Macro_XFNWorTableViewCellAssetLabelFont (XFNDetailTableViewCellFontSizeDefault - 2)
 
+#define _Macro_XFNWorkDetailTableView_Accessory_Width 20
+#define _Macro_XFNWorkDetailTableView_Accessory_Height 20
+
 #define _Macro_XFNWorTableViewCell_TypeOfPay_Label_Color   [UIColor redColor]
 #define _Macro_XFNWorTableViewCell_TaxInfo_Label_Color     [UIColor greenColor]
 #define _Macro_XFNWorTableViewCell_AssetLayout_Label_Color [UIColor blueColor]
@@ -40,7 +43,7 @@
 #define _Macro_XFNWorTableViewCell_Ancillary_Label_Color   [UIColor orangeColor]
 
 //控件间距
-#define XFNTableViewCellControlSpacing 8
+#define XFNTableViewCellControlSpacing 10
 #define XFNCommentItemAvatarDefaultSize 28
 
 //-----------------------------------------------------------------------------------------

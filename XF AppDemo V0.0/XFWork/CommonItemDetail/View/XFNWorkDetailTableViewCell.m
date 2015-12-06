@@ -82,6 +82,103 @@
     return view;
 }
 
++ (UIView*) initCommentBarUIViewWithFont: (UIFont*) font andOriginPoint: (CGPoint) origin andIsFollowedFlag: (BOOL) flag
+{
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0,0,0,0)];
+    
+    //跟进－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    UILabel* commentsLabel      = [[UILabel alloc] init];
+    commentsLabel.textColor     = [UIColor blackColor];
+    commentsLabel.text          = @"跟进";
+    commentsLabel.textAlignment = NSTextAlignmentCenter;
+    commentsLabel.font          = font;
+    [view addSubview : commentsLabel];
+    
+    //关注－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    UILabel* isFollowedLabel      = [[UILabel alloc] init];
+    isFollowedLabel.textColor     = [UIColor blackColor];
+    if (flag)
+    {
+        isFollowedLabel.text          = @"取消关注";//已关注，则显示“取消关注”
+    }
+    else
+    {
+        isFollowedLabel.text          = @"关注";//未关注，则显示“关注”
+    }
+    isFollowedLabel.textAlignment = NSTextAlignmentCenter;
+    isFollowedLabel.font          = font;
+    [view addSubview : isFollowedLabel];
+    
+    //更多－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    UILabel* moreActionLabel      = [[UILabel alloc] init];
+    moreActionLabel.textColor     = [UIColor blackColor];
+    moreActionLabel.text          = @"更多";
+    moreActionLabel.textAlignment = NSTextAlignmentCenter;
+    moreActionLabel.font          = font;
+    [view addSubview : moreActionLabel];
+    
+    //Layout－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    
+    //跟进－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    CGFloat commentsLabelY      = origin.y + XFNTableViewCellControlSpacing; //在Label下方
+    CGFloat commentsLabelX      = origin.x + XFNTableViewCellControlSpacing; //与detailLabel X对齐；
+    CGSize  commentsLabelSize   = [commentsLabel.text sizeWithAttributes : @{NSFontAttributeName : commentsLabel.font}];
+    commentsLabelSize.width     = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing*2) / 3; //底部分为3个按钮，跟进在最左侧
+    commentsLabelSize.height    = commentsLabelSize.height + XFNTableViewCellControlSpacing;
+    CGRect  commentsLabelRect   = CGRectMake(commentsLabelX,
+                                             commentsLabelY,
+                                             commentsLabelSize.width,
+                                             commentsLabelSize.height);
+    commentsLabel.frame         = commentsLabelRect;
+    
+    //关注－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_isFollowedLabel
+    CGFloat isFollowedLabelY    = commentsLabelY; //与跟进Y对齐
+    CGFloat isFollowedLabelX    = commentsLabelX + commentsLabelSize.width; //在跟进X的后面
+    CGSize  isFollowedLabelSize = [isFollowedLabel.text sizeWithAttributes : @{NSFontAttributeName : isFollowedLabel.font}];
+    isFollowedLabelSize.width   = commentsLabelSize.width;//底部分为3个按钮，关注在最中间
+    isFollowedLabelSize.height  = isFollowedLabelSize.height + XFNTableViewCellControlSpacing;
+    CGRect  isFollowedLabelRect = CGRectMake(isFollowedLabelX,
+                                             isFollowedLabelY,
+                                             isFollowedLabelSize.width,
+                                             isFollowedLabelSize.height);
+    isFollowedLabel.frame      = isFollowedLabelRect;
+    
+    //在“关注”的前方添加一条分割竖线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    UIView * gridVerticalLineOne = [[UIView alloc] initWithFrame: CGRectMake (isFollowedLabelX,
+                                                                              isFollowedLabelY + 2,
+                                                                              _Macro_XFNWorTableViewCellVerticalSeperatorWidth,
+                                                                              isFollowedLabelSize.height - 4)];
+    gridVerticalLineOne.backgroundColor = [UIColor lightGrayColor];
+    [view addSubview: gridVerticalLineOne];
+    
+    //更多－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_moreActionLabel
+    CGFloat moreActionLabelY    = commentsLabelY; //与跟进Y对齐
+    CGFloat moreActionLabelX    = isFollowedLabelX + isFollowedLabelSize.width; //在关注X的后面
+    CGSize  moreActionLabelSize = [moreActionLabel.text sizeWithAttributes : @{NSFontAttributeName : moreActionLabel.font}];
+    moreActionLabelSize.width   = commentsLabelSize.width;//底部分为3个按钮，更多在最右侧
+    moreActionLabelSize.height  = moreActionLabelSize.height + XFNTableViewCellControlSpacing;
+    CGRect  moreActionLabelRect = CGRectMake(moreActionLabelX,
+                                             moreActionLabelY,
+                                             moreActionLabelSize.width,
+                                             moreActionLabelSize.height);
+    moreActionLabel.frame      = moreActionLabelRect;
+    
+    //在“更多”的前方添加一条分割竖线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    UIView * gridVerticalLineTwo = [[UIView alloc] initWithFrame: CGRectMake (moreActionLabelX,
+                                                                              moreActionLabelY + 2,
+                                                                              _Macro_XFNWorTableViewCellVerticalSeperatorWidth,
+                                                                              moreActionLabelSize.height - 4)];
+    gridVerticalLineTwo.backgroundColor = [UIColor lightGrayColor];
+    [view addSubview: gridVerticalLineTwo];
+
+    view.frame = CGRectMake(origin.x,
+                            origin.y,
+                            _Macro_ScreenWidth,
+                            (gridVerticalLineTwo.frame.origin.y + gridVerticalLineTwo.frame.size.height));
+    
+    return view;
+}
+
 + (NSArray*)arrayFromString: (NSString*) string  withFont: (UIFont*) font splitedByLimitedScreenWidth: (CGFloat) width
 {
     NSMutableArray *tempArray = [NSMutableArray array];

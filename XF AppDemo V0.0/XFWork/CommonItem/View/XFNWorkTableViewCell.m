@@ -14,6 +14,8 @@
 #import "XFNWorkTableViewCellModel.h"
 #import "XFNWorkTableViewHeader.h"
 
+#import "XFNWorkDetailTableViewCell.h"
+
 #import "XFNGridView.h"
 
 //po,20151015，临时屏蔽，暂不添加Web
@@ -91,37 +93,6 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _statusLabel.textColor     = [UIColor blackColor];
     _statusLabel.font          = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
     [self addSubview : _statusLabel];
-    
-    //房源标签－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-    _assetLabelA               = [[UILabel alloc] init];
-    _assetLabelA.font          = [UIFont systemFontOfSize: _Macro_XFNWorTableViewCellAssetLabelFont];
-    _assetLabelA.textAlignment = NSTextAlignmentCenter;
-    [self addSubview : _assetLabelA];
-    
-    _assetLabelB               = [[UILabel alloc] init];
-    _assetLabelB.font          = [UIFont systemFontOfSize: _Macro_XFNWorTableViewCellAssetLabelFont];
-    _assetLabelB.textAlignment = NSTextAlignmentCenter;
-    [self addSubview : _assetLabelB];
-    
-    _assetLabelC               = [[UILabel alloc] init];
-    _assetLabelC.font          = [UIFont systemFontOfSize: _Macro_XFNWorTableViewCellAssetLabelFont];
-    _assetLabelC.textAlignment = NSTextAlignmentCenter;
-    [self addSubview : _assetLabelC];
-    
-    _assetLabelD               = [[UILabel alloc] init];
-    _assetLabelD.font          = [UIFont systemFontOfSize: _Macro_XFNWorTableViewCellAssetLabelFont];
-    _assetLabelD.textAlignment = NSTextAlignmentCenter;
-    [self addSubview : _assetLabelD];
-    
-    _assetLabelE               = [[UILabel alloc] init];
-    _assetLabelE.font          = [UIFont systemFontOfSize: _Macro_XFNWorTableViewCellAssetLabelFont];
-    _assetLabelE.textAlignment = NSTextAlignmentCenter;
-    [self addSubview : _assetLabelE];
-    
-    _assetLabelF               = [[UILabel alloc] init];
-    _assetLabelF.font          = [UIFont systemFontOfSize: _Macro_XFNWorTableViewCellAssetLabelFont];
-    _assetLabelF.textAlignment = NSTextAlignmentCenter;
-    [self addSubview : _assetLabelF];
     
     //跟进－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     _commentsLabel               = [[UILabel alloc] init];
@@ -236,100 +207,29 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _statusLabel.frame      = statusLabelRect;
     
     //房源标签－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-    CGFloat assetLabelAX         = detailLabelX;
-    CGFloat assetLabelAY         = detailLabelY + detailLabelSize.height + XFNTableViewCellControlSpacing;
-    CGRect  assetLabelARect      = CGRectMake(assetLabelAX,
-                                              assetLabelAY,
-                                              _Macro_XFNWorTableViewCellAssetLabelWidth,
-                                              _Macro_XFNWorTableViewCellAssetLabelHeight);
-    _assetLabelA.frame             = assetLabelARect;
-    if (nil != _assetLabelA.text)
-    {
-        _assetLabelA.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelA.text];
-        _assetLabelA.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelA.text].CGColor;
-        _assetLabelA.layer.borderWidth = 1;
-    }
+
+    CGPoint tempPoint = CGPointMake (0, (_detailLabel.frame.origin.y + _detailLabel.frame.size.height + XFNTableViewCellControlSpacing));
     
-    CGFloat assetLabelBX         = assetLabelAX + _Macro_XFNWorTableViewCellAssetLabelWidth + XFNTableViewCellControlSpacing;
-    CGFloat assetLabelBY         = assetLabelAY;
-    CGRect  assetLabelBRect      = CGRectMake(assetLabelBX,
-                                              assetLabelBY,
-                                              _Macro_XFNWorTableViewCellAssetLabelWidth,
-                                              _Macro_XFNWorTableViewCellAssetLabelHeight);
-    _assetLabelB.frame             = assetLabelBRect;
-    if (nil != _assetLabelB.text)
-    {
-        _assetLabelB.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelB.text];
-        _assetLabelB.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelB.text].CGColor;
-        _assetLabelB.layer.borderWidth = 1;
-    }
+    UIView * labelView= [XFNWorkDetailTableViewCell initLabelUIViewWithArray: _labelsArray andOriginPoint: tempPoint];
     
-    CGFloat assetLabelCX         = assetLabelBX + _Macro_XFNWorTableViewCellAssetLabelWidth + XFNTableViewCellControlSpacing;
-    CGFloat assetLabelCY         = assetLabelAY;
-    CGRect  assetLabelCRect      = CGRectMake(assetLabelCX,
-                                              assetLabelCY,
-                                              _Macro_XFNWorTableViewCellAssetLabelWidth,
-                                              _Macro_XFNWorTableViewCellAssetLabelHeight);
-    _assetLabelC.frame             = assetLabelCRect;
-    if (nil != _assetLabelC.text)
-    {
-        _assetLabelC.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelC.text];
-        _assetLabelC.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelC.text].CGColor;
-        _assetLabelC.layer.borderWidth = 1;
-    }
+    [self addSubview : labelView];
     
-    CGFloat assetLabelDX         = assetLabelCX + _Macro_XFNWorTableViewCellAssetLabelWidth + XFNTableViewCellControlSpacing;
-    CGFloat assetLabelDY         = assetLabelAY;
-    CGRect  assetLabelDRect      = CGRectMake(assetLabelDX,
-                                              assetLabelDY,
-                                              _Macro_XFNWorTableViewCellAssetLabelWidth,
-                                              _Macro_XFNWorTableViewCellAssetLabelHeight);
-    _assetLabelD.frame             = assetLabelDRect;
-    if (nil != _assetLabelD.text)
-    {
-        _assetLabelD.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelD.text];
-        _assetLabelD.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelD.text].CGColor;
-        _assetLabelD.layer.borderWidth = 1;
-    }
-    
-    CGFloat assetLabelEX         = assetLabelDX + _Macro_XFNWorTableViewCellAssetLabelWidth + XFNTableViewCellControlSpacing;
-    CGFloat assetLabelEY         = assetLabelAY;
-    CGRect  assetLabelERect      = CGRectMake(assetLabelEX,
-                                              assetLabelEY,
-                                              _Macro_XFNWorTableViewCellAssetLabelWidth,
-                                              _Macro_XFNWorTableViewCellAssetLabelHeight);
-    _assetLabelE.frame             = assetLabelERect;
-    if (nil != _assetLabelE.text)
-    {
-        _assetLabelE.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelE.text];
-        _assetLabelE.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelE.text].CGColor;
-        _assetLabelE.layer.borderWidth = 1;
-    }
-    
-    CGFloat assetLabelFX         = assetLabelEX + _Macro_XFNWorTableViewCellAssetLabelWidth + XFNTableViewCellControlSpacing;
-    CGFloat assetLabelFY         = assetLabelAY;
-    CGRect  assetLabelFRect      = CGRectMake(assetLabelFX,
-                                              assetLabelFY,
-                                              _Macro_XFNWorTableViewCellAssetLabelWidth,
-                                              _Macro_XFNWorTableViewCellAssetLabelHeight);
-    _assetLabelF.frame             = assetLabelFRect;
-    if (nil != _assetLabelF.text)
-    {
-        _assetLabelF.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelF.text];
-        _assetLabelF.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: _assetLabelF.text].CGColor;
-        _assetLabelF.layer.borderWidth = 1;
-    }
     
     //在“跟进”的上方添加一条分割横线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    //    UIView * gridHorizontalLine = [[UIView alloc] initWithFrame: CGRectMake (0,
+    //                                                                             assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing/2,
+    //                                                                             _Macro_ScreenWidth,
+    //                                                                             _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     UIView * gridHorizontalLine = [[UIView alloc] initWithFrame: CGRectMake (0,
-                                                                             assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing/2,
+                                                                             labelView.frame.origin.y + labelView.frame.size.height + XFNTableViewCellControlSpacing/2,
                                                                              _Macro_ScreenWidth,
                                                                              _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     gridHorizontalLine.backgroundColor = [UIColor lightGrayColor];
     [self addSubview: gridHorizontalLine];
     
     //跟进－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-    CGFloat commentsLabelY      = assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing; //在Label下方
+    //CGFloat commentsLabelY      = assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing; //在Label下方
+    CGFloat commentsLabelY      = labelView.frame.origin.y + labelView.frame.size.height + XFNTableViewCellControlSpacing; //在Label下方
     CGFloat commentsLabelX      = detailLabelX; //与detailLabel X对齐；
     CGSize  commentsLabelSize   = [_commentsLabel.text sizeWithAttributes : @{NSFontAttributeName : _commentsLabel.font}];
     commentsLabelSize.width     = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing*2) / 3; //底部分为3个按钮，跟进在最左侧
@@ -381,68 +281,69 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     [self addSubview: gridVerticalLineTwo];
 }
 
-- (void)setAssetLabelsWithArray: (NSArray*) array
-{
-    if (nil == array)
-    {
-        DLog(@"ERROR: input array is nil");
-    }
-    
-    NSUInteger tempCount = [array count];
-    NSUInteger tempIndex = 0;
-    
-    if ( (_Macro_ScreenWidth - XFNTableViewCellControlSpacing) / (XFNTableViewCellControlSpacing + _Macro_XFNWorTableViewCellAssetLabelWidth) > 6)
-    {
-        tempIndex = 6; //label宽度为50，space宽度10，iphone6刚好可以放下6个标签
-    }
-    else
-    {
-        tempIndex = 5; //4寸屏只能放5个标签
-    }
-    
-    if (tempCount < tempIndex)
-    {
-        tempIndex = tempCount; //若标签不足5个or6个，则以实际标签数目为准
-    }
-    
-    for (int ii; ii < tempIndex; ii++)
-    {
-        if (0 == ii)
-        {
-            _assetLabelA.text = array[ii];
-            //DLog(@"_assetLabelA=%@", _assetLabelA.text);
-        }
-        else if (1 == ii)
-        {
-            _assetLabelB.text = array[ii];
-            //DLog(@"_assetLabelB=%@", _assetLabelB.text);
-        }
-        else if (2 == ii)
-        {
-            _assetLabelC.text = array[ii];
-            //DLog(@"_assetLabelC=%@", _assetLabelC.text);
-        }
-        else if (3 == ii)
-        {
-            _assetLabelD.text = array[ii];
-            //DLog(@"_assetLabelD=%@", _assetLabelD.text);
-        }
-        else if (4 == ii)
-        {
-            _assetLabelE.text = array[ii];
-            //DLog(@"_assetLabelE=%@", _assetLabelE.text);
-        }
-        else if (5 == ii)
-        {
-            _assetLabelF.text = array[ii];
-            //DLog(@"_assetLabelF=%@", _assetLabelF.text);
-        }
-        else
-        {
-            DLog(@"ERROR: array error, ii=%d, tempIndex=%lu, tempCount=%lu", ii, (unsigned long)tempIndex, (unsigned long)tempCount);
-        }
-    }
-}
+//po 20151205，添加一个UIView统一布局labels，
+//- (void)setAssetLabelsWithArray: (NSArray*) array
+//{
+//    if (nil == array)
+//    {
+//        DLog(@"ERROR: input array is nil");
+//    }
+//    
+//    NSUInteger tempCount = [array count];
+//    NSUInteger tempIndex = 0;
+//    
+//    if ( (_Macro_ScreenWidth - XFNTableViewCellControlSpacing) / (XFNTableViewCellControlSpacing + _Macro_XFNWorTableViewCellAssetLabelWidth) > 6)
+//    {
+//        tempIndex = 6; //label宽度为50，space宽度10，iphone6刚好可以放下6个标签
+//    }
+//    else
+//    {
+//        tempIndex = 5; //4寸屏只能放5个标签
+//    }
+//    
+//    if (tempCount < tempIndex)
+//    {
+//        tempIndex = tempCount; //若标签不足5个or6个，则以实际标签数目为准
+//    }
+//    
+//    for (int ii; ii < tempIndex; ii++)
+//    {
+//        if (0 == ii)
+//        {
+//            _assetLabelA.text = array[ii];
+//            //DLog(@"_assetLabelA=%@", _assetLabelA.text);
+//        }
+//        else if (1 == ii)
+//        {
+//            _assetLabelB.text = array[ii];
+//            //DLog(@"_assetLabelB=%@", _assetLabelB.text);
+//        }
+//        else if (2 == ii)
+//        {
+//            _assetLabelC.text = array[ii];
+//            //DLog(@"_assetLabelC=%@", _assetLabelC.text);
+//        }
+//        else if (3 == ii)
+//        {
+//            _assetLabelD.text = array[ii];
+//            //DLog(@"_assetLabelD=%@", _assetLabelD.text);
+//        }
+//        else if (4 == ii)
+//        {
+//            _assetLabelE.text = array[ii];
+//            //DLog(@"_assetLabelE=%@", _assetLabelE.text);
+//        }
+//        else if (5 == ii)
+//        {
+//            _assetLabelF.text = array[ii];
+//            //DLog(@"_assetLabelF=%@", _assetLabelF.text);
+//        }
+//        else
+//        {
+//            DLog(@"ERROR: array error, ii=%d, tempIndex=%lu, tempCount=%lu", ii, (unsigned long)tempIndex, (unsigned long)tempCount);
+//        }
+//    }
+//}
 
 - (void)setModel:(NSObject *)model
 {
@@ -460,7 +361,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     _bIsFollowed          = cellModel.bThisItemIsFollowed;
     _bIsOnTop             = cellModel.bThisItemIsOnTop;
     
-    [self setAssetLabelsWithArray : cellModel.labelsArray];
+    _labelsArray          = cellModel.labelsArray;
     
     if (_bIsFollowed)
     {

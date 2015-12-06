@@ -28,13 +28,6 @@
     UILabel  *_detailLabel;
     UILabel  *_priceLabel;
     UILabel  *_statusLabel;
-
-    UILabel  *_assetLabelA;
-    UILabel  *_assetLabelB;
-    UILabel  *_assetLabelC;
-    UILabel  *_assetLabelD;
-    UILabel  *_assetLabelE;
-    UILabel  *_assetLabelF; //reserved
     
     UILabel  *_commentsLabel;
     UILabel  *_isFollowedLabel;

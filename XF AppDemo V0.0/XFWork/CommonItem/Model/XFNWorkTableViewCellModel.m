@@ -35,7 +35,7 @@
     model.detailString    = [[NSString alloc] initWithFormat : @"%@平米 | %@房%@卫 | %@元/平米", [_assetAllInfoModel objectForKey : @"assetTotalArea"],
                                                                                                [_assetAllInfoModel objectForKey : @"quantityOfRoom"],
                                                                                                [_assetAllInfoModel objectForKey : @"quantityOfToilet"],
-                                                                                               [NSString stringWithFormat: @"%ld", unitPrice]];
+                                                                                               [NSString stringWithFormat: @"%ld", (long)unitPrice]];
     model.priceString     = [[NSString alloc] initWithFormat : @"%@万", tempPrice];
     model.statusString    = [_assetAllInfoModel objectForKey : @"assetStatus"];
     model.ownernameString = [_assetAllInfoModel objectForKey : @"attributeTo"];

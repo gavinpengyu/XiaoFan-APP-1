@@ -18,6 +18,9 @@
 #import "XFNWorkDetailAuxiliaryInfoCell.h"
 #import "XFNWorkDetailContactInfoCell.h"
 #import "XFNWorkDetailCommentsInfoCell.h"
+#import "XFNWorkDetailTableViewFooter.h"
+
+#import "XFNWorkTableViewHeader.h"
 
 ////-------------------------------Action .h Begin-------------------------------
 //#import "XFNStatusAttributePriceTableViewController.h"
@@ -30,6 +33,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    //self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -70,6 +75,10 @@
         
         XFNWorkDetailBasicInfoCell *cell = [[XFNWorkDetailBasicInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
         
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        cell.delegate = self;
+        
         [cell setModel : tempCellModel];
         
         return cell;
@@ -81,6 +90,8 @@
         
         XFNWorkDetailTradeInfoCell *cell = [[XFNWorkDetailTradeInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
         
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
         [cell setModel : tempCellModel];
         
         return cell;
@@ -91,6 +102,8 @@
         
         XFNWorkDetailAuxiliaryInfoCell *cell = [[XFNWorkDetailAuxiliaryInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
         
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
         [cell setModel : tempCellModel];
         
         return cell;
@@ -100,6 +113,8 @@
         XFNWorkDetailContactInfoCellModel *tempCellModel = [[XFNWorkDetailContactInfoCellModel alloc] initWithObject : _detailModel];
         
         XFNWorkDetailContactInfoCell *cell = [[XFNWorkDetailContactInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
+        
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         [cell setModel : tempCellModel];
         
@@ -129,6 +144,33 @@
     return cell.frame.size.height;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    XFNWorkDetailTableViewFooter * footer = [[XFNWorkDetailTableViewFooter alloc] init];
+    
+    NSNumber* temp      = [_detailModel objectForKey : @"bIsFollowed"];
+    
+    footer.bIsFollowed  = temp.boolValue;
+    
+    footer              = [footer initWithFrame: CGRectMake(0,
+                                                            0,
+                                                            _Macro_ScreenWidth,
+                                                            _Macro_XFNWorkTableViewFooter_Height)];
+    return footer;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return _Macro_XFNWorkTableViewFooter_Height;
+}
+
+//po 20151206 detail view中，选中cell不需要高亮，因此需要实现这个delegate，否则视觉效果不好
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0)
+{
+    return NO;
+}
+
 #pragma mark Protocol Delegate
 //-----------------------------------------------------------------------------------------
 - (void)toSendAssetModelwithObject : (XFNFrameAssetModel*) object
@@ -136,6 +178,28 @@
     _detailModel = object;
 }
 
+#pragma mark Protocol Cell - > CommonItemDetail 
+//-----------------------------------------------------------------------------------------
+- (void)toPushViewForEditBasicInfo
+{
+    //XFNWorkTableViewCellModel *model = self.dataArray[indexPath.row];
+    UIViewController *vc = [[UIViewController alloc] init];
+    
+    vc.hidesBottomBarWhenPushed=YES;
+    
+    //po 20151201 这么写是有风险的，应该改成在字符串中寻找第二个｜，将第二个｜之前的部分作为子字符串赋值给title
+//    NSArray *tempNameArray = [model.nameString componentsSeparatedByString:@"|"];
+//    
+//    NSString* tempName = [NSString stringWithFormat: @"%@ | %@", tempNameArray[0], tempNameArray[1]];
+//    
+//    self.delegate = vc;
+//    
+//    [self.delegate toSendAssetModelwithObject: _detailedAssetArray[indexPath.row]];
+//    
+//    vc.title = tempName;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end
 

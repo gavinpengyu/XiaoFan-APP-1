@@ -18,6 +18,7 @@
 #import "XFNWorkTableViewHeader.h"
 #import "XFNWorkTableViewCellModel.h"
 
+#import "XFNWorkDetailTableViewCell.h"
 #import "XFNFrameCommonItemDetailModel.h"
 #import "XFNWorkDetailTableViewController.h"
 
@@ -285,13 +286,10 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 //-----------------------------------------------------------------------------------------
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CGRect mainScreenRect       = [[UIScreen mainScreen] bounds];
-    CGSize mainScreenSize       = mainScreenRect.size;
-    
     XFNWorkTableViewHeader * head = [[XFNWorkTableViewHeader alloc] init];
     head                          = [head initWithFrame: CGRectMake(0,
                                                                     0,
-                                                                    mainScreenSize.width,
+                                                                    _Macro_ScreenWidth,
                                                                     _Macro_XFNWorkTableViewHearder_Height)];
     return head;
 }
@@ -305,6 +303,8 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 {
     XFNWorkTableViewCellModel *model = self.dataArray[indexPath.row];
     XFNWorkDetailTableViewController *vc = [[XFNWorkDetailTableViewController alloc] init];
+    
+    vc.hidesBottomBarWhenPushed=YES;
     
     //po 20151201 这么写是有风险的，应该改成在字符串中寻找第二个｜，将第二个｜之前的部分作为子字符串赋值给title
     NSArray *tempNameArray = [model.nameString componentsSeparatedByString:@"|"];

@@ -82,11 +82,11 @@
     [self.delegate toSendCommentswithArray: _commentsArray];
     
     CGRect commentsTableVCRect  = [self.delegate getTabelViewCGRect];
-    DLog(@"x=%f, y=%f, width=%f, height=%f", commentsTableVCRect.origin.x, commentsTableVCRect.origin.y, commentsTableVCRect.size.width, commentsTableVCRect.size.height);
+    //DLog(@"x=%f, y=%f, width=%f, height=%f", commentsTableVCRect.origin.x, commentsTableVCRect.origin.y, commentsTableVCRect.size.width, commentsTableVCRect.size.height);
     _commentsTableVC.view.frame = CGRectMake(0,
                                             (gridHorizontalLine.frame.origin.y + gridHorizontalLine.frame.size.height),
                                              _Macro_ScreenWidth,
-                                             commentsTableVCRect.size.height);
+                                             commentsTableVCRect.size.height);//po 20151205，如果直接固定tableview的高度，则tableview里面cell很多的时候，最下面的看不到；如果不固定，则会在操作的时候很容易进到tableview里面，无法返回detailview
     
     [self addSubview: _commentsTableVC.view];
     
