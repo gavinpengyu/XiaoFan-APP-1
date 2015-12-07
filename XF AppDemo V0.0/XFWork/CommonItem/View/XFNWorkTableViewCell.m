@@ -279,6 +279,8 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
                                                                               moreActionLabelSize.height - 4)];
     gridVerticalLineTwo.backgroundColor = [UIColor lightGrayColor];
     [self addSubview: gridVerticalLineTwo];
+    
+    self.frame = CGRectMake(0,0,_Macro_ScreenWidth,(gridVerticalLineTwo.frame.origin.y + gridVerticalLineTwo.frame.size.height + XFNTableViewCellControlSpacing));
 }
 
 //po 20151205，添加一个UIView统一布局labels，

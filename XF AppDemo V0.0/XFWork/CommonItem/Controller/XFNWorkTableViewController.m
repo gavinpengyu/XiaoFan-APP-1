@@ -37,7 +37,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 {
     [super viewDidLoad];
     
-    self.tableView.rowHeight      = 150;  //限定行高,po,20151202；UITableViewAutomaticDimension 可修改为自适应，20151027
+    //self.tableView.rowHeight      = 160;  //限定行高,po,20151202；UITableViewAutomaticDimension 可修改为自适应，20151027
     
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    self.tableView.separatorInset = UIEdgeInsetsMake(0, 3, 0, 11);
@@ -284,6 +284,12 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 
 #pragma mark - delegate
 //-----------------------------------------------------------------------------------------
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self tableView: tableView cellForRowAtIndexPath:indexPath];
+    return cell.frame.size.height;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     XFNWorkTableViewHeader * head = [[XFNWorkTableViewHeader alloc] init];

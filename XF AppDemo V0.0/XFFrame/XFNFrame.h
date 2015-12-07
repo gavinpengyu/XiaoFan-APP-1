@@ -25,9 +25,13 @@
 #define _Macro_XFN_Comment_Key      @"|KEY_REMARK|"
 
 #define _Macro_ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define _Macro_ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define _Macro_XFNWorTableViewCellHorizontalSeperatorHeight 1
 #define _Macro_XFNWorTableViewCellVerticalSeperatorWidth 1
+
+#define _Macro_XFNAssetEditView_TitleHeight 80
+#define _Macro_XFNAssetEditView_FooterHeight 44
 
 #define _Macro_XFNWorTableViewCellAssetLabelWidth 50
 #define _Macro_XFNWorTableViewCellAssetLabelHeight 20

@@ -25,6 +25,9 @@
     
     NSArray  *_labelsArray;
 }
+
+@property (nonatomic,strong) id <XFNPushEditViewDelegate> delegate;
+
 - (void)setModel:(NSObject *)model;
 
 @end

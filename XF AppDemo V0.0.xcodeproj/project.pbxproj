@@ -14,8 +14,12 @@
 		CE2171C01BF43E5100A71CCA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CE2171BF1BF43E5100A71CCA /* Podfile */; };
 		CE3079B61C1199DD008F37C6 /* XFNDetailCommentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079B51C1199DD008F37C6 /* XFNDetailCommentsTableView.m */; };
 		CE3079B91C141DDE008F37C6 /* XFNWorkDetailTableViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079B81C141DDE008F37C6 /* XFNWorkDetailTableViewFooter.m */; };
-		CE3079BC1C147883008F37C6 /* XFNAssetEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079BB1C147883008F37C6 /* XFNAssetEditTableViewController.m */; };
-		CE3079BF1C1478E0008F37C6 /* XFNAssetEditTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079BE1C1478E0008F37C6 /* XFNAssetEditTableViewControllerCell.m */; };
+		CE3079DC1C153CCC008F37C6 /* XFNAssetEditBasicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079DB1C153CCC008F37C6 /* XFNAssetEditBasicInfoViewController.m */; };
+		CE3079DF1C153CEF008F37C6 /* XFNAssetEditBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079DE1C153CEF008F37C6 /* XFNAssetEditBasicInfoView.m */; };
+		CE3079E21C15551D008F37C6 /* XFNAssetEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079E11C15551D008F37C6 /* XFNAssetEditView.m */; };
+		CE3079E51C15579E008F37C6 /* XFNAssetEditTradeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079E41C15579E008F37C6 /* XFNAssetEditTradeInfoViewController.m */; };
+		CE3079E81C1557C3008F37C6 /* XFNAssetEditTradeInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079E71C1557C3008F37C6 /* XFNAssetEditTradeInfoView.m */; };
+		CE3079EE1C158249008F37C6 /* XFNAssetEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079ED1C158249008F37C6 /* XFNAssetEditViewController.m */; };
 		CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */; };
 		CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7D1BEB232B00F8A229 /* XFNFrameTableViewController.m */; };
 		CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */; };
@@ -92,10 +96,18 @@
 		CE3079B71C1199F5008F37C6 /* XFNDetailCommentsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNDetailCommentsTableView.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailCommentsInfoCell/XFNDetailCommentsTableView.h; sourceTree = "<group>"; };
 		CE3079B81C141DDE008F37C6 /* XFNWorkDetailTableViewFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailTableViewFooter.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewFooter.m; sourceTree = "<group>"; };
 		CE3079BA1C141DF6008F37C6 /* XFNWorkDetailTableViewFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailTableViewFooter.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailTableViewFooter.h; sourceTree = "<group>"; };
-		CE3079BB1C147883008F37C6 /* XFNAssetEditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditTableViewController.m; path = XFWork/CommonActions/XFNAssetEditTableViewController.m; sourceTree = "<group>"; };
-		CE3079BD1C1478BF008F37C6 /* XFNAssetEditTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditTableViewController.h; path = XFWork/CommonActions/XFNAssetEditTableViewController.h; sourceTree = "<group>"; };
-		CE3079BE1C1478E0008F37C6 /* XFNAssetEditTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditTableViewControllerCell.m; path = XFWork/CommonActions/XFNAssetEditTableViewControllerCell.m; sourceTree = "<group>"; };
-		CE3079C01C1478FB008F37C6 /* XFNAssetEditTableViewControllerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditTableViewControllerCell.h; path = XFWork/CommonActions/XFNAssetEditTableViewControllerCell.h; sourceTree = "<group>"; };
+		CE3079DB1C153CCC008F37C6 /* XFNAssetEditBasicInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditBasicInfoViewController.m; path = XFWork/CommonActions/AssetEditBasicInfo/XFNAssetEditBasicInfoViewController.m; sourceTree = "<group>"; };
+		CE3079DD1C153CDB008F37C6 /* XFNAssetEditBasicInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditBasicInfoViewController.h; path = XFWork/CommonActions/AssetEditBasicInfo/XFNAssetEditBasicInfoViewController.h; sourceTree = "<group>"; };
+		CE3079DE1C153CEF008F37C6 /* XFNAssetEditBasicInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditBasicInfoView.m; path = XFWork/CommonActions/AssetEditBasicInfo/XFNAssetEditBasicInfoView.m; sourceTree = "<group>"; };
+		CE3079E01C153CFD008F37C6 /* XFNAssetEditBasicInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditBasicInfoView.h; path = XFWork/CommonActions/AssetEditBasicInfo/XFNAssetEditBasicInfoView.h; sourceTree = "<group>"; };
+		CE3079E11C15551D008F37C6 /* XFNAssetEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditView.m; path = XFWork/CommonActions/XFNAssetEditView.m; sourceTree = "<group>"; };
+		CE3079E31C155528008F37C6 /* XFNAssetEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditView.h; path = XFWork/CommonActions/XFNAssetEditView.h; sourceTree = "<group>"; };
+		CE3079E41C15579E008F37C6 /* XFNAssetEditTradeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditTradeInfoViewController.m; path = XFWork/CommonActions/AssetEditTradeInfo/XFNAssetEditTradeInfoViewController.m; sourceTree = "<group>"; };
+		CE3079E61C1557AC008F37C6 /* XFNAssetEditTradeInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditTradeInfoViewController.h; path = XFWork/CommonActions/AssetEditTradeInfo/XFNAssetEditTradeInfoViewController.h; sourceTree = "<group>"; };
+		CE3079E71C1557C3008F37C6 /* XFNAssetEditTradeInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditTradeInfoView.m; path = XFWork/CommonActions/AssetEditTradeInfo/XFNAssetEditTradeInfoView.m; sourceTree = "<group>"; };
+		CE3079E91C1557D0008F37C6 /* XFNAssetEditTradeInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditTradeInfoView.h; path = XFWork/CommonActions/AssetEditTradeInfo/XFNAssetEditTradeInfoView.h; sourceTree = "<group>"; };
+		CE3079ED1C158249008F37C6 /* XFNAssetEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditViewController.m; path = XFWork/CommonActions/XFNAssetEditViewController.m; sourceTree = "<group>"; };
+		CE3079EF1C158253008F37C6 /* XFNAssetEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditViewController.h; path = XFWork/CommonActions/XFNAssetEditViewController.h; sourceTree = "<group>"; };
 		CE47452E1BE7495C000F4596 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CE599B791BEB232000F8A229 /* XFNFrameTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameTabBarController.h; path = XFFrame/FrameController/XFNFrameTabBarController.h; sourceTree = "<group>"; };
 		CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameTabBarController.m; path = XFFrame/FrameController/XFNFrameTabBarController.m; sourceTree = "<group>"; };
@@ -228,21 +240,13 @@
 		CE1952C21BF079ED0097FC0C /* CommonActions */ = {
 			isa = PBXGroup;
 			children = (
-				CE3079BB1C147883008F37C6 /* XFNAssetEditTableViewController.m */,
-				CE3079BD1C1478BF008F37C6 /* XFNAssetEditTableViewController.h */,
-				CE3079BE1C1478E0008F37C6 /* XFNAssetEditTableViewControllerCell.m */,
-				CE3079C01C1478FB008F37C6 /* XFNAssetEditTableViewControllerCell.h */,
+				CE3079D51C15362D008F37C6 /* Controllers */,
+				CE3079D61C153637008F37C6 /* Views */,
 				CE1952C41BF07A2B0097FC0C /* ActionStatusAttributePrice */,
-				CE1952C31BF07A0C0097FC0C /* ActionAddressInfo */,
+				CE3079CC1C152DA9008F37C6 /* AssetEditBasicInfo */,
+				CE3079EA1C1557D6008F37C6 /* AssetEditTradeInfo */,
 			);
 			name = CommonActions;
-			sourceTree = "<group>";
-		};
-		CE1952C31BF07A0C0097FC0C /* ActionAddressInfo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ActionAddressInfo;
 			sourceTree = "<group>";
 		};
 		CE1952C41BF07A2B0097FC0C /* ActionStatusAttributePrice */ = {
@@ -254,6 +258,78 @@
 				CE1952CA1BF0AD8B0097FC0C /* XFNStatusAttributePriceTableViewCell.h */,
 			);
 			name = ActionStatusAttributePrice;
+			sourceTree = "<group>";
+		};
+		CE3079CC1C152DA9008F37C6 /* AssetEditBasicInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079CE1C152DCF008F37C6 /* Controllers */,
+				CE3079CD1C152DBC008F37C6 /* Views */,
+			);
+			name = AssetEditBasicInfo;
+			sourceTree = "<group>";
+		};
+		CE3079CD1C152DBC008F37C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079DE1C153CEF008F37C6 /* XFNAssetEditBasicInfoView.m */,
+				CE3079E01C153CFD008F37C6 /* XFNAssetEditBasicInfoView.h */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CE3079CE1C152DCF008F37C6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079DB1C153CCC008F37C6 /* XFNAssetEditBasicInfoViewController.m */,
+				CE3079DD1C153CDB008F37C6 /* XFNAssetEditBasicInfoViewController.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CE3079D51C15362D008F37C6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079ED1C158249008F37C6 /* XFNAssetEditViewController.m */,
+				CE3079EF1C158253008F37C6 /* XFNAssetEditViewController.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CE3079D61C153637008F37C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079E11C15551D008F37C6 /* XFNAssetEditView.m */,
+				CE3079E31C155528008F37C6 /* XFNAssetEditView.h */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CE3079EA1C1557D6008F37C6 /* AssetEditTradeInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079EB1C1557E6008F37C6 /* Controllers */,
+				CE3079EC1C1557F0008F37C6 /* Views */,
+			);
+			name = AssetEditTradeInfo;
+			sourceTree = "<group>";
+		};
+		CE3079EB1C1557E6008F37C6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079E41C15579E008F37C6 /* XFNAssetEditTradeInfoViewController.m */,
+				CE3079E61C1557AC008F37C6 /* XFNAssetEditTradeInfoViewController.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CE3079EC1C1557F0008F37C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE3079E71C1557C3008F37C6 /* XFNAssetEditTradeInfoView.m */,
+				CE3079E91C1557D0008F37C6 /* XFNAssetEditTradeInfoView.h */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		CE4745491BE79ED3000F4596 /* CommonItemDetail */ = {
@@ -920,14 +996,16 @@
 				CE61010F1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m in Sources */,
 				CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */,
 				CE88757B1BCCD16500334C97 /* ViewController.m in Sources */,
+				CE3079DF1C153CEF008F37C6 /* XFNAssetEditBasicInfoView.m in Sources */,
 				CE3079B91C141DDE008F37C6 /* XFNWorkDetailTableViewFooter.m in Sources */,
+				CE3079E81C1557C3008F37C6 /* XFNAssetEditTradeInfoView.m in Sources */,
+				CE3079EE1C158249008F37C6 /* XFNAssetEditViewController.m in Sources */,
 				CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */,
 				CE6100ED1C1007A800C53A2A /* XFNWorkDetailBasicInfoCell.m in Sources */,
 				CE95ED7C1BF5D57E001C3033 /* XFNFrameAssetModel.m in Sources */,
 				CE93C6851BEA243B005E0973 /* XFNWorkTableViewCellModel.m in Sources */,
 				CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */,
 				CE3079B61C1199DD008F37C6 /* XFNDetailCommentsTableView.m in Sources */,
-				CE3079BC1C147883008F37C6 /* XFNAssetEditTableViewController.m in Sources */,
 				CE6100F41C1007F400C53A2A /* XFNImageSlideViewController.m in Sources */,
 				CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */,
 				CE95ED791BF58AEC001C3033 /* XFNDataTestModel.m in Sources */,
@@ -938,19 +1016,21 @@
 				CE6100F21C1007BF00C53A2A /* XFNWorkDetailImageViewCell.m in Sources */,
 				CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */,
 				CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */,
+				CE3079E21C15551D008F37C6 /* XFNAssetEditView.m in Sources */,
 				CE93C68D1BEA244B005E0973 /* XFNWorkTableViewCell.m in Sources */,
 				CEEFBF3F1C0D559000B3997C /* XFNWorkTableViewHeader.m in Sources */,
 				CE93C6761BEA23BC005E0973 /* XFNWorkDetailTableViewController.m in Sources */,
 				CE93C6931BEA2461005E0973 /* XFNWorkTableViewController.m in Sources */,
+				CE3079DC1C153CCC008F37C6 /* XFNAssetEditBasicInfoViewController.m in Sources */,
 				CE93C6991BEA24DA005E0973 /* XFNFrameCommonItemModel.m in Sources */,
 				CE599B861BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m in Sources */,
 				CEEFBF421C0D722600B3997C /* XFNGridView.m in Sources */,
 				CEE0FF561BCF85BB004EBFC6 /* UIView+XFNExtension.m in Sources */,
 				CE599B841BEB233D00F8A229 /* XFNFrameNavigationController.m in Sources */,
 				CE1952C01BF078F60097FC0C /* XFNFrameViewController.m in Sources */,
-				CE3079BF1C1478E0008F37C6 /* XFNAssetEditTableViewControllerCell.m in Sources */,
 				CE8875751BCCD16500334C97 /* main.m in Sources */,
 				CE8875811BCCD16500334C97 /* XF_AppDemo_V0_0.xcdatamodeld in Sources */,
+				CE3079E51C15579E008F37C6 /* XFNAssetEditTradeInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

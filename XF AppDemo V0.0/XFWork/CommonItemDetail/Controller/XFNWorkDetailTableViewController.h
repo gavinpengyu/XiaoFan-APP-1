@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, XFNDetailViewCellIndexEnum) {
     XFNWorkDetailCommentsInfoCellIndexEnum
 };
 
-//Protocol CommonItem - > CommonItemDetail  XFNFrameAssetModel (AVObject)
+//Protocol CommonItem / Edit View - > CommonItemDetail  XFNFrameAssetModel (AVObject)
 //-----------------------------------------------------------------------------------------
 @protocol XFNSendAssetModelToDetailViewDelegate
 
@@ -35,24 +35,18 @@ typedef NS_ENUM(NSInteger, XFNDetailViewCellIndexEnum) {
 @protocol XFNPushEditViewDelegate
 
 - (void)toPushViewForEditBasicInfo;
+- (void)toPushViewForEditTradeInfo;
 
 @end
 
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailTableViewController : XFNFrameTableViewController < UITableViewDataSource, UITableViewDelegate, XFNSendAssetModelToDetailViewDelegate, XFNPushEditViewDelegate >
 {
-    NSMutableArray     *_cellHeightArray;
     XFNFrameAssetModel *_detailModel;
-    //CGFloat             _kFooterHeight;
 }
-@end
 
-//@interface XFNWorkDetailTableViewController : XFNFrameTableViewController < UITableViewDataSource, UITableViewDelegate >
-//{
-//    UITableView *_detailTableView;
-//    NSMutableArray *_detailTableViewModel;
-//    //NSMutableArray *_detailTableViewModelCells; //可用于存储cell，计算高度，但是暂未使用
-//}
-//@end
+@property (nonatomic,strong) id <XFNSendAssetModelToDetailViewDelegate> delegate;//protocol 将数据传至edit View
+
+@end
 
 #endif /* XFNWorkDetailTableViewController_h */
