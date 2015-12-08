@@ -26,7 +26,7 @@
     
     [view setModel: _detailModel];
     
-    [view layoutView];
+    [view layoutViews];
     
     self.view = view;
 }

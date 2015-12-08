@@ -36,6 +36,8 @@
 
 + (UIColor *)getTheColorOfLabel: (NSString*) label;
 
++ (NSString *)getThePropertyNameOfLabel: (NSString*) label;
+
 @end
 
 #endif /* XFNWorkTableViewCell_h */

@@ -1,21 +1,21 @@
 //
-//  XFNAssetEditTradeInfoView.h
+//  XFNAssetEditContactInfoView.h
 //  XF AppDemo V0.0
 //
-//  Created by po on 15/12/7.
+//  Created by po on 15/12/8.
 //  Copyright © 2015年 po. All rights reserved.
 //
 
-#ifndef XFNAssetEditTradeInfoView_h
-#define XFNAssetEditTradeInfoView_h
+#ifndef XFNAssetEditContactInfoView_h
+#define XFNAssetEditContactInfoView_h
 
 #import <UIKit/UIKit.h>
 #import "XFNFrameAssetModel.h"
 #import "XFNAssetEditView.h"
 
 //-----------------------------------------------------------------------------------------
-@interface XFNAssetEditTradeInfoView : XFNAssetEditView
+@interface XFNAssetEditContactInfoView : XFNAssetEditView
 
 @end
 
-#endif /* XFNAssetEditTradeInfoView_h */
+#endif /* XFNAssetEditContactInfoView_h */

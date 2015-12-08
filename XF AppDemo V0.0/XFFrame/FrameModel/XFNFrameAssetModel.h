@@ -92,6 +92,12 @@
 //-------------------------------------------------------------------------------------
 //保留
 
++ (NSString *)parseClassName;
+
++ (NSMutableArray*)initArrayByAssetString: (NSString*) string;
+
++ (NSString *)initStringByAssetArray: (NSArray*) array;
+
 @end
 
 //-------------------------------------------------------------------------------------

@@ -424,6 +424,54 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     }
 }
 
++ (NSString *)getThePropertyNameOfLabel: (NSString*) label
+{
+    NSString* string = [[NSString alloc] init];
+    
+    NSArray* tempArrayAssetStatus = [XFNWorkTableViewController getlabelsForAssetStatusGlobalArray];
+    NSArray* tempArrayTypeOfPay   = [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray];
+    NSArray* tempArrayTaxInfo     = [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray];
+    NSArray* tempArrayAssetLayout = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];
+    NSArray* tempArrayDecoration  = [XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray];
+    NSArray* tempArrayAncillary   = [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray];
+    
+    if ([tempArrayTypeOfPay containsObject : label])
+    {
+        string = @"typeOfPaying";
+        return string;
+    }
+    else if ([tempArrayTaxInfo containsObject : label])
+    {
+        string = @"taxInfo";
+        return string;
+    }
+    else if ([tempArrayAssetLayout containsObject : label])
+    {
+        string = @"basicInfoLabelsOfAsset";
+        return string;
+    }
+    else if ([tempArrayDecoration containsObject : label])
+    {
+        string = @"decorationInfo";
+        return string;
+    }
+    else if ([tempArrayAncillary containsObject : label])
+    {
+        string = @"ancillaryInfo";
+        return string;
+    }
+    else if ([tempArrayAssetStatus containsObject : label])
+    {
+        string = @"assetStatus";
+        return string;
+    }
+    else
+    {
+        DLog(@"ERROR:看到这段话，是因为获取key的字符串失败，这可能是修改了key的名字，或者新增了key但是没有同步到这个函数，输入的label＝%@", label);
+        return nil;
+    }
+}
+
 @end
 
 

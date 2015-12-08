@@ -49,6 +49,7 @@
         tempLabel.textColor           = [XFNWorkTableViewCell getTheColorOfLabel: tempLabel.text];//_Macro_XFNWorTableViewCell_AssetLayout_Label_Color;
         tempLabel.layer.borderColor   = [XFNWorkTableViewCell getTheColorOfLabel: tempLabel.text].CGColor;
         tempLabel.layer.borderWidth   = 1;
+        tempLabel.layer.cornerRadius  = 3;
         tempLabel.textAlignment       = NSTextAlignmentCenter;
         tempLabel.font                = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault - 2)];
         
@@ -58,7 +59,7 @@
         tempLabelSize.width           = tempLabelSize.width + XFNTableViewCellControlSpacing/2; //边框两边各留半个spacing，总宽度根据标签字数的多少自适应
         tempLabelSize.height          = _Macro_XFNWorTableViewCellAssetLabelHeight; //固定高度
         
-        //若放置本label之后离屏幕最右侧不足一个XFNTableViewCellControlSpacing，则新起一行，从最左侧开始放置
+        //若放置本label之后离屏幕最右侧不足一个XFNTableViewCellControlSpacing，则新起一行，从最左侧开始放置。
         if ((tempLabelX + tempLabelSize.width) > (_Macro_ScreenWidth - XFNTableViewCellControlSpacing))
         {
             tempLabelY                = tempLabelOriginY + tempLabelSize.height + XFNTableViewCellControlSpacing;

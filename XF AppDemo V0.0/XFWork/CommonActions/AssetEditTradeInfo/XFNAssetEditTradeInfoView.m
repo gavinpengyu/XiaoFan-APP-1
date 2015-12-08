@@ -15,7 +15,7 @@
 @implementation XFNAssetEditTradeInfoView
 
 
-- (void)layoutView
+- (void)layoutViews
 {
     CGRect temp;
 
@@ -25,32 +25,38 @@
     temp = [self initTitleWithName: @"交易信息"
                         andOriginY: _Macro_XFNAssetEditView_TitleHeight];
     
-    temp = [self initContentWithName: @"assetTotalPrice"
+    temp = [self initContentTextFieldWithName: @"assetTotalPrice"
                             andValue: [self.cellModel objectForKey: @"assetTotalPrice"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"assetUnitPrice"
+    temp = [self initContentTextFieldWithName: @"assetUnitPrice"
                             andValue: tempUnitPrice
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"assetStatus"
-                            andValue: [self.cellModel objectForKey: @"assetStatus"]
-                          andOriginY: (temp.origin.y + temp.size.height)
-                     andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
+//    temp = [self initContentTextFieldWithName: @"assetStatus"
+//                            andValue: [self.cellModel objectForKey: @"assetStatus"]
+//                          andOriginY: (temp.origin.y + temp.size.height)
+//                     andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
+//    - (CGRect)initContentPickerButtonWithName: (NSString*) name
+//andValue: (NSString*) value
+//andOriginY: (CGFloat) originY
+    temp = [self initContentPickerButtonWithName: @"assetStatus"
+                                        andValue: [self.cellModel objectForKey: @"assetStatus"]
+                                      andOriginY: (temp.origin.y + temp.size.height)];
     
-    temp = [self initContentWithName: @"attributeTo"
+    temp = [self initContentTextFieldWithName: @"attributeTo"
                             andValue: [self.cellModel objectForKey: @"attributeTo"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"reserveMode"
+    temp = [self initContentTextFieldWithName: @"reserveMode"
                             andValue: [self.cellModel objectForKey: @"reserveMode"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"deliveryMode"
+    temp = [self initContentTextFieldWithName: @"deliveryMode"
                             andValue: [self.cellModel objectForKey: @"deliveryMode"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
@@ -58,15 +64,18 @@
     temp = [self initTitleWithName: @"标签"
                         andOriginY: (temp.origin.y + temp.size.height + XFNTableViewCellControlSpacing)];
     
-    [self layoutLabelView];
+    NSString* labelStringOne = [self.cellModel objectForKey: @"typeOfPaying"];
+    NSString* labelStringTwo = [self.cellModel objectForKey: @"taxInfo"];
     
-    [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailBasicInfoCellIndexEnum];
-}
-
-- (void)layoutLabelView
-{
+    NSArray * labelArrayOne  = [XFNFrameAssetModel initArrayByAssetString: labelStringOne];
+    NSArray * labelArrayTwo  = [XFNFrameAssetModel initArrayByAssetString: labelStringTwo];
     
+    NSArray * labelArray     = [labelArrayOne arrayByAddingObjectsFromArray: labelArrayTwo];
+    
+    temp = [self initLabelViewWithArray: labelArray
+                             andOriginY: (temp.origin.y + temp.size.height)];
+    
+    [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailTradeInfoCellIndexEnum];
 }
-
 
 @end

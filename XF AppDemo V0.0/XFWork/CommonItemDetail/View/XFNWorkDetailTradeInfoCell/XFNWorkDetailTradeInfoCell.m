@@ -258,11 +258,12 @@
     
     CGFloat cellHeight = (tempPoint.y +labelView.frame.size.height);
     
+    CGFloat buttonY    =  gridHorizontalLine.frame.origin.y - XFNTableViewCellControlSpacing/2 - _Macro_XFNWorkDetailTableView_Accessory_Height;
     //手写cell最右侧的操作按钮
     UIButton* accessoryActionButton = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
     //离屏幕最右侧一个space距离，离cell的手动分割线高度为_Macro_XFNWorkDetailTableView_Accessory_Height
     accessoryActionButton.frame     = CGRectMake((_Macro_ScreenWidth - XFNTableViewCellControlSpacing - _Macro_XFNWorkDetailTableView_Accessory_Width),
-                                                 gridHorizontalLine.frame.origin.y + _Macro_XFNWorkDetailTableView_Accessory_Height,
+                                                 buttonY,
                                                  _Macro_XFNWorkDetailTableView_Accessory_Width,
                                                  _Macro_XFNWorkDetailTableView_Accessory_Height);
     

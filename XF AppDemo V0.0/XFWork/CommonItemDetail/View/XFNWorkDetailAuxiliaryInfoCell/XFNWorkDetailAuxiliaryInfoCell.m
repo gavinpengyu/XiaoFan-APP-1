@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XFNFrame.h"
 #import "XFNWorkDetailTableViewCellModel.h"
+#import "XFNWorkDetailTableViewController.h"
 
 #import "XFNWorkDetailAuxiliaryInfoCell.h"
 
@@ -71,8 +72,23 @@
     
     [self addSubview : labelView];
     
+    CGFloat cellHeight = (tempPoint.y +labelView.frame.size.height);
+    
+    CGFloat buttonY    =  gridHorizontalLine.frame.origin.y - XFNTableViewCellControlSpacing/2 - _Macro_XFNWorkDetailTableView_Accessory_Height;
+    //手写cell最右侧的操作按钮
+    UIButton* accessoryActionButton = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
+    //离屏幕最右侧一个space距离，离cell的手动分割线高度为_Macro_XFNWorkDetailTableView_Accessory_Height
+    accessoryActionButton.frame     = CGRectMake((_Macro_ScreenWidth - XFNTableViewCellControlSpacing - _Macro_XFNWorkDetailTableView_Accessory_Width),
+                                                 buttonY,
+                                                 _Macro_XFNWorkDetailTableView_Accessory_Width,
+                                                 _Macro_XFNWorkDetailTableView_Accessory_Height);
+    
+    [accessoryActionButton addTarget:self action:@selector(pushViewForEditAuxiliaryInfo:) forControlEvents: UIControlEventTouchDown];
+    
+    [self addSubview: accessoryActionButton];
+    
     //在Init的最后必须给self.frame赋值，否则在delegate中无法自适应cell高度
-    self.frame  = CGRectMake(0,0, _Macro_ScreenWidth, (tempPoint.y +labelView.frame.size.height));
+    self.frame  = CGRectMake(0,0, _Macro_ScreenWidth, cellHeight);
 }
 
 - (void)setModel:(NSObject *)model
@@ -85,5 +101,12 @@
     
     [self initViewLayout];
 }
+
+//selector-----------------------------------------------------------------------------------------
+-(void) pushViewForEditAuxiliaryInfo:(id)sender
+{
+    [self.delegate toPushViewForEditAuxiliaryInfo];
+}
+
 
 @end

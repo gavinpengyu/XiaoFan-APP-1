@@ -21,6 +21,8 @@
 
 - (void)setModel:(NSObject *)model;
 
+@property (nonatomic,strong) id <XFNPushEditViewDelegate> delegate;
+
 + (UIView*) initContactUIViewWithArray: (NSArray*) array andOriginPoint: (CGPoint) origin andFont: (UIFont*) font andColor: (UIColor*) color;
 
 @end

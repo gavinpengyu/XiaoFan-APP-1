@@ -11,14 +11,40 @@
 
 #import "XFNWorkDetailTableViewController.h"
 
-@protocol  XFNEditViewToControllerDelegate
+//po 20151207，addTarget的时候，selector无法传递参数。因此将该类封装，将参数作为该类的property写入，在selector里面通过id sender读取
+//-----------------------------------------------------------------------------------------
+@interface XFNTextField: UITextField
 
-- (void)toBackAndSubmitObject : (XFNFrameAssetModel*) object withCellIndex: (XFNDetailViewCellIndexEnum) cellIndex;
+@property (nonatomic, copy) NSString* assetPropertyName; //这一个TextField的内容对应的AVObject中的Key值
+
+- (void)setAssetPropertyName:(NSString *)assetPropertyName;
 
 @end
 
 //-----------------------------------------------------------------------------------------
-@interface XFNAssetEditViewController : UIViewController <XFNSendAssetModelToDetailViewDelegate, XFNEditViewToControllerDelegate>
+@interface XFNButton: UIButton
+
+@property (nonatomic, assign) XFNDetailViewCellIndexEnum cellIndex;
+@property (nonatomic, copy)   UILabel*                   customizedLabel;
+@property (nonatomic, copy)   NSString*                  assetPropertyName; //这一个TextField的内容对应的AVObject中的Key值
+
+- (void)setAssetPropertyName:(NSString *)assetPropertyName;
+
+- (void)setCustomizedLabel:(UILabel *)customizedLabel;
+
+@end
+
+//-----------------------------------------------------------------------------------------
+@protocol  XFNEditViewToControllerDelegate
+
+- (void)toBackAndSubmitObject : (XFNFrameAssetModel*) object withCellIndex: (XFNDetailViewCellIndexEnum) cellIndex;
+
+- (void)toActivatePickViewWithXFNButton: (XFNButton*) button;
+
+@end
+
+//-----------------------------------------------------------------------------------------
+@interface XFNAssetEditViewController : UIViewController <XFNSendAssetModelToDetailViewDelegate, XFNEditViewToControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource >
 {
     XFNFrameAssetModel *_detailModel;
 }
@@ -26,5 +52,9 @@
 @property (nonatomic,strong) id <XFNSendAssetModelToDetailViewDelegate> delegate;
 
 @end
+
+
+
+
 
 #endif /* XFNAssetEditViewController_h */

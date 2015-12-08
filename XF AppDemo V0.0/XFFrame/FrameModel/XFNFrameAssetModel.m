@@ -94,6 +94,50 @@
     return @"XFNFrameAssetModel";
 }
 
++ (NSMutableArray  *)initArrayByAssetString: (NSString*) string
+{
+    if(nil == string)
+    {
+        DLog(@"ERROR: input nil");
+        return nil;
+    }
+    
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    
+    if ([string containsString: _Macro_XFN_String_Seperator])
+    {
+        array =  (NSMutableArray*) [string componentsSeparatedByString: _Macro_XFN_String_Seperator];
+    }
+    else
+    {
+        [array addObject: string];//找不到分隔符，只有一个元素
+    }
+    
+    return array;
+}
+
++ (NSString *)initStringByAssetArray: (NSMutableArray*) array
+{
+    if(nil == array)
+    {
+        DLog(@"ERROR: input nil");
+        return nil;
+    }
+    
+    NSString* string = [[NSString alloc] initWithString: [array firstObject]];
+    NSString *seperator = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];
+    
+    for(int iIndex=1; iIndex < array.count; iIndex++)
+    {
+        
+        
+        NSString *temp = [[NSString alloc] initWithFormat : @"%@%@", seperator, array[iIndex]];
+        string = [string stringByAppendingString: temp];
+    }
+    
+    return string;
+}
+
 @end
 
 //-------------------------------------------------------------------------------------

@@ -25,6 +25,8 @@
 ////-------------------------------Action .h Begin-------------------------------
 #import "XFNAssetEditBasicInfoViewController.h"
 #import "XFNAssetEditTradeInfoViewController.h"
+#import "XFNAssetEditAuxiliaryInfoViewController.h"
+#import "XFNAssetEditContactInfoViewController.h"
 ////-------------------------------Action .h End---------------------------------
 
 @implementation XFNWorkDetailTableViewController
@@ -112,6 +114,7 @@
         XFNWorkDetailAuxiliaryInfoCell *cell = [[XFNWorkDetailAuxiliaryInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
         
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.delegate = self;
         
         [cell setModel : tempCellModel];
         
@@ -124,6 +127,7 @@
         XFNWorkDetailContactInfoCell *cell = [[XFNWorkDetailContactInfoCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
         
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.delegate = self;
         
         [cell setModel : tempCellModel];
         
@@ -218,6 +222,37 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void)toPushViewForEditAuxiliaryInfo
+{
+    XFNAssetEditAuxiliaryInfoViewController *vc = [[XFNAssetEditAuxiliaryInfoViewController alloc] init];
+    
+    vc.hidesBottomBarWhenPushed=YES;
+    
+    self.delegate = vc;   //object: detail view -> edit view;
+    
+    vc.delegate   = self; //object: edit view -> detail view;
+    
+    [self.delegate toSendAssetModelwithObject: _detailModel];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)toPushViewForEditContactInfo
+{
+    XFNAssetEditContactInfoViewController *vc = [[XFNAssetEditContactInfoViewController alloc] init];
+    
+    vc.hidesBottomBarWhenPushed=YES;
+    
+    self.delegate = vc;   //object: detail view -> edit view;
+    
+    vc.delegate   = self; //object: edit view -> detail view;
+    
+    [self.delegate toSendAssetModelwithObject: _detailModel];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 @end
 

@@ -1,8 +1,8 @@
 //
-//  XFNAssetEditTradeInfoViewController.m
+//  XFNAssetEditAuxiliaryInfoViewController.m
 //  XF AppDemo V0.0
 //
-//  Created by po on 15/12/7.
+//  Created by po on 15/12/8.
 //  Copyright © 2015年 po. All rights reserved.
 //
 
@@ -11,16 +11,16 @@
 #import "XFNFrame.h"
 #import "UIView+XFNExtension.h"
 
-#import "XFNAssetEditTradeInfoViewController.h"
-#import "XFNAssetEditTradeInfoView.h"
+#import "XFNAssetEditAuxiliaryInfoViewController.h"
+#import "XFNAssetEditAuxiliaryInfoView.h"
 
-@implementation XFNAssetEditTradeInfoViewController
+@implementation XFNAssetEditAuxiliaryInfoViewController
 //-----------------------------------------------------------------------------------------
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    XFNAssetEditTradeInfoView * view = [[XFNAssetEditTradeInfoView alloc] initWithFrame: CGRectMake(0, 0, _Macro_ScreenWidth, _Macro_ScreenHeight)];
+    XFNAssetEditAuxiliaryInfoView * view = [[XFNAssetEditAuxiliaryInfoView alloc] initWithFrame: CGRectMake(0, 0, _Macro_ScreenWidth, _Macro_ScreenHeight)];
     
     view.delegate = self;
     
@@ -33,4 +33,3 @@
 
 
 @end
-

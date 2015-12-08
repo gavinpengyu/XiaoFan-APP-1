@@ -15,39 +15,39 @@
 @implementation XFNAssetEditBasicInfoView
 
 
-- (void)layoutView
+- (void)layoutViews
 {
     CGRect temp;
     
     temp = [self initTitleWithName: @"基本信息"
                         andOriginY: _Macro_XFNAssetEditView_TitleHeight];
     
-    temp = [self initContentWithName: @"assetTotalArea"
+    temp = [self initContentTextFieldWithName: @"assetTotalArea"
                             andValue: [self.cellModel objectForKey: @"assetTotalArea"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"assetSharedArea"
+    temp = [self initContentTextFieldWithName: @"assetSharedArea"
                             andValue: [self.cellModel objectForKey: @"assetSharedArea"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"quantityOfRoom"
+    temp = [self initContentTextFieldWithName: @"quantityOfRoom"
                             andValue: [self.cellModel objectForKey: @"quantityOfRoom"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"quantityOfToilet"
+    temp = [self initContentTextFieldWithName: @"quantityOfToilet"
                             andValue: [self.cellModel objectForKey: @"quantityOfToilet"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"assetStorey"
+    temp = [self initContentTextFieldWithName: @"assetStorey"
                             andValue: [self.cellModel objectForKey: @"assetStorey"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentWithName: @"storeyOfAll"
+    temp = [self initContentTextFieldWithName: @"storeyOfAll"
                             andValue: [self.cellModel objectForKey: @"storeyOfAll"]
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
@@ -55,21 +55,13 @@
     temp = [self initTitleWithName: @"标签"
                         andOriginY: (temp.origin.y + temp.size.height + XFNTableViewCellControlSpacing)];
     
-    NSArray * labelArray = [NSArray array];
-    labelArray = [[self.cellModel objectForKey: @"basicInfoLabelsOfAsset"] componentsSeparatedByString: _Macro_XFN_String_Seperator];
+    NSString* labelString = [self.cellModel objectForKey: @"basicInfoLabelsOfAsset"];
+    NSArray * labelArray  = [XFNFrameAssetModel initArrayByAssetString: labelString];
     
     temp = [self initLabelViewWithArray: labelArray
                              andOriginY: (temp.origin.y + temp.size.height)];
     
-    
-    [self layoutLabelView];
-    
     [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailBasicInfoCellIndexEnum];
-}
-
-- (void)layoutLabelView
-{
-
 }
 
 //-(BOOL)textFieldShouldReturn:(UITextField *)textField
