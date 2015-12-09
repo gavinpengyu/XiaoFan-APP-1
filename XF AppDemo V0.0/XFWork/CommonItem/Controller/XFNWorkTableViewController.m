@@ -179,34 +179,47 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     }];
 }
 
+//po 20151209: 在运行期如果有某部分代码调用了全局数组，并无意中修改全局数组的值，则会导致运行混乱。因此，将其修改为值copy
 + (NSArray *)getlabelsForAssetStatusGlobalArray
 {
-    return sXFNlabelsForAssetStatusGlobalArray;
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForAssetStatusGlobalArray mutableCopy];
+    return temp;
 }
 
 + (NSArray *)getlabelsForTypeOfPayGlobalArray
 {
-    return sXFNlabelsForTypeOfPayGlobalArray;
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForTypeOfPayGlobalArray mutableCopy];
+    return temp;
 }
 
 + (NSArray *)getlabelsForTaxInfoGlobalArray
 {
-    return sXFNlabelsForTaxInfoGlobalArray;
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForTaxInfoGlobalArray mutableCopy];
+    return temp;
 }
 
 + (NSArray *)getlabelsForAssetLayoutInfoGlobalArray
 {
-    return sXFNlabelsForAssetLayoutInfoGlobalArray;
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForAssetLayoutInfoGlobalArray mutableCopy];
+    return temp;
 }
 
 + (NSArray *)getlabelsForDecorationInfoGlobalArray
 {
-    return sXFNlabelsForDecorationInfoGlobalArray;
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForDecorationInfoGlobalArray mutableCopy];
+    return temp;
 }
 
 + (NSArray *)getlabelsForAncillaryInfoGlobalArray
 {
-    return sXFNlabelsForAncillaryInfoGlobalArray;
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForAncillaryInfoGlobalArray mutableCopy];
+    return temp;
 }
 
 - (void)initData

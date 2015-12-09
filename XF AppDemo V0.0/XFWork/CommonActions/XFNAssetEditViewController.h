@@ -16,8 +16,16 @@
 @interface XFNTextField: UITextField
 
 @property (nonatomic, copy) NSString* assetPropertyName; //这一个TextField的内容对应的AVObject中的Key值
+/*
+ 重要！po 20151209:
+ 在action中selector无法传递参数，而uiview中没有合适的reload方式可以刷新页面。
+ 因此我使用这个id属性保存view中需要修改的元素，label或者textfield。在selector方法中，移除该元素，并重绘
+ */
+@property (nonatomic, copy)   id                         parameter;
 
 - (void)setAssetPropertyName:(NSString *)assetPropertyName;
+
+- (void)setParameter:(id)parameter;
 
 @end
 
@@ -26,11 +34,20 @@
 
 @property (nonatomic, assign) XFNDetailViewCellIndexEnum cellIndex;
 @property (nonatomic, copy)   UILabel*                   customizedLabel;
-@property (nonatomic, copy)   NSString*                  assetPropertyName; //这一个TextField的内容对应的AVObject中的Key值
+@property (nonatomic, copy)   NSString*                  assetPropertyName; //这一个UIButton的内容对应的AVObject中的Key值
+
+/*
+ 重要！po 20151209:
+ 在action中selector无法传递参数，而uiview中没有合适的reload方式可以刷新页面。
+ 因此我使用这个id属性保存view中需要修改的元素，label或者textfield。在selector方法中，移除该元素，并重绘
+ */
+@property (nonatomic, copy)   id                         parameter;
 
 - (void)setAssetPropertyName:(NSString *)assetPropertyName;
 
 - (void)setCustomizedLabel:(UILabel *)customizedLabel;
+
+- (void)setParameter:(id)parameter;
 
 @end
 

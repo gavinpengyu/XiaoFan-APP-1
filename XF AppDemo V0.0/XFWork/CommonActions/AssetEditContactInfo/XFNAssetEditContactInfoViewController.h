@@ -17,4 +17,12 @@
 
 @end
 
+
+//-----------------------------------------------------------------------------------
+@interface XFNAssetContactTableViewController : XFNFrameTableViewController< UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic,strong) id <XFNEditViewToControllerDelegate> delegate;
+
+@end
+
 #endif /* XFNAssetEditContactInfoViewController_h */

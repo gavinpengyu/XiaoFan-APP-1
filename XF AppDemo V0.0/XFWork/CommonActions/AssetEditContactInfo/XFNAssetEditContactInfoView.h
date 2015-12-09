@@ -10,11 +10,26 @@
 #define XFNAssetEditContactInfoView_h
 
 #import <UIKit/UIKit.h>
+#import "XFNFrameTableViewControllerCell.h"
 #import "XFNFrameAssetModel.h"
 #import "XFNAssetEditView.h"
 
 //-----------------------------------------------------------------------------------------
-@interface XFNAssetEditContactInfoView : XFNAssetEditView
+@interface XFNAssetEditContactInfoView : XFNAssetEditView//UIScrollView//XFNAssetEditView
+
+@end
+
+//-----------------------------------------------------------------------------------
+@interface XFNAssetContactTableViewCell : XFNFrameTableViewControllerCell
+{
+    NSString        *_contactName;
+    NSString        *_contactIdentity;
+    NSMutableArray  *_phoneNumber;
+    NSMutableArray  *_contactLabel;
+}
+@property (nonatomic,strong) id <XFNEditViewToControllerDelegate> delegate;
+
+- (void)setModel:(NSObject *)model;
 
 @end
 

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		4768068872A5B91B53DF6B53 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 024245694BB347D649A48D57 /* libPods.a */; };
 		CE1952C01BF078F60097FC0C /* XFNFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952BF1BF078F60097FC0C /* XFNFrameViewController.m */; };
-		CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952C51BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m */; };
-		CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */; };
 		CE2171C01BF43E5100A71CCA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CE2171BF1BF43E5100A71CCA /* Podfile */; };
 		CE3079B61C1199DD008F37C6 /* XFNDetailCommentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079B51C1199DD008F37C6 /* XFNDetailCommentsTableView.m */; };
 		CE3079B91C141DDE008F37C6 /* XFNWorkDetailTableViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079B81C141DDE008F37C6 /* XFNWorkDetailTableViewFooter.m */; };
@@ -91,10 +89,6 @@
 		CE083C351BE723FA00B225F6 /* XFNFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrame.h; path = XFFrame/XFNFrame.h; sourceTree = "<group>"; };
 		CE1952BF1BF078F60097FC0C /* XFNFrameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameViewController.m; path = XFFrame/FrameController/XFNFrameViewController.m; sourceTree = "<group>"; };
 		CE1952C11BF0790B0097FC0C /* XFNFrameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNFrameViewController.h; path = XFFrame/FrameController/XFNFrameViewController.h; sourceTree = "<group>"; };
-		CE1952C51BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNStatusAttributePriceTableViewController.m; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewController.m; sourceTree = "<group>"; };
-		CE1952C71BF07ACC0097FC0C /* XFNStatusAttributePriceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNStatusAttributePriceTableViewController.h; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewController.h; sourceTree = "<group>"; };
-		CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNStatusAttributePriceTableViewCell.m; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewCell.m; sourceTree = "<group>"; };
-		CE1952CA1BF0AD8B0097FC0C /* XFNStatusAttributePriceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNStatusAttributePriceTableViewCell.h; path = XFWork/CommonActions/ActionStatusAttributePrice/XFNStatusAttributePriceTableViewCell.h; sourceTree = "<group>"; };
 		CE2171BF1BF43E5100A71CCA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CE3079B51C1199DD008F37C6 /* XFNDetailCommentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNDetailCommentsTableView.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailCommentsInfoCell/XFNDetailCommentsTableView.m; sourceTree = "<group>"; };
 		CE3079B71C1199F5008F37C6 /* XFNDetailCommentsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNDetailCommentsTableView.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailCommentsInfoCell/XFNDetailCommentsTableView.h; sourceTree = "<group>"; };
@@ -258,20 +252,8 @@
 				CE3079EA1C1557D6008F37C6 /* AssetEditTradeInfo */,
 				CE3079F61C16D1BA008F37C6 /* AssetEditAuxiliaryInfo */,
 				CE3079FF1C16D6B7008F37C6 /* AssetEditContactInfo */,
-				CE1952C41BF07A2B0097FC0C /* ActionStatusAttributePrice */,
 			);
 			name = CommonActions;
-			sourceTree = "<group>";
-		};
-		CE1952C41BF07A2B0097FC0C /* ActionStatusAttributePrice */ = {
-			isa = PBXGroup;
-			children = (
-				CE1952C51BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m */,
-				CE1952C71BF07ACC0097FC0C /* XFNStatusAttributePriceTableViewController.h */,
-				CE1952C81BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m */,
-				CE1952CA1BF0AD8B0097FC0C /* XFNStatusAttributePriceTableViewCell.h */,
-			);
-			name = ActionStatusAttributePrice;
 			sourceTree = "<group>";
 		};
 		CE3079CC1C152DA9008F37C6 /* AssetEditBasicInfo */ = {
@@ -1084,8 +1066,6 @@
 				CE93C69C1BEA24E5005E0973 /* XFNFrameUserProfileModel.m in Sources */,
 				CE3079F41C16D1A6008F37C6 /* XFNAssetEditAuxiliaryInfoView.m in Sources */,
 				CE6100F21C1007BF00C53A2A /* XFNWorkDetailImageViewCell.m in Sources */,
-				CE1952C61BF07ABC0097FC0C /* XFNStatusAttributePriceTableViewController.m in Sources */,
-				CE1952C91BF0AD760097FC0C /* XFNStatusAttributePriceTableViewCell.m in Sources */,
 				CE3079E21C15551D008F37C6 /* XFNAssetEditView.m in Sources */,
 				CE93C68D1BEA244B005E0973 /* XFNWorkTableViewCell.m in Sources */,
 				CEEFBF3F1C0D559000B3997C /* XFNWorkTableViewHeader.m in Sources */,

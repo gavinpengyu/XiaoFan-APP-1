@@ -21,6 +21,10 @@
 
 //-----------------------------------------------------------------------------------------
 @implementation XFNAssetEditView
+{
+    XFNTextField* _assetTotalPriceForUnionOperation;
+    XFNTextField* _assetUnitPriceForUnionOperation;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -117,6 +121,17 @@
     valueText.assetPropertyName = name;//po 20151207 通过该property传递参数
     [valueText addTarget : self action : @selector (valueChanged:) forControlEvents : (UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit)];
     
+    //总价与单价联动----------------------------------------------------------------------------
+    //在selector中，如果修改了总价或者单价中的某一个，另一个要同时改变其text值
+    if ([name isEqualToString: @"assetUnitPrice"])
+    {
+        _assetUnitPriceForUnionOperation = valueText;
+    }
+    if ([name isEqualToString: @"assetTotalPrice"])
+    {
+        _assetTotalPriceForUnionOperation = valueText;
+    }
+    
     //分割线-----------------------------------------------------------------------------------
     UIView * gridHorizontalLine   = [[UIView alloc] initWithFrame: CGRectMake (valueText.frame.origin.x,
                                                                                (valueText.frame.origin.y + valueText.frame.size.height + _Macro_XFNWorTableViewCellHorizontalSeperatorHeight),
@@ -181,27 +196,6 @@
     [self addSubview: button];
     
     [button addTarget : self action : @selector (activatePickerViewWithButton:) forControlEvents : UIControlEventTouchDown];
-    
-//    XFNTextField* valueText= [[XFNTextField alloc] init];
-//    valueText.text         = value;  //attributedPlaceholder
-//    valueText.textColor    = [UIColor blackColor];
-//    valueText.textAlignment= NSTextAlignmentLeft;
-//    valueText.font         = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeXL)];
-//    
-//    CGSize  valueTextSize  = [titleLabel.text sizeWithAttributes : @{NSFontAttributeName : titleLabel.font}];
-//    valueTextSize.width    = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing)/2;
-//    CGFloat valueTextX     = _Macro_ScreenWidth - XFNTableViewCellControlSpacing - valueTextSize.width;
-//    CGFloat valueTextY     = titleLabel.frame.origin.y - (valueTextSize.height - titleLabel.frame.size.height)/2;
-//    CGRect  valueTextRect  = CGRectMake(valueTextX,
-//                                        valueTextY,
-//                                        valueTextSize.width,
-//                                        valueTextSize.height);
-//    valueText.frame        = valueTextRect;
-//    
-//    [self addSubview: valueText];
-//    
-//    valueText.assetPropertyName = name;//po 20151207 通过该property传递参数
-//    [valueText addTarget : self action : @selector (valueChanged:) forControlEvents : (UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit)];
     
     //分割线-----------------------------------------------------------------------------------
     UIView * gridHorizontalLine   = [[UIView alloc] initWithFrame: CGRectMake (button.frame.origin.x,
@@ -284,8 +278,8 @@
     }
     else
     {
-        DLog(@"ERROR: initLabelViewWithArray,输入数组元素%@非法，这是因为遍历数组类型的时候不全面", [array firstObject]);
-        return CGRectMake(0,0,0,0);
+        DLog(@"Warning: initLabelViewWithArray,输入数组元素 %@ 不在已设定标签组范围内，这是因为遍历数组类型的时候不全面", [array firstObject]);
+        fullArray = array;
     }
     
     CGFloat originX = XFNTableViewCellControlSpacing;
@@ -346,12 +340,18 @@
     }
     
     //若for循环中刚好是5个标签，则labelY的值需要修正
-    if (0 == (iFullArrayIndex - 1) % 5)
+    //if (0 == (iFullArrayIndex - 1) % 5)
+    if (0 == (iFullArrayIndex + 1) % 5)
     {
         tempLabelY = tempLabelY - (_Macro_AssetLabel_Height + _Macro_AssetLabel_Space);
     }
-    return CGRectMake(0, originY, _Macro_ScreenWidth, tempLabelY + _Macro_AssetLabel_Height + _Macro_AssetLabel_Space);
+    return CGRectMake(0, originY, _Macro_ScreenWidth, (tempLabelY + _Macro_AssetLabel_Height + _Macro_AssetLabel_Space - originY));
 }
+
+//- (void) reloadButton: (XFNButton*) button TextByNSString: (NSString*) textString
+//{
+//    button
+//}
 
 //在子类中会重写该方法，不能删除 po 20151207
 - (void)layoutViews
@@ -380,7 +380,8 @@
     XFNTextField* tempText = (XFNTextField*)sender;
     
     //po 20151208 单价与总价联动
-    if ([tempText.assetPropertyName isEqualToString: @"assetUnitPrice"])
+    if ([tempText.assetPropertyName isEqualToString: @"assetUnitPrice"]
+        || [tempText.assetPropertyName isEqualToString: @"assetTotalPrice"])
     {
         [self unionBetweenUnitPriceAndTotalPriceByTextField: tempText];
     }
@@ -392,11 +393,34 @@
 
 - (void)unionBetweenUnitPriceAndTotalPriceByTextField: (XFNTextField*) text
 {
-    NSInteger totalPrice = [text.text integerValue] * [[_cellModel objectForKey: @"assetTotalArea"] integerValue] / 10000;
+    if (nil == text)
+    {
+        return;
+    }
     
-    NSString* string     = [NSString stringWithFormat:@"%ld", totalPrice];
+    if([text.assetPropertyName isEqualToString: @"assetUnitPrice"])
+    {
+        NSInteger totalPrice = [text.text integerValue] * [[_cellModel objectForKey: @"assetTotalArea"] integerValue] / 10000;
+        
+        NSString* string     = [NSString stringWithFormat:@"%ld", totalPrice];
+        
+        _assetTotalPriceForUnionOperation.text = string;
+        
+        [_cellModel setObject: string forKey: @"assetTotalPrice"];
+        
+        return;
+    }
     
-    [_cellModel setObject: string forKey: @"assetTotalPrice"];
+    if([text.assetPropertyName isEqualToString: @"assetTotalPrice"])
+    {
+        NSInteger unitPrice = [text.text integerValue] * 10000 / [[_cellModel objectForKey: @"assetTotalArea"] integerValue];
+        
+        NSString* string    = [NSString stringWithFormat:@"%ld", unitPrice];
+        
+        _assetUnitPriceForUnionOperation.text = string;
+        
+        return;
+    }
 }
 
 -(void)labelChanged:(id)sender
@@ -557,6 +581,36 @@
     if ([propertyName isEqualToString: @"deliveryMode"])
     {
         temp = @"交房方式:";
+        return temp;
+    }
+    
+    if ([propertyName isEqualToString: @"reserveRemark"])
+    {
+        temp = @"看房备注:";
+        return temp;
+    }
+    
+    if ([propertyName isEqualToString: @"deliveryRemark"])
+    {
+        temp = @"交房备注:";
+        return temp;
+    }
+    
+    if ([propertyName isEqualToString: @"_contactName_"])
+    {
+        temp = @"称呼:";
+        return temp;
+    }
+    
+    if ([propertyName isEqualToString: @"_contactIdentity_"])
+    {
+        temp = @"身份:";
+        return temp;
+    }
+    
+    if ([propertyName isEqualToString: @"_contactPhone_"])
+    {
+        temp = @"电话:";
         return temp;
     }
     

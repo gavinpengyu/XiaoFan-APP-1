@@ -98,6 +98,8 @@
 
 + (NSString *)initStringByAssetArray: (NSArray*) array;
 
++ (bool)isPhoneNumber:(NSString*)string;
+
 @end
 
 //-------------------------------------------------------------------------------------

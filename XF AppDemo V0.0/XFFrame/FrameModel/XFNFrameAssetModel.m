@@ -138,6 +138,23 @@
     return string;
 }
 
++ (bool)isPhoneNumber:(NSString*)string
+{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    
+    bool bIs = false;
+    
+    //手机号码为11位，座机号码可能为10-12位（含3-4位区号）
+    if ((string.length <=12 )&& (string.length >=10))
+    {
+        bIs = true;
+    }
+    
+    int val;
+    
+    return ([scan scanInt:&val] && [scan isAtEnd] && bIs);
+}
+
 @end
 
 //-------------------------------------------------------------------------------------

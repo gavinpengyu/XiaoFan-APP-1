@@ -39,6 +39,12 @@
 
 - (void)initFooterWithOriginY: (CGFloat) originY andCellIndex: (XFNDetailViewCellIndexEnum)cellIndex;
 
+- (NSString*) getContentNameFromAssetPropertyName: (NSString*) propertyName;
+
+#pragma mark selector
+//-----------------------------------------------------------------------------------
+-(void) valueChanged:(id)sender;
+
 @end
 
 #endif /* XFNAssetEditView_h */
