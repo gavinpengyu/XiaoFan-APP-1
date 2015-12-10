@@ -24,16 +24,19 @@
     temp = [self initTitleWithName: @"标签"
                         andOriginY: (temp.origin.y + temp.size.height + XFNTableViewCellControlSpacing)];
     
-    NSString* labelStringOne = [self.cellModel objectForKey: @"decorationInfo"];
-    NSString* labelStringTwo = [self.cellModel objectForKey: @"ancillaryInfo"];
+    NSString* labelStringdecorationInfo = [self.cellModel objectForKey: @"decorationInfo"];
+    NSString* labelStringancillaryInfo  = [self.cellModel objectForKey: @"ancillaryInfo"];
     
-    NSArray * labelArrayOne  = [XFNFrameAssetModel initArrayByAssetString: labelStringOne];
-    NSArray * labelArrayTwo  = [XFNFrameAssetModel initArrayByAssetString: labelStringTwo];
+    NSArray * labelArraydecorationInfo  = [XFNFrameAssetModel initArrayByAssetString: labelStringdecorationInfo];
+    NSArray * labelArrayancillaryInfo   = [XFNFrameAssetModel initArrayByAssetString: labelStringancillaryInfo];
     
-    NSArray * labelArray     = [labelArrayOne arrayByAddingObjectsFromArray: labelArrayTwo];
+    temp = [self initLabelViewWithArray: labelArraydecorationInfo
+                             andOriginY: (temp.origin.y + temp.size.height)
+                        andPropertyName: @"decorationInfo"];
     
-    temp = [self initLabelViewWithArray: labelArray
-                             andOriginY: (temp.origin.y + temp.size.height)];
+    temp = [self initLabelViewWithArray: labelArrayancillaryInfo
+                             andOriginY: (temp.origin.y + temp.size.height - 10)
+                        andPropertyName: @"ancillaryInfo"];
     
     [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailAuxiliaryInfoCellIndexEnum];
 }

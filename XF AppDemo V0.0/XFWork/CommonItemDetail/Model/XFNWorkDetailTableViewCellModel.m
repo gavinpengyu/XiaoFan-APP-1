@@ -31,7 +31,25 @@
                                                                              [assetModel objectForKey : @"storeyOfAll"]];
 
     NSString *tempLabelString = [assetModel objectForKey : @"basicInfoLabelsOfAsset"];
-    model.labelsArray         = [tempLabelString componentsSeparatedByString: _Macro_XFN_String_Seperator];
+    
+    NSString *tempSeperatorString = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];
+    
+    //没有相应的键值，有可能是一个标签都没有
+    if (nil == tempLabelString)
+    {
+        model.labelsArray = nil;
+    }
+    //有键值，但是找不到分隔符，即只有一个元素
+    else if ([tempLabelString rangeOfString: tempSeperatorString].location == NSNotFound)
+    {
+        NSArray* array = [NSArray arrayWithObject: tempLabelString];
+        model.labelsArray = array;
+    }
+    //有键值，也有分隔符，则根据分隔符创建数组
+    else
+    {
+        model.labelsArray = [tempLabelString componentsSeparatedByString: tempSeperatorString];
+    }
     
     return model;
 }
@@ -59,9 +77,66 @@
     
     NSString *tempPayingString = [assetModel objectForKey : @"typeOfPaying"];
     NSString *tempTaxString    = [assetModel objectForKey : @"taxInfo"];
-    NSString *temp             = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];//标签在服务器中分类存放，标签之间用_Macro_XFN_String_Seperator隔开，此处为拼接付款方式和税费标签
-    NSString *tempString       = [[NSString alloc] initWithFormat : @"%@%@%@", tempPayingString, temp, tempTaxString];
-    model.labelsArray          = [tempString componentsSeparatedByString : _Macro_XFN_String_Seperator];
+    
+    NSArray* tempPayingArray;
+    NSArray* tempTaxArray;
+    
+    NSString *tempSeperatorString = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];
+    
+    //没有相应的键值，有可能是一个标签都没有
+    if (nil == tempPayingString)
+    {
+        tempPayingArray = nil;
+    }
+    //有键值，但是找不到分隔符，即只有一个元素
+    else if ([tempPayingString rangeOfString: tempSeperatorString].location == NSNotFound)
+    {
+        tempPayingArray = [NSArray arrayWithObject: tempPayingString];
+    }
+    //有键值，也有分隔符，则根据分隔符创建数组
+    else
+    {
+        tempPayingArray = [tempPayingString componentsSeparatedByString: tempSeperatorString];
+    }
+    
+    //没有相应的键值，有可能是一个标签都没有
+    if (nil == tempTaxString)
+    {
+        tempTaxArray = nil;
+    }
+    //有键值，但是找不到分隔符，即只有一个元素
+    else if ([tempTaxString rangeOfString: tempSeperatorString].location == NSNotFound)
+    {
+        tempTaxArray = [NSArray arrayWithObject: tempTaxString];
+    }
+    //有键值，也有分隔符，则根据分隔符创建数组
+    else
+    {
+        tempTaxArray = [tempTaxString componentsSeparatedByString: tempSeperatorString];
+    }
+    
+    NSMutableArray* array;
+    if (nil == tempPayingArray)
+    {
+        if (nil == tempTaxArray)
+        {
+            array = nil;
+        }
+        else
+        {
+            array = [NSMutableArray arrayWithArray: tempTaxArray];
+        }
+    }
+    else
+    {
+        array = [NSMutableArray arrayWithArray: tempPayingArray];
+        if (nil != tempTaxArray)
+        {
+            [array addObjectsFromArray: tempTaxArray];
+        }
+    }
+
+    model.labelsArray = array;
     
     return model;
 }
@@ -76,9 +151,66 @@
     
     NSString *tempDecorationString   = [assetModel objectForKey : @"decorationInfo"];
     NSString *tempAncillaryString    = [assetModel objectForKey : @"ancillaryInfo"];
-    NSString *temp             = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];//标签在服务器中分类存放，标签之间用_Macro_XFN_String_Seperator隔开，此处为拼接付款方式和税费标签
-    NSString *tempString       = [[NSString alloc] initWithFormat : @"%@%@%@", tempDecorationString, temp, tempAncillaryString];
-    model.labelsArray          = [tempString componentsSeparatedByString: _Macro_XFN_String_Seperator];
+    
+    NSArray* tempDecorationArray;
+    NSArray* tempAncillaryArray;
+    
+    NSString *tempSeperatorString = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];
+    
+    //没有相应的键值，有可能是一个标签都没有
+    if (nil == tempDecorationString)
+    {
+        tempDecorationArray = nil;
+    }
+    //有键值，但是找不到分隔符，即只有一个元素
+    else if ([tempDecorationString rangeOfString: tempSeperatorString].location == NSNotFound)
+    {
+        tempDecorationArray = [NSArray arrayWithObject: tempDecorationString];
+    }
+    //有键值，也有分隔符，则根据分隔符创建数组
+    else
+    {
+        tempDecorationArray = [tempDecorationString componentsSeparatedByString: tempSeperatorString];
+    }
+    
+    //没有相应的键值，有可能是一个标签都没有
+    if (nil == tempAncillaryString)
+    {
+        tempAncillaryArray = nil;
+    }
+    //有键值，但是找不到分隔符，即只有一个元素
+    else if ([tempAncillaryString rangeOfString: tempSeperatorString].location == NSNotFound)
+    {
+        tempAncillaryArray = [NSArray arrayWithObject: tempAncillaryString];
+    }
+    //有键值，也有分隔符，则根据分隔符创建数组
+    else
+    {
+        tempAncillaryArray = [tempAncillaryString componentsSeparatedByString: tempSeperatorString];
+    }
+    
+    NSMutableArray* array;
+    if (nil == tempDecorationArray)
+    {
+        if (nil == tempDecorationArray)
+        {
+            array = nil;
+        }
+        else
+        {
+            array = [NSMutableArray arrayWithArray: tempDecorationArray];
+        }
+    }
+    else
+    {
+        array = [NSMutableArray arrayWithArray: tempDecorationArray];
+        if (nil != tempAncillaryArray)
+        {
+            [array addObjectsFromArray: tempAncillaryArray];
+        }
+    }
+    
+    model.labelsArray = array;
     
     return model;
 }

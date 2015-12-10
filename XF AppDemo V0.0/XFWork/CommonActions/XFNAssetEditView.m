@@ -147,6 +147,88 @@
 }
 
 //-----------------------------------------------------------------------------------
+- (CGRect)initCustomizeTextFieldWithName: (NSString*) name
+                              andOriginY: (CGFloat) originY
+{
+//    CGRect titleRect = [self initTitleWithName: [self getContentNameFromAssetPropertyName: name]
+//                                    andOriginY: originY];
+    
+    //-----------------------------------------------------------------------------------
+    XFNTextField* valueText= [[XFNTextField alloc] init];
+    valueText.placeholder  = @"自定义标签，二到五个汉字";
+    valueText.textColor    = [UIColor blackColor];
+    valueText.textAlignment= NSTextAlignmentLeft;
+    valueText.font         = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+    valueText.keyboardType = UIKeyboardTypeDefault;
+    
+    valueText.layer.borderWidth = 1;
+    valueText.layer.cornerRadius= 5;
+    
+    CGSize  valueTextSize  = [valueText.text sizeWithAttributes : @{NSFontAttributeName : valueText.font}];
+    valueTextSize.width    = _Macro_AssetLabel_Width * 3;//(_Macro_ScreenWidth - XFNTableViewCellControlSpacing)/2;
+    valueTextSize.height   = _Macro_AssetLabel_Height;//valueTextSize.height + 2;
+    CGFloat valueTextX     =  XFNTableViewCellControlSpacing; //titleRect.origin.x;
+    CGFloat valueTextY     =  originY;//titleRect.origin.y + titleRect.size.height + XFNTableViewCellControlSpacing;
+    CGRect  valueTextRect  = CGRectMake(valueTextX,
+                                        valueTextY,
+                                        valueTextSize.width,
+                                        valueTextSize.height);
+    valueText.frame        = valueTextRect;
+    
+    [self addSubview: valueText];
+    
+    //若该TextField有可能被弹出的软键盘覆盖，则设置delegate；键盘高度为216，为了视觉效果，多留两个space
+    if (valueText.frame.origin.y > (self.frame.size.height - 216.0 - XFNTableViewCellControlSpacing * 2))
+    {
+        valueText.delegate     = self;
+    }
+    else //TextField不会被弹出的软键盘覆盖，则不能设置delegate，否则有可能被弹出到屏幕上方不可见部分
+    {
+    
+    }
+    
+    valueText.assetPropertyName = name;//po 20151207 通过该property传递参数
+    
+    UILabel* tempLabel        = [[UILabel alloc] init];
+    tempLabel.text            = @"添加";
+    tempLabel.textColor       = [UIColor blackColor];
+    tempLabel.textAlignment   = NSTextAlignmentCenter;
+    tempLabel.font            = [UIFont systemFontOfSize: (XFNDetailTableViewCellFontSizeDefault)];
+    
+    tempLabel.layer.borderWidth = 1;
+    tempLabel.layer.cornerRadius= 5;
+    
+    CGSize  tempLabelSize  = [tempLabel.text sizeWithAttributes : @{NSFontAttributeName : tempLabel.font}];
+    tempLabelSize.width    = _Macro_AssetLabel_Width;
+    tempLabelSize.height   = valueTextSize.height;
+    CGFloat tempLabelX     = _Macro_ScreenWidth - XFNTableViewCellControlSpacing - tempLabelSize.width;
+    CGFloat tempLabelY     = valueText.frame.origin.y + valueText.frame.size.height - tempLabelSize.height;
+    CGRect  tempLabelRect  = CGRectMake(tempLabelX,
+                                        tempLabelY,
+                                        tempLabelSize.width,
+                                        tempLabelSize.height);
+    tempLabel.frame        = tempLabelRect;
+    
+    [self addSubview: tempLabel];
+
+    //po 20151208 label负责显示，button覆盖在label上负责响应，button完全透明
+    XFNButton* button       = [XFNButton buttonWithType: UIButtonTypeCustom];
+    button.frame            = tempLabel.frame;
+    button.customizedLabel  = tempLabel;
+    button.assetPropertyName= valueText.assetPropertyName; //po 20151207 通过该property传递参数
+    button.parameter        = valueText;//po 20151210,在action里面要读取Text里面的文字，并清空输入框
+    
+    [self addSubview: button];
+    
+    [button addTarget : self action : @selector (toAddCustomizedLabel:) forControlEvents : UIControlEventTouchDown];
+    
+    return CGRectMake(0,
+                      originY,
+                      _Macro_ScreenWidth,
+                      valueText.frame.origin.y + valueText.frame.size.height + XFNTableViewCellControlSpacing - originY);
+}
+
+//-----------------------------------------------------------------------------------
 - (CGRect)initContentPickerButtonWithName: (NSString*) name
                                  andValue: (NSString*) value
                                andOriginY: (CGFloat) originY
@@ -250,31 +332,35 @@
     [submit addTarget : self action : @selector (submitAndBack:) forControlEvents : UIControlEventTouchDown];
 }
 
-- (CGRect)initLabelViewWithArray: (NSArray*) array andOriginY: (CGFloat) originY
+- (CGRect)initLabelViewWithArray: (NSArray*) array andOriginY: (CGFloat) originY andPropertyName: (NSString*) name
 {
     NSArray *fullArray;// = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];//读出所有的、可用的房源标签，这个标签列表在服务器侧维护
     
-    if ([[XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray] containsObject: [array firstObject]])
+    //po 2015110: 当一个标签都没有的时候，无法通过标签获取其类型，此时判断propertyName
+    if ([[XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray] containsObject: [array firstObject]]
+        || [name isEqualToString: @"basicInfoLabelsOfAsset"])
     {
         fullArray = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];
     }
     else if ([[XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray] containsObject: [array firstObject]]
-             || [[XFNWorkTableViewController getlabelsForTaxInfoGlobalArray] containsObject: [array firstObject]])
+             || [name isEqualToString: @"typeOfPaying"])
     {
-        //付款信息和税费信息在交易cell中一并处理
-        NSArray* temp = [[XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray]
-                          arrayByAddingObjectsFromArray:
-                         [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray]];
-        fullArray = temp;
+        fullArray = [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray];
+    }
+    else if ([[XFNWorkTableViewController getlabelsForTaxInfoGlobalArray] containsObject: [array firstObject]]
+             || [name isEqualToString: @"taxInfo"])
+    {
+        fullArray = [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray];
     }
     else if ([[XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray] containsObject: [array firstObject]]
-             || [[XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray] containsObject: [array firstObject]])
+             || [name isEqualToString: @"decorationInfo"])
     {
-        //装修信息和配套信息在装修配套cell中一并处理
-        NSArray* temp = [[XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray]
-                         arrayByAddingObjectsFromArray:
-                         [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray]];
-        fullArray = temp;
+        fullArray = [XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray];
+    }
+    else if ([[XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray] containsObject: [array firstObject]]
+             || [name isEqualToString: @"ancillaryInfo"])
+    {
+        fullArray = [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray];
     }
     else
     {
@@ -310,6 +396,7 @@
         XFNButton* button       = [XFNButton buttonWithType: UIButtonTypeCustom];
         button.frame            = tempLabel.frame;
         button.customizedLabel  = tempLabel;
+        button.assetPropertyName= name;
         
         [self addSubview: button];
         [button addTarget : self action : @selector (labelChanged:) forControlEvents : UIControlEventTouchDown];
@@ -327,7 +414,7 @@
         }
 
         //每行放5个标签，超过该值则换行
-        if ((0 ==  iFullArrayIndex % 5) && (0 != iFullArrayIndex))
+        if ((0 == (iFullArrayIndex + 1) % 5) && (0 != iFullArrayIndex))
         {
             tempLabelY = tempLabelY + _Macro_AssetLabel_Height + _Macro_AssetLabel_Space;
             tempLabelX = originX;
@@ -341,7 +428,7 @@
     
     //若for循环中刚好是5个标签，则labelY的值需要修正
     //if (0 == (iFullArrayIndex - 1) % 5)
-    if (0 == (iFullArrayIndex + 1) % 5)
+    if (0 == (iFullArrayIndex ) % 5)
     {
         tempLabelY = tempLabelY - (_Macro_AssetLabel_Height + _Macro_AssetLabel_Space);
     }
@@ -364,6 +451,38 @@
 - (void)setModel: (XFNFrameAssetModel*) model
 {
     _cellModel = model;
+}
+
+#pragma mark UITextFieldDelegate 对于可能被软键盘遮挡的TextField，自动上移整个view
+//-----------------------------------------------------------------------------------
+//开始编辑输入框的时候，软键盘出现，执行此事件
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    CGRect frame = textField.frame;
+    int offset = frame.origin.y + 32 - (self.frame.size.height - 216.0 - XFNTableViewCellControlSpacing * 2);//键盘高度216，多留两个space保证美观
+    
+    NSTimeInterval animationDuration = 0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    
+    //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
+    if(offset > 0)
+        self.frame = CGRectMake(0.0f, -offset, self.frame.size.width, self.frame.size.height);
+    
+    [UIView commitAnimations];
+}
+
+//当用户按下return键或者按回车键，keyboard消失
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//输入框编辑完成以后，将视图恢复到原始状态
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.frame =CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
 
 #pragma mark selector
@@ -433,7 +552,7 @@
         //选中
         button.customizedLabel.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: button.customizedLabel.text];
         button.customizedLabel.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: button.customizedLabel.text].CGColor;
-        [self insertLabel: button.customizedLabel.text];
+        [self insertLabel: button.customizedLabel.text andPropertyName: button.assetPropertyName];
         
     }
     //已选中状态
@@ -442,12 +561,50 @@
         //取消选中
         button.customizedLabel.textColor         = [UIColor grayColor];
         button.customizedLabel.layer.borderColor = [UIColor grayColor].CGColor;
-        [self removeLabel: button.customizedLabel.text];
+        [self removeLabel: button.customizedLabel.text andPropertyName: button.assetPropertyName];
     }
     else
     {
         DLog(@"ERROR:出现这个错误，意味着标签在修改颜色的时候，有部分代码没有同步，导致无法判断选中状态，%@", button.customizedLabel.text);
     }
+}
+
+-(void) toAddCustomizedLabel:(id)sender
+{
+    XFNButton* button = (XFNButton*) sender;
+    XFNTextField* text= (XFNTextField*)button.parameter;
+    
+    //这是一条房源标签
+    if ([button.assetPropertyName isEqualToString: @"basicInfoLabelsOfAsset"])
+    {
+    
+    }//这是一条配套标签
+    else if (([button.assetPropertyName isEqualToString: @"decorationInfo"])
+             || [button.assetPropertyName isEqualToString: @"ancillaryInfo"])
+    {
+    
+    }//这是一条联系人标签
+    else if ([button.assetPropertyName isEqualToString: _Macro_CUSTOMIZED_LABEL_string])
+    {
+    
+    }
+    else
+    {
+        DLog(@"WARNING: 添加自定义标签，无法解析这个标签的类型，sender.txt=%@", text.text);
+    }
+    
+    //将自定义标签写入数组
+    
+    //在view中，自定义标签行的位置的下方插入“自定义标签”
+    
+    //将自定义标签行向下移动
+    DLog(@"toAddCustomizedLabel");
+    DLog(@"sender.txt=%@", text.text);
+    
+    //添加标签后，恢复text为空白状态
+    text.text=nil;
+    //若没有在键盘上点击“回车”，则在此时手动关闭键盘
+    [text resignFirstResponder];
 }
 
 -(void) submitAndBack:(id)sender
@@ -465,12 +622,28 @@
 }
 
 #pragma mark other assistant method
+//po 20151210:如果需要插入的是自定义标签，则必须对name赋值；对于系统已定义的标签，函数自动获取属性名
 //-----------------------------------------------------------------------------------
--(void)insertLabel: (NSString*) label
+-(void)insertLabel: (NSString*) label andPropertyName: (NSString*) name
 {
-    NSString* assetModelPropertyName = [XFNWorkTableViewCell getThePropertyNameOfLabel: label];
+    NSString* assetModelPropertyName;
+    
+    if (nil == name)
+    {
+        assetModelPropertyName = [XFNWorkTableViewCell getThePropertyNameOfLabel: label];
+    }
+    else
+    {
+        assetModelPropertyName = name;
+    }
     
     NSString* labelString            = [self.cellModel objectForKey: assetModelPropertyName];
+    
+    //如果当前房源一个标签都没有，那么获取到的值为空，所以把待添加的label直接赋值
+    if (nil == labelString)
+    {
+        labelString = label;
+    }
     
     NSMutableArray*  labelArray      = [XFNFrameAssetModel initArrayByAssetString: labelString];
     
@@ -485,10 +658,19 @@
     
     return;
 }
-
--(void)removeLabel: (NSString*) label
+//po 20151210:如果需要插入的是自定义标签，则必须对name赋值；对于系统已定义的标签，函数自动获取属性名
+-(void)removeLabel: (NSString*) label andPropertyName: (NSString*) name
 {
-    NSString* assetModelPropertyName = [XFNWorkTableViewCell getThePropertyNameOfLabel: label];
+    NSString* assetModelPropertyName;
+    
+    if (nil == name)
+    {
+        assetModelPropertyName = [XFNWorkTableViewCell getThePropertyNameOfLabel: label];
+    }
+    else
+    {
+        assetModelPropertyName = name;
+    }
     
     NSString* labelString            = [self.cellModel objectForKey: assetModelPropertyName];
     
@@ -499,8 +681,17 @@
         [labelArray removeObject: label];
     }
     
-    NSString* tempString = [XFNFrameAssetModel initStringByAssetArray: labelArray];
-    
+    NSString* tempString;
+    //如果要删除的是最后一个标签，则删除后array为空
+    if (0 == labelArray.count)
+    {
+        tempString = nil;
+    }
+    else
+    {
+        tempString = [XFNFrameAssetModel initStringByAssetArray: labelArray];
+    }
+
     [self.cellModel setObject: tempString forKey: assetModelPropertyName];
     
     return;
@@ -554,7 +745,7 @@
         return temp;
     }
     
-    if ([propertyName isEqualToString: @"assetUnitPrice"])
+    if ([propertyName isEqualToString: _Macro_ASSET_UNIT_PRICE_string])
     {
         temp = @"单价（元/平米）:";
         return temp;
@@ -596,28 +787,32 @@
         return temp;
     }
     
-    if ([propertyName isEqualToString: @"_contactName_"])
+    if ([propertyName isEqualToString: _Macro_CONTACT_NAME_string])
     {
         temp = @"称呼:";
         return temp;
     }
     
-    if ([propertyName isEqualToString: @"_contactIdentity_"])
+    if ([propertyName isEqualToString: _Macro_CONTACT_IDENTITY_string])
     {
         temp = @"身份:";
         return temp;
     }
     
-    if ([propertyName isEqualToString: @"_contactPhone_"])
+    if ([propertyName isEqualToString: _Macro_CONTACT_PHONE_string])
     {
         temp = @"电话:";
+        return temp;
+    }
+    
+    if ([propertyName isEqualToString: _Macro_CUSTOMIZED_LABEL_string])
+    {
+        temp = @"自定义标签";
         return temp;
     }
     
     DLog(@"ERROR: 找不到Asset属性对应字符串，property name＝%@", propertyName);
     return nil;
 }
-
-
 
 @end

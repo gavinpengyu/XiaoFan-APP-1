@@ -30,7 +30,7 @@
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
     
-    temp = [self initContentTextFieldWithName: @"assetUnitPrice"
+    temp = [self initContentTextFieldWithName: _Macro_ASSET_UNIT_PRICE_string
                             andValue: tempUnitPrice
                           andOriginY: (temp.origin.y + temp.size.height)
                      andKeyboardType: UIKeyboardTypeNumbersAndPunctuation];
@@ -65,16 +65,20 @@
     temp = [self initTitleWithName: @"标签"
                         andOriginY: (temp.origin.y + temp.size.height + XFNTableViewCellControlSpacing)];
     
-    NSString* labelStringOne = [self.cellModel objectForKey: @"typeOfPaying"];
-    NSString* labelStringTwo = [self.cellModel objectForKey: @"taxInfo"];
+    NSString* labelStringtypeOfPaying = [self.cellModel objectForKey: @"typeOfPaying"];
+    NSString* labelStringtaxInfo      = [self.cellModel objectForKey: @"taxInfo"];
     
-    NSArray * labelArrayOne  = [XFNFrameAssetModel initArrayByAssetString: labelStringOne];
-    NSArray * labelArrayTwo  = [XFNFrameAssetModel initArrayByAssetString: labelStringTwo];
+    NSArray * labelArraytypeOfPaying  = [XFNFrameAssetModel initArrayByAssetString: labelStringtypeOfPaying];
+    NSArray * labelArraytaxInfo       = [XFNFrameAssetModel initArrayByAssetString: labelStringtaxInfo];
+
+    temp = [self initLabelViewWithArray: labelArraytypeOfPaying
+                             andOriginY: (temp.origin.y + temp.size.height)
+                        andPropertyName: @"typeOfPaying"];
     
-    NSArray * labelArray     = [labelArrayOne arrayByAddingObjectsFromArray: labelArrayTwo];
-    
-    temp = [self initLabelViewWithArray: labelArray
-                             andOriginY: (temp.origin.y + temp.size.height)];
+    temp = [self initLabelViewWithArray: labelArraytaxInfo
+                             andOriginY: (temp.origin.y + temp.size.height - XFNTableViewCellControlSpacing)
+                        andPropertyName: @"taxInfo"];
+
     
     [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailTradeInfoCellIndexEnum];
 }

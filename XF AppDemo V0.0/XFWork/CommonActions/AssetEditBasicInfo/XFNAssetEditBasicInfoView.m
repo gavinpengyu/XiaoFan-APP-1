@@ -59,7 +59,11 @@
     NSArray * labelArray  = [XFNFrameAssetModel initArrayByAssetString: labelString];
     
     temp = [self initLabelViewWithArray: labelArray
-                             andOriginY: (temp.origin.y + temp.size.height)];
+                             andOriginY: (temp.origin.y + temp.size.height)
+                        andPropertyName: @"basicInfoLabelsOfAsset"];
+    
+    temp = [self initCustomizeTextFieldWithName: _Macro_CUSTOMIZED_LABEL_string
+                                     andOriginY: (temp.origin.y + temp.size.height)];
     
     [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailBasicInfoCellIndexEnum];
 }

@@ -120,7 +120,12 @@
 {
     if(nil == array)
     {
-        DLog(@"ERROR: input nil");
+        DLog(@"ERROR: 输入的数组指针为空");
+        return nil;
+    }
+    if(0 == array.count)
+    {
+        DLog(@"ERROR: 输入的数组一个元素都没有");
         return nil;
     }
     

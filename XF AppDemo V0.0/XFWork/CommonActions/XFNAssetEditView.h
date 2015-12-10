@@ -13,8 +13,14 @@
 #import "XFNFrameAssetModel.h"
 #import "XFNAssetEditViewController.h"
 
+#define _Macro_CONTACT_NAME_string     (@"_contactName_")
+#define _Macro_CONTACT_IDENTITY_string (@"_contactIdentity_")
+#define _Macro_CONTACT_PHONE_string    (@"_contactPhone_")
+#define _Macro_CUSTOMIZED_LABEL_string (@"_customizedLabel_")
+#define _Macro_ASSET_UNIT_PRICE_string (@"assetUnitPrice")
+
 //-----------------------------------------------------------------------------------------
-@interface XFNAssetEditView : UIView
+@interface XFNAssetEditView : UIView <UITextFieldDelegate>
 {
     NSMutableDictionary* _assetPropertyAndTagDict;
 }
@@ -29,13 +35,21 @@
 
 - (CGRect)initTitleWithName: (NSString*) titleName andOriginY: (CGFloat) originY;
 
-- (CGRect)initContentTextFieldWithName: (NSString*) name andValue: (NSString*) value andOriginY: (CGFloat) originY andKeyboardType: (UIKeyboardType) keyboardType;
+- (CGRect)initContentTextFieldWithName: (NSString*) name
+                              andValue: (NSString*) value
+                            andOriginY: (CGFloat) originY
+                       andKeyboardType: (UIKeyboardType) keyboardType;
 
 - (CGRect)initContentPickerButtonWithName: (NSString*) name
                                  andValue: (NSString*) value
                                andOriginY: (CGFloat) originY;
 
-- (CGRect)initLabelViewWithArray: (NSArray*) array andOriginY: (CGFloat) originY;
+- (CGRect)initCustomizeTextFieldWithName: (NSString*) name
+                              andOriginY: (CGFloat) originY;
+
+- (CGRect)initLabelViewWithArray: (NSArray*) array
+                      andOriginY: (CGFloat) originY
+                 andPropertyName: (NSString*) name;
 
 - (void)initFooterWithOriginY: (CGFloat) originY andCellIndex: (XFNDetailViewCellIndexEnum)cellIndex;
 

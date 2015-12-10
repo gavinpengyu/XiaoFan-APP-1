@@ -38,6 +38,7 @@
     _contactTableVC.delegate = self.delegate;
     
     temp = _contactTableVC.view.frame;
+    DLog(@"x=%f, y=%f, width=%f, height=%f", temp.origin.x, temp.origin.y, temp.size.width, temp.size.height);
     
     [self addSubview: _contactTableVC.view];
     
@@ -89,7 +90,8 @@
     }
     
     temp = [contactCellView initLabelViewWithArray: _contactLabel
-                                        andOriginY: (temp.origin.y + temp.size.height)];
+                                        andOriginY: (temp.origin.y + temp.size.height)
+                                   andPropertyName: _Macro_CUSTOMIZED_LABEL_string];
     
     contactCellView.delegate = self.delegate;
     

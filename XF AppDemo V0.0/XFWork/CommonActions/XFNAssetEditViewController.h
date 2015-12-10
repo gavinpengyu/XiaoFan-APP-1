@@ -61,7 +61,7 @@
 @end
 
 //-----------------------------------------------------------------------------------------
-@interface XFNAssetEditViewController : UIViewController <XFNSendAssetModelToDetailViewDelegate, XFNEditViewToControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource >
+@interface XFNAssetEditViewController : UIViewController <XFNSendAssetModelToDetailViewDelegate, XFNEditViewToControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 {
     XFNFrameAssetModel *_detailModel;
 }
