@@ -22,8 +22,10 @@
 //-----------------------------------------------------------------------------------------
 @implementation XFNAssetEditView
 {
-    XFNTextField* _assetTotalPriceForUnionOperation;
-    XFNTextField* _assetUnitPriceForUnionOperation;
+    XFNTextField*   _assetTotalPriceForUnionOperation;
+    XFNTextField*   _assetUnitPriceForUnionOperation;
+    
+    NSMutableArray* _assetLabelViewButtonArray;//保存label view中的所有button，当有自定义标签更改的时候，将数组中所有button removeFromSuperView，然后重新绘制label view
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -180,7 +182,11 @@
     //若该TextField有可能被弹出的软键盘覆盖，则设置delegate；键盘高度为216，为了视觉效果，多留两个space
     if (valueText.frame.origin.y > (self.frame.size.height - 216.0 - XFNTableViewCellControlSpacing * 2))
     {
-        valueText.delegate     = self;
+        //po 20151211 临时处理方式，在contact的tableview cell中不知道怎么设置自动上移。简单的判断如果是在cell中（cell的初始height为0），不上拉
+        if (0 != self.frame.size.height)
+        {
+            valueText.delegate     = self;
+        }
     }
     else //TextField不会被弹出的软键盘覆盖，则不能设置delegate，否则有可能被弹出到屏幕上方不可见部分
     {
@@ -201,7 +207,7 @@
     CGSize  tempLabelSize  = [tempLabel.text sizeWithAttributes : @{NSFontAttributeName : tempLabel.font}];
     tempLabelSize.width    = _Macro_AssetLabel_Width;
     tempLabelSize.height   = valueTextSize.height;
-    CGFloat tempLabelX     = _Macro_ScreenWidth - XFNTableViewCellControlSpacing - tempLabelSize.width;
+    CGFloat tempLabelX     = valueText.frame.origin.x + valueText.frame.size.width + XFNTableViewCellControlSpacing;//_Macro_ScreenWidth - XFNTableViewCellControlSpacing - tempLabelSize.width;
     CGFloat tempLabelY     = valueText.frame.origin.y + valueText.frame.size.height - tempLabelSize.height;
     CGRect  tempLabelRect  = CGRectMake(tempLabelX,
                                         tempLabelY,
@@ -334,38 +340,63 @@
 
 - (CGRect)initLabelViewWithArray: (NSArray*) array andOriginY: (CGFloat) originY andPropertyName: (NSString*) name
 {
-    NSArray *fullArray;// = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];//读出所有的、可用的房源标签，这个标签列表在服务器侧维护
+    NSMutableArray *fullArray = [NSMutableArray array];// = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];//读出所有的、可用的房源标签，这个标签列表在服务器侧维护
     
     //po 2015110: 当一个标签都没有的时候，无法通过标签获取其类型，此时判断propertyName
     if ([[XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray] containsObject: [array firstObject]]
         || [name isEqualToString: @"basicInfoLabelsOfAsset"])
     {
-        fullArray = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];
+        //fullArray = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];
+        [self addUniqueObjectToArray: fullArray byArray: [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray]];
+        [self addUniqueObjectToArray: fullArray byArray: array];
     }
     else if ([[XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray] containsObject: [array firstObject]]
              || [name isEqualToString: @"typeOfPaying"])
     {
-        fullArray = [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray];
+        //fullArray = [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray];
+        [self addUniqueObjectToArray: fullArray byArray: [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray]];
+        [self addUniqueObjectToArray: fullArray byArray: array];
     }
     else if ([[XFNWorkTableViewController getlabelsForTaxInfoGlobalArray] containsObject: [array firstObject]]
              || [name isEqualToString: @"taxInfo"])
     {
-        fullArray = [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray];
+        //fullArray = [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray];
+        [self addUniqueObjectToArray: fullArray byArray: [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray]];
+        [self addUniqueObjectToArray: fullArray byArray: array];
     }
     else if ([[XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray] containsObject: [array firstObject]]
              || [name isEqualToString: @"decorationInfo"])
     {
-        fullArray = [XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray];
+        //fullArray = [XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray];
+        [self addUniqueObjectToArray: fullArray byArray: [XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray]];
+        [self addUniqueObjectToArray: fullArray byArray: array];
     }
     else if ([[XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray] containsObject: [array firstObject]]
              || [name isEqualToString: @"ancillaryInfo"])
     {
-        fullArray = [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray];
+        //fullArray = [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray];
+        [self addUniqueObjectToArray: fullArray byArray: [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray]];
+        [self addUniqueObjectToArray: fullArray byArray: array];
+    }
+    else if ([name isEqualToString: _Macro_CUSTOMIZED_LABEL_string])
+    {
+        //fullArray = array;
+        [self addUniqueObjectToArray: fullArray byArray: array];
     }
     else
     {
         DLog(@"Warning: initLabelViewWithArray,输入数组元素 %@ 不在已设定标签组范围内，这是因为遍历数组类型的时候不全面", [array firstObject]);
-        fullArray = array;
+        //fullArray = array;
+        [self addUniqueObjectToArray: fullArray byArray: array];
+    }
+    
+    if (nil == _assetLabelViewButtonArray)
+    {
+        _assetLabelViewButtonArray = [NSMutableArray array];
+    }
+    else
+    {
+        [_assetLabelViewButtonArray removeAllObjects];
     }
     
     CGFloat originX = XFNTableViewCellControlSpacing;
@@ -401,6 +432,8 @@
         [self addSubview: button];
         [button addTarget : self action : @selector (labelChanged:) forControlEvents : UIControlEventTouchDown];
         
+        [_assetLabelViewButtonArray addObject: button];
+        
         //如果该标签已被选中
         if ([array containsObject: fullArray[iFullArrayIndex]])
         {
@@ -435,10 +468,7 @@
     return CGRectMake(0, originY, _Macro_ScreenWidth, (tempLabelY + _Macro_AssetLabel_Height + _Macro_AssetLabel_Space - originY));
 }
 
-//- (void) reloadButton: (XFNButton*) button TextByNSString: (NSString*) textString
-//{
-//    button
-//}
+
 
 //在子类中会重写该方法，不能删除 po 20151207
 - (void)layoutViews
@@ -574,15 +604,34 @@
     XFNButton* button = (XFNButton*) sender;
     XFNTextField* text= (XFNTextField*)button.parameter;
     
+    //如果输入框为空，则忽略此次“添加”操作
+    //po:20151211 如果输入一连串“空格”，则既不是nil又不是长度为0，会将一段“空格”添加到备注中，这是一个bug，需要解决
+    if((nil == text.text) || (0 == text.text.length))
+    {
+        DLog(@"WARNING: 输入框内容为空，本次添加无效");
+        return;
+    }
+    
     //这是一条房源标签
     if ([button.assetPropertyName isEqualToString: @"basicInfoLabelsOfAsset"])
     {
     
     }//这是一条配套标签
-    else if (([button.assetPropertyName isEqualToString: @"decorationInfo"])
-             || [button.assetPropertyName isEqualToString: @"ancillaryInfo"])
+    else if ([button.assetPropertyName isEqualToString: @"decorationInfo"])
     {
     
+    }
+    else if ([button.assetPropertyName isEqualToString: @"ancillaryInfo"])
+    {
+        
+    }
+    else if ([button.assetPropertyName isEqualToString: @"typeOfPaying"])
+    {
+        
+    }
+    else if ([button.assetPropertyName isEqualToString: @"taxInfo"])
+    {
+        
     }//这是一条联系人标签
     else if ([button.assetPropertyName isEqualToString: _Macro_CUSTOMIZED_LABEL_string])
     {
@@ -590,7 +639,36 @@
     }
     else
     {
-        DLog(@"WARNING: 添加自定义标签，无法解析这个标签的类型，sender.txt=%@", text.text);
+        DLog(@"WARNING: 添加自定义标签，无法解析这个标签的类型，类型为%@，sender.txt=%@", button.assetPropertyName, text.text);
+    }
+    
+    //将自定义标签写入数组
+    NSString* labelString = [NSString stringWithFormat:@"%@", text.text];
+    [self insertLabel: labelString andPropertyName: button.assetPropertyName];
+    
+    if (nil != _assetLabelViewButtonArray)
+    {
+        NSString* labelString = [self.cellModel objectForKey: button.assetPropertyName];
+        NSArray * labelArray  = [XFNFrameAssetModel initArrayByAssetString: labelString];
+        
+        XFNButton* tempButton = [_assetLabelViewButtonArray firstObject];
+        CGRect     tempRect   = tempButton.frame;
+        
+        //移除原来的label view
+        for (int iIndex=0; iIndex < _assetLabelViewButtonArray.count; iIndex++)
+        {
+            XFNButton* temp = _assetLabelViewButtonArray[iIndex];
+            [temp.customizedLabel removeFromSuperview];
+            [temp removeFromSuperview];
+        }
+        //重新绘制label view
+        __unused CGRect temp  = [self initLabelViewWithArray: labelArray
+                                                  andOriginY: (tempRect.origin.y - XFNTableViewCellControlSpacing)
+                                             andPropertyName: button.assetPropertyName];
+    }
+    else //目前还一个标签都没有，应该用什么方式？20151211
+    {
+        DLog(@"WARNING: 当前视图中一个标签（含可选）都没有");
     }
     
     //将自定义标签写入数组
@@ -599,7 +677,7 @@
     
     //将自定义标签行向下移动
     DLog(@"toAddCustomizedLabel");
-    DLog(@"sender.txt=%@", text.text);
+    DLog(@"sender.txt=%@，类型为%@", text.text, button.assetPropertyName);
     
     //添加标签后，恢复text为空白状态
     text.text=nil;
@@ -611,14 +689,14 @@
 {
     XFNButton* submit = (XFNButton*) sender;
     
-    [self.delegate toBackAndSubmitObject : _cellModel withCellIndex: submit.cellIndex];
+    [self.editDelegate toBackAndSubmitObject : _cellModel withCellIndex: submit.cellIndex];
 }
 
 -(void) activatePickerViewWithButton:(id)sender
 {
     XFNButton* button = (XFNButton*) sender;
     
-    [self.delegate toActivatePickViewWithXFNButton : button];
+    [self.editDelegate toActivatePickViewWithXFNButton : button];
 }
 
 #pragma mark other assistant method
@@ -813,6 +891,31 @@
     
     DLog(@"ERROR: 找不到Asset属性对应字符串，property name＝%@", propertyName);
     return nil;
+}
+
+- (void) addUniqueObjectToArray: (NSMutableArray*) targetArray byArray: (NSArray*) souceArray
+{
+    if (nil == souceArray || 0 == souceArray.count)
+    {
+        DLog(@"ERROR:添加数组元素失败，输入数组为空");
+        return;
+    }
+    
+    if (nil == targetArray)
+    {
+        DLog(@"ERROR:严重错误，目标数组为空");
+        return;
+    }
+    
+    for (int iIndex = 0; iIndex < souceArray.count; iIndex++)
+    {
+        if(![targetArray containsObject: souceArray[iIndex]])
+        {
+            [targetArray addObject: souceArray[iIndex]];
+        }
+    }
+    
+    return;
 }
 
 @end

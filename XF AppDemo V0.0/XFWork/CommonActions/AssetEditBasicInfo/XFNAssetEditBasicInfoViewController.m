@@ -22,7 +22,7 @@
     
     XFNAssetEditBasicInfoView * view = [[XFNAssetEditBasicInfoView alloc] initWithFrame: CGRectMake(0, 0, _Macro_ScreenWidth, _Macro_ScreenHeight)];
     
-    view.delegate = self;
+    view.editDelegate = self;
     
     [view setModel: _detailModel];
     

@@ -34,9 +34,15 @@
                              andOriginY: (temp.origin.y + temp.size.height)
                         andPropertyName: @"decorationInfo"];
     
+    temp = [self initCustomizeTextFieldWithName: @"decorationInfo"
+                                     andOriginY: (temp.origin.y + temp.size.height)];
+    
     temp = [self initLabelViewWithArray: labelArrayancillaryInfo
                              andOriginY: (temp.origin.y + temp.size.height - 10)
                         andPropertyName: @"ancillaryInfo"];
+    
+    temp = [self initCustomizeTextFieldWithName: @"ancillaryInfo"
+                                     andOriginY: (temp.origin.y + temp.size.height)];
     
     [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailAuxiliaryInfoCellIndexEnum];
 }

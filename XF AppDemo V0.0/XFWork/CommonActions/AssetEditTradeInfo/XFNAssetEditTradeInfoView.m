@@ -75,10 +75,15 @@
                              andOriginY: (temp.origin.y + temp.size.height)
                         andPropertyName: @"typeOfPaying"];
     
+    temp = [self initCustomizeTextFieldWithName: @"typeOfPaying"
+                                     andOriginY: (temp.origin.y + temp.size.height)];
+    
     temp = [self initLabelViewWithArray: labelArraytaxInfo
                              andOriginY: (temp.origin.y + temp.size.height - XFNTableViewCellControlSpacing)
                         andPropertyName: @"taxInfo"];
 
+    temp = [self initCustomizeTextFieldWithName: @"taxInfo"
+                                     andOriginY: (temp.origin.y + temp.size.height)];
     
     [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailTradeInfoCellIndexEnum];
 }

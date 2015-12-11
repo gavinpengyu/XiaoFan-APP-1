@@ -20,12 +20,19 @@
 #define _Macro_ASSET_UNIT_PRICE_string (@"assetUnitPrice")
 
 //-----------------------------------------------------------------------------------------
+//@interface XFNAssetEditView : UIView <UITextFieldDelegate>
+//{
+//    NSMutableDictionary* _assetPropertyAndTagDict;
+//}
+//@property (nonatomic, copy) XFNFrameAssetModel *cellModel;
+//@property (nonatomic,strong) id <XFNEditViewToControllerDelegate> delegate;
+
 @interface XFNAssetEditView : UIView <UITextFieldDelegate>
 {
     NSMutableDictionary* _assetPropertyAndTagDict;
 }
 @property (nonatomic, copy) XFNFrameAssetModel *cellModel;
-@property (nonatomic,strong) id <XFNEditViewToControllerDelegate> delegate;
+@property (nonatomic,strong) id <XFNEditViewToControllerDelegate> editDelegate;
 
 - (void)setCellModel:(XFNFrameAssetModel *)cellModel;
 

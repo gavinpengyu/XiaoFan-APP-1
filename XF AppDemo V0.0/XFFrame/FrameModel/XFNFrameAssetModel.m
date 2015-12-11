@@ -134,8 +134,6 @@
     
     for(int iIndex=1; iIndex < array.count; iIndex++)
     {
-        
-        
         NSString *temp = [[NSString alloc] initWithFormat : @"%@%@", seperator, array[iIndex]];
         string = [string stringByAppendingString: temp];
     }

@@ -35,7 +35,7 @@
                                             _Macro_ScreenWidth - XFNTableViewCellControlSpacing * 2,
                                             _Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight - (temp.origin.y + temp.size.height));
     
-    _contactTableVC.delegate = self.delegate;
+    _contactTableVC.delegate = self.editDelegate;
     
     temp = _contactTableVC.view.frame;
     DLog(@"x=%f, y=%f, width=%f, height=%f", temp.origin.x, temp.origin.y, temp.size.width, temp.size.height);
@@ -93,7 +93,10 @@
                                         andOriginY: (temp.origin.y + temp.size.height)
                                    andPropertyName: _Macro_CUSTOMIZED_LABEL_string];
     
-    contactCellView.delegate = self.delegate;
+    temp = [contactCellView initCustomizeTextFieldWithName: _Macro_CUSTOMIZED_LABEL_string
+                                     andOriginY: (temp.origin.y + temp.size.height)];
+    
+    contactCellView.editDelegate = self.delegate;
     
     [self addSubview: contactCellView];
     

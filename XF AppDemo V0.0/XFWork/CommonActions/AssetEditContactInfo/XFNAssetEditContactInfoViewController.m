@@ -35,7 +35,7 @@
      
      赋值路径为XFNAssetEditContactInfoView -> XFNAssetContactTableViewController -> XFNAssetContactTableViewCell -> XFNAssetEditView
      */
-    view.delegate = self;
+    view.editDelegate = self;
     
     [view setModel: _detailModel];
     
@@ -56,7 +56,7 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     

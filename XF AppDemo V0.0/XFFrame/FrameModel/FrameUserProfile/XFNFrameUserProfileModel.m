@@ -13,7 +13,7 @@
 
 @implementation XFNFrameUserProfileModel
 {
-    NSString* useridstring;
+    NSString* _useridstring;
     NSString* userpasswordstring;
     
     NSString* usernamestring;
