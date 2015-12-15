@@ -14,8 +14,16 @@
 
 @protocol XFNSendAssetModelToDetailViewDelegate;
 
+//Protocol Cell - > Controller, 这里是receiver
 //-----------------------------------------------------------------------------------------
-@interface XFNWorkTableViewController : XFNFrameTableViewController
+@protocol XFNToPushCommentViewDelegate
+
+- (void)toPushViewForCommentWithCellIndex: (NSInteger) index;
+
+@end
+
+//-----------------------------------------------------------------------------------------
+@interface XFNWorkTableViewController : XFNFrameTableViewController <XFNToPushCommentViewDelegate>
 {
     NSMutableArray *_detailedAssetArray;
 }

@@ -13,6 +13,8 @@
 
 #define _Macro_XFNWorkTableViewFooter_Height 42
 
+@protocol XFNPushEditViewDelegate;
+
 @interface XFNWorkDetailTableViewFooter : UIView
 //-----------------------------------------------------------------------------------------
 {
@@ -22,6 +24,8 @@
 }
 
 @property (nonatomic, assign) BOOL bIsFollowed;
+
+@property (nonatomic,strong) id <XFNPushEditViewDelegate> delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 //-----------------------------------------------------------------------------------------

@@ -192,13 +192,13 @@
     NSMutableArray* array;
     if (nil == tempDecorationArray)
     {
-        if (nil == tempDecorationArray)
+        if (nil == tempAncillaryArray)
         {
             array = nil;
         }
         else
         {
-            array = [NSMutableArray arrayWithArray: tempDecorationArray];
+            array = [NSMutableArray arrayWithArray: tempAncillaryArray];
         }
     }
     else

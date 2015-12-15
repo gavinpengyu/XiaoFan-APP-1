@@ -12,7 +12,7 @@
 #import "XFNAssetEditViewController.h"
 
 //-----------------------------------------------------------------------------------------
-@interface XFNAssetEditTradeInfoViewController : XFNAssetEditViewController <XFNSendAssetModelToDetailViewDelegate, XFNEditViewToControllerDelegate>
+@interface XFNAssetEditTradeInfoViewController : XFNAssetEditViewController <XFNEditViewToControllerDelegate>
 
 
 @end

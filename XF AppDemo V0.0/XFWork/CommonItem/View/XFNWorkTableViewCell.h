@@ -11,6 +11,8 @@
 
 #import "XFNFrameTableViewControllerCell.h"
 
+@protocol XFNToPushCommentViewDelegate;
+
 @interface XFNWorkTableViewCell : XFNFrameTableViewControllerCell
 {
     NSArray*  _labelsArray;
@@ -37,6 +39,8 @@
 + (UIColor *)getTheColorOfLabel: (NSString*) label;
 
 + (NSString *)getThePropertyNameOfLabel: (NSString*) label;
+
+@property (nonatomic,strong) id <XFNToPushCommentViewDelegate> delegate;
 
 @end
 

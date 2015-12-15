@@ -10,6 +10,7 @@
 #import "XFNFrame.h"
 
 #import "XFNWorkDetailTableViewFooter.h"
+#import "XFNWorkDetailTableViewController.h"
 
 //-----------------------------------------------------------------------------------------
 @implementation XFNWorkDetailTableViewFooter
@@ -75,6 +76,12 @@
                                              commentsLabelSize.height);
     _commentLabel.frame         = commentsLabelRect;
     
+    UIButton* commentButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    commentButton.frame         = _commentLabel.frame;
+    
+    [commentButton addTarget : self action : @selector (toPushCommentView:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : commentButton];
+    
     //关注－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_isFollowedLabel
     CGFloat isFollowedLabelY    = commentsLabelY; //与跟进Y对齐
     CGFloat isFollowedLabelX    = commentsLabelX + commentsLabelSize.width; //在跟进X的后面
@@ -114,6 +121,11 @@
                                                                               moreActionLabelSize.height - 4)];
     gridVerticalLineTwo.backgroundColor = [UIColor lightGrayColor];
     [self addSubview: gridVerticalLineTwo];
+}
+
+- (void) toPushCommentView: (id)sender
+{
+    [self.delegate toPushViewForComment];
 }
 
 @end

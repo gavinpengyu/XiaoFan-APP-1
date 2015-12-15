@@ -69,7 +69,7 @@
     
     //分割线-----------------------------------------------------------------------------------
     UIView * gridHorizontalLine   = [[UIView alloc] initWithFrame: CGRectMake (XFNTableViewCellControlSpacing,
-                                                                               labelOfCommentsInfoY + labelOfCommentsInfoSize.height + XFNTableViewCellControlSpacing,
+                                                                               labelOfCommentsInfoY + labelOfCommentsInfoSize.height + XFNTableViewCellControlSpacing/2,
                                                                                _Macro_ScreenWidth - XFNTableViewCellControlSpacing * 2,
                                                                                _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     gridHorizontalLine.backgroundColor = [UIColor lightGrayColor];

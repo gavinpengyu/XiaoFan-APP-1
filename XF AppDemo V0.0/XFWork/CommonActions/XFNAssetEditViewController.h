@@ -61,10 +61,14 @@
 @end
 
 //-----------------------------------------------------------------------------------------
-@interface XFNAssetEditViewController : UIViewController <XFNSendAssetModelToDetailViewDelegate, XFNEditViewToControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
-{
-    XFNFrameAssetModel *_detailModel;
-}
+@interface XFNAssetEditViewController : UIViewController <XFNEditViewToControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>//<XFNSendAssetModelToDetailViewDelegate, XFNEditViewToControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+//{
+//    XFNFrameAssetModel *_detailModel;
+//}
+@property (nonatomic,strong) XFNFrameAssetModel *detailModel;
+
+- (void)setDetailModel:(XFNFrameAssetModel *)detailModel;
+
 //po 20151207 从编辑界面返回detail view时，直接将编辑后的数据通过传回，不从服务器刷新
 @property (nonatomic,strong) id <XFNSendAssetModelToDetailViewDelegate> delegate;
 

@@ -92,8 +92,7 @@
      
      东边套 有明卫 双朝向 单阳台 楼距大
      */
-    
-    
+
     //-----------------------------------------------------------------------------------------
     CGFloat labelOfBasicInfoX     = XFNTableViewCellControlSpacing;
     CGFloat labelOfBasicInfoY     = XFNTableViewCellControlSpacing;
@@ -106,7 +105,7 @@
     
     //分割线-----------------------------------------------------------------------------------
     UIView * gridHorizontalLine   = [[UIView alloc] initWithFrame: CGRectMake (XFNTableViewCellControlSpacing,
-                                                                               labelOfBasicInfoY + labelOfBasicInfoSize.height + XFNTableViewCellControlSpacing,
+                                                                               labelOfBasicInfoY + labelOfBasicInfoSize.height + XFNTableViewCellControlSpacing/2,
                                                                                _Macro_ScreenWidth - XFNTableViewCellControlSpacing * 2,
                                                                                _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     gridHorizontalLine.backgroundColor = [UIColor lightGrayColor];

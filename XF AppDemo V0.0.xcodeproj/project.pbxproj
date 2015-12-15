@@ -41,6 +41,8 @@
 		CE61010A1C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6101091C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m */; };
 		CE61010F1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE61010E1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m */; };
 		CE6101131C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6101121C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m */; };
+		CE6178841C1D9A9700AE8A0C /* XFNAssetCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6178831C1D9A9700AE8A0C /* XFNAssetCommentViewController.m */; };
+		CE6178871C1D9ABA00AE8A0C /* XFNAssetCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6178861C1D9AB900AE8A0C /* XFNAssetCommentView.m */; };
 		CE8875751BCCD16500334C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875741BCCD16500334C97 /* main.m */; };
 		CE8875781BCCD16500334C97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8875771BCCD16500334C97 /* AppDelegate.m */; };
 		CE88757B1BCCD16500334C97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88757A1BCCD16500334C97 /* ViewController.m */; };
@@ -146,6 +148,10 @@
 		CE6101101C1076B800C53A2A /* XFNWorkDetailContactInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailContactInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailContactInfoCell/XFNWorkDetailContactInfoCell.h; sourceTree = "<group>"; };
 		CE6101121C1076DA00C53A2A /* XFNWorkDetailCommentsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNWorkDetailCommentsInfoCell.m; path = XFWork/CommonItemDetail/View/XFNWorkDetailCommentsInfoCell/XFNWorkDetailCommentsInfoCell.m; sourceTree = "<group>"; };
 		CE6101141C1076E700C53A2A /* XFNWorkDetailCommentsInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNWorkDetailCommentsInfoCell.h; path = XFWork/CommonItemDetail/View/XFNWorkDetailCommentsInfoCell/XFNWorkDetailCommentsInfoCell.h; sourceTree = "<group>"; };
+		CE6178831C1D9A9700AE8A0C /* XFNAssetCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetCommentViewController.m; path = XFWork/CommonActions/AssetComment/XFNAssetCommentViewController.m; sourceTree = "<group>"; };
+		CE6178851C1D9AA300AE8A0C /* XFNAssetCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetCommentViewController.h; path = XFWork/CommonActions/AssetComment/XFNAssetCommentViewController.h; sourceTree = "<group>"; };
+		CE6178861C1D9AB900AE8A0C /* XFNAssetCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetCommentView.m; path = XFWork/CommonActions/AssetComment/XFNAssetCommentView.m; sourceTree = "<group>"; };
+		CE6178881C1D9AC500AE8A0C /* XFNAssetCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetCommentView.h; path = XFWork/CommonActions/AssetComment/XFNAssetCommentView.h; sourceTree = "<group>"; };
 		CE8875701BCCD16500334C97 /* XF AppDemo V0.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XF AppDemo V0.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8875741BCCD16500334C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE8875761BCCD16500334C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 			children = (
 				CE3079D51C15362D008F37C6 /* Controllers */,
 				CE3079D61C153637008F37C6 /* Views */,
+				CE6178891C1D9ADC00AE8A0C /* AssetComment */,
 				CE3079CC1C152DA9008F37C6 /* AssetEditBasicInfo */,
 				CE3079EA1C1557D6008F37C6 /* AssetEditTradeInfo */,
 				CE3079F61C16D1BA008F37C6 /* AssetEditAuxiliaryInfo */,
@@ -512,6 +519,33 @@
 			name = XFNWorkDetailCommentsInfoCell;
 			sourceTree = "<group>";
 		};
+		CE6178891C1D9ADC00AE8A0C /* AssetComment */ = {
+			isa = PBXGroup;
+			children = (
+				CE61788A1C1D9AE800AE8A0C /* Controllers */,
+				CE61788B1C1D9AF300AE8A0C /* Views */,
+			);
+			name = AssetComment;
+			sourceTree = "<group>";
+		};
+		CE61788A1C1D9AE800AE8A0C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE6178831C1D9A9700AE8A0C /* XFNAssetCommentViewController.m */,
+				CE6178851C1D9AA300AE8A0C /* XFNAssetCommentViewController.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CE61788B1C1D9AF300AE8A0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE6178861C1D9AB900AE8A0C /* XFNAssetCommentView.m */,
+				CE6178881C1D9AC500AE8A0C /* XFNAssetCommentView.h */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		CE8875671BCCD16500334C97 = {
 			isa = PBXGroup;
 			children = (
@@ -540,8 +574,8 @@
 			children = (
 				CEE0FF321BCE40A1004EBFC6 /* Message */,
 				CEE0FF2E1BCE4020004EBFC6 /* Work */,
-				CEE0FF2D1BCE4016004EBFC6 /* Public */,
-				CEE0FF2C1BCE4010004EBFC6 /* Me */,
+				CEE0FF2D1BCE4016004EBFC6 /* Account */,
+				CEE0FF2C1BCE4010004EBFC6 /* Public */,
 				CE8875AC1BCCD6DE00334C97 /* XFNFrame */,
 				CE8875AB1BCCD6B700334C97 /* AppDelegate */,
 				CE8875731BCCD16500334C97 /* Supporting Files */,
@@ -653,24 +687,24 @@
 			name = XFNFrameTableViewControllerCell;
 			sourceTree = "<group>";
 		};
-		CEE0FF2C1BCE4010004EBFC6 /* Me */ = {
+		CEE0FF2C1BCE4010004EBFC6 /* Public */ = {
 			isa = PBXGroup;
 			children = (
 				CEE0FF3E1BCE412B004EBFC6 /* Models */,
 				CEE0FF3D1BCE4126004EBFC6 /* Views */,
 				CEE0FF3C1BCE4120004EBFC6 /* Controllers */,
 			);
-			name = Me;
+			name = Public;
 			sourceTree = "<group>";
 		};
-		CEE0FF2D1BCE4016004EBFC6 /* Public */ = {
+		CEE0FF2D1BCE4016004EBFC6 /* Account */ = {
 			isa = PBXGroup;
 			children = (
 				CEE0FF3B1BCE411A004EBFC6 /* Models */,
 				CEE0FF3A1BCE4116004EBFC6 /* Views */,
 				CEE0FF391BCE410F004EBFC6 /* Controllers */,
 			);
-			name = Public;
+			name = Account;
 			sourceTree = "<group>";
 		};
 		CEE0FF2E1BCE4020004EBFC6 /* Work */ = {
@@ -1043,9 +1077,11 @@
 			files = (
 				CE61010A1C10701E00C53A2A /* XFNWorkDetailAuxiliaryInfoCell.m in Sources */,
 				CE6101061C1010DC00C53A2A /* XFNWorkDetailTradeInfoCell.m in Sources */,
+				CE6178871C1D9ABA00AE8A0C /* XFNAssetCommentView.m in Sources */,
 				CE61010F1C1076A800C53A2A /* XFNWorkDetailContactInfoCell.m in Sources */,
 				CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */,
 				CE88757B1BCCD16500334C97 /* ViewController.m in Sources */,
+				CE6178841C1D9A9700AE8A0C /* XFNAssetCommentViewController.m in Sources */,
 				CE3079DF1C153CEF008F37C6 /* XFNAssetEditBasicInfoView.m in Sources */,
 				CE3079B91C141DDE008F37C6 /* XFNWorkDetailTableViewFooter.m in Sources */,
 				CE3079E81C1557C3008F37C6 /* XFNAssetEditTradeInfoView.m in Sources */,

@@ -27,6 +27,7 @@
 #import "XFNAssetEditTradeInfoViewController.h"
 #import "XFNAssetEditAuxiliaryInfoViewController.h"
 #import "XFNAssetEditContactInfoViewController.h"
+#import "XFNAssetCommentViewController.h"
 ////-------------------------------Action .h End---------------------------------
 
 @implementation XFNWorkDetailTableViewController
@@ -169,6 +170,8 @@
                                                             0,
                                                             _Macro_ScreenWidth,
                                                             _Macro_XFNWorkTableViewFooter_Height)];
+    footer.delegate = self;
+    
     return footer;
     
 }
@@ -191,7 +194,7 @@
     _detailModel = object;
 }
 
-#pragma mark Protocol Cell - > CommonItemDetail 
+#pragma mark Protocol Cell and Footer - > CommonItemDetail 
 //-----------------------------------------------------------------------------------------
 - (void)toPushViewForEditBasicInfo
 {
@@ -199,11 +202,9 @@
     
     vc.hidesBottomBarWhenPushed=YES;
     
-    self.delegate = vc;   //object: detail view -> edit view;
-    
     vc.delegate   = self; //object: edit view -> detail view;
     
-    [self.delegate toSendAssetModelwithObject: _detailModel];
+    vc.detailModel = _detailModel;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -214,11 +215,9 @@
     
     vc.hidesBottomBarWhenPushed=YES;
     
-    self.delegate = vc;   //object: detail view -> edit view;
-    
     vc.delegate   = self; //object: edit view -> detail view;
     
-    [self.delegate toSendAssetModelwithObject: _detailModel];
+    vc.detailModel = _detailModel;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -229,11 +228,9 @@
     
     vc.hidesBottomBarWhenPushed=YES;
     
-    self.delegate = vc;   //object: detail view -> edit view;
-    
     vc.delegate   = self; //object: edit view -> detail view;
     
-    [self.delegate toSendAssetModelwithObject: _detailModel];
+    vc.detailModel = _detailModel;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -244,15 +241,25 @@
     
     vc.hidesBottomBarWhenPushed=YES;
     
-    self.delegate = vc;   //object: detail view -> edit view;
-    
     vc.delegate   = self; //object: edit view -> detail view;
     
-    [self.delegate toSendAssetModelwithObject: _detailModel];
+    vc.detailModel = _detailModel;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)toPushViewForComment
+{
+    XFNAssetCommentViewController *vc = [[XFNAssetCommentViewController alloc] init];
+    
+    vc.hidesBottomBarWhenPushed=YES;
+    
+    vc.delegate   = self; //object: edit view -> detail view;
+    
+    vc.detailModel = _detailModel;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end
 

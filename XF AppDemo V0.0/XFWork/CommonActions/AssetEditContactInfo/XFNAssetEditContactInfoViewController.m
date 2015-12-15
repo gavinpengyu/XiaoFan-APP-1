@@ -37,7 +37,7 @@
      */
     view.editDelegate = self;
     
-    [view setModel: _detailModel];
+    [view setModel: self.detailModel];
     
     [view layoutViews];
     

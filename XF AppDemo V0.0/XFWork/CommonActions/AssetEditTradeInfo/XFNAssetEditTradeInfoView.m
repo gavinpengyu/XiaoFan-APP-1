@@ -14,7 +14,6 @@
 
 @implementation XFNAssetEditTradeInfoView
 
-
 - (void)layoutViews
 {
     CGRect temp;

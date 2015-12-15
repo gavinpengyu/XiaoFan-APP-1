@@ -22,6 +22,8 @@
 #import "XFNFrameCommonItemDetailModel.h"
 #import "XFNWorkDetailTableViewController.h"
 
+#import "XFNAssetCommentViewController.h"
+
 //-----------全局标签数组，在整个房源View使用--------------------------------------------------
 static NSMutableArray * sXFNlabelsForAssetStatusGlobalArray;
 static NSMutableArray * sXFNlabelsForTypeOfPayGlobalArray;
@@ -318,6 +320,17 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     return _Macro_XFNWorkTableViewHearder_Height;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XFNWorkTableViewCell *cell = (XFNWorkTableViewCell *)[super tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
+    
+    cell.delegate = self;
+    
+    cell.tag = indexPath.row; //记录cell的行数，在点击cell中button回调的时候，在controller中识别是哪一行
+
+    return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XFNWorkTableViewCellModel *model = self.dataArray[indexPath.row];
@@ -366,6 +379,22 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     if([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]){
         [cell setPreservesSuperviewLayoutMargins:NO];
     }
+}
+
+#pragma mark Protocol Cell - > Controller, 这里是receiver
+//-----------------------------------------------------------------------------------------
+- (void)toPushViewForCommentWithCellIndex: (NSInteger) index
+{
+    DLog(@"row = %ld", index);
+    
+    XFNAssetCommentViewController *vc = [[XFNAssetCommentViewController alloc] init];
+    
+    vc.hidesBottomBarWhenPushed=YES;
+    
+    vc.detailModel = _detailedAssetArray[index];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 #pragma mark - pull down refresh

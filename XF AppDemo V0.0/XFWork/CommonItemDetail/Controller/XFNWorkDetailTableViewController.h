@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, XFNDetailViewCellIndexEnum) {
 - (void)toPushViewForEditTradeInfo;
 - (void)toPushViewForEditAuxiliaryInfo;
 - (void)toPushViewForEditContactInfo;
+- (void)toPushViewForComment;
 
 @end
 

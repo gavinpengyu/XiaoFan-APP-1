@@ -19,17 +19,14 @@
 #define _Macro_CUSTOMIZED_LABEL_string (@"_customizedLabel_")
 #define _Macro_ASSET_UNIT_PRICE_string (@"assetUnitPrice")
 
-//-----------------------------------------------------------------------------------------
-//@interface XFNAssetEditView : UIView <UITextFieldDelegate>
-//{
-//    NSMutableDictionary* _assetPropertyAndTagDict;
-//}
-//@property (nonatomic, copy) XFNFrameAssetModel *cellModel;
-//@property (nonatomic,strong) id <XFNEditViewToControllerDelegate> delegate;
+#define _Macro_AssetLabel_Height 30
+#define _Macro_AssetLabel_Width  60
+#define _Macro_AssetLabel_Space  14
 
+//-----------------------------------------------------------------------------------------
 @interface XFNAssetEditView : UIView <UITextFieldDelegate>
 {
-    NSMutableDictionary* _assetPropertyAndTagDict;
+    NSString* _assetCustomizedComments;//po 20151215 在跟进页面，对textField的修改不直接更新到_cellModel, 而是先保存在这个字符串中。在响应“提交”按钮的时候再插入到syslog数组里面。这是为了有更好的交互体验，例如：在提交前多次修改跟进内容；
 }
 @property (nonatomic, copy) XFNFrameAssetModel *cellModel;
 @property (nonatomic,strong) id <XFNEditViewToControllerDelegate> editDelegate;
@@ -60,11 +57,17 @@
 
 - (void)initFooterWithOriginY: (CGFloat) originY andCellIndex: (XFNDetailViewCellIndexEnum)cellIndex;
 
+- (void) addUniqueObjectToArray: (NSMutableArray*) targetArray byArray: (NSArray*) souceArray;
+
 - (NSString*) getContentNameFromAssetPropertyName: (NSString*) propertyName;
+
+
 
 #pragma mark selector
 //-----------------------------------------------------------------------------------
--(void) valueChanged:(id)sender;
+-(void)labelChanged:(id)sender;
+
+-(void)valueChanged:(id)sender;
 
 @end
 

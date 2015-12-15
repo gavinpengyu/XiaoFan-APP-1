@@ -29,12 +29,18 @@
     [super viewDidLoad];
 }
 
+- (void)setDetailModel:(XFNFrameAssetModel *)detailModel
+{
+    _detailModel = detailModel;
+}
+
+//po 20151214: 将detailModel从类变量改成了类属性，并添加了set方法，因此本delegate可以取消。但是需要重新review代码，将涉及本delegate的地方都改过来才行。今天来不及了。
 #pragma mark Protocol Delegate, From detail view to edit view, here is receiver
 //-----------------------------------------------------------------------------------------
-- (void)toSendAssetModelwithObject : (XFNFrameAssetModel*) object
-{
-    _detailModel = object;
-}
+//- (void)toSendAssetModelwithObject : (XFNFrameAssetModel*) object
+//{
+//    _detailModel = object;
+//}
 
 #pragma mark Protocol Delegate, From edit view cell to edit view controller, here is receiver
 //-----------------------------------------------------------------------------------------
@@ -99,6 +105,25 @@
         tempModel.decorationInfo  = [_detailModel objectForKey: @"decorationInfo"];
         tempModel.ancillaryInfo   = [_detailModel objectForKey: @"ancillaryInfo"];
 
+        [tempModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded)
+            {
+                DLog(@"objectId=%@ 更新交易信息成功", _detailModel.objectId);
+            }
+        }];
+    }
+    else if(XFNWorkDetailContactInfoCellIndexEnum == cellIndex)
+    {
+        DLog(@"WARNING: 尚未添加联系人更新时同步至后台的功能");
+    }
+    else if(XFNWorkDetailCommentsInfoCellIndexEnum == cellIndex)
+    {
+        XFNFrameAssetModel *tempModel = [XFNFrameAssetModel objectWithoutDataWithClassName: _Macro_XFN_ASSET_MODEL_
+                                                                                  objectId: _detailModel.objectId];
+        
+        tempModel.summaryInfoLabelsOfAsset  = [_detailModel objectForKey: @"summaryInfoLabelsOfAsset"];
+        tempModel.assetLog   = [_detailModel objectForKey: @"assetLog"];
+        
         [tempModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded)
             {

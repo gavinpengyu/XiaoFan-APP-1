@@ -240,6 +240,12 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
                                              commentsLabelSize.height);
     _commentsLabel.frame        = commentsLabelRect;
     
+    UIButton* commentButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    commentButton.frame         = _commentsLabel.frame;
+    
+    [commentButton addTarget : self action : @selector (toPushCommentView:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : commentButton];
+    
     //关注－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_isFollowedLabel
     CGFloat isFollowedLabelY    = commentsLabelY; //与跟进Y对齐
     CGFloat isFollowedLabelX    = commentsLabelX + commentsLabelSize.width; //在跟进X的后面
@@ -282,70 +288,6 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     
     self.frame = CGRectMake(0,0,_Macro_ScreenWidth,(gridVerticalLineTwo.frame.origin.y + gridVerticalLineTwo.frame.size.height + XFNTableViewCellControlSpacing));
 }
-
-//po 20151205，添加一个UIView统一布局labels，
-//- (void)setAssetLabelsWithArray: (NSArray*) array
-//{
-//    if (nil == array)
-//    {
-//        DLog(@"ERROR: input array is nil");
-//    }
-//    
-//    NSUInteger tempCount = [array count];
-//    NSUInteger tempIndex = 0;
-//    
-//    if ( (_Macro_ScreenWidth - XFNTableViewCellControlSpacing) / (XFNTableViewCellControlSpacing + _Macro_XFNWorTableViewCellAssetLabelWidth) > 6)
-//    {
-//        tempIndex = 6; //label宽度为50，space宽度10，iphone6刚好可以放下6个标签
-//    }
-//    else
-//    {
-//        tempIndex = 5; //4寸屏只能放5个标签
-//    }
-//    
-//    if (tempCount < tempIndex)
-//    {
-//        tempIndex = tempCount; //若标签不足5个or6个，则以实际标签数目为准
-//    }
-//    
-//    for (int ii; ii < tempIndex; ii++)
-//    {
-//        if (0 == ii)
-//        {
-//            _assetLabelA.text = array[ii];
-//            //DLog(@"_assetLabelA=%@", _assetLabelA.text);
-//        }
-//        else if (1 == ii)
-//        {
-//            _assetLabelB.text = array[ii];
-//            //DLog(@"_assetLabelB=%@", _assetLabelB.text);
-//        }
-//        else if (2 == ii)
-//        {
-//            _assetLabelC.text = array[ii];
-//            //DLog(@"_assetLabelC=%@", _assetLabelC.text);
-//        }
-//        else if (3 == ii)
-//        {
-//            _assetLabelD.text = array[ii];
-//            //DLog(@"_assetLabelD=%@", _assetLabelD.text);
-//        }
-//        else if (4 == ii)
-//        {
-//            _assetLabelE.text = array[ii];
-//            //DLog(@"_assetLabelE=%@", _assetLabelE.text);
-//        }
-//        else if (5 == ii)
-//        {
-//            _assetLabelF.text = array[ii];
-//            //DLog(@"_assetLabelF=%@", _assetLabelF.text);
-//        }
-//        else
-//        {
-//            DLog(@"ERROR: array error, ii=%d, tempIndex=%lu, tempCount=%lu", ii, (unsigned long)tempIndex, (unsigned long)tempCount);
-//        }
-//    }
-//}
 
 - (void)setModel:(NSObject *)model
 {
@@ -470,6 +412,11 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
         DLog(@"ERROR:看到这段话，是因为获取key的字符串失败，这可能是修改了key的名字，或者新增了key但是没有同步到这个函数，输入的label＝%@", label);
         return nil;
     }
+}
+
+- (void) toPushCommentView: (id)sender
+{
+    [self.delegate toPushViewForCommentWithCellIndex: self.tag];
 }
 
 @end

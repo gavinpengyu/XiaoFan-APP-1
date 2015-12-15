@@ -68,18 +68,5 @@
     [self initFooterWithOriginY: (_Macro_ScreenHeight - _Macro_XFNAssetEditView_FooterHeight) andCellIndex: XFNWorkDetailBasicInfoCellIndexEnum];
 }
 
-//-(BOOL)textFieldShouldReturn:(UITextField *)textField
-//{
-//    [self resignFirstResponder];
-//    return YES;
-//}
-//
-//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    if ([self isFirstResponder])
-//    {
-//        [self resignFirstResponder]; //输入完毕后，关闭键盘空间控件
-//    }
-//}
 
 @end
