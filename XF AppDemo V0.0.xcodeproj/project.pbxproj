@@ -22,6 +22,11 @@
 		CE3079F41C16D1A6008F37C6 /* XFNAssetEditAuxiliaryInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079F31C16D1A6008F37C6 /* XFNAssetEditAuxiliaryInfoView.m */; };
 		CE3079FA1C16D662008F37C6 /* XFNAssetEditContactInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079F91C16D662008F37C6 /* XFNAssetEditContactInfoView.m */; };
 		CE3079FD1C16D68E008F37C6 /* XFNAssetEditContactInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3079FC1C16D68E008F37C6 /* XFNAssetEditContactInfoViewController.m */; };
+		CE4E84871C2A76FF0085C8A1 /* XFNLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E84861C2A76FF0085C8A1 /* XFNLoginViewController.m */; };
+		CE4E848A1C2A775D0085C8A1 /* XFNSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E84891C2A775D0085C8A1 /* XFNSignUpViewController.m */; };
+		CE4E84931C2FD9EA0085C8A1 /* XFNMeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E84921C2FD9EA0085C8A1 /* XFNMeTableViewController.m */; };
+		CE4E84961C2FDA0F0085C8A1 /* XFNMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E84951C2FDA0F0085C8A1 /* XFNMeTableViewCell.m */; };
+		CE4E84991C2FED5E0085C8A1 /* XFNMeTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4E84981C2FED5E0085C8A1 /* XFNMeTableViewModel.m */; };
 		CE599B7B1BEB232000F8A229 /* XFNFrameTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */; };
 		CE599B7E1BEB232B00F8A229 /* XFNFrameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B7D1BEB232B00F8A229 /* XFNFrameTableViewController.m */; };
 		CE599B811BEB233100F8A229 /* XFNFrameTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE599B801BEB233100F8A229 /* XFNFrameTableViewControllerCell.m */; };
@@ -117,6 +122,16 @@
 		CE3079FC1C16D68E008F37C6 /* XFNAssetEditContactInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNAssetEditContactInfoViewController.m; path = XFWork/CommonActions/AssetEditContactInfo/XFNAssetEditContactInfoViewController.m; sourceTree = "<group>"; };
 		CE3079FE1C16D69E008F37C6 /* XFNAssetEditContactInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNAssetEditContactInfoViewController.h; path = XFWork/CommonActions/AssetEditContactInfo/XFNAssetEditContactInfoViewController.h; sourceTree = "<group>"; };
 		CE47452E1BE7495C000F4596 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		CE4E84861C2A76FF0085C8A1 /* XFNLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNLoginViewController.m; path = XFFrame/XFNLoginAndSignUp/XFNLoginViewController.m; sourceTree = "<group>"; };
+		CE4E84881C2A770B0085C8A1 /* XFNLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNLoginViewController.h; path = XFFrame/XFNLoginAndSignUp/XFNLoginViewController.h; sourceTree = "<group>"; };
+		CE4E84891C2A775D0085C8A1 /* XFNSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNSignUpViewController.m; path = XFFrame/XFNLoginAndSignUp/XFNSignUpViewController.m; sourceTree = "<group>"; };
+		CE4E848B1C2A77670085C8A1 /* XFNSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNSignUpViewController.h; path = XFFrame/XFNLoginAndSignUp/XFNSignUpViewController.h; sourceTree = "<group>"; };
+		CE4E84921C2FD9EA0085C8A1 /* XFNMeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNMeTableViewController.m; path = XFMe/Controller/XFNMeTableViewController.m; sourceTree = "<group>"; };
+		CE4E84941C2FD9F50085C8A1 /* XFNMeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNMeTableViewController.h; path = XFMe/Controller/XFNMeTableViewController.h; sourceTree = "<group>"; };
+		CE4E84951C2FDA0F0085C8A1 /* XFNMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNMeTableViewCell.m; path = XFMe/View/XFNMeTableViewCell.m; sourceTree = "<group>"; };
+		CE4E84971C2FDA180085C8A1 /* XFNMeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNMeTableViewCell.h; path = XFMe/View/XFNMeTableViewCell.h; sourceTree = "<group>"; };
+		CE4E84981C2FED5E0085C8A1 /* XFNMeTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNMeTableViewModel.m; path = XFMe/Model/XFNMeTableViewModel.m; sourceTree = "<group>"; };
+		CE4E849A1C2FED670085C8A1 /* XFNMeTableViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XFNMeTableViewModel.h; path = XFMe/Model/XFNMeTableViewModel.h; sourceTree = "<group>"; };
 		CE599B791BEB232000F8A229 /* XFNFrameTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameTabBarController.h; path = XFFrame/FrameController/XFNFrameTabBarController.h; sourceTree = "<group>"; };
 		CE599B7A1BEB232000F8A229 /* XFNFrameTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFNFrameTabBarController.m; path = XFFrame/FrameController/XFNFrameTabBarController.m; sourceTree = "<group>"; };
 		CE599B7C1BEB232B00F8A229 /* XFNFrameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFNFrameTableViewController.h; path = XFFrame/FrameController/XFNFrameTableViewController.h; sourceTree = "<group>"; };
@@ -434,6 +449,61 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		CE4E848C1C2A77740085C8A1 /* XFNLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E84861C2A76FF0085C8A1 /* XFNLoginViewController.m */,
+				CE4E84881C2A770B0085C8A1 /* XFNLoginViewController.h */,
+			);
+			name = XFNLoginViewController;
+			sourceTree = "<group>";
+		};
+		CE4E848D1C2A777C0085C8A1 /* XFNSignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E84891C2A775D0085C8A1 /* XFNSignUpViewController.m */,
+				CE4E848B1C2A77670085C8A1 /* XFNSignUpViewController.h */,
+			);
+			name = XFNSignUpViewController;
+			sourceTree = "<group>";
+		};
+		CE4E848E1C2FD5220085C8A1 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E848F1C2FD5430085C8A1 /* Models */,
+				CE4E84901C2FD54A0085C8A1 /* Views */,
+				CE4E84911C2FD54F0085C8A1 /* Controllers */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
+		CE4E848F1C2FD5430085C8A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E84981C2FED5E0085C8A1 /* XFNMeTableViewModel.m */,
+				CE4E849A1C2FED670085C8A1 /* XFNMeTableViewModel.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CE4E84901C2FD54A0085C8A1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E84951C2FDA0F0085C8A1 /* XFNMeTableViewCell.m */,
+				CE4E84971C2FDA180085C8A1 /* XFNMeTableViewCell.h */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CE4E84911C2FD54F0085C8A1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E84921C2FD9EA0085C8A1 /* XFNMeTableViewController.m */,
+				CE4E84941C2FD9F50085C8A1 /* XFNMeTableViewController.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		CE599B781BEB229200F8A229 /* XFNFrameCommonItemDetailModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +646,7 @@
 				CEE0FF2E1BCE4020004EBFC6 /* Work */,
 				CEE0FF2D1BCE4016004EBFC6 /* Account */,
 				CEE0FF2C1BCE4010004EBFC6 /* Public */,
+				CE4E848E1C2FD5220085C8A1 /* Me */,
 				CE8875AC1BCCD6DE00334C97 /* XFNFrame */,
 				CE8875AB1BCCD6B700334C97 /* AppDelegate */,
 				CE8875731BCCD16500334C97 /* Supporting Files */,
@@ -636,6 +707,8 @@
 				CEE0FF221BCE31E3004EBFC6 /* XFNFrameTabBarController */,
 				CEE0FF261BCE326E004EBFC6 /* XFNFrameTableViewController */,
 				CEE0FF211BCE31D8004EBFC6 /* XFNFrameNavigationController */,
+				CE4E848C1C2A77740085C8A1 /* XFNLoginViewController */,
+				CE4E848D1C2A777C0085C8A1 /* XFNSignUpViewController */,
 			);
 			name = XFNFrame;
 			sourceTree = "<group>";
@@ -1107,8 +1180,11 @@
 				CEEFBF3F1C0D559000B3997C /* XFNWorkTableViewHeader.m in Sources */,
 				CE3079FA1C16D662008F37C6 /* XFNAssetEditContactInfoView.m in Sources */,
 				CE3079FD1C16D68E008F37C6 /* XFNAssetEditContactInfoViewController.m in Sources */,
+				CE4E84961C2FDA0F0085C8A1 /* XFNMeTableViewCell.m in Sources */,
 				CE93C6761BEA23BC005E0973 /* XFNWorkDetailTableViewController.m in Sources */,
+				CE4E84991C2FED5E0085C8A1 /* XFNMeTableViewModel.m in Sources */,
 				CE93C6931BEA2461005E0973 /* XFNWorkTableViewController.m in Sources */,
+				CE4E84931C2FD9EA0085C8A1 /* XFNMeTableViewController.m in Sources */,
 				CE3079DC1C153CCC008F37C6 /* XFNAssetEditBasicInfoViewController.m in Sources */,
 				CE93C6991BEA24DA005E0973 /* XFNFrameCommonItemModel.m in Sources */,
 				CE599B861BEB240000F8A229 /* XFNFrameCommonItemDetailModel.m in Sources */,
@@ -1116,6 +1192,8 @@
 				CEE0FF561BCF85BB004EBFC6 /* UIView+XFNExtension.m in Sources */,
 				CE599B841BEB233D00F8A229 /* XFNFrameNavigationController.m in Sources */,
 				CE1952C01BF078F60097FC0C /* XFNFrameViewController.m in Sources */,
+				CE4E848A1C2A775D0085C8A1 /* XFNSignUpViewController.m in Sources */,
+				CE4E84871C2A76FF0085C8A1 /* XFNLoginViewController.m in Sources */,
 				CE8875751BCCD16500334C97 /* main.m in Sources */,
 				CE8875811BCCD16500334C97 /* XF_AppDemo_V0_0.xcdatamodeld in Sources */,
 				CE3079E51C15579E008F37C6 /* XFNAssetEditTradeInfoViewController.m in Sources */,

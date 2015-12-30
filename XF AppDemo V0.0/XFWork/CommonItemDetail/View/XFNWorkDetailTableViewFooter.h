@@ -27,6 +27,8 @@
 
 @property (nonatomic,strong) id <XFNPushEditViewDelegate> delegate;
 
+- (void) setBIsFollowed:(BOOL)bIsFollowed;
+
 - (instancetype)initWithFrame:(CGRect)frame;
 //-----------------------------------------------------------------------------------------
 @end

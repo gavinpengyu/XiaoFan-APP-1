@@ -12,27 +12,13 @@
 
 
 @implementation XFNFrameUserProfileModel
-{
-    NSString* _useridstring;
-    NSString* userpasswordstring;
-    
-    NSString* usernamestring;
-    UIImage*  userheadimage;
-    NSString* usergenderstring;
-    NSString* useraddressstring;
-    NSString* userareastring;
-    NSString* usernicknamestring;
-    NSString* usermobilestring;
-    NSString* userphonestring;
-    NSString* useremailstring;
-}
 
-+ (instancetype)initmodelWithuserID : (NSString *)userIdString
-{
-    XFNFrameUserProfileModel *model = [[XFNFrameUserProfileModel alloc] init];
-    model.useridstring = userIdString;
-    return model;
-}
+@dynamic followedItemArray;
 
+@dynamic onTopItemArray;
+
++ (NSString *)parseClassName {
+    return @"_User";
+}
 
 @end

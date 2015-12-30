@@ -258,6 +258,12 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
                                              isFollowedLabelSize.height);
     _isFollowedLabel.frame      = isFollowedLabelRect;
     
+    UIButton* isFollowButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    isFollowButton.frame         = _isFollowedLabel.frame;
+    
+    [isFollowButton addTarget : self action : @selector (toChangeFollowStatus:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : isFollowButton];
+    
     //在“关注”的前方添加一条分割竖线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     UIView * gridVerticalLineOne = [[UIView alloc] initWithFrame: CGRectMake (isFollowedLabelX,
                                                                               isFollowedLabelY + 2,
@@ -418,6 +424,12 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 {
     [self.delegate toPushViewForCommentWithCellIndex: self.tag];
 }
+
+- (void) toChangeFollowStatus: (id)sender
+{
+    [self.delegate toChangeFollowStatusWithCellIndex: self.tag];
+}
+
 
 @end
 

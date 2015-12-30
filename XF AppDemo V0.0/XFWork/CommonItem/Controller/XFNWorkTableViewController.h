@@ -16,14 +16,16 @@
 
 //Protocol Cell - > Controller, 这里是receiver
 //-----------------------------------------------------------------------------------------
-@protocol XFNToPushCommentViewDelegate
+@protocol XFNCellToControllerDelegate
 
 - (void)toPushViewForCommentWithCellIndex: (NSInteger) index;
+
+- (void)toChangeFollowStatusWithCellIndex: (NSInteger) index;
 
 @end
 
 //-----------------------------------------------------------------------------------------
-@interface XFNWorkTableViewController : XFNFrameTableViewController <XFNToPushCommentViewDelegate>
+@interface XFNWorkTableViewController : XFNFrameTableViewController <XFNCellToControllerDelegate>
 {
     NSMutableArray *_detailedAssetArray;
 }

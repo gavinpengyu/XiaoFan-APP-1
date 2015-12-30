@@ -27,6 +27,21 @@
     __unused XFNDataTestModel *dataTestModel = [[XFNDataTestModel alloc] init];
     //[dataTestModel getDateFromServer];
     //[dataTestModel initDataToServer];
+    
+    //创建用户
+//    AVUser *user = [AVUser user];
+//    user.username = @"xfn123";
+//    user.password =  @"12345678";
+//    user.email = @"hang@leancloud.rocks";
+//    [user setObject:@"186-1234-0000" forKey:@"mobilePhoneNumber"];
+//    
+//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            DLog(@"创建用户成功");
+//        } else {
+//            DLog(@"创建用户失败");
+//        }
+//    }];
 }
 
 - (void) getDateFromServer

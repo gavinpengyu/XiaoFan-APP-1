@@ -11,7 +11,7 @@
 
 #import "XFNFrameTableViewControllerCell.h"
 
-@protocol XFNToPushCommentViewDelegate;
+@protocol XFNCellToControllerDelegate;
 
 @interface XFNWorkTableViewCell : XFNFrameTableViewControllerCell
 {
@@ -40,7 +40,7 @@
 
 + (NSString *)getThePropertyNameOfLabel: (NSString*) label;
 
-@property (nonatomic,strong) id <XFNToPushCommentViewDelegate> delegate;
+@property (nonatomic,strong) id <XFNCellToControllerDelegate> delegate;
 
 @end
 

@@ -24,6 +24,8 @@
 
 #import "XFNAssetCommentViewController.h"
 
+#import "XFNFrameUserProfileModel.h"
+
 //-----------全局标签数组，在整个房源View使用--------------------------------------------------
 static NSMutableArray * sXFNlabelsForAssetStatusGlobalArray;
 static NSMutableArray * sXFNlabelsForTypeOfPayGlobalArray;
@@ -257,7 +259,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
             //XFNFrameAssetModel       *tempAssetModel = [[XFNFrameAssetModel alloc] init];
             
             for (int ii=0; ii<objects.count; ii++)
-            {
+            {wo
                 //tempAssetModel = objects[ii];
                 XFNFrameAssetModel       *tempAssetModel = objects[ii];
                 XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
@@ -395,6 +397,39 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     
     [self.navigationController pushViewController:vc animated:YES];
     
+}
+
+- (void)toChangeFollowStatusWithCellIndex: (NSInteger) index
+{
+    XFNFrameUserProfileModel *currentUser = (XFNFrameUserProfileModel *)[AVUser currentUser];
+    
+    XFNWorkTableViewCellModel* tempModel = (XFNWorkTableViewCellModel*) _detailedAssetArray[index];
+    
+    [currentUser addObject: tempModel.objectId forKey: @"followedItemArray"];
+    
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            DLog(@"！！！！！！！！！！用户信息保存成功！！！！！！！！");
+        }
+        else
+        {
+            NSString *errMsg = [error userInfo][@"error"];
+            
+            DLog(@"%@", errMsg);
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle: @"关注失败"
+                                                                                     message: @"同步服务器数据错误"
+                                                                              preferredStyle: UIAlertControllerStyleAlert];
+            NSString *cancelButtonTitle = NSLocalizedString(@"返回", nil);
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                //NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+            }];
+            
+            [alertController addAction:cancelAction];
+        }
+    }];
 }
 
 #pragma mark - pull down refresh

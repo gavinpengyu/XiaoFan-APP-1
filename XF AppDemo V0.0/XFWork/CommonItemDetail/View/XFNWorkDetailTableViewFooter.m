@@ -123,6 +123,11 @@
     [self addSubview: gridVerticalLineTwo];
 }
 
+- (void) setBIsFollowed:(BOOL)bIsFollowed
+{
+    _bIsFollowed = bIsFollowed;
+}
+
 - (void) toPushCommentView: (id)sender
 {
     [self.delegate toPushViewForComment];

@@ -9,11 +9,15 @@
 #ifndef XFNFrameUserProfileModel_h
 #define XFNFrameUserProfileModel_h
 
-@interface XFNFrameUserProfileModel : NSObject
+#import <AVOSCloud/AVOSCloud.h>
 
-@property (nonatomic, copy) NSString *useridstring;
+@interface XFNFrameUserProfileModel : AVUser <AVSubclassing>
 
-+ (instancetype)initmodelWithuserID : (NSString *)userIdString;
+@property (nonatomic , copy) NSArray *followedItemArray;
+
+@property (nonatomic , copy) NSArray *onTopItemArray;
+
++ (NSString *)parseClassName;
 
 @end
 
