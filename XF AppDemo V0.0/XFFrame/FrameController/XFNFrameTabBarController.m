@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "XFNFrameTabBarController.h"
 #import "XFNFrameNavigationController.h"
+
 #import "XFNWorkTableViewController.h"
+#import "XFNMeTableViewController.h"
 
 @implementation XFNFrameTabBarController
 
@@ -43,7 +45,7 @@
     
     [self setupChildNavigationControllerWithClass : [XFNFrameNavigationController class]
                                   tabBarImageName : @"TabBar_Me"
-                          rootViewControllerClass : [UITableViewController class]
+                          rootViewControllerClass : [XFNMeTableViewController class]
                           rootViewControllerTitle : @"我"];
 }
 

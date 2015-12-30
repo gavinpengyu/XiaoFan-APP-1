@@ -23,15 +23,20 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *tempSendTime = [dateFormatter stringFromDate: [_assetAllInfoModel objectForKey : @"updatedAt"]];
     
-    model.nameString      = [[NSString alloc] initWithFormat : @"%@ | %@-%@-%@ | %@平米 | %@房%@卫",[_assetAllInfoModel objectForKey : @"communityName"],
-                                                                                                              [_assetAllInfoModel objectForKey : @"buildingNumber"],
-                                                                                                              [_assetAllInfoModel objectForKey : @"addedNumber"],
-                                                                                                              [_assetAllInfoModel objectForKey : @"roomNumber"],
-                                                                                                              [_assetAllInfoModel objectForKey : @"assetTotalArea"],
-                                                                                                              [_assetAllInfoModel objectForKey : @"quantityOfRoom"],
-                                                                                                              [_assetAllInfoModel objectForKey : @"quantityOfToilet"]];
-    model.detailString    = [_assetAllInfoModel objectForKey : @"summaryInfoLabelsOfAsset"];
-    model.priceString     = [[NSString alloc] initWithFormat : @"%@万", [_assetAllInfoModel objectForKey : @"assetTotalArea"]];
+    NSString *tempPrice   = [[NSString alloc] initWithFormat : @"%@", [_assetAllInfoModel objectForKey : @"assetTotalPrice"]];
+    NSString *tempArea    = [[NSString alloc] initWithFormat : @"%@", [_assetAllInfoModel objectForKey : @"assetTotalArea"]];
+    NSInteger unitPrice   = ([tempPrice integerValue] * 10000) / [tempArea integerValue]; //总价是以万为单位，因此此处要乘以10000
+    
+    model.nameString      = [[NSString alloc] initWithFormat : @"%@ | %@-%@-%@",[_assetAllInfoModel objectForKey : @"communityName"],
+                                                                                [_assetAllInfoModel objectForKey : @"buildingNumber"],
+                                                                                [_assetAllInfoModel objectForKey : @"addedNumber"],
+                                                                                [_assetAllInfoModel objectForKey : @"roomNumber"]];
+    
+    model.detailString    = [[NSString alloc] initWithFormat : @"%@平米 | %@房%@卫 | %@元/平米", [_assetAllInfoModel objectForKey : @"assetTotalArea"],
+                                                                                               [_assetAllInfoModel objectForKey : @"quantityOfRoom"],
+                                                                                               [_assetAllInfoModel objectForKey : @"quantityOfToilet"],
+                                                                                               [NSString stringWithFormat: @"%ld", (long)unitPrice]];
+    model.priceString     = [[NSString alloc] initWithFormat : @"%@万", tempPrice];
     model.statusString    = [_assetAllInfoModel objectForKey : @"assetStatus"];
     model.ownernameString = [_assetAllInfoModel objectForKey : @"attributeTo"];
     model.sendtimeString  = tempSendTime;
@@ -43,6 +48,10 @@
     model.bThisItemIsOnTop    = tempIsOnTop.boolValue;
     model.bThisItemIsFollowed = tempIsFollowed.boolValue;
     
+    NSString *tempLabelString = [_assetAllInfoModel objectForKey : @"summaryInfoLabelsOfAsset"];
+    //DLog(@"summaryInfoLabelsOfAsset is %@", tempLabelString);
+    model.labelsArray         = [tempLabelString componentsSeparatedByString: _Macro_XFN_String_Seperator]; //服务器中，labels以字符串形式存放，label之间用_Macro_XFN_String_Seperator分隔
+    //DLog(@"labelsArray is %@", model.labelsArray);
     return model;
 }
 

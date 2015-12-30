@@ -16,16 +16,38 @@
 #endif
 
 #define _Macro_XFN_ASSET_MODEL_ @"XFNFrameAssetModelNew"
+#define _Macro_XFN_ASSET_LABEL_MODEL_ @"XFNLabelsForAsset"
 
-//颜色宏定义 po 20151128 这个宏没有用，不知道为什么
-//#define XFNColor(r,g,b)                   [UIColor colorWithHue:r/255.0 saturation:g/255.0 brightness:b/255.0 alpha:1]
-//#define XFNTableViewCellBackgroundColor   XFNColor(251,251,251)
-//#define XFNGrayColor                      XFNColor(50,50,50)
-//#define XFNRedColor                      XFNColor(255,0,0)
-//#define XFNLightGrayColor                 XFNColor(120,120,120)
+#define _Macro_XFN_String_Seperator @"|*|"
+
+#define _Macro_XFN_Comment_Auto     @"|SYS_LOG|"
+#define _Macro_XFN_Comment_Manual   @"|USR_COMMENT|"
+#define _Macro_XFN_Comment_Key      @"|KEY_REMARK|"
+
+#define _Macro_ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define _Macro_ScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define _Macro_XFNWorTableViewCellHorizontalSeperatorHeight 1
+#define _Macro_XFNWorTableViewCellVerticalSeperatorWidth 1
+
+#define _Macro_XFNAssetEditView_TitleHeight 80
+#define _Macro_XFNAssetEditView_FooterHeight 44
+
+#define _Macro_XFNWorTableViewCellAssetLabelWidth 50
+#define _Macro_XFNWorTableViewCellAssetLabelHeight 20
+#define _Macro_XFNWorTableViewCellAssetLabelFont (XFNDetailTableViewCellFontSizeDefault - 2)
+
+#define _Macro_XFNWorkDetailTableView_Accessory_Width 20
+#define _Macro_XFNWorkDetailTableView_Accessory_Height 20
+
+#define _Macro_XFNWorTableViewCell_TypeOfPay_Label_Color   [UIColor redColor]
+#define _Macro_XFNWorTableViewCell_TaxInfo_Label_Color     [UIColor greenColor]
+#define _Macro_XFNWorTableViewCell_AssetLayout_Label_Color [UIColor blueColor]
+#define _Macro_XFNWorTableViewCell_Decoration_Label_Color  [UIColor brownColor]
+#define _Macro_XFNWorTableViewCell_Ancillary_Label_Color   [UIColor orangeColor]
 
 //控件间距
-#define XFNTableViewCellControlSpacing 8
+#define XFNTableViewCellControlSpacing 10
 #define XFNCommentItemAvatarDefaultSize 28
 
 //-----------------------------------------------------------------------------------------

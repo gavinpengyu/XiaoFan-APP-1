@@ -12,6 +12,8 @@
 #import "XFNFrameCommonItemDetailModel.h"
 #import "XFNFrameAssetModel.h"
 
+#import "XFNLoginViewController.h"
+
 #import "XFNDataTestModel.h"
 
 @interface AppDelegate ()
@@ -21,16 +23,8 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    //begin: created, po, 20151013
-    
-    self.window                    = [[UIWindow alloc] initWithFrame : [UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[XFNFrameTabBarController alloc] init];
-    self.window.backgroundColor    = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     [AVOSCloud setApplicationId:@"FY4EiJkB4EjYjMXk61zDwDVr"
                       clientKey:@"zV0PMLDUy09rw6AU5FCr8Qzj"];
     
@@ -45,9 +39,30 @@
     //AVObject测试入口
     [XFNDataTestModel testData];
     
-    //Custermize UINavigationBar here, po, 20151013
-    //end
-
+    //创建窗口
+    self.window                    = [[UIWindow alloc] initWithFrame : [UIScreen mainScreen].bounds];
+    self.window.backgroundColor    = [UIColor whiteColor];
+    
+    //设置主窗口
+    [self.window makeKeyAndVisible];
+    
+    //设置根控制器
+    //self.window.rootViewController = [[XFNFrameTabBarController alloc] init];
+    AVUser *currentUser = [AVUser currentUser];
+    if (currentUser != nil)
+    {
+        self.window.rootViewController = [[XFNFrameTabBarController alloc] init];
+        DLog(@"已登录");
+    }
+    else
+    {
+//        UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        self.window.rootViewController = (LoginViewController *)[[main instantiateInitialViewController];
+        self.window.rootViewController = [[XFNLoginViewController alloc] init];
+    }
+    
+    //[AVUser logOut];  //清除缓存用户对象
+    
     return YES;
 }
 

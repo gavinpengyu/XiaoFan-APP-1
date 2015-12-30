@@ -18,8 +18,22 @@
 #import "XFNWorkTableViewHeader.h"
 #import "XFNWorkTableViewCellModel.h"
 
+#import "XFNWorkDetailTableViewCell.h"
 #import "XFNFrameCommonItemDetailModel.h"
 #import "XFNWorkDetailTableViewController.h"
+
+#import "XFNAssetCommentViewController.h"
+
+#import "XFNFrameUserProfileModel.h"
+
+//-----------全局标签数组，在整个房源View使用--------------------------------------------------
+static NSMutableArray * sXFNlabelsForAssetStatusGlobalArray;
+static NSMutableArray * sXFNlabelsForTypeOfPayGlobalArray;
+static NSMutableArray * sXFNlabelsForTaxInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForAssetLayoutInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForDecorationInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
+//-----------------------------------------------------------------------------------------
 
 @implementation XFNWorkTableViewController
 //-----------------------------------------------------------------------------------------
@@ -27,13 +41,15 @@
 {
     [super viewDidLoad];
     
-    self.tableView.rowHeight      = 120;  //限定行高,po,20151017；UITableViewAutomaticDimension 修改为自适应，20151027
+    //self.tableView.rowHeight      = 160;  //限定行高,po,20151202；UITableViewAutomaticDimension 可修改为自适应，20151027
     
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    self.tableView.separatorInset = UIEdgeInsetsMake(0, 3, 0, 11);
 //    self.tableView.separatorColor = [UIColor grayColor];
     
     self.cellClass = [XFNWorkTableViewCell class];
+    
+    [self initLabelsGlobalArray];
     
     //self.sectionsNumber = self.dataArray.count;//这句话会导致程序异常，错误可重现,po，20151017 19:06,signal SIGABRT
 }
@@ -42,6 +58,172 @@
 {
     [self initData];
     [self.tableView reloadData]; //po 20151111：这种方式可以简单的刷新tableView里面的所有cell，但是从性能上讲是不合理的，应该使用NSNotificationCenter，传递修改的cell的Indexpath，然后只刷新那一个cell
+}
+
+- (void)initLabelsGlobalArray//: (NSMutableArray*) mutableArray
+{
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForAssetStatusGlobalArray)
+    {
+        sXFNlabelsForAssetStatusGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForAssetStatusGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForTypeOfPayGlobalArray)
+    {
+        sXFNlabelsForTypeOfPayGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForTypeOfPayGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForTaxInfoGlobalArray)
+    {
+        sXFNlabelsForTaxInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForTaxInfoGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForAssetLayoutInfoGlobalArray)
+    {
+        sXFNlabelsForAssetLayoutInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForAssetLayoutInfoGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForDecorationInfoGlobalArray)
+    {
+        sXFNlabelsForDecorationInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForDecorationInfoGlobalArray removeAllObjects];
+    }
+    //-----------------------------------------------------------------------------------------
+    if (nil == sXFNlabelsForAncillaryInfoGlobalArray)
+    {
+        sXFNlabelsForAncillaryInfoGlobalArray = [NSMutableArray array];
+    }
+    else
+    {
+        [sXFNlabelsForAncillaryInfoGlobalArray removeAllObjects];
+    }
+    
+    //新建查询
+    AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_LABEL_MODEL_];
+    
+    //设置查询排序
+    [query orderByAscending  : @"updatedAt"];
+    
+    //设置查询数量
+    query.limit = 1;
+    
+    //后台查询，并将结果存入tableView数组
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            XFNLabelsForAsset       *tempAssetLabel  = objects[0];
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForAssetStatus = [tempAssetLabel objectForKey : @"labelsForAssetStatus"];
+            //NSArray * tempArraylabelsForAssetStatus  = [tempStringlabelsForAssetStatus componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForAssetStatus)
+            {
+                [sXFNlabelsForAssetStatusGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForTypeOfPay = [tempAssetLabel objectForKey : @"labelsForTypeOfPay"];
+            //NSArray * tempArraylabelsForTypeOfPay  = [tempStringlabelsForTypeOfPay componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForTypeOfPay)
+            {
+                [sXFNlabelsForTypeOfPayGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForTaxInfo = [tempAssetLabel objectForKey : @"labelsForTaxInfo"];
+            //NSArray * tempArraylabelsForTaxInfo  = [tempStringlabelsForTaxInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForTaxInfo)
+            {
+                [sXFNlabelsForTaxInfoGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArrayabelsForAssetLayoutInfo = [tempAssetLabel objectForKey : @"labelsForAssetLayoutInfo"];
+            //NSArray * tempArrayabelsForAssetLayoutInfo  = [tempStringabelsForAssetLayoutInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArrayabelsForAssetLayoutInfo)
+            {
+                [sXFNlabelsForAssetLayoutInfoGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForDecorationInfo = [tempAssetLabel objectForKey : @"labelsForDecorationInfo"];
+            //NSArray * tempArraylabelsForDecorationInfo  = [tempStringlabelsForDecorationInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForDecorationInfo)
+            {
+                [sXFNlabelsForDecorationInfoGlobalArray addObject: tempString];
+            }
+            //-----------------------------------------------------------------------------------------
+            NSArray* tempArraylabelsForAncillaryInfo = [tempAssetLabel objectForKey : @"labelsForAncillaryInfo"];
+            //NSArray * tempArraylabelsForAncillaryInfo  = [tempStringlabelsForAncillaryInfo componentsSeparatedByString : @","];
+            for ( NSString* tempString in tempArraylabelsForAncillaryInfo)
+            {
+                [sXFNlabelsForAncillaryInfoGlobalArray addObject: tempString];
+            }
+            DLog("初始化标签数组成功");
+        }
+        else
+        {
+            // 输出错误信息
+            DLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+//po 20151209: 在运行期如果有某部分代码调用了全局数组，并无意中修改全局数组的值，则会导致运行混乱。因此，将其修改为值copy
++ (NSArray *)getlabelsForAssetStatusGlobalArray
+{
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForAssetStatusGlobalArray mutableCopy];
+    return temp;
+}
+
++ (NSArray *)getlabelsForTypeOfPayGlobalArray
+{
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForTypeOfPayGlobalArray mutableCopy];
+    return temp;
+}
+
++ (NSArray *)getlabelsForTaxInfoGlobalArray
+{
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForTaxInfoGlobalArray mutableCopy];
+    return temp;
+}
+
++ (NSArray *)getlabelsForAssetLayoutInfoGlobalArray
+{
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForAssetLayoutInfoGlobalArray mutableCopy];
+    return temp;
+}
+
++ (NSArray *)getlabelsForDecorationInfoGlobalArray
+{
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForDecorationInfoGlobalArray mutableCopy];
+    return temp;
+}
+
++ (NSArray *)getlabelsForAncillaryInfoGlobalArray
+{
+    NSArray* temp = [NSArray array];
+    temp = [sXFNlabelsForAncillaryInfoGlobalArray mutableCopy];
+    return temp;
 }
 
 - (void)initData
@@ -60,11 +242,11 @@
     AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_MODEL_];
     
     //设置查询排序
-    [query orderByAscending  : @"updatedAt"];
-    [query addAscendingOrder : @"bIsOnTop"];
+    [query orderByDescending  : @"updatedAt"];
+    [query addDescendingOrder : @"bIsOnTop"];
     
     //设置查询数量
-    query.limit = 10;
+    query.limit = 20;
     
     //后台查询，并将结果存入tableView数组
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -77,7 +259,7 @@
             //XFNFrameAssetModel       *tempAssetModel = [[XFNFrameAssetModel alloc] init];
             
             for (int ii=0; ii<objects.count; ii++)
-            {
+            {wo
                 //tempAssetModel = objects[ii];
                 XFNFrameAssetModel       *tempAssetModel = objects[ii];
                 XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
@@ -97,17 +279,40 @@
     }];
 }
 
+
+#pragma mark DataSource
+//-----------------------------------------------------------------------------------------
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return self.dataArray.count;
+//}
+
+//-----------------------------------------------------------------------------------------
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : _detailedAssetArray[indexPath.row]];
+//    
+//    XFNWorkTableViewCell *cell = [[XFNWorkTableViewCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
+//    
+//    [cell setModel : tempCellModel];
+//    
+//    return cell;
+//}
+
 #pragma mark - delegate
 //-----------------------------------------------------------------------------------------
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self tableView: tableView cellForRowAtIndexPath:indexPath];
+    return cell.frame.size.height;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CGRect mainScreenRect       = [[UIScreen mainScreen] bounds];
-    CGSize mainScreenSize       = mainScreenRect.size;
-    
     XFNWorkTableViewHeader * head = [[XFNWorkTableViewHeader alloc] init];
     head                          = [head initWithFrame: CGRectMake(0,
                                                                     0,
-                                                                    mainScreenSize.width,
+                                                                    _Macro_ScreenWidth,
                                                                     _Macro_XFNWorkTableViewHearder_Height)];
     return head;
 }
@@ -117,15 +322,32 @@
     return _Macro_XFNWorkTableViewHearder_Height;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XFNWorkTableViewCell *cell = (XFNWorkTableViewCell *)[super tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath];
+    
+    cell.delegate = self;
+    
+    cell.tag = indexPath.row; //记录cell的行数，在点击cell中button回调的时候，在controller中识别是哪一行
+
+    return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XFNWorkTableViewCellModel *model = self.dataArray[indexPath.row];
     XFNWorkDetailTableViewController *vc = [[XFNWorkDetailTableViewController alloc] init];
     
+    vc.hidesBottomBarWhenPushed=YES;
+    
     //po 20151201 这么写是有风险的，应该改成在字符串中寻找第二个｜，将第二个｜之前的部分作为子字符串赋值给title
     NSArray *tempNameArray = [model.nameString componentsSeparatedByString:@"|"];
     
     NSString* tempName = [NSString stringWithFormat: @"%@ | %@", tempNameArray[0], tempNameArray[1]];
+    
+    self.delegate = vc;
+    
+    [self.delegate toSendAssetModelwithObject: _detailedAssetArray[indexPath.row]];
     
     vc.title = tempName;
     
@@ -159,6 +381,55 @@
     if([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]){
         [cell setPreservesSuperviewLayoutMargins:NO];
     }
+}
+
+#pragma mark Protocol Cell - > Controller, 这里是receiver
+//-----------------------------------------------------------------------------------------
+- (void)toPushViewForCommentWithCellIndex: (NSInteger) index
+{
+    DLog(@"row = %ld", index);
+    
+    XFNAssetCommentViewController *vc = [[XFNAssetCommentViewController alloc] init];
+    
+    vc.hidesBottomBarWhenPushed=YES;
+    
+    vc.detailModel = _detailedAssetArray[index];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+- (void)toChangeFollowStatusWithCellIndex: (NSInteger) index
+{
+    XFNFrameUserProfileModel *currentUser = (XFNFrameUserProfileModel *)[AVUser currentUser];
+    
+    XFNWorkTableViewCellModel* tempModel = (XFNWorkTableViewCellModel*) _detailedAssetArray[index];
+    
+    [currentUser addObject: tempModel.objectId forKey: @"followedItemArray"];
+    
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            DLog(@"！！！！！！！！！！用户信息保存成功！！！！！！！！");
+        }
+        else
+        {
+            NSString *errMsg = [error userInfo][@"error"];
+            
+            DLog(@"%@", errMsg);
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle: @"关注失败"
+                                                                                     message: @"同步服务器数据错误"
+                                                                              preferredStyle: UIAlertControllerStyleAlert];
+            NSString *cancelButtonTitle = NSLocalizedString(@"返回", nil);
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                //NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+            }];
+            
+            [alertController addAction:cancelAction];
+        }
+    }];
 }
 
 #pragma mark - pull down refresh

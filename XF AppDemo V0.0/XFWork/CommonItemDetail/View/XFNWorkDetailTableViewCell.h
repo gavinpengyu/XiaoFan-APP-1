@@ -10,48 +10,19 @@
 #define XFNWorkDetailTableViewCell_h
 
 #import "XFNFrameTableViewControllerCell.h"
-#import "XFNFrameCommonItemDetailModel.h"
+#import "XFNWorkDetailTableViewController.h"
 
 //-----------------------------------------------------------------------------------------
 @interface XFNWorkDetailTableViewCell : XFNFrameTableViewControllerCell
 
-@end
++ (UILabel*)initLabelWithTextColor: (UIColor*) color andFont: (UIFont*) font;
 
-//-----------------------------------------------------------------------------------------
-@interface XFNWorkAddressInfoTableViewCell : XFNWorkDetailTableViewCell
-{
-    @private
-    UILabel *_addressInfoLabel;
-}
++ (UIView*) initLabelUIViewWithArray: (NSArray*) array andOriginPoint: (CGPoint) origin;
 
-@property (nonatomic,strong) NSString *addressInfoString;
++ (UIView*) initCommentBarUIViewWithFont: (UIFont*) font andOriginPoint: (CGPoint) origin andIsFollowedFlag: (BOOL) flag;
 
-@property (assign,nonatomic) CGFloat height;
-
-- (void)setaddressInfoString: (NSString *) addressInfoString;
++ (NSArray*)arrayFromString: (NSString*) string  withFont: (UIFont*) font splitedByLimitedScreenWidth: (CGFloat) width;
 
 @end
-
-//-----------------------------------------------------------------------------------------
-@interface XFNWorkStatusAttributePriceTableViewCell : XFNWorkDetailTableViewCell
-{
-    @private
-    UILabel* _statusLabel;     //状态
-    UILabel* _attributeLabel;  //归属人
-    UILabel* _priceLabel;      //价格
-}
-
-@property (nonatomic,strong) XFNFrameStatusAttributePriceModel *statusAttributePrice;
-
-@property (assign,nonatomic) CGFloat height;
-
-- (void)setstatusAttributePrice: (XFNFrameStatusAttributePriceModel *) statusAttributePrice;
-
-@end
-
-//-----------------------------------------------------------------------------------------
-
-
-//-----------------------------------------------------------------------------------------
 
 #endif /* XFNWorkDetailTableViewCell_h */

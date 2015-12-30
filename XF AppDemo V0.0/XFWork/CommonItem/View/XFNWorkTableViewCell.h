@@ -11,41 +11,36 @@
 
 #import "XFNFrameTableViewControllerCell.h"
 
+@protocol XFNCellToControllerDelegate;
+
 @interface XFNWorkTableViewCell : XFNFrameTableViewControllerCell
 {
-    Boolean _bIsOnTop;
-    Boolean _bIsFollowed;
+    NSArray*  _labelsArray;
+    
+    Boolean   _bIsOnTop;
+    Boolean   _bIsFollowed;
     
     UILabel  *_isOnTopLabel;
-    UILabel  *_isFollowedLabel;
-    UILabel  *_moreActionLabel;
-    UILabel  *_commentsLabel;
+
+    UILabel  *_ownernameLabel;
+    UILabel  *_sendtimeLabel;
+    UIImageView *_ownerheadImage;
     
     UILabel  *_nameLabel;
     UILabel  *_detailLabel;
     UILabel  *_priceLabel;
     UILabel  *_statusLabel;
-    UILabel  *_ownernameLabel;
-    UILabel  *_sendtimeLabel;
-    UIImageView *_ownerheadImage;
+    
+    UILabel  *_commentsLabel;
+    UILabel  *_isFollowedLabel;
+    UILabel  *_moreActionLabel;
 }
 
-//@property (nonatomic, copy) UILabel     *nameLabel;
-//@property (nonatomic, copy) UILabel     *detailLabel;
-//@property (nonatomic, copy) UILabel     *priceLabel;
-//@property (nonatomic, copy) UILabel     *statusLabel;
-//@property (nonatomic, copy) UILabel     *ownernameLabel;
-//@property (nonatomic, copy) UILabel     *sendtimeLabel;
-//@property (nonatomic, copy) UIImageView *ownerheadImage;
++ (UIColor *)getTheColorOfLabel: (NSString*) label;
 
-//@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *ownernameLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *sendtimeLabel;
-//@property (weak, nonatomic) IBOutlet UIImageView *ownerheadImage;
-//po,20151015,需在此处link buttoms
++ (NSString *)getThePropertyNameOfLabel: (NSString*) label;
+
+@property (nonatomic,strong) id <XFNCellToControllerDelegate> delegate;
 
 @end
 

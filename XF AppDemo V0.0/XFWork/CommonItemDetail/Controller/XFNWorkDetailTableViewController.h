@@ -10,13 +10,46 @@
 #define XFNWorkDetailTableViewController_h
 
 #import "XFNFrameTableViewController.h"
+#import "XFNFrameAssetModel.h"
 
-@interface XFNWorkDetailTableViewController : XFNFrameTableViewController < UITableViewDataSource, UITableViewDelegate >
+
+typedef NS_ENUM(NSInteger, XFNDetailViewCellIndexEnum) {
+    XFNWorkDetailImageViewCellIndexEnum = 0,
+    XFNWorkDetailBasicInfoCellIndexEnum,
+    XFNWorkDetailTradeInfoCellIndexEnum,
+    XFNWorkDetailAuxiliaryInfoCellIndexEnum,
+    XFNWorkDetailContactInfoCellIndexEnum,
+    XFNWorkDetailCommentsInfoCellIndexEnum
+};
+
+//Protocol CommonItem / Edit View - > CommonItemDetail  XFNFrameAssetModel (AVObject)
+//-----------------------------------------------------------------------------------------
+@protocol XFNSendAssetModelToDetailViewDelegate
+
+- (void)toSendAssetModelwithObject : (XFNFrameAssetModel*) object;
+
+@end
+
+//Protocol Cell - > CommonItemDetail 
+//-----------------------------------------------------------------------------------------
+@protocol XFNPushEditViewDelegate
+
+- (void)toPushViewForEditBasicInfo;
+- (void)toPushViewForEditTradeInfo;
+- (void)toPushViewForEditAuxiliaryInfo;
+- (void)toPushViewForEditContactInfo;
+- (void)toPushViewForComment;
+
+@end
+
+//-----------------------------------------------------------------------------------------
+@interface XFNWorkDetailTableViewController : XFNFrameTableViewController < UITableViewDataSource, UITableViewDelegate, XFNSendAssetModelToDetailViewDelegate, XFNPushEditViewDelegate >
 {
-    UITableView *_detailTableView;
-    NSMutableArray *_detailTableViewModel;
-    //NSMutableArray *_detailTableViewModelCells; //可用于存储cell，计算高度，但是暂未使用
+    XFNFrameAssetModel *_detailModel;
 }
+
+@property (nonatomic,strong) id <XFNSendAssetModelToDetailViewDelegate> delegate;//protocol 将数据传至edit View
+
 @end
 
 #endif /* XFNWorkDetailTableViewController_h */

@@ -24,9 +24,24 @@
 + (void)testData
 {
     DLog(@"开始数据测试");
-    XFNDataTestModel *dataTestModel = [[XFNDataTestModel alloc] init];
+    __unused XFNDataTestModel *dataTestModel = [[XFNDataTestModel alloc] init];
     //[dataTestModel getDateFromServer];
     //[dataTestModel initDataToServer];
+    
+    //创建用户
+//    AVUser *user = [AVUser user];
+//    user.username = @"xfn123";
+//    user.password =  @"12345678";
+//    user.email = @"hang@leancloud.rocks";
+//    [user setObject:@"186-1234-0000" forKey:@"mobilePhoneNumber"];
+//    
+//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            DLog(@"创建用户成功");
+//        } else {
+//            DLog(@"创建用户失败");
+//        }
+//    }];
 }
 
 - (void) getDateFromServer
@@ -48,7 +63,7 @@
             // 检索成功
             NSLog(@"Successfully received %lu posts.", (unsigned long)objects.count);
             
-            NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
+            __unused NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
             XFNFrameAssetModel       *tempAssetModel = [XFNFrameAssetModel objectWithClassName: _Macro_XFN_ASSET_MODEL_];
             
             for (int ii=0; ii<objects.count; ii++)

@@ -9,17 +9,27 @@
 #import <Foundation/Foundation.h>
 #import "XFNFrame.h"
 
+#import "XFNWorkTableViewController.h"
 #import "XFNWorkTableViewCell.h"
 #import "XFNWorkTableViewCellModel.h"
 #import "XFNWorkTableViewHeader.h"
 
-#import "XFNGridView.h"
+#import "XFNWorkDetailTableViewCell.h"
 
-#define _Macro_XFNWorTableViewCellHorizontalSeperatorHeight 1
-#define _Macro_XFNWorTableViewCellVerticalSeperatorWidth 1
+#import "XFNGridView.h"
 
 //po,20151015，临时屏蔽，暂不添加Web
 //#import "UIImageView+WebCache.h"
+
+//-----------全局标签数组，在整个房源View使用--------------------------------------------------
+static NSMutableArray * sXFNlabelsForAssetStatusGlobalArray;
+static NSMutableArray * sXFNlabelsForTypeOfPayGlobalArray;
+static NSMutableArray * sXFNlabelsForTaxInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForAssetLayoutInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForDecorationInfoGlobalArray;
+static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
+//-----------------------------------------------------------------------------------------
+
 
 @implementation XFNWorkTableViewCell
 //-----------------------------------------------------------------------------------------
@@ -116,14 +126,6 @@
 
 - (void) initViewLayout
 {
-    //获取当前屏幕宽度
-    CGRect mainScreenRect       = [[UIScreen mainScreen] bounds];
-    CGSize mainScreenSize       = mainScreenRect.size;
-    //CGFloat mainScreenwidth     = mainScreenSize.width;
-    //CGFloat mainScreenheight = mainScreenSize.height;
-    
-    //分割线
-    
     //头像－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_ownerheadImage
     CGFloat ownerheadImageX     = XFNTableViewCellControlSpacing;
     CGFloat ownerheadImageY     = XFNTableViewCellControlSpacing;
@@ -157,7 +159,7 @@
     //置顶状态－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_isOnTopLabel
     CGFloat isOnTopLabelY      = ownernameLabelY;
     CGSize  isOnTopLabelSize   = [_isOnTopLabel.text sizeWithAttributes : @{NSFontAttributeName : _isOnTopLabel.font}];
-    CGFloat isOnTopLabelX      = mainScreenSize.width - isOnTopLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕最右上角
+    CGFloat isOnTopLabelX      = _Macro_ScreenWidth - isOnTopLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕最右上角
     CGRect  isOnTopLabelRect   = CGRectMake(isOnTopLabelX,
                                             isOnTopLabelY,
                                             isOnTopLabelSize.width,
@@ -176,7 +178,7 @@
     
     //价格－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_priceLabel
     CGSize  priceLabelSize     = [_priceLabel.text sizeWithAttributes : @{NSFontAttributeName : _priceLabel.font}];
-    CGFloat priceLabelX        = mainScreenSize.width - priceLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在置顶状态下方
+    CGFloat priceLabelX        = _Macro_ScreenWidth - priceLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在置顶状态下方
     CGFloat priceLabelY        = nameLabelY + nameLabelSize.height - priceLabelSize.height; //与nameLabel底部对齐
     CGRect  priceLabelRect     = CGRectMake(priceLabelX,
                                             priceLabelY,
@@ -196,7 +198,7 @@
     
     //状态－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_statusLabel
     CGSize  statusLabelSize     = [_statusLabel.text sizeWithAttributes : @{NSFontAttributeName : _statusLabel.font}];
-    CGFloat statusLabelX        = mainScreenSize.width - statusLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在priceLabelX下方
+    CGFloat statusLabelX        = _Macro_ScreenWidth - statusLabelSize.width - XFNTableViewCellControlSpacing; //靠屏幕右侧，在priceLabelX下方
     CGFloat statusLabelY        = detailLabelY + detailLabelSize.height - statusLabelSize.height; //与detailLabel底部对齐
     CGRect  statusLabelRect     = CGRectMake(statusLabelX,
                                              statusLabelY,
@@ -204,25 +206,45 @@
                                              statusLabelSize.height);
     _statusLabel.frame      = statusLabelRect;
     
+    //房源标签－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+    CGPoint tempPoint = CGPointMake (0, (_detailLabel.frame.origin.y + _detailLabel.frame.size.height + XFNTableViewCellControlSpacing));
+    
+    UIView * labelView= [XFNWorkDetailTableViewCell initLabelUIViewWithArray: _labelsArray andOriginPoint: tempPoint];
+    
+    [self addSubview : labelView];
+    
+    
     //在“跟进”的上方添加一条分割横线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    //    UIView * gridHorizontalLine = [[UIView alloc] initWithFrame: CGRectMake (0,
+    //                                                                             assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing/2,
+    //                                                                             _Macro_ScreenWidth,
+    //                                                                             _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     UIView * gridHorizontalLine = [[UIView alloc] initWithFrame: CGRectMake (0,
-                                                                             detailLabelY + detailLabelSize.height + XFNTableViewCellControlSpacing/2,
-                                                                             mainScreenSize.width,
+                                                                             labelView.frame.origin.y + labelView.frame.size.height + XFNTableViewCellControlSpacing/2,
+                                                                             _Macro_ScreenWidth,
                                                                              _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     gridHorizontalLine.backgroundColor = [UIColor lightGrayColor];
     [self addSubview: gridHorizontalLine];
     
     //跟进－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-    CGFloat commentsLabelY      = detailLabelY + detailLabelSize.height + XFNTableViewCellControlSpacing; //在detailLabel下方
+    //CGFloat commentsLabelY      = assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing; //在Label下方
+    CGFloat commentsLabelY      = labelView.frame.origin.y + labelView.frame.size.height + XFNTableViewCellControlSpacing; //在Label下方
     CGFloat commentsLabelX      = detailLabelX; //与detailLabel X对齐；
     CGSize  commentsLabelSize   = [_commentsLabel.text sizeWithAttributes : @{NSFontAttributeName : _commentsLabel.font}];
-    commentsLabelSize.width     = (mainScreenSize.width - XFNTableViewCellControlSpacing*2) / 3; //底部分为3个按钮，跟进在最左侧
+    commentsLabelSize.width     = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing*2) / 3; //底部分为3个按钮，跟进在最左侧
     commentsLabelSize.height    = commentsLabelSize.height + XFNTableViewCellControlSpacing;
     CGRect  commentsLabelRect   = CGRectMake(commentsLabelX,
                                              commentsLabelY,
                                              commentsLabelSize.width,
                                              commentsLabelSize.height);
     _commentsLabel.frame        = commentsLabelRect;
+    
+    UIButton* commentButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    commentButton.frame         = _commentsLabel.frame;
+    
+    [commentButton addTarget : self action : @selector (toPushCommentView:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : commentButton];
     
     //关注－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_isFollowedLabel
     CGFloat isFollowedLabelY    = commentsLabelY; //与跟进Y对齐
@@ -235,6 +257,12 @@
                                              isFollowedLabelSize.width,
                                              isFollowedLabelSize.height);
     _isFollowedLabel.frame      = isFollowedLabelRect;
+    
+    UIButton* isFollowButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    isFollowButton.frame         = _isFollowedLabel.frame;
+    
+    [isFollowButton addTarget : self action : @selector (toChangeFollowStatus:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : isFollowButton];
     
     //在“关注”的前方添加一条分割竖线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     UIView * gridVerticalLineOne = [[UIView alloc] initWithFrame: CGRectMake (isFollowedLabelX,
@@ -263,6 +291,8 @@
                                                                               moreActionLabelSize.height - 4)];
     gridVerticalLineTwo.backgroundColor = [UIColor lightGrayColor];
     [self addSubview: gridVerticalLineTwo];
+    
+    self.frame = CGRectMake(0,0,_Macro_ScreenWidth,(gridVerticalLineTwo.frame.origin.y + gridVerticalLineTwo.frame.size.height + XFNTableViewCellControlSpacing));
 }
 
 - (void)setModel:(NSObject *)model
@@ -270,16 +300,18 @@
     [super setModel:model];
     
     XFNWorkTableViewCellModel *cellModel = (XFNWorkTableViewCellModel *)model;
-    _nameLabel.text = cellModel.nameString;
-    _detailLabel.text = cellModel.detailString;
-    _priceLabel.text = cellModel.priceString;
-    _statusLabel.text = cellModel.statusString;
-    _ownernameLabel.text = cellModel.ownernameString;
-    _sendtimeLabel.text = cellModel.sendtimeString;
+    _nameLabel.text       = cellModel.nameString;
+    _detailLabel.text     = cellModel.detailString;
+    _priceLabel.text      = cellModel.priceString;
+    _statusLabel.text     = cellModel.statusString;
+    _ownernameLabel.text  = cellModel.ownernameString;
+    _sendtimeLabel.text   = cellModel.sendtimeString;
     _ownerheadImage.image = cellModel.ownerImage;
     
-    _bIsFollowed = cellModel.bThisItemIsFollowed;
-    _bIsOnTop    = cellModel.bThisItemIsOnTop;
+    _bIsFollowed          = cellModel.bThisItemIsFollowed;
+    _bIsOnTop             = cellModel.bThisItemIsOnTop;
+    
+    _labelsArray          = cellModel.labelsArray;
     
     if (_bIsFollowed)
     {
@@ -305,4 +337,115 @@
     [self initViewLayout];
 }
 
++ (UIColor *)getTheColorOfLabel: (NSString*) label
+{
+    //NSArray* tempArrayAssetStatus = [XFNWorkTableViewController getlabelsForAssetStatusGlobalArray];
+    NSArray* tempArrayTypeOfPay   = [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray];
+    NSArray* tempArrayTaxInfo     = [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray];
+    NSArray* tempArrayAssetLayout = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];
+    NSArray* tempArrayDecoration  = [XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray];
+    NSArray* tempArrayAncillary   = [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray];
+    
+    if ([tempArrayTypeOfPay containsObject : label])
+    {
+        return _Macro_XFNWorTableViewCell_TypeOfPay_Label_Color;
+    }
+    else if ([tempArrayTaxInfo containsObject : label])
+    {
+        return _Macro_XFNWorTableViewCell_TaxInfo_Label_Color;
+    }
+    else if ([tempArrayAssetLayout containsObject : label])
+    {
+        return _Macro_XFNWorTableViewCell_AssetLayout_Label_Color;
+    }
+    else if ([tempArrayDecoration containsObject : label])
+    {
+        return _Macro_XFNWorTableViewCell_Decoration_Label_Color;
+    }
+    else if ([tempArrayAncillary containsObject : label])
+    {
+        return _Macro_XFNWorTableViewCell_Ancillary_Label_Color;
+    }
+    else
+    {
+        return [UIColor blackColor];
+    }
+}
+
++ (NSString *)getThePropertyNameOfLabel: (NSString*) label
+{
+    NSString* string = [[NSString alloc] init];
+    
+    NSArray* tempArrayAssetStatus = [XFNWorkTableViewController getlabelsForAssetStatusGlobalArray];
+    NSArray* tempArrayTypeOfPay   = [XFNWorkTableViewController getlabelsForTypeOfPayGlobalArray];
+    NSArray* tempArrayTaxInfo     = [XFNWorkTableViewController getlabelsForTaxInfoGlobalArray];
+    NSArray* tempArrayAssetLayout = [XFNWorkTableViewController getlabelsForAssetLayoutInfoGlobalArray];
+    NSArray* tempArrayDecoration  = [XFNWorkTableViewController getlabelsForDecorationInfoGlobalArray];
+    NSArray* tempArrayAncillary   = [XFNWorkTableViewController getlabelsForAncillaryInfoGlobalArray];
+    
+    if ([tempArrayTypeOfPay containsObject : label])
+    {
+        string = @"typeOfPaying";
+        return string;
+    }
+    else if ([tempArrayTaxInfo containsObject : label])
+    {
+        string = @"taxInfo";
+        return string;
+    }
+    else if ([tempArrayAssetLayout containsObject : label])
+    {
+        string = @"basicInfoLabelsOfAsset";
+        return string;
+    }
+    else if ([tempArrayDecoration containsObject : label])
+    {
+        string = @"decorationInfo";
+        return string;
+    }
+    else if ([tempArrayAncillary containsObject : label])
+    {
+        string = @"ancillaryInfo";
+        return string;
+    }
+    else if ([tempArrayAssetStatus containsObject : label])
+    {
+        string = @"assetStatus";
+        return string;
+    }
+    else
+    {
+        DLog(@"ERROR:看到这段话，是因为获取key的字符串失败，这可能是修改了key的名字，或者新增了key但是没有同步到这个函数，输入的label＝%@", label);
+        return nil;
+    }
+}
+
+- (void) toPushCommentView: (id)sender
+{
+    [self.delegate toPushViewForCommentWithCellIndex: self.tag];
+}
+
+- (void) toChangeFollowStatus: (id)sender
+{
+    [self.delegate toChangeFollowStatusWithCellIndex: self.tag];
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
