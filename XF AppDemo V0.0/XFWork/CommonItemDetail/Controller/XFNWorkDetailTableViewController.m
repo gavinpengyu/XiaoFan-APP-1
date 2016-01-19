@@ -22,6 +22,8 @@
 
 #import "XFNWorkTableViewHeader.h"
 
+#import "XFNFrameUserProfileModel.h"
+
 ////-------------------------------Action .h Begin-------------------------------
 #import "XFNAssetEditBasicInfoViewController.h"
 #import "XFNAssetEditTradeInfoViewController.h"
@@ -160,11 +162,33 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    XFNWorkDetailTableViewFooter * footer = [[XFNWorkDetailTableViewFooter alloc] init];
+    XFNWorkDetailTableViewFooter * footer = [XFNWorkDetailTableViewFooter alloc];//[[XFNWorkDetailTableViewFooter alloc] init];
     
-    NSNumber* temp      = [_detailModel objectForKey : @"bIsFollowed"];
+    //NSNumber* temp      = [_detailModel objectForKey : @"bIsFollowed"];
     
-    footer.bIsFollowed  = temp.boolValue;
+    AVUser *currentUser = [AVUser currentUser];
+    if (nil == currentUser)
+    {
+        DLog(@"ERROR：内部错误，currentUser ＝ nil");
+    }
+    
+    //同步服务器用户信息
+    XFNFrameUserProfileModel * userModel = (XFNFrameUserProfileModel *) [AVQuery getObjectOfClass: @"_User" objectId: currentUser.objectId];
+    if (nil == userModel)
+    {
+        DLog(@"ERROR: 内部错误，同步服务器用户信息失败");
+    }
+    
+    NSArray* tempFollowedItemArray = [userModel objectForKey: @"followedItemArray"];
+    
+    if ([tempFollowedItemArray containsObject: _detailModel.objectId])
+    {
+        footer.bIsFollowed = true;
+    }
+    else
+    {
+        footer.bIsFollowed = false;
+    }
     
     footer              = [footer initWithFrame: CGRectMake(0,
                                                             0,
@@ -259,6 +283,48 @@
     vc.detailModel = _detailModel;
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)toChangeFollowStatus
+{
+    XFNFrameUserProfileModel *currentUser = (XFNFrameUserProfileModel *)[AVUser currentUser];
+    
+    NSArray* tempFollowedItemArray = [currentUser objectForKey: @"followedItemArray"];
+    
+    //若关注清单中已包含，则认为是 取消关注 操作；否则，认为是添加 关注 操作
+    if ([tempFollowedItemArray containsObject: _detailModel.objectId])
+    {
+        [currentUser removeObject: _detailModel.objectId forKey: @"followedItemArray"];
+    }
+    else
+    {
+        [currentUser addUniqueObject: _detailModel.objectId forKey: @"followedItemArray"];
+    }
+    
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            DLog(@"！！！！！！！！！！用户信息保存成功！！！！！！！！");
+            [self.tableView reloadData];
+        }
+        else
+        {
+            NSString *errMsg = [error userInfo][@"error"];
+            
+            DLog(@"%@", errMsg);
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle: @"关注失败"
+                                                                                     message: @"同步服务器数据错误"
+                                                                              preferredStyle: UIAlertControllerStyleAlert];
+            NSString *cancelButtonTitle = NSLocalizedString(@"返回", nil);
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                //NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+            }];
+            
+            [alertController addAction:cancelAction];
+        }
+    }];
 }
 
 @end

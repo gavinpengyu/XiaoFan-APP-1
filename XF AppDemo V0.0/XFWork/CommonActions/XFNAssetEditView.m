@@ -570,13 +570,16 @@
     //处于未选中状态
     if ([UIColor grayColor] == button.customizedLabel.textColor)
     {
-        //如果是摘要标签，限制最多只能选择6个
-        NSString *tempSeperatorString = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];
-        if ([[self.cellModel objectForKey: @"summaryInfoLabelsOfAsset"] componentsSeparatedByString: tempSeperatorString].count >= 6 )
+        if ([button.assetPropertyName isEqualToString: @"summaryInfoLabelsOfAsset"])
         {
-            return;
+            //如果是摘要标签，限制最多只能选择6个
+            NSString *tempSeperatorString = [[NSString alloc] initWithFormat : _Macro_XFN_String_Seperator];
+            if ([[self.cellModel objectForKey: @"summaryInfoLabelsOfAsset"] componentsSeparatedByString: tempSeperatorString].count >= 6 )
+            {
+                return;
+            }
         }
-        
+    
         //选中
         button.customizedLabel.textColor         = [XFNWorkTableViewCell getTheColorOfLabel: button.customizedLabel.text];
         button.customizedLabel.layer.borderColor = [XFNWorkTableViewCell getTheColorOfLabel: button.customizedLabel.text].CGColor;
@@ -713,15 +716,14 @@
     
     NSString *tempSendTime         = [dateFormatter stringFromDate: senddate];
 
+    AVUser *currentUser = [AVUser currentUser];
     
-    NSMutableArray* tempArray = [_cellModel objectForKey: @"assetLog"];
     NSString*       comments  = [XFNComments sysLogWithType: _Macro_XFN_Comment_Manual
                                                  andContant: string
-                                                   bySender: @"飞鸟" //po 20151215，添加AVUsers之后，需要读当前用户信息
+                                                   bySender: currentUser.username
                                                      atTime: tempSendTime];
-    [tempArray addObject: comments];
     
-    [_cellModel setObject: tempArray forKey: @"assetLog"];
+    [_cellModel addObject: comments forKey: @"assetLog"];
 }
 
 -(void) activatePickerViewWithButton:(id)sender

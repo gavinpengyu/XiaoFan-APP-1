@@ -32,6 +32,10 @@
 
 - (instancetype)initWithObject: (AVObject*) assetModel;
 
+- (void)setBThisItemIsFollowed:(Boolean)bThisItemIsFollowed;
+
+- (void)setBThisItemIsOnTop:(Boolean)bThisItemIsOnTop;
+
 @end
 
 #endif /* XFNWorkTableViewCellModel_h */

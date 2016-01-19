@@ -10,6 +10,7 @@
 #import "XFNFrame.h"
 
 #import "XFNWorkTableViewHeader.h"
+#import "XFNWorkTableViewController.h"
 
 //-----------------------------------------------------------------------------------------
 @implementation XFNWorkTableViewHeader
@@ -109,6 +110,12 @@
                                          headLabelASize.height);
     _headLabelA.frame   = headLabelARect;
     
+    UIButton* headLabelAButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    headLabelAButton.frame         = _headLabelA.frame;
+    
+    [headLabelAButton addTarget : self action : @selector (headATouched:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : headLabelAButton];
+    
     //headLabelB－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     CGFloat headLabelBY     = headLabelAY;
     CGFloat headLabelBX     = headLabelAX + headLabelASize.width + XFNTableViewCellControlSpacing * 4;
@@ -118,6 +125,12 @@
                                          headLabelBSize.width,
                                          headLabelBSize.height);
     _headLabelB.frame   = headLabelBRect;
+    
+    UIButton* headLabelBButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    headLabelBButton.frame         = _headLabelB.frame;
+    
+    [headLabelBButton addTarget : self action : @selector (headBTouched:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : headLabelBButton];
     
     //headLabelC－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     CGFloat headLabelCY     = headLabelAY;
@@ -129,6 +142,12 @@
                                          headLabelCSize.height);
     _headLabelC.frame   = headLabelCRect;
     
+    UIButton* headLabelCButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    headLabelCButton.frame         = _headLabelC.frame;
+    
+    [headLabelCButton addTarget : self action : @selector (headCTouched:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : headLabelCButton];
+    
     //headLabelD－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     CGFloat headLabelDY     = headLabelAY;
     CGFloat headLabelDX     = headLabelCX + headLabelCSize.width + XFNTableViewCellControlSpacing * 4;
@@ -138,6 +157,12 @@
                                          headLabelDSize.width,
                                          headLabelDSize.height);
     _headLabelD.frame   = headLabelDRect;
+    
+    UIButton* headLabelDButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    headLabelDButton.frame         = _headLabelD.frame;
+    
+    [headLabelDButton addTarget : self action : @selector (headDTouched:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : headLabelDButton];
     
     //configHeadLabel－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     
@@ -154,9 +179,54 @@
                                                configHeadLabelDSize.width,
                                                configHeadLabelDSize.height);
     _configHeadLabel.frame    = configHeadLabelDRect;
+    
+    UIButton* configHeadButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    configHeadButton.frame         = _configHeadLabel.frame;
+    
+    [configHeadButton addTarget : self action : @selector (toConfigHead:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : configHeadButton];
 }
 
 //-----------------------------------------------------------------------------------------
+- (void) toConfigHead: (id)sender
+{
+    [self.delegate toConfigHead];
+}
+
+- (void) headATouched: (id)sender
+{
+    _headLabelA.textColor = [UIColor whiteColor];
+    [self performSelector: @selector(toResumeNormalColor:) withObject: _headLabelA afterDelay: 0.5f];
+    [self.delegate toShowAllItems];
+}
+
+- (void) headBTouched: (id)sender
+{
+    _headLabelB.textColor = [UIColor whiteColor];
+    [self performSelector: @selector(toResumeNormalColor:) withObject: _headLabelB afterDelay: 0.5f];
+    [self.delegate toShowFollowedItems];
+}
+
+- (void) headCTouched: (id)sender
+{
+    _headLabelC.textColor = [UIColor whiteColor];
+    [self performSelector: @selector(toResumeNormalColor:) withObject: _headLabelC afterDelay: 0.5f];
+    [self.delegate toShowOnRentingItems];
+}
+
+- (void) headDTouched: (id)sender
+{
+    _headLabelD.textColor = [UIColor whiteColor];
+    [self performSelector: @selector(toResumeNormalColor:) withObject: _headLabelD afterDelay: 0.5f];
+    [self.delegate toShowOnSaleItems];
+}
+
+- (void) toResumeNormalColor:(UILabel *)label
+{
+    label.textColor = [UIColor grayColor];
+    DLog(@"toResumeNormalColor");
+}
+
 @end
 
 

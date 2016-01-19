@@ -166,6 +166,12 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
                                             isOnTopLabelSize.height);
     _isOnTopLabel.frame        = isOnTopLabelRect;
     
+    UIButton* isOnTopButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    isOnTopButton.frame         = _isOnTopLabel.frame;
+    
+    [isOnTopButton addTarget : self action : @selector (toChangeOnTopStatus:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : isOnTopButton];
+    
     //name－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－_nameLabel
     CGFloat nameLabelX         = ownerheadImageX; //与头像X对齐
     CGFloat nameLabelY         = ownerheadImageY + ownerheadImageSize.height + XFNTableViewCellControlSpacing;
@@ -210,10 +216,14 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 
     CGPoint tempPoint = CGPointMake (0, (_detailLabel.frame.origin.y + _detailLabel.frame.size.height + XFNTableViewCellControlSpacing));
     
-    UIView * labelView= [XFNWorkDetailTableViewCell initLabelUIViewWithArray: _labelsArray andOriginPoint: tempPoint];
-    
-    [self addSubview : labelView];
-    
+    //PO 20150105，cell会根据显示范围自动刷新，即针对一个cell多次调用cellForRowAtIndexPath。这可能是导致label重影的原因，因此在此处添加判断，如果已经layout labelview，则cell刷新的时候不更新
+    if (nil == _labelView)
+        
+    {
+        _labelView= [XFNWorkDetailTableViewCell initLabelUIViewWithArray: _labelsArray andOriginPoint: tempPoint];
+        
+        [self addSubview : _labelView];
+    }
     
     //在“跟进”的上方添加一条分割横线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     //    UIView * gridHorizontalLine = [[UIView alloc] initWithFrame: CGRectMake (0,
@@ -221,7 +231,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     //                                                                             _Macro_ScreenWidth,
     //                                                                             _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     UIView * gridHorizontalLine = [[UIView alloc] initWithFrame: CGRectMake (0,
-                                                                             labelView.frame.origin.y + labelView.frame.size.height + XFNTableViewCellControlSpacing/2,
+                                                                             _labelView.frame.origin.y + _labelView.frame.size.height + XFNTableViewCellControlSpacing/2,
                                                                              _Macro_ScreenWidth,
                                                                              _Macro_XFNWorTableViewCellHorizontalSeperatorHeight)];
     gridHorizontalLine.backgroundColor = [UIColor lightGrayColor];
@@ -229,7 +239,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     
     //跟进－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     //CGFloat commentsLabelY      = assetLabelAY + _Macro_XFNWorTableViewCellAssetLabelHeight + XFNTableViewCellControlSpacing; //在Label下方
-    CGFloat commentsLabelY      = labelView.frame.origin.y + labelView.frame.size.height + XFNTableViewCellControlSpacing; //在Label下方
+    CGFloat commentsLabelY      = _labelView.frame.origin.y + _labelView.frame.size.height + XFNTableViewCellControlSpacing; //在Label下方
     CGFloat commentsLabelX      = detailLabelX; //与detailLabel X对齐；
     CGSize  commentsLabelSize   = [_commentsLabel.text sizeWithAttributes : @{NSFontAttributeName : _commentsLabel.font}];
     commentsLabelSize.width     = (_Macro_ScreenWidth - XFNTableViewCellControlSpacing*2) / 3; //底部分为3个按钮，跟进在最左侧
@@ -368,6 +378,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     }
     else
     {
+        DLog(@"%@, %@, %@, %@, %@", tempArrayTypeOfPay, tempArrayTaxInfo, tempArrayAssetLayout, tempArrayDecoration, tempArrayAncillary);
         return [UIColor blackColor];
     }
 }
@@ -427,7 +438,46 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
 
 - (void) toChangeFollowStatus: (id)sender
 {
+    if (_bIsFollowed)
+    {
+        _isFollowedLabel.text = @"关注";
+    }
+    else
+    {
+        _isFollowedLabel.text = @"取消关注";
+    }
+    
+    _bIsFollowed  = !_bIsFollowed;
     [self.delegate toChangeFollowStatusWithCellIndex: self.tag];
+}
+
+- (void) toChangeOnTopStatus: (id)sender
+{
+    if (_bIsOnTop)
+    {
+        _isOnTopLabel.text    = @"置顶";
+    }
+    else
+    {
+        _isOnTopLabel.text    = @"取消置顶";
+        _isOnTopLabel.frame   = CGRectMake((_isOnTopLabel.frame.origin.x - XFNTableViewCellControlSpacing * 2),
+                                           _isOnTopLabel.frame.origin.y,
+                                           (_isOnTopLabel.frame.size.width + XFNTableViewCellControlSpacing * 2),
+                                           _isOnTopLabel.frame.size.height);
+    }
+    
+    _bIsOnTop = !_bIsOnTop;
+    [self.delegate toChangeOnTopStatusWithCellIndex: self.tag];
+}
+
+- (void) setBIsFollowed:(Boolean)bIsFollowed
+{
+    _bIsFollowed = bIsFollowed;
+}
+
+- (void) setBIsOnTop:(Boolean)bIsOnTop
+{
+    _bIsOnTop = bIsOnTop;
 }
 
 

@@ -16,10 +16,7 @@
 @interface XFNWorkTableViewCell : XFNFrameTableViewControllerCell
 {
     NSArray*  _labelsArray;
-    
-    Boolean   _bIsOnTop;
-    Boolean   _bIsFollowed;
-    
+
     UILabel  *_isOnTopLabel;
 
     UILabel  *_ownernameLabel;
@@ -34,6 +31,8 @@
     UILabel  *_commentsLabel;
     UILabel  *_isFollowedLabel;
     UILabel  *_moreActionLabel;
+    
+    UIView   *_labelView;
 }
 
 + (UIColor *)getTheColorOfLabel: (NSString*) label;
@@ -41,6 +40,14 @@
 + (NSString *)getThePropertyNameOfLabel: (NSString*) label;
 
 @property (nonatomic,strong) id <XFNCellToControllerDelegate> delegate;
+
+@property (nonatomic, assign) Boolean   bIsOnTop;
+
+@property (nonatomic, assign) Boolean   bIsFollowed;
+
+- (void) setBIsFollowed:(Boolean)bIsFollowed;
+
+- (void) setBIsOnTop:(Boolean)bIsOnTop;
 
 @end
 

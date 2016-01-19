@@ -22,10 +22,28 @@
 
 - (void)toChangeFollowStatusWithCellIndex: (NSInteger) index;
 
+- (void)toChangeOnTopStatusWithCellIndex: (NSInteger) index;
+
+@end
+
+//Protocol Header - > Controller, 这里是receiver
+//-----------------------------------------------------------------------------------------
+@protocol XFNHeaderToControllerDelegate
+
+- (void) toShowAllItems;
+
+- (void) toShowFollowedItems;
+
+- (void) toShowOnRentingItems;
+
+- (void) toShowOnSaleItems;
+
+- (void) toConfigHead;
+
 @end
 
 //-----------------------------------------------------------------------------------------
-@interface XFNWorkTableViewController : XFNFrameTableViewController <XFNCellToControllerDelegate>
+@interface XFNWorkTableViewController : XFNFrameTableViewController <XFNCellToControllerDelegate, XFNHeaderToControllerDelegate>
 {
     NSMutableArray *_detailedAssetArray;
 }

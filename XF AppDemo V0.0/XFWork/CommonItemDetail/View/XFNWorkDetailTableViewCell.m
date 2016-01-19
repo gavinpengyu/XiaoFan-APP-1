@@ -80,6 +80,9 @@
         tempRect         = CGRectMake(origin.x, origin.y, (_Macro_ScreenWidth - origin.x), (tempLabelOriginY + tempLabelSize.height));
     }
     view.frame = tempRect;
+    
+    //DLog(@"%@, x = %f, y = %f", array, origin.x, origin.y);
+    
     return view;
 }
 

@@ -34,8 +34,8 @@
     [self setupRefreshMode];
     
 }
-
-- (void)setDataArray:(NSArray *)dataArray
+//PO 20160105 在tableview中可能会修改dataArray中的内容，因此改成可修改的数组
+- (void)setDataArray:(NSMutableArray *)dataArray
 {
     _dataArray = dataArray;
     

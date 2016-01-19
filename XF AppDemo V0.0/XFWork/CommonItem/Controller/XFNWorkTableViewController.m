@@ -238,15 +238,63 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
         [_detailedAssetArray removeAllObjects];
     }
     
+    if (nil != self.dataArray)
+    {
+        [self.dataArray removeAllObjects];
+    }
+    
+    NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
+    
+    //获取当前用户信息
+    AVUser *currentUser = [AVUser currentUser];
+    if (nil == currentUser)
+    {
+        DLog(@"ERROR：内部错误，currentUser ＝ nil");
+        return;
+    }
+    
+    //同步服务器用户信息
+    XFNFrameUserProfileModel * userModel = (XFNFrameUserProfileModel *) [AVQuery getObjectOfClass: @"_User" objectId: currentUser.objectId];
+    if (nil == userModel)
+    {
+        DLog(@"ERROR: 内部错误，同步服务器用户信息失败");
+    }
+    
+    NSArray* tempOnTopItemArray = [userModel objectForKey: @"onTopItemArray"];//[NSArray arrayWithArray: userModel.onTopItemArray];
+    
+    NSArray* tempFollowedItemArray = [userModel objectForKey: @"followedItemArray"];//[NSArray arrayWithArray: userModel.followedItemArray];
+    
+    for (int ii = 0; ii < tempOnTopItemArray.count; ii++)
+    //po 20160104:服务器侧保存的时候，因为没有 插入到数组最前方 的方法，所以每次添加都是插入在数组的最后方。从使用习惯来讲，最后置顶的应该在最上方，所以此处为倒序存放
+    {
+        XFNFrameAssetModel       *tempAssetModel = (XFNFrameAssetModel *)[AVQuery getObjectOfClass: _Macro_XFN_ASSET_MODEL_
+                                                                                          objectId: tempOnTopItemArray[tempOnTopItemArray.count - ii - 1]];
+        XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
+        
+        tempCellModel.bThisItemIsOnTop = true;
+        
+        if ([tempFollowedItemArray containsObject: tempAssetModel.objectId])
+        {
+            tempCellModel.bThisItemIsFollowed = true;
+        }
+        else
+        {
+            tempCellModel.bThisItemIsFollowed = false;
+        }
+        
+        [_detailedAssetArray addObject: tempAssetModel];
+        [tempTableViewArray  addObject: tempCellModel];
+    }
+    
     //新建查询
     AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_MODEL_];
     
     //设置查询排序
     [query orderByDescending  : @"updatedAt"];
-    [query addDescendingOrder : @"bIsOnTop"];
+    //[query addDescendingOrder : @"bIsOnTop"];
     
     //设置查询数量
-    query.limit = 20;
+    query.limit = (20 - tempOnTopItemArray.count);
     
     //后台查询，并将结果存入tableView数组
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -255,23 +303,44 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
             // 检索成功
             NSLog(@"Successfully received %lu posts.", (unsigned long)objects.count);
             
-            NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
-            //XFNFrameAssetModel       *tempAssetModel = [[XFNFrameAssetModel alloc] init];
-            
+            //PO 20160105，此处有一个小bug，当被置顶的item在20个元素中，则这一次读取的总item数没有20个
             for (int ii=0; ii<objects.count; ii++)
-            {wo
+            {
                 //tempAssetModel = objects[ii];
                 XFNFrameAssetModel       *tempAssetModel = objects[ii];
                 XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
                 
-                [tempTableViewArray addObject : tempCellModel];
-                //用于向Detailed View传递object数据
-                [_detailedAssetArray addObject : tempAssetModel];
+                if ([_detailedAssetArray containsObject: tempAssetModel])
+                {
+                    continue;
+                }
+                
+                tempCellModel.bThisItemIsOnTop = false;
+                
+                if ([tempFollowedItemArray containsObject: tempAssetModel.objectId])
+                {
+                    tempCellModel.bThisItemIsFollowed = true;
+                }
+                else
+                {
+                    tempCellModel.bThisItemIsFollowed = false;
+                }
+                
+                if (![_detailedAssetArray containsObject: tempAssetModel])
+                {
+                    [_detailedAssetArray addObject: tempAssetModel];
+                }
+                
+                if (![tempTableViewArray containsObject: tempCellModel])
+                {
+                    [tempTableViewArray addObject: tempCellModel];
+                }
             }
             
-            self.dataArray = [tempTableViewArray copy];
-            
-        } else
+            self.dataArray = [NSMutableArray arrayWithArray: tempTableViewArray];//[tempTableViewArray copy];
+            [self.tableView reloadData];
+        }
+        else
         {
             // 输出错误信息
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -279,25 +348,88 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     }];
 }
 
+- (void)initFollowedData
+{
+    //_detailedAssetArray用于向detailed View传递对应Object的详细数据
+    if (nil == _detailedAssetArray)
+    {
+        _detailedAssetArray = [NSMutableArray array];
+    }
+    else
+    {
+        [_detailedAssetArray removeAllObjects];
+    }
+    
+    NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
+    
+    //获取当前用户信息
+    AVUser *currentUser = [AVUser currentUser];
+    if (nil == currentUser)
+    {
+        DLog(@"ERROR：内部错误，currentUser ＝ nil");
+        return;
+    }
+    
+    //同步服务器用户信息
+    XFNFrameUserProfileModel * userModel = (XFNFrameUserProfileModel *) [AVQuery getObjectOfClass: @"_User" objectId: currentUser.objectId];
+    if (nil == userModel)
+    {
+        DLog(@"ERROR: 内部错误，同步服务器用户信息失败");
+    }
+    
+    NSArray* tempFollowedItemArray = [userModel objectForKey: @"followedItemArray"];
+    
+    NSArray* tempOnTopItemArray    = [userModel objectForKey: @"onTopItemArray"];
+    
+    for (int ii = 0; ii < tempFollowedItemArray.count; ii++)
+        //po 20160104:服务器侧保存的时候，因为没有 插入到数组最前方 的方法，所以每次添加都是插入在数组的最后方。从使用习惯来讲，最后置顶的应该在最上方，所以此处为倒序存放
+    {
+        XFNFrameAssetModel       *tempAssetModel = (XFNFrameAssetModel *)[AVQuery getObjectOfClass: _Macro_XFN_ASSET_MODEL_
+                                                                                          objectId: tempFollowedItemArray[tempFollowedItemArray.count - ii - 1]];
+        XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
+        
+        tempCellModel.bThisItemIsFollowed = true;
+        
+        if ([tempOnTopItemArray containsObject: tempAssetModel.objectId])
+        {
+            tempCellModel.bThisItemIsOnTop = true;
+            
+            if (![_detailedAssetArray containsObject: tempAssetModel])
+            {
+                [_detailedAssetArray insertObject: tempAssetModel atIndex: 0];
+            }
+            
+            if (![tempTableViewArray containsObject: tempCellModel])
+            {
+                [tempTableViewArray insertObject: tempCellModel atIndex: 0];
+            }
+        }
+        else
+        {
+            tempCellModel.bThisItemIsOnTop = false;
+            
+            if (![_detailedAssetArray containsObject: tempAssetModel])
+            {
+                [_detailedAssetArray addObject: tempAssetModel];
+            }
+            
+            if (![tempTableViewArray containsObject: tempCellModel])
+            {
+                [tempTableViewArray addObject: tempCellModel];
+            }
+        }
+        
+        
+    }
+    
+    self.dataArray = [NSMutableArray arrayWithArray: tempTableViewArray];
+    [self.tableView reloadData];
+}
+
 
 #pragma mark DataSource
 //-----------------------------------------------------------------------------------------
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return self.dataArray.count;
-//}
-
-//-----------------------------------------------------------------------------------------
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : _detailedAssetArray[indexPath.row]];
-//    
-//    XFNWorkTableViewCell *cell = [[XFNWorkTableViewCell alloc] initWithStyle : UITableViewCellStyleDefault reuseIdentifier : nil];
-//    
-//    [cell setModel : tempCellModel];
-//    
-//    return cell;
-//}
+//PO 20160105 DataSource由XFNFrameTableViewController完成
 
 #pragma mark - delegate
 //-----------------------------------------------------------------------------------------
@@ -314,6 +446,7 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
                                                                     0,
                                                                     _Macro_ScreenWidth,
                                                                     _Macro_XFNWorkTableViewHearder_Height)];
+    head.delegate = self;
     return head;
 }
 
@@ -405,7 +538,17 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
     
     XFNWorkTableViewCellModel* tempModel = (XFNWorkTableViewCellModel*) _detailedAssetArray[index];
     
-    [currentUser addObject: tempModel.objectId forKey: @"followedItemArray"];
+    NSArray* tempFollowedItemArray = [currentUser objectForKey: @"followedItemArray"];
+    
+    //若关注清单中已包含，则认为是 取消关注 操作；否则，认为是添加 关注 操作
+    if ([tempFollowedItemArray containsObject: tempModel.objectId])
+    {
+        [currentUser removeObject: tempModel.objectId forKey: @"followedItemArray"];
+    }
+    else
+    {
+        [currentUser addUniqueObject: tempModel.objectId forKey: @"followedItemArray"];
+    }
     
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
@@ -430,6 +573,329 @@ static NSMutableArray * sXFNlabelsForAncillaryInfoGlobalArray;
             [alertController addAction:cancelAction];
         }
     }];
+}
+
+- (void)toChangeOnTopStatusWithCellIndex: (NSInteger) index
+{
+    XFNFrameUserProfileModel *currentUser = (XFNFrameUserProfileModel *)[AVUser currentUser];
+    
+    XFNWorkTableViewCellModel* tempModel = (XFNWorkTableViewCellModel*) _detailedAssetArray[index];
+    
+    NSArray* tempOnTopItemArray = [currentUser objectForKey: @"onTopItemArray"];
+    
+    //若置顶清单中已包含，则认为是 取消置顶 操作；否则，认为是添加 置顶 操作
+    if ([tempOnTopItemArray containsObject: tempModel.objectId])
+    {
+        [currentUser removeObject: tempModel.objectId forKey: @"onTopItemArray"];
+    }
+    else
+    {
+        [currentUser addUniqueObject: tempModel.objectId forKey: @"onTopItemArray"];
+    }
+
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            DLog(@"！！！！！！！！！！用户信息保存成功！！！！！！！！");
+        }
+        else
+        {
+            NSString *errMsg = [error userInfo][@"error"];
+            
+            DLog(@"%@", errMsg);
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle: @"关注失败"
+                                                                                     message: @"同步服务器数据错误"
+                                                                              preferredStyle: UIAlertControllerStyleAlert];
+            NSString *cancelButtonTitle = NSLocalizedString(@"返回", nil);
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                //NSLog(@"The \"Okay/Cancel\" alert's cancel action occured.");
+            }];
+            
+            [alertController addAction:cancelAction];
+        }
+    }];
+}
+
+#pragma mark Protocol Header - > Controller, 这里是receiver
+//-----------------------------------------------------------------------------------------
+- (void) toShowAllItems
+{
+    DLog(@"toShowAllItems");
+    [self initData];
+    //[self.tableView reloadData];
+}
+
+- (void) toShowFollowedItems
+{
+    DLog(@"toShowFollowedItems");
+    [self initFollowedData];
+    //[self.tableView reloadData];
+}
+
+- (void) toShowOnRentingItems
+{
+    DLog(@"toShowOnRentingItems");
+
+    //_detailedAssetArray用于向detailed View传递对应Object的详细数据
+    if (nil == _detailedAssetArray)
+    {
+        _detailedAssetArray = [NSMutableArray array];
+    }
+    else
+    {
+        [_detailedAssetArray removeAllObjects];
+    }
+    
+    if (nil != self.dataArray)
+    {
+        [self.dataArray removeAllObjects];
+    }
+    
+    NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
+    
+    //获取当前用户信息
+    AVUser *currentUser = [AVUser currentUser];
+    if (nil == currentUser)
+    {
+        DLog(@"ERROR：内部错误，currentUser ＝ nil");
+        return;
+    }
+    
+    //同步服务器用户信息
+    XFNFrameUserProfileModel * userModel = (XFNFrameUserProfileModel *) [AVQuery getObjectOfClass: @"_User" objectId: currentUser.objectId];
+    if (nil == userModel)
+    {
+        DLog(@"ERROR: 内部错误，同步服务器用户信息失败");
+    }
+    
+    NSArray* tempOnTopItemArray = [userModel objectForKey: @"onTopItemArray"];//[NSArray arrayWithArray: userModel.onTopItemArray];
+    
+    NSArray* tempFollowedItemArray = [userModel objectForKey: @"followedItemArray"];//[NSArray arrayWithArray: userModel.followedItemArray];
+    
+    for (int ii = 0; ii < tempOnTopItemArray.count; ii++)
+        //po 20160104:服务器侧保存的时候，因为没有 插入到数组最前方 的方法，所以每次添加都是插入在数组的最后方。从使用习惯来讲，最后置顶的应该在最上方，所以此处为倒序存放
+    {
+        XFNFrameAssetModel       *tempAssetModel = (XFNFrameAssetModel *)[AVQuery getObjectOfClass: _Macro_XFN_ASSET_MODEL_
+                                                                                          objectId: tempOnTopItemArray[tempOnTopItemArray.count - ii - 1]];
+        XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
+        
+        if (![tempCellModel.statusString isEqualToString: @"出租中"])
+        {
+            continue;
+        }
+        
+        tempCellModel.bThisItemIsOnTop = true;
+        
+        if ([tempFollowedItemArray containsObject: tempAssetModel.objectId])
+        {
+            tempCellModel.bThisItemIsFollowed = true;
+        }
+        else
+        {
+            tempCellModel.bThisItemIsFollowed = false;
+        }
+        
+        [_detailedAssetArray addObject: tempAssetModel];
+        [tempTableViewArray  addObject: tempCellModel];
+    }
+    
+    //新建查询
+    AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_MODEL_];
+    
+    //设置查询排序
+    [query orderByDescending  : @"updatedAt"];
+    
+    [query whereKey:@"assetStatus" equalTo: @"出租中"];
+    
+    //设置查询数量
+    query.limit = (20 - tempOnTopItemArray.count);
+    
+    //后台查询，并将结果存入tableView数组
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            // 检索成功
+            NSLog(@"Successfully received %lu posts.", (unsigned long)objects.count);
+            
+            //PO 20160105，此处有一个小bug，当被置顶的item在20个元素中，则这一次读取的总item数没有20个
+            for (int ii=0; ii<objects.count; ii++)
+            {
+                //tempAssetModel = objects[ii];
+                XFNFrameAssetModel       *tempAssetModel = objects[ii];
+                XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
+                
+                if ([_detailedAssetArray containsObject: tempAssetModel])
+                {
+                    continue;
+                }
+                
+                tempCellModel.bThisItemIsOnTop = false;
+                
+                if ([tempFollowedItemArray containsObject: tempAssetModel.objectId])
+                {
+                    tempCellModel.bThisItemIsFollowed = true;
+                }
+                else
+                {
+                    tempCellModel.bThisItemIsFollowed = false;
+                }
+                
+                if (![_detailedAssetArray containsObject: tempAssetModel])
+                {
+                    [_detailedAssetArray addObject: tempAssetModel];
+                }
+                
+                if (![tempTableViewArray containsObject: tempCellModel])
+                {
+                    [tempTableViewArray addObject: tempCellModel];
+                }
+            }
+            
+            self.dataArray = [NSMutableArray arrayWithArray: tempTableViewArray];//[tempTableViewArray copy];
+            [self.tableView reloadData];
+        }
+        else
+        {
+            // 输出错误信息
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+- (void) toShowOnSaleItems
+{
+    DLog(@"toShowOnSaleItems");
+    //_detailedAssetArray用于向detailed View传递对应Object的详细数据
+    if (nil == _detailedAssetArray)
+    {
+        _detailedAssetArray = [NSMutableArray array];
+    }
+    else
+    {
+        [_detailedAssetArray removeAllObjects];
+    }
+    
+    if (nil != self.dataArray)
+    {
+        [self.dataArray removeAllObjects];
+    }
+    
+    NSMutableArray       *tempTableViewArray = [[NSMutableArray alloc] init];
+    
+    //获取当前用户信息
+    AVUser *currentUser = [AVUser currentUser];
+    if (nil == currentUser)
+    {
+        DLog(@"ERROR：内部错误，currentUser ＝ nil");
+        return;
+    }
+    
+    //同步服务器用户信息
+    XFNFrameUserProfileModel * userModel = (XFNFrameUserProfileModel *) [AVQuery getObjectOfClass: @"_User" objectId: currentUser.objectId];
+    if (nil == userModel)
+    {
+        DLog(@"ERROR: 内部错误，同步服务器用户信息失败");
+    }
+    
+    NSArray* tempOnTopItemArray = [userModel objectForKey: @"onTopItemArray"];//[NSArray arrayWithArray: userModel.onTopItemArray];
+    
+    NSArray* tempFollowedItemArray = [userModel objectForKey: @"followedItemArray"];//[NSArray arrayWithArray: userModel.followedItemArray];
+    
+    for (int ii = 0; ii < tempOnTopItemArray.count; ii++)
+        //po 20160104:服务器侧保存的时候，因为没有 插入到数组最前方 的方法，所以每次添加都是插入在数组的最后方。从使用习惯来讲，最后置顶的应该在最上方，所以此处为倒序存放
+    {
+        XFNFrameAssetModel       *tempAssetModel = (XFNFrameAssetModel *)[AVQuery getObjectOfClass: _Macro_XFN_ASSET_MODEL_
+                                                                                          objectId: tempOnTopItemArray[tempOnTopItemArray.count - ii - 1]];
+        XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
+        
+        if (![tempCellModel.statusString isEqualToString: @"出售中"])
+        {
+            continue;
+        }
+        
+        tempCellModel.bThisItemIsOnTop = true;
+        
+        if ([tempFollowedItemArray containsObject: tempAssetModel.objectId])
+        {
+            tempCellModel.bThisItemIsFollowed = true;
+        }
+        else
+        {
+            tempCellModel.bThisItemIsFollowed = false;
+        }
+        
+        [_detailedAssetArray addObject: tempAssetModel];
+        [tempTableViewArray  addObject: tempCellModel];
+    }
+    
+    //新建查询
+    AVQuery *query = [AVQuery queryWithClassName : _Macro_XFN_ASSET_MODEL_];
+    
+    //设置查询排序
+    [query orderByDescending  : @"updatedAt"];
+    
+    [query whereKey:@"assetStatus" equalTo: @"出售中"];
+    
+    //设置查询数量
+    query.limit = (20 - tempOnTopItemArray.count);
+    
+    //后台查询，并将结果存入tableView数组
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            // 检索成功
+            NSLog(@"Successfully received %lu posts.", (unsigned long)objects.count);
+            
+            //PO 20160105，此处有一个小bug，当被置顶的item在20个元素中，则这一次读取的总item数没有20个
+            for (int ii=0; ii<objects.count; ii++)
+            {
+                //tempAssetModel = objects[ii];
+                XFNFrameAssetModel       *tempAssetModel = objects[ii];
+                XFNWorkTableViewCellModel *tempCellModel = [[XFNWorkTableViewCellModel alloc] initWithObject : tempAssetModel];
+                
+                if ([_detailedAssetArray containsObject: tempAssetModel])
+                {
+                    continue;
+                }
+                
+                tempCellModel.bThisItemIsOnTop = false;
+                
+                if ([tempFollowedItemArray containsObject: tempAssetModel.objectId])
+                {
+                    tempCellModel.bThisItemIsFollowed = true;
+                }
+                else
+                {
+                    tempCellModel.bThisItemIsFollowed = false;
+                }
+                
+                if (![_detailedAssetArray containsObject: tempAssetModel])
+                {
+                    [_detailedAssetArray addObject: tempAssetModel];
+                }
+                
+                if (![tempTableViewArray containsObject: tempCellModel])
+                {
+                    [tempTableViewArray addObject: tempCellModel];
+                }
+            }
+            
+            self.dataArray = [NSMutableArray arrayWithArray: tempTableViewArray];//[tempTableViewArray copy];
+            [self.tableView reloadData];
+        }
+        else
+        {
+            // 输出错误信息
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+- (void) toConfigHead
+{
+    DLog(@"test toConfigHead");
 }
 
 #pragma mark - pull down refresh

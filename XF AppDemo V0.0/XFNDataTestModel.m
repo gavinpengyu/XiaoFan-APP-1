@@ -145,9 +145,9 @@
         
         testModel.summaryInfoLabelsOfAsset  = @"东边套,地暖,墙纸,全配";
         
-        testModel.bIsOnTop = false;
+        //testModel.bIsOnTop = false;
         [NSNumber numberWithBool:false];
-        testModel.bIsFollowed = false;//[NSNumber numberWithBool:false];
+        //testModel.bIsFollowed = false;//[NSNumber numberWithBool:false];
         
         testModel.createdByWhom = @"飞鸟";
         

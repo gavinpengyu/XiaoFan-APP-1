@@ -41,7 +41,7 @@
     self.view = view;
 }
 
-#pragma mark Protocol Cell and Footer - > CommonItemDetail
+#pragma mark Protocol view - > controller
 //-----------------------------------------------------------------------------------------
 - (void)toPushViewForEditBasicInfo
 {

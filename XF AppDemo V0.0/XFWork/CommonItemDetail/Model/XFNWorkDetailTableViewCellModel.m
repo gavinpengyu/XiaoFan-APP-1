@@ -287,7 +287,14 @@
             server侧，日志按照创建时间顺序放置，添加一条日志时，将该日志add在数组最后一个元素
             app侧显示，将时间最近的放在最前面，时间最远的放在最下面
          */
-        [tempArray insertObject: tempConments atIndex:0];
+        if (nil != tempConments)
+        {
+            [tempArray insertObject: tempConments atIndex:0];
+        }
+        else
+        {
+            continue;
+        }
     }
     
     model.commentsArray = [tempArray copy];

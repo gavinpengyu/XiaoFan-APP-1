@@ -54,11 +54,6 @@
 @dynamic basicInfoLabelsOfAsset;  //XFNLabelsForAsset -> labelsForAssetLayoutInfo
 @dynamic summaryInfoLabelsOfAsset;//房源摘要，用户可以在该房源的 中挑选需要显示在摘要中的标签，并显示在首页摘要中
 
-#pragma mark 辅助开关
-//-------------------------------------------------------------------------------------
-@dynamic bIsOnTop; //这套房源是否已置顶
-@dynamic bIsFollowed; //这套房源是否已关注
-
 #pragma mark 装修及配套
 //-------------------------------------------------------------------------------------
 @dynamic decorationInfo;  //XFNLabelsForAsset -> labelsForDecorationInfo
@@ -157,6 +152,16 @@
     
     return ([scan scanInt:&val] && [scan isAtEnd] && bIs);
 }
+
+//- (void)setBIsFollowed:(Boolean)bIsFollowed
+//{
+//    _bIsFollowed = bIsFollowed;
+//}
+//
+//- (void)setBIsOnTop:(Boolean)bIsOnTop
+//{
+//    _bIsOnTop = bIsOnTop;
+//}
 
 @end
 

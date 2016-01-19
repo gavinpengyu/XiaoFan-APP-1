@@ -69,8 +69,39 @@
             if (succeeded)
             {
                 DLog(@"objectId=%@ 更新基本信息成功", _detailModel.objectId);
+                
+                NSMutableArray *tempArray = [XFNFrameAssetModel initArrayByAssetString: tempModel.basicInfoLabelsOfAsset];
+                
+                NSString *tempString = [tempArray componentsJoinedByString: @","];
+                
+                NSString *contant = [[NSString alloc] initWithFormat: @"面积/分摊：%@/%@；%@房%@厅；%@/%@层；标签：%@", tempModel.assetTotalArea,
+                                     tempModel.assetSharedArea,
+                                     tempModel.quantityOfRoom,
+                                     tempModel.quantityOfToilet,
+                                     tempModel.assetStorey,
+                                     tempModel.storeyOfAll,
+                                     tempString];
+                
+                NSDate*               senddate = [NSDate date];
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSString *tempSendTime         = [dateFormatter stringFromDate: senddate];
+                
+                AVUser *currentUser = [AVUser currentUser];
+
+                NSString*       comments  = [XFNComments sysLogWithType: _Macro_XFN_Comment_Auto
+                                                             andContant: contant
+                                                               bySender: currentUser.username //po 20151215，添加AVUsers之后，需要读当前用户信息
+                                                                 atTime: tempSendTime];
+                
+                [tempModel addObject: comments forKey: @"assetLog"];
+                
+                [tempModel saveInBackground];
+
+                //NSAssert
             }
         }];
+
     }
     else if(XFNWorkDetailTradeInfoCellIndexEnum == cellIndex)
     {
@@ -94,6 +125,40 @@
             if (succeeded)
             {
                 DLog(@"objectId=%@ 更新交易信息成功", _detailModel.objectId);
+                
+                NSMutableArray *tempPayingArray = [XFNFrameAssetModel initArrayByAssetString: tempModel.typeOfPaying];
+                
+                NSMutableArray *tempTaxArray = [XFNFrameAssetModel initArrayByAssetString: tempModel.taxInfo];
+                
+                NSString *tempPayingString = [tempPayingArray componentsJoinedByString: @","];
+                
+                NSString *tempTaxString = [tempTaxArray componentsJoinedByString: @","];
+                
+                NSString *contant = [[NSString alloc] initWithFormat: @"价格：%@；状态：%@；归属人：%@；看房方式：%@；看房备注：%@；交房方式：%@；交房备注：%@；付款标签：%@；税费标签：%@", tempModel.assetTotalPrice,
+                                     tempModel.assetStatus,
+                                     tempModel.attributeTo,
+                                     tempModel.reserveMode,
+                                     tempModel.reserveRemark,
+                                     tempModel.deliveryMode,
+                                     tempModel.deliveryRemark,
+                                     tempPayingString,
+                                     tempTaxString];
+                
+                NSDate*               senddate = [NSDate date];
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSString *tempSendTime         = [dateFormatter stringFromDate: senddate];
+                
+                AVUser *currentUser = [AVUser currentUser];
+                
+                NSString*       comments  = [XFNComments sysLogWithType: _Macro_XFN_Comment_Auto
+                                                             andContant: contant
+                                                               bySender: currentUser.username
+                                                                 atTime: tempSendTime];
+                
+                [tempModel addObject: comments forKey: @"assetLog"];
+                
+                [tempModel saveInBackground];
             }
         }];
     }
@@ -109,6 +174,32 @@
             if (succeeded)
             {
                 DLog(@"objectId=%@ 更新交易信息成功", _detailModel.objectId);
+                
+                NSMutableArray *tempDecorationArray = [XFNFrameAssetModel initArrayByAssetString: tempModel.decorationInfo];
+                
+                NSMutableArray *tempAncillaryArray = [XFNFrameAssetModel initArrayByAssetString: tempModel.ancillaryInfo];
+                
+                NSString *tempDecorationString = [tempDecorationArray componentsJoinedByString: @","];
+                
+                NSString *tempAncillaryString = [tempAncillaryArray componentsJoinedByString: @","];
+                
+                NSString *contant = [[NSString alloc] initWithFormat: @"装修标签：%@；配套标签：%@", tempDecorationString, tempAncillaryString];
+                
+                NSDate*               senddate = [NSDate date];
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSString *tempSendTime         = [dateFormatter stringFromDate: senddate];
+                
+                AVUser *currentUser = [AVUser currentUser];
+                
+                NSString*       comments  = [XFNComments sysLogWithType: _Macro_XFN_Comment_Auto
+                                                             andContant: contant
+                                                               bySender: currentUser.username
+                                                                 atTime: tempSendTime];
+                
+                [tempModel addObject: comments forKey: @"assetLog"];
+                
+                [tempModel saveInBackground];
             }
         }];
     }
@@ -128,6 +219,28 @@
             if (succeeded)
             {
                 DLog(@"objectId=%@ 更新交易信息成功", _detailModel.objectId);
+                
+                NSMutableArray *tempSummaryArray = [XFNFrameAssetModel initArrayByAssetString: tempModel.summaryInfoLabelsOfAsset];
+                
+                NSString *tempSummaryString = [tempSummaryArray componentsJoinedByString: @","];
+                
+                NSString *contant = [[NSString alloc] initWithFormat: @"摘要标签：%@", tempSummaryString];
+                
+                NSDate*               senddate = [NSDate date];
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSString *tempSendTime         = [dateFormatter stringFromDate: senddate];
+                
+                AVUser *currentUser = [AVUser currentUser];
+                
+                NSString*       comments  = [XFNComments sysLogWithType: _Macro_XFN_Comment_Auto
+                                                             andContant: contant
+                                                               bySender: currentUser.username
+                                                                 atTime: tempSendTime];
+                
+                [tempModel addObject: comments forKey: @"assetLog"];
+                
+                [tempModel saveInBackground];
             }
         }];
     }

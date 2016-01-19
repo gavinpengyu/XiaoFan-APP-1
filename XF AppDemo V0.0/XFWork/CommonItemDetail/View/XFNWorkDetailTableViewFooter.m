@@ -94,6 +94,12 @@
                                              isFollowedLabelSize.height);
     _followedLabel.frame      = isFollowedLabelRect;
     
+    UIButton* followedButton     = [UIButton buttonWithType: UIButtonTypeCustom];
+    followedButton.frame         = _followedLabel.frame;
+    
+    [followedButton addTarget : self action : @selector (toChangeFollowStatus:) forControlEvents : UIControlEventTouchDown];
+    [self addSubview : followedButton];
+    
     //在“关注”的前方添加一条分割竖线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
     UIView * gridVerticalLineOne = [[UIView alloc] initWithFrame: CGRectMake (isFollowedLabelX,
                                                                               isFollowedLabelY + 2,
@@ -131,6 +137,27 @@
 - (void) toPushCommentView: (id)sender
 {
     [self.delegate toPushViewForComment];
+}
+
+- (void) toChangeFollowStatus: (id)sender
+{
+    if (_bIsFollowed)
+    {
+        _followedLabel.text = @"关注";
+    }
+    else
+    {
+        _followedLabel.text = @"取消关注";
+    }
+    
+    [_followedLabel removeFromSuperview];
+    
+    [self addSubview: _followedLabel];
+    
+    [self setNeedsLayout];
+    
+    _bIsFollowed = !_bIsFollowed;
+    [self.delegate toChangeFollowStatus];
 }
 
 @end

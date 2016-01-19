@@ -56,11 +56,6 @@
 @property (nonatomic , copy) NSString *basicInfoLabelsOfAsset;  //XFNLabelsForAsset -> labelsForAssetLayoutInfo
 @property (nonatomic , copy) NSString *summaryInfoLabelsOfAsset;//房源摘要，用户可以在该房源的 中挑选需要显示在摘要中的标签，并显示在首页摘要中
 
-#pragma mark 辅助开关
-//-------------------------------------------------------------------------------------
-@property (nonatomic , assign) Boolean bIsOnTop; //这套房源是否已置顶
-@property (nonatomic , assign) Boolean bIsFollowed; //这套房源是否已关注
-
 #pragma mark 装修及配套
 //-------------------------------------------------------------------------------------
 @property (nonatomic , copy) NSString *decorationInfo;  //XFNLabelsForAsset -> labelsForDecorationInfo
@@ -91,6 +86,15 @@
 #pragma mark 周边信息
 //-------------------------------------------------------------------------------------
 //保留
+
+#pragma mark 辅助开关 仅在程序内部使用，不同步至服务器
+//-------------------------------------------------------------------------------------
+//@property (nonatomic , assign) Boolean bIsOnTop; //这套房源是否已置顶
+//@property (nonatomic , assign) Boolean bIsFollowed; //这套房源是否已关注
+//
+//- (void)setBIsFollowed:(Boolean)bIsFollowed;
+//
+//- (void)setBIsOnTop:(Boolean)bIsOnTop;
 
 + (NSString *)parseClassName;
 

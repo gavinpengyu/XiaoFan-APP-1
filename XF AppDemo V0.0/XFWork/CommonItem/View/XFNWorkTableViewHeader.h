@@ -13,6 +13,8 @@
 
 #define _Macro_XFNWorkTableViewHearder_Height 30
 
+@protocol XFNHeaderToControllerDelegate;
+
 @interface XFNWorkTableViewHeader : UIView
 //-----------------------------------------------------------------------------------------
 {
@@ -23,6 +25,8 @@
 
     UILabel *_configHeadLabel; //只显示，暂不实现功能 po 20151201
 }
+
+@property (nonatomic,strong) id <XFNHeaderToControllerDelegate> delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 //-----------------------------------------------------------------------------------------

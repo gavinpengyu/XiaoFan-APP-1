@@ -42,17 +42,27 @@
     model.sendtimeString  = tempSendTime;
     model.ownerImage      = [UIImage imageNamed:@"TestOwnerImage"];//po 20151127，添加AVUser后，需要从AVUser中读取头像
     
-    NSNumber *tempIsOnTop     = [_assetAllInfoModel objectForKey : @"bIsOnTop"];
-    NSNumber *tempIsFollowed  = [_assetAllInfoModel objectForKey : @"bIsFollowed"];
-    
-    model.bThisItemIsOnTop    = tempIsOnTop.boolValue;
-    model.bThisItemIsFollowed = tempIsFollowed.boolValue;
+//    NSNumber *tempIsOnTop     = [_assetAllInfoModel objectForKey : @"bIsOnTop"];
+//    NSNumber *tempIsFollowed  = [_assetAllInfoModel objectForKey : @"bIsFollowed"];
+//    
+//    model.bThisItemIsOnTop    = tempIsOnTop.boolValue;
+//    model.bThisItemIsFollowed = tempIsFollowed.boolValue;
     
     NSString *tempLabelString = [_assetAllInfoModel objectForKey : @"summaryInfoLabelsOfAsset"];
     //DLog(@"summaryInfoLabelsOfAsset is %@", tempLabelString);
     model.labelsArray         = [tempLabelString componentsSeparatedByString: _Macro_XFN_String_Seperator]; //服务器中，labels以字符串形式存放，label之间用_Macro_XFN_String_Seperator分隔
     //DLog(@"labelsArray is %@", model.labelsArray);
     return model;
+}
+
+- (void)setBThisItemIsFollowed:(Boolean)bThisItemIsFollowed
+{
+    _bThisItemIsFollowed = bThisItemIsFollowed;
+}
+
+- (void)setBThisItemIsOnTop:(Boolean)bThisItemIsOnTop
+{
+    _bThisItemIsOnTop = bThisItemIsOnTop;
 }
 
 @end

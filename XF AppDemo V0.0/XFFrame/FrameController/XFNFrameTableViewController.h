@@ -20,7 +20,9 @@ typedef enum : NSUInteger {
 @interface XFNFrameTableViewController : UITableViewController
 
 @property (nonatomic, assign) NSInteger sectionsNumber;
-@property (nonatomic, strong) NSArray   *dataArray;
+//PO 20160105 在tableview中可能会修改dataArray中的内容，因此改成可修改的数组
+//@property (nonatomic, strong) NSArray   *dataArray;
+@property (nonatomic, strong) NSMutableArray   *dataArray;
 @property (nonatomic, copy)   Class     cellClass;
 @property (nonatomic, copy)   Class     cellModelClass;
 @property (nonatomic, assign) XFNFrameTableViewControllerRefeshMode refreshMode;
